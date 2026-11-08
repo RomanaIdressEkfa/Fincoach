@@ -111,19 +111,23 @@
   }
 
   /* ---------- Counters ---------- */
+  // Counts up every time the number scrolls into view (resets when it leaves)
   const cio = new IntersectionObserver((entries) => {
     entries.forEach(en => {
-      if (!en.isIntersecting) return;
-      const el = en.target, end = +el.dataset.count, dur = 1600, t0 = performance.now();
+      const el = en.target;
+      if (!en.isIntersecting) { el.dataset.run = ''; el.textContent = '0'; return; }
+      if (el.dataset.run) return;
+      el.dataset.run = '1';
+      const end = +el.dataset.count, dur = 2200, t0 = performance.now();
       const tick = (t) => {
+        if (!el.dataset.run) return;
         const p = Math.min((t - t0) / dur, 1);
         el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
         if (p < 1) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
-      cio.unobserve(el);
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.4 });
   $$('[data-count]').forEach(el => cio.observe(el));
 
   /* ---------- Testimonials slider ---------- */

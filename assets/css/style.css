@@ -1808,3 +1808,30 @@ body.lm-lock { overflow: hidden; }
 .ap2-qr-logo img { height: 26px; width: 26px; margin: 0; }
 .ap2-head { padding-left: .6rem; padding-right: .6rem; }
 @media (min-width: 1024px) { .ap2 > .relative { min-height: 640px; } }
+
+/* Stats card with soft pink shadow */
+.st3-card { position: relative; background: #fff; border-radius: 30px; padding: 2.4rem 1rem; border: 1px solid #f6e3ea;
+  box-shadow: 0 40px 80px -40px rgba(232,32,90,.35), 0 18px 40px -30px rgba(11,21,48,.25); }
+.st3-card::before { content: ""; position: absolute; inset: -40px 8% auto; height: 120%; z-index: -1; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(232,32,90,.12), transparent); filter: blur(10px); }
+@media (min-width: 1024px) { .st3-card > div + div { border-left: 1px dashed #f0d3dd; } }
+.st3-card .st3-dot { background: var(--grad); box-shadow: 0 0 0 5px rgba(232,32,90,.1); }
+
+/* Rotating pink glow behind the testimonial person */
+.tw3-blob { display: none; }
+.tw3-glow { position: absolute; left: 50%; bottom: 6%; width: min(470px, 92vw); aspect-ratio: 1; transform: translateX(-50%); pointer-events: none; z-index: 0; }
+.tw3-glow i { position: absolute; inset: 0; border-radius: 50%; }
+.tw3-glow i:first-child { background: conic-gradient(from 0deg, #f2545b, #ff9ec0, #e8205a, #b0188a, #ffd1df, #f2545b); filter: blur(46px); opacity: .55; animation: twSpin 10s linear infinite; }
+.tw3-glow i:last-child { inset: 12%; background: conic-gradient(from 180deg, transparent 0 25%, rgba(232,32,90,.55) 40%, transparent 55% 75%, rgba(176,24,138,.5) 90%, transparent);
+  filter: blur(22px); opacity: .7; animation: twSpin 7s linear infinite reverse; }
+@keyframes twSpin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .tw3-glow i { animation: none; } }
+.tw3-glow { -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 88%); mask-image: linear-gradient(180deg, #000 62%, transparent 88%); }
+.tw-stack > * { transition: opacity .3s ease, transform .45s cubic-bezier(.2,.8,.2,1); }
+.tw-stack > .is-active { transition-delay: .3s; }
+.tw3-glow { width: min(680px, 120vw); bottom: -4%; }
+.tw3-glow i:first-child { inset: 16%; }
+.tw3-glow i:last-child { inset: 26%; }
+.tw3-glow { -webkit-mask-image: linear-gradient(180deg, #000 58%, transparent 80%); mask-image: linear-gradient(180deg, #000 58%, transparent 80%); }
+.tw3-media { overflow: visible; }
+.tw3 { overflow-x: clip; }
