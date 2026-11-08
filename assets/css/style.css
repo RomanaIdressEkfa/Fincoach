@@ -1735,3 +1735,76 @@ body.lm-lock { overflow: hidden; }
 .bl4-row:hover h3 { color: var(--brand); }
 .bl4-meta { margin-top: .45rem; display: flex; align-items: center; gap: .35rem; font-size: .8rem; color: var(--muted); font-weight: 600; }
 @media (max-width: 479px) { .bl4-row h3 { font-size: .98rem; } .bl4-meta { font-size: .74rem; } }
+
+/* ==========================================================
+   Download app v2 — premium
+   ========================================================== */
+.ap2 { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(135deg, #fff6f9 0%, #fdeef4 55%, #f8f1ff 100%); }
+.ap2-arc { position: absolute; z-index: -1; width: 820px; height: 820px; border-radius: 50%; left: -300px; bottom: -470px;
+  background: radial-gradient(circle at 60% 30%, rgba(255,255,255,.25), transparent 45%), linear-gradient(135deg, #f2545b, #e8205a 45%, #b0188a); box-shadow: 0 -30px 80px -30px rgba(232,32,90,.5); }
+.ap2-ring { position: absolute; z-index: -1; width: 1000px; height: 1000px; border-radius: 50%; left: -390px; bottom: -560px; border: 1.5px dashed rgba(232,32,90,.25); }
+.ap2-dots { position: absolute; z-index: -1; right: 0; top: 0; width: 45%; height: 70%; background-image: radial-gradient(rgba(232,32,90,.18) 1.2px, transparent 1.4px); background-size: 18px 18px; mask-image: radial-gradient(ellipse at 80% 20%, #000 10%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at 80% 20%, #000 10%, transparent 70%); }
+@media (max-width: 1023px) { .ap2-arc { left: 50%; transform: translateX(-50%); bottom: auto; top: -380px; width: 760px; height: 760px; } .ap2-ring { display: none; } }
+
+.ap2-visual { position: relative; height: 560px; }
+@media (max-width: 639px) { .ap2-visual { height: 500px; } }
+.ap2-phone { position: absolute; left: 50%; top: 40px; width: 250px; margin-left: -165px; padding: 9px; border-radius: 40px; background: #0b1530;
+  box-shadow: 0 60px 90px -35px rgba(11,21,48,.6), inset 0 0 0 2px rgba(255,255,255,.08); transform: rotate(-6deg); animation: ap2Float 7s ease-in-out infinite; }
+@keyframes ap2Float { 0%,100% { transform: rotate(-6deg) translateY(0); } 50% { transform: rotate(-6deg) translateY(-12px); } }
+.ap2-screen { position: relative; background: #f7f8fb; border-radius: 32px; padding: .8rem .75rem 4.2rem; overflow: hidden; }
+.ap2-screen::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 205px; background: var(--grad); }
+.ap2-screen > * { position: relative; }
+.ap2-head { color: #fff; padding: .8rem .35rem .4rem; }
+.ap2-qa { display: grid; place-items: center; width: 36px; height: 36px; margin: 0 auto .2rem; border-radius: 12px; background: #fff; color: var(--brand); font-size: .75rem; box-shadow: 0 8px 14px -10px rgba(11,21,48,.4); }
+.ap2-offer { display: flex; align-items: center; gap: .5rem; padding: .45rem .55rem; border-radius: 12px; background: #fff; font-size: 10px; box-shadow: 0 6px 12px -10px rgba(11,21,48,.4); }
+.ap2-offer img { width: 30px; height: 16px; object-fit: contain; }
+.ap2-offer span { font-weight: 700; color: var(--ink); flex: 1; }
+.ap2-offer b { color: var(--brand); }
+.ap2-tab { position: absolute; left: .6rem; right: .6rem; bottom: .6rem; display: flex; align-items: center; justify-content: space-around; padding: .55rem .4rem; border-radius: 18px; background: #fff; color: #a3abbb; font-size: .78rem; box-shadow: 0 10px 20px -14px rgba(11,21,48,.4); }
+.ap2-tab > i:first-child { color: var(--brand); }
+.ap2-tab span { width: 34px; height: 34px; margin-top: -24px; border-radius: 99px; display: grid; place-items: center; background: var(--grad); color: #fff; box-shadow: 0 10px 18px -8px rgba(232,32,90,.7); border: 3px solid #fff; }
+.ap2-card { position: absolute; left: 50%; top: 250px; margin-left: 30px; width: 250px; transform: rotate(8deg); animation: ap2Card 8s ease-in-out infinite; box-shadow: 0 40px 70px -25px rgba(11,21,48,.6); }
+@keyframes ap2Card { 0%,100% { transform: rotate(8deg) translateY(0); } 50% { transform: rotate(6deg) translateY(-14px); } }
+@media (max-width: 639px) { .ap2-phone { width: 220px; margin-left: -135px; } .ap2-card { width: 200px; margin-left: 10px; top: 270px; } }
+.ap2-chip { position: absolute; display: flex; align-items: center; gap: .65rem; padding: .65rem .95rem .65rem .65rem; border-radius: 18px; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); box-shadow: 0 24px 40px -18px rgba(11,21,48,.35); z-index: 2; }
+.ap2-chip span { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; }
+.ap2-chip small { display: block; font-size: .7rem; color: var(--muted); font-weight: 600; }
+.ap2-chip b { font-family: "Urbanist", sans-serif; font-weight: 800; color: var(--ink); }
+.ap2-chip-a { left: 4%; top: 110px; animation: floaty 6s ease-in-out infinite; }
+.ap2-chip-b { right: 6%; bottom: 70px; animation: floaty 7s ease-in-out infinite reverse; }
+@media (max-width: 639px) { .ap2-chip-a { left: 0; top: 60px; } .ap2-chip-b { right: 0; bottom: 30px; } }
+
+.ap2-feats { display: grid; gap: .7rem; }
+.ap2-feats li { display: flex; align-items: center; gap: .75rem; font-weight: 600; color: var(--ink-2); }
+.ap2-feats i { width: 34px; height: 34px; border-radius: 11px; display: grid; place-items: center; font-size: .8rem; color: #fff; background: var(--grad); box-shadow: 0 10px 18px -10px rgba(232,32,90,.7); }
+
+.ap2-box { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; padding: 1.25rem; border-radius: 28px; background: rgba(255,255,255,.75); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.9); box-shadow: 0 40px 80px -45px rgba(11,21,48,.45); max-width: 560px; }
+.ap2-qr { position: relative; flex: none; padding: 12px; border-radius: 20px; background: #fff; border: 1.5px solid #f8d2de; }
+.ap2-qr #appQr img, .ap2-qr #appQr canvas { width: 140px !important; height: 140px !important; display: block; }
+.ap2-qr::before, .ap2-qr::after { content: ""; position: absolute; width: 22px; height: 22px; border: 3px solid var(--brand); }
+.ap2-qr::before { left: -2px; top: -2px; border-right: 0; border-bottom: 0; border-radius: 10px 0 0 0; }
+.ap2-qr::after { right: -2px; bottom: -2px; border-left: 0; border-top: 0; border-radius: 0 0 10px 0; }
+.ap2-qr-logo { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.ap2-qr-logo > span { width: 38px; height: 38px; border-radius: 11px; background: #fff; display: grid; place-items: center; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,.15); }
+.ap2-qr-logo img { height: 24px; max-width: none; margin-left: 52px; }
+.ap2-or { display: flex; flex-direction: column; align-items: center; gap: .4rem; font-size: .75rem; font-weight: 800; color: #a3abbb; }
+.ap2-or::before, .ap2-or::after { content: ""; width: 1.5px; height: 28px; background: var(--line); }
+@media (max-width: 559px) { .ap2-box { justify-content: center; } .ap2-or { flex-direction: row; width: 100%; } .ap2-or::before, .ap2-or::after { width: auto; flex: 1; height: 1.5px; } }
+.ap2-stores { display: grid; gap: .6rem; flex: 1; min-width: 210px; }
+.ap2-store { display: flex; align-items: center; gap: .8rem; padding: .7rem .9rem; border-radius: 16px; background: #fff; border: 1.5px solid var(--line); transition: all .25s; }
+.ap2-store > i:first-child { font-size: 1.5rem; color: var(--ink); width: 28px; text-align: center; }
+.ap2-store .ap2-gp { background: linear-gradient(135deg, #00d7fe 0%, #00f076 35%, #ffc900 65%, #ff3a44 100%); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+.ap2-store small { display: block; font-size: .65rem; font-weight: 700; color: var(--muted); letter-spacing: .03em; }
+.ap2-store b { display: block; font-family: "Urbanist", sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--ink); line-height: 1.1; }
+.ap2-go { margin-left: auto; font-size: .75rem; color: #c2c8d4; transition: all .25s; }
+.ap2-store:hover { border-color: var(--brand); transform: translateY(-2px); box-shadow: 0 16px 30px -20px rgba(232,32,90,.6); }
+.ap2-store:hover .ap2-go { color: var(--brand); transform: translateX(3px); }
+.ap2-watch { display: inline-flex; align-items: center; gap: .7rem; font-weight: 800; color: var(--ink); }
+.ap2-watch span { position: relative; width: 44px; height: 44px; border-radius: 99px; display: grid; place-items: center; background: var(--grad); color: #fff; font-size: .8rem; box-shadow: 0 12px 24px -10px rgba(232,32,90,.7); }
+.ap2-watch span::after { content: ""; position: absolute; inset: -6px; border-radius: inherit; border: 2px solid rgba(232,32,90,.35); animation: pulse 2.4s ease-out infinite; }
+.ap2-watch:hover { color: var(--brand); }
+@media (prefers-reduced-motion: reduce) { .ap2-phone, .ap2-card, .ap2-chip, .ap2-watch span::after { animation: none !important; } }
+.ap2-qr-logo img { height: 26px; width: 26px; margin: 0; }
+.ap2-head { padding-left: .6rem; padding-right: .6rem; }
+@media (min-width: 1024px) { .ap2 > .relative { min-height: 640px; } }
