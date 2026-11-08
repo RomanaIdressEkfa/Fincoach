@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Register — FinCoach</title>
+  <meta name="description" content="Log in or create your free FinCoach account to compare, apply and track loans and cards from leading Banks and FIs in Bangladesh." />
+  <link rel="icon" type="image/png" href="assets/img/fincoach-logo.png" />
+
+  <!-- Fonts: Urbanist + Figtree (Wallex pairing) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Urbanist:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#e8205a', 2: '#b0188a', coral: '#f2545b', tint: '#fff1f5' },
+            ink: { DEFAULT: '#0b1530', 2: '#1c2740' },
+            muted: '#5d6a82',
+            line: '#eceef3'
+          },
+          fontFamily: { head: ['Urbanist', 'sans-serif'], body: ['Figtree', 'sans-serif'] },
+          maxWidth: { site: '1240px' }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="font-body">
+
+<!-- =========================================================
+     HEADER — announcement bar + navbar (LoanTube layout)
+     ========================================================= -->
+<header id="siteHeader" class="nav-wrap sticky top-0 z-50 bg-white">
+  <div class="px-2.5 pt-2.5">
+    <div class="announce text-white text-center text-[13px] md:text-sm px-4 py-3">
+      <strong class="font-bold">0% Processing Fee on FinCoach.</strong>
+      <span class="text-white/85 hidden sm:inline"> FinCoach is a loan marketplace, not a lender. Loans are subject to eligibility &amp; approval by partner Banks/FIs.</span>
+    </div>
+  </div>
+
+  <nav class="relative">
+    <div class="max-w-site mx-auto px-4 md:px-6 h-[68px] md:h-[84px] flex items-center justify-between gap-4">
+      <!-- Left: logo + pill nav -->
+      <div class="flex items-center gap-6 lg:gap-10">
+        <a href="index.html" class="shrink-0" aria-label="FinCoach home">
+          <img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-7 md:h-9 w-auto" />
+        </a>
+
+        <ul class="nav-pill hidden lg:flex items-center p-1.5">
+          <li class="has-mega" id="loansMenu">
+            <button class="nav-link" aria-expanded="false" aria-controls="megaLoans" id="loansBtn">
+              Loans <i class="fa-solid fa-chevron-down chev text-xs"></i>
+              <span class="mega-active-bar"></span>
+            </button>
+          </li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Right -->
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="track.html" class="btn btn-ghost !py-3"><i class="fa-solid fa-location-crosshairs text-brand"></i> Track Application</a>
+        <a href="login.html" class="btn btn-primary !py-3"><i class="fa-regular fa-user"></i> Login / Register</a>
+      </div>
+
+      <!-- Mobile actions -->
+      <div class="lg:hidden flex items-center gap-2">
+        <a href="index.html#products" class="btn btn-primary !py-2.5 !px-4 text-sm">Apply <i class="fa-solid fa-arrow-right text-xs"></i></a>
+      <button id="menuOpen" class="lg:hidden w-11 h-11 rounded-xl bg-[#f2f4f7] grid place-items-center text-ink" aria-label="Open menu">
+        <i class="fa-solid fa-bars-staggered text-lg"></i>
+      </button>
+      </div>
+    </div>
+
+    <!-- MEGA MENU — Loans (Oportun layout) -->
+    <div id="megaLoans" class="mega hidden lg:block" role="region" aria-label="Loans menu">
+      <div class="max-w-site mx-auto px-6 py-10 grid grid-cols-12 gap-8">
+        <div class="col-span-3">
+          <h4>Loans</h4>
+          <a class="m-link" href="index.html#products">Personal loans</a>
+          <a class="m-link" href="index.html#products">Secured personal loans</a>
+          <a class="m-link" href="#">Make a payment</a>
+          <a class="m-link" href="contact.html">Contact us</a>
+          <a class="m-link" href="contact.html">Locations</a>
+        </div>
+        <div class="col-span-4">
+          <h4>Tools</h4>
+          <a class="m-link" href="index.html#calculator">Loan calculator</a>
+          <a class="m-link" href="index.html#faq">FAQs</a>
+          <a class="m-link" href="#">Glossary of financial terms</a>
+          <a class="m-link" href="index.html#partners">Get support from our partners</a>
+
+          <h4 class="mt-7">Get savvy</h4>
+          <a class="m-link" href="index.html#blog">What do you need to apply for a loan?</a>
+          <a class="m-link" href="index.html#blog">What is an installment loan?</a>
+          <a href="index.html#blog" class="inline-flex items-center gap-2 mt-2 font-bold text-ink hover:text-brand">More <i class="fa-solid fa-arrow-right text-xs"></i></a>
+        </div>
+        <div class="col-span-5">
+          <div class="rounded-[28px] bg-brand-tint p-8 relative overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-44 h-44 rounded-full bg-grad opacity-10"></div>
+            <div class="w-[70px] h-[70px] rounded-2xl bg-white border border-line grid place-items-center shadow-sm">
+              <div class="w-[36px] h-[38px] overflow-hidden"><img src="assets/img/fincoach-logo.png" alt="" class="h-[38px] max-w-none" /></div>
+            </div>
+            <p class="mt-6 text-lg font-semibold leading-relaxed text-ink max-w-sm">Get the all-in-one app to manage your loan. Plus it intelligently saves for you.</p>
+            <div class="flex flex-wrap gap-2 mt-5">
+              <a href="#" class="store-badge"><i class="fa-brands fa-apple text-2xl"></i><div><small>Download on the</small><span>App Store</span></div></a>
+              <a href="#" class="store-badge"><i class="fa-brands fa-google-play text-xl"></i><div><small>GET IT ON</small><span>Google Play</span></div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile drawer -->
+<div id="drawerBackdrop" class="drawer-backdrop fixed inset-0 bg-ink/50 backdrop-blur-sm z-[60]"></div>
+<aside id="drawer" class="drawer fixed top-0 right-0 bottom-0 w-[88%] max-w-sm bg-white z-[70] flex flex-col" aria-label="Mobile menu">
+  <div class="flex items-center justify-between px-5 h-20 border-b border-line">
+    <img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-8" />
+    <button id="menuClose" class="w-10 h-10 rounded-xl bg-[#f2f4f7] grid place-items-center" aria-label="Close menu"><i class="fa-solid fa-xmark text-lg"></i></button>
+  </div>
+  <div class="flex-1 overflow-y-auto px-5 py-4">
+    <div class="acc border-b border-line">
+      <button class="acc-head w-full flex items-center justify-between py-4 font-head font-bold text-lg">Loans <i class="fa-solid fa-chevron-down acc-chev text-sm"></i></button>
+      <div class="acc-body"><div>
+        <div class="pb-4 space-y-5">
+          <div>
+            <p class="font-head font-extrabold mb-1">Loans</p>
+            <a class="block py-1.5 text-muted" href="index.html#products">Personal loans</a>
+            <a class="block py-1.5 text-muted" href="index.html#products">Secured personal loans</a>
+            <a class="block py-1.5 text-muted" href="#">Make a payment</a>
+            <a class="block py-1.5 text-muted" href="contact.html">Contact us</a>
+            <a class="block py-1.5 text-muted" href="contact.html">Locations</a>
+          </div>
+          <div>
+            <p class="font-head font-extrabold mb-1">Tools</p>
+            <a class="block py-1.5 text-muted" href="index.html#calculator">Loan calculator</a>
+            <a class="block py-1.5 text-muted" href="index.html#faq">FAQs</a>
+            <a class="block py-1.5 text-muted" href="#">Glossary of financial terms</a>
+            <a class="block py-1.5 text-muted" href="index.html#partners">Get support from our partners</a>
+          </div>
+          <div>
+            <p class="font-head font-extrabold mb-1">Get savvy</p>
+            <a class="block py-1.5 text-muted" href="index.html#blog">What do you need to apply for a loan?</a>
+            <a class="block py-1.5 text-muted" href="index.html#blog">What is an installment loan?</a>
+            <a class="block py-1.5 font-bold" href="index.html#blog">More →</a>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <a href="about.html" class="drawer-link block py-4 border-b border-line font-head font-bold text-lg">About Us</a>
+    <a href="contact.html" class="drawer-link block py-4 border-b border-line font-head font-bold text-lg">Contact Us</a>
+  </div>
+  <div class="p-5 grid gap-3 border-t border-line">
+    <a href="track.html" class="btn btn-ghost"><i class="fa-solid fa-location-crosshairs text-brand"></i> Track Application</a>
+    <a href="login.html" class="btn btn-primary"><i class="fa-regular fa-user"></i> Login / Register</a>
+  </div>
+</aside>
+
+<main>
+
+<section class="px-2.5 pt-2.5 pb-16 md:pb-24">
+  <div class="hero-bg panel relative overflow-hidden">
+    <div class="grid-lines absolute inset-0 pointer-events-none"></div>
+    <div class="absolute -left-24 top-24 w-80 h-80 rounded-full bg-grad opacity-[.08] blur-2xl"></div>
+    <div class="absolute -right-24 bottom-10 w-96 h-96 rounded-full bg-grad opacity-[.08] blur-2xl"></div>
+
+    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-12 md:pt-16 pb-16 md:pb-24">
+      <div class="text-center">
+        <nav class="reveal crumb justify-center" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand" id="crumbLabel">Login</span></nav>
+        <h1 class="reveal mt-5 font-head font-extrabold text-[2.4rem] leading-[1.05] sm:text-5xl lg:text-[3.8rem] text-ink" id="authTitle">Welcome <span class="text-grad">back</span></h1>
+        <p class="reveal mt-4 text-lg text-muted max-w-xl mx-auto font-medium" id="authSub">Log in to manage your applications, compare offers and track every update.</p>
+      </div>
+
+      <!-- ===== Sliding auth card ===== -->
+      <div class="reveal auth-shell auth-slider mt-8 md:mt-12 max-w-6xl mx-auto" id="authSlider">
+
+        <!-- Mobile tabs (desktop uses the sliding panel) -->
+        <div class="lg:hidden auth-mobile-banner">
+          <span class="t-orb -right-10 -top-12 w-40 h-40 bg-white/10"></span>
+          <span class="t-orb -left-8 -bottom-16 w-36 h-36 border-[18px] border-white/10"></span>
+          <div class="relative flex items-center justify-between gap-3">
+            <span class="inline-block bg-white rounded-xl px-3 py-2"><img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-5" /></span>
+            <span class="glass rounded-full px-3 py-1.5 text-xs font-bold"><i class="fa-solid fa-lock mr-1"></i> Secure</span>
+          </div>
+          <p class="relative mt-5 font-head font-extrabold text-2xl leading-tight" id="mbTitle">Hello, Friend!</p>
+          <p class="relative mt-1 text-white/85 text-[15px]" id="mbSub">Compare, apply &amp; track loans from 6+ Banks and FIs — free.</p>
+        </div>
+        <div class="lg:hidden px-5 sm:px-6 pt-5" id="authTabsWrap">
+          <div class="auth-tabs" id="authTabs" role="tablist">
+            <span class="tab-pill"></span>
+            <button type="button" class="active" data-tab="login" role="tab">Login</button>
+            <button type="button" data-tab="register" role="tab">Register</button>
+          </div>
+        </div>
+
+        <!-- ================= LOGIN SIDE ================= -->
+        <div class="form-box box-login" id="boxLogin">
+          <form class="auth-pane active" id="pane-login" data-auth="login" novalidate>
+            <h2 class="font-head font-extrabold text-3xl md:text-[2.4rem] text-center">Log In</h2>
+            <div class="flex justify-center gap-3 mt-5">
+              <button type="button" class="icon-btn" aria-label="Continue with Google"><i class="fa-brands fa-google text-[#ea4335]"></i></button>
+              <button type="button" class="icon-btn" aria-label="Continue with Facebook"><i class="fa-brands fa-facebook-f text-[#1877f2]"></i></button>
+              <button type="button" class="icon-btn" aria-label="Login with OTP" data-goto="otp-login"><i class="fa-solid fa-mobile-screen-button text-brand"></i></button>
+            </div>
+            <div class="divider my-6">or use your mobile / email</div>
+            <div class="space-y-4">
+              <div class="field">
+                <div class="ic-wrap"><i class="fa-regular fa-user f-ic"></i><input id="lgId" required placeholder="Mobile number or email" autocomplete="username" aria-label="Mobile number or email" /></div>
+              </div>
+              <div class="field">
+                <div class="ic-wrap"><i class="fa-solid fa-lock f-ic"></i><input id="lgPw" type="password" required placeholder="Password" autocomplete="current-password" class="!pr-14" aria-label="Password" /><button type="button" class="pw-toggle" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between mt-4">
+              <label class="flex items-center gap-2 text-muted font-semibold cursor-pointer select-none text-[15px]"><input type="checkbox" class="w-4 h-4 accent-[#e8205a]" checked /> Keep me logged in</label>
+              <button type="button" class="text-[15px] font-bold text-brand hover:underline" data-goto="forgot">Forgot password?</button>
+            </div>
+            <p class="form-err hidden mt-4 text-sm font-semibold text-red-500"><i class="fa-solid fa-circle-exclamation"></i> Please fill in all required fields.</p>
+            <button type="submit" class="btn btn-primary w-full !py-4 text-lg mt-6" data-label='Log In <i class="fa-solid fa-arrow-right"></i>'>Log In <i class="fa-solid fa-arrow-right"></i></button>
+            <p class="lg:hidden text-center text-muted mt-6">New to FinCoach? <button type="button" class="font-bold text-brand hover:underline" data-tab-link="register">Create a free account</button></p>
+          </form>
+
+          <!-- FORGOT -->
+          <form class="auth-pane" id="pane-forgot" data-auth="forgot" novalidate>
+            <button type="button" class="inline-flex items-center gap-2 font-bold text-muted hover:text-brand" data-tab-link="login"><i class="fa-solid fa-arrow-left"></i> Back to login</button>
+            <span class="mt-7 w-16 h-16 rounded-2xl bg-brand-tint text-brand grid place-items-center text-2xl"><i class="fa-solid fa-key"></i></span>
+            <h2 class="mt-6 font-head font-extrabold text-3xl">Reset your password</h2>
+            <p class="text-muted mt-2">Enter your registered mobile number and we'll send you a 6-digit code.</p>
+            <div class="field mt-7">
+              <div class="ic-wrap"><i class="fa-solid fa-mobile-screen f-ic"></i><span class="prefix">+880</span><input id="fgPhone" required type="tel" inputmode="numeric" maxlength="11" class="has-prefix" placeholder="1XXX-XXXXXX" aria-label="Mobile number" /></div>
+            </div>
+            <p class="form-err hidden mt-4 text-sm font-semibold text-red-500"><i class="fa-solid fa-circle-exclamation"></i> Please enter your mobile number.</p>
+            <button type="submit" class="btn btn-primary w-full !py-4 text-lg mt-6" data-label='Send Code <i class="fa-solid fa-paper-plane"></i>'>Send Code <i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+
+          <!-- OTP (moved between sides by JS) -->
+          <form class="auth-pane" id="pane-otp" data-auth="otp" novalidate>
+            <button type="button" class="inline-flex items-center gap-2 font-bold text-muted hover:text-brand" data-otp-back><i class="fa-solid fa-arrow-left"></i> Back</button>
+            <span class="mt-7 w-16 h-16 rounded-2xl bg-grad text-white grid place-items-center text-2xl shadow-lg"><i class="fa-solid fa-comment-sms"></i></span>
+            <h2 class="mt-6 font-head font-extrabold text-3xl">Verify your mobile</h2>
+            <p class="text-muted mt-2">Enter the 6-digit code we sent to <b class="text-ink" id="otpPhone">+880 1XXX-XXXXXX</b></p>
+            <div class="otp mt-7" id="otpBoxes">
+              <input inputmode="numeric" maxlength="1" aria-label="Digit 1" /><input inputmode="numeric" maxlength="1" aria-label="Digit 2" /><input inputmode="numeric" maxlength="1" aria-label="Digit 3" />
+              <input inputmode="numeric" maxlength="1" aria-label="Digit 4" /><input inputmode="numeric" maxlength="1" aria-label="Digit 5" /><input inputmode="numeric" maxlength="1" aria-label="Digit 6" />
+            </div>
+            <p class="form-err hidden mt-4 text-sm font-semibold text-red-500"><i class="fa-solid fa-circle-exclamation"></i> Please enter all 6 digits.</p>
+            <button type="submit" class="btn btn-primary w-full !py-4 text-lg mt-7" data-label='Verify &amp; Continue <i class="fa-solid fa-arrow-right"></i>'>Verify &amp; Continue <i class="fa-solid fa-arrow-right"></i></button>
+            <p class="text-center text-muted mt-5">Didn't get it? <button type="button" class="font-bold text-brand disabled:text-muted disabled:cursor-not-allowed" id="resendBtn" disabled>Resend in <span id="resendT">3:00</span></button></p>
+            <div class="mt-6 rounded-2xl bg-[#fff7f9] border border-[#ffd2dd] p-4 text-sm text-ink-2 flex gap-3"><i class="fa-solid fa-shield-halved text-brand mt-0.5"></i><span>FinCoach will <b>never</b> call you to ask for this code. Don't share it with anyone.</span></div>
+          </form>
+
+          <!-- SUCCESS (moved between sides by JS) -->
+          <div class="auth-pane text-center py-4" id="pane-success">
+            <div class="check-anim mx-auto"><i class="fa-solid fa-check"></i></div>
+            <h2 class="mt-8 font-head font-extrabold text-3xl" id="successTitle">You're all set!</h2>
+            <p class="text-muted mt-2 max-w-sm mx-auto" id="successSub">Your FinCoach account is ready. Start comparing offers now.</p>
+            <div class="grid sm:grid-cols-2 gap-3 mt-8">
+              <a href="index.html#products" class="btn btn-primary">Compare &amp; Apply <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="track.html" class="btn btn-ghost"><i class="fa-solid fa-location-crosshairs text-brand"></i> Track</a>
+            </div>
+            <button type="button" class="mt-6 font-bold text-muted hover:text-brand" data-tab-link="login">Back to login</button>
+          </div>
+        </div>
+
+        <!-- ================= REGISTER SIDE ================= -->
+        <div class="form-box box-register" id="boxRegister">
+          <form class="auth-pane active" id="pane-register" data-auth="register" novalidate>
+            <h2 class="font-head font-extrabold text-3xl md:text-[2.4rem] text-center">Create Account</h2>
+            <div class="flex justify-center gap-3 mt-5">
+              <button type="button" class="icon-btn" aria-label="Sign up with Google"><i class="fa-brands fa-google text-[#ea4335]"></i></button>
+              <button type="button" class="icon-btn" aria-label="Sign up with Facebook"><i class="fa-brands fa-facebook-f text-[#1877f2]"></i></button>
+              <button type="button" class="icon-btn" aria-label="Sign up with LinkedIn"><i class="fa-brands fa-linkedin-in text-[#0a66c2]"></i></button>
+            </div>
+            <div class="divider my-6">or use your mobile for registration</div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="field sm:col-span-2">
+                <div class="ic-wrap"><i class="fa-regular fa-user f-ic"></i><input id="rgName" required placeholder="Full name (as per NID)" autocomplete="name" aria-label="Full name" /></div>
+              </div>
+              <div class="field">
+                <div class="ic-wrap"><i class="fa-solid fa-mobile-screen f-ic"></i><span class="prefix">+880</span><input id="rgPhone" required type="tel" inputmode="numeric" maxlength="11" class="has-prefix" placeholder="1XXX-XXXXXX" autocomplete="tel-national" aria-label="Mobile number" /></div>
+              </div>
+              <div class="field">
+                <div class="ic-wrap"><i class="fa-regular fa-envelope f-ic"></i><input id="rgEmail" required type="email" placeholder="Email" autocomplete="email" aria-label="Email" /></div>
+              </div>
+              <div class="field sm:col-span-2">
+                <div class="ic-wrap"><i class="fa-solid fa-lock f-ic"></i><input id="rgPw" type="password" required placeholder="Create password (8+ characters)" autocomplete="new-password" class="!pr-14" aria-label="Create password" /><button type="button" class="pw-toggle" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div>
+                <div class="strength" id="pwStrength"><span></span><span></span><span></span><span></span></div>
+                <p class="text-xs text-muted mt-2" id="pwHint">Use 8+ characters with a mix of letters, numbers &amp; symbols.</p>
+              </div>
+            </div>
+            <label class="flex items-start gap-3 mt-4 text-muted cursor-pointer text-[15px]">
+              <input type="checkbox" required class="mt-1 w-4 h-4 accent-[#e8205a]" />
+              <span>I agree to the <a href="#" class="font-semibold text-ink underline decoration-brand/40 underline-offset-4 hover:text-brand">Terms</a> and <a href="#" class="font-semibold text-ink underline decoration-brand/40 underline-offset-4 hover:text-brand">Privacy Policy</a>.</span>
+            </label>
+            <p class="form-err hidden mt-3 text-sm font-semibold text-red-500"><i class="fa-solid fa-circle-exclamation"></i> Please complete all fields and accept the terms.</p>
+            <button type="submit" class="btn btn-primary w-full !py-4 text-lg mt-5" data-label='Create Account <i class="fa-solid fa-arrow-right"></i>'>Create Account <i class="fa-solid fa-arrow-right"></i></button>
+            <p class="lg:hidden text-center text-muted mt-6">Already have an account? <button type="button" class="font-bold text-brand hover:underline" data-tab-link="login">Log in</button></p>
+          </form>
+        </div>
+
+        <!-- ================= SLIDING OVERLAY (desktop) ================= -->
+        <div class="toggle-container" aria-hidden="false">
+          <div class="toggle">
+            <span class="t-orb -left-24 -top-24 w-80 h-80 bg-white/10"></span>
+            <span class="t-orb left-[30%] -bottom-40 w-[28rem] h-[28rem] border-[50px] border-white/10"></span>
+            <span class="t-orb right-[10%] top-16 w-48 h-48 bg-white/10"></span>
+            <div class="absolute inset-0 grid-lines opacity-25"></div>
+
+            <!-- Shown when Register is active -->
+            <div class="toggle-panel toggle-left">
+              <span class="inline-block bg-white rounded-2xl px-4 py-2.5 shadow-lg"><img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-7" /></span>
+              <h2 class="mt-8 font-head font-extrabold text-4xl xl:text-5xl">Welcome Back!</h2>
+              <p class="mt-4 text-white/90 text-lg max-w-sm">Already have an account? Log in to track your applications and pick up your offers.</p>
+              <button type="button" class="btn btn-outline-white mt-8" data-tab-link="login">Log In</button>
+              <div class="glass rounded-2xl px-5 py-4 mt-10 flex items-center gap-4 text-left">
+                <span class="w-11 h-11 rounded-xl bg-white text-brand grid place-items-center"><i class="fa-solid fa-location-crosshairs"></i></span>
+                <div><p class="font-head font-extrabold">Real-time tracking</p><p class="text-sm text-white/80">Every update, from submission to disbursement</p></div>
+              </div>
+            </div>
+
+            <!-- Shown when Login is active -->
+            <div class="toggle-panel toggle-right">
+              <span class="inline-block bg-white rounded-2xl px-4 py-2.5 shadow-lg"><img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-7" /></span>
+              <h2 class="mt-8 font-head font-extrabold text-4xl xl:text-5xl">Hello, Friend!</h2>
+              <p class="mt-4 text-white/90 text-lg max-w-sm">New to FinCoach? Create a free account to compare, apply and track loans from leading Banks &amp; FIs.</p>
+              <button type="button" class="btn btn-outline-white mt-8" data-tab-link="register">Register</button>
+              <div class="glass rounded-2xl px-5 py-4 mt-10 flex items-center gap-4 text-left">
+                <span class="w-11 h-11 rounded-xl bg-white text-brand grid place-items-center"><i class="fa-solid fa-hand-holding-dollar"></i></span>
+                <div><p class="font-head font-extrabold">100% free to apply</p><p class="text-sm text-white/80">6+ partner Banks &amp; FIs in one place</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- trust row -->
+      <div class="reveal mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-[15px]">
+        <span class="hero-check"><i class="fa-solid fa-lock"></i> 256-bit SSL encryption</span>
+        <span class="hero-check"><i class="fa-solid fa-check"></i> Free forever for customers</span>
+        <span class="hero-check"><i class="fa-solid fa-building-columns"></i> 6+ Partner Banks &amp; FIs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer class="px-2.5 pb-2.5">
+  <div class="footer panel text-white">
+    <div class="max-w-site mx-auto px-4 md:px-6 pt-16 md:pt-20 pb-8">
+      <div class="grid grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10 lg:gap-12">
+        <div class="col-span-2 lg:col-span-4">
+          <div class="inline-block bg-white rounded-2xl px-5 py-3"><img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-8" /></div>
+          <p class="mt-6 text-[#aab3c8] leading-relaxed max-w-sm">FinCoach is an online financial platform that offers easy access to a range of financial products and services from banks and FIs in Bangladesh. It benefits customers and providers alike, promoting financial inclusion and digital empowerment.</p>
+          <div class="flex gap-3 mt-7">
+            <a href="https://www.facebook.com/FinCoachOfficial" target="_blank" rel="noopener" class="social" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/FinCoachOfficial" target="_blank" rel="noopener" class="social" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@FinCoachOfficial" target="_blank" rel="noopener" class="social" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com/FinCoachOfficial" target="_blank" rel="noopener" class="social" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="lg:col-span-2">
+          <h4 class="font-head font-extrabold text-lg">Our Company</h4>
+          <ul class="mt-5 space-y-3">
+            <li><a class="f" href="about.html">About Us</a></li><li><a class="f" href="contact.html">Contact Us</a></li>
+            <li><a class="f" href="index.html#faq">FAQ</a></li><li><a class="f" href="#">Terms of Service</a></li>
+            <li><a class="f" href="#">Privacy Policy</a></li><li><a class="f" href="index.html#blog">Blog</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-2">
+          <h4 class="font-head font-extrabold text-lg">Products</h4>
+          <ul class="mt-5 space-y-3">
+            <li><a class="f" href="index.html#products">Retail Loan</a></li><li><a class="f" href="index.html#products">Credit Card</a></li>
+            <li><a class="f" href="index.html#products">SME</a></li><li><a class="f" href="index.html#calculator">Loan Calculator</a></li>
+          </ul>
+        </div>
+        <div class="col-span-2 lg:col-span-4">
+          <h4 class="font-head font-extrabold text-lg">Contact Us</h4>
+          <ul class="mt-5 space-y-4 text-[#aab3c8]">
+            <li class="flex gap-3"><span class="w-9 h-9 shrink-0 rounded-full bg-white/10 grid place-items-center text-brand"><i class="fa-solid fa-location-dot"></i></span>Navana DH Tower, Level 8, 6 Panthapath, Dhaka 1215, Bangladesh</li>
+            <li class="flex gap-3 items-center"><span class="w-9 h-9 shrink-0 rounded-full bg-white/10 grid place-items-center text-brand"><i class="fa-solid fa-envelope"></i></span><a class="f" href="mailto:info@fincoachbd.com">info@fincoachbd.com</a></li>
+            <li class="flex gap-3 items-center"><span class="w-9 h-9 shrink-0 rounded-full bg-white/10 grid place-items-center text-brand"><i class="fa-solid fa-phone"></i></span><a class="f" href="tel:+8809638229922">+880 9638 229922</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-10 md:mt-14 pt-7 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-sm text-[#aab3c8]">
+        <p>© <span id="yr">2026</span> FinCoach Bangladesh Limited. All Rights Reserved.</p>
+        <p>Member of: BASIS · e-CAB</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" class="fixed right-5 bottom-5 z-40 w-12 h-12 rounded-full bg-grad text-white shadow-lg grid place-items-center" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+
+<!-- Mobile app-style bottom navigation -->
+<nav class="mobile-nav lg:hidden" aria-label="Quick navigation">
+  <a href="index.html" data-nav="index"><i class="fa-solid fa-house"></i><span>Home</span></a>
+  <a href="index.html#products" data-nav="loans"><i class="fa-solid fa-hand-holding-dollar"></i><span>Loans</span></a>
+  <a href="track.html" data-nav="track" class="mn-main"><span class="mn-fab"><i class="fa-solid fa-location-crosshairs"></i></span><span>Track</span></a>
+  <a href="contact.html" data-nav="contact"><i class="fa-solid fa-headset"></i><span>Contact</span></a>
+  <a href="login.html" data-nav="login"><i class="fa-regular fa-user"></i><span>Account</span></a>
+</nav>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
