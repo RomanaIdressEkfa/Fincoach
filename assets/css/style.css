@@ -1687,3 +1687,7 @@ body.lm-lock { overflow: hidden; }
 .bl3-tag { position: absolute; left: 12px; bottom: 12px; font-size: .75rem; font-weight: 800; color: #fff; background: var(--grad); padding: .3rem .8rem; border-radius: 99px; }
 .bl3-card h3 { margin: 1.1rem .7rem 0; font-family: "Urbanist", sans-serif; font-weight: 800; font-size: 1.12rem; line-height: 1.35; color: var(--ink); }
 .bl3-card p { margin: .5rem .7rem 0; font-size: .9rem; color: var(--muted); line-height: 1.55; }
+/* Testimonial cut-out person (breaks out of the card like the reference) */
+.tw3-person { position: relative; z-index: 1; width: min(400px, 82vw); height: auto; display: block; filter: drop-shadow(0 30px 40px rgba(11,21,48,.18)); }
+@media (min-width: 1024px) { .tw3-media { margin-top: -6rem; } .tw3-person { width: 430px; } }
+.tw3-blob { width: 70%; background: radial-gradient(circle at 50% 45%, rgba(232,32,90,.12), transparent 70%); }
