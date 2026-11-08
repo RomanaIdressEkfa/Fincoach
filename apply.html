@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply Now — FinCoach</title>
+  <meta name="description" content="Check your loan eligibility with Bangladesh's leading Banks and FIs in minutes — free, with no impact on your credit." />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <!-- Fonts: Urbanist + Figtree (Wallex pairing) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Urbanist:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#e8205a', 2: '#b0188a', coral: '#f2545b', tint: '#fff1f5' },
+            ink: { DEFAULT: '#0b1530', 2: '#1c2740' },
+            muted: '#5d6a82',
+            line: '#eceef3'
+          },
+          fontFamily: { head: ['Urbanist', 'sans-serif'], body: ['Figtree', 'sans-serif'] },
+          maxWidth: { site: '1400px' }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="font-body">
+
+<!-- =========================================================
+     HEADER — announcement bar + navbar (LoanTube layout)
+     ========================================================= -->
+<header id="siteHeader" class="nav-wrap sticky top-0 z-50 bg-white">
+  <div class="topbar">
+    <div class="max-w-site mx-auto px-4 md:px-6 h-9 flex items-center justify-between gap-4 text-[13px]">
+      <p class="text-muted truncate"><b class="text-ink">0% processing fee.</b><span class="hidden sm:inline"> FinCoach is a loan marketplace, not a lender.</span></p>
+      <div class="flex items-center gap-2.5 shrink-0 text-muted">
+        <span class="hidden sm:inline">App available on</span>
+        <a href="#" class="tb-ic" aria-label="Download on the App Store"><i class="fa-brands fa-apple"></i></a>
+        <a href="#" class="tb-ic" aria-label="Get it on Google Play"><i class="fa-brands fa-google-play"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="relative">
+    <div class="max-w-site mx-auto px-4 md:px-6 h-[68px] md:h-[84px] flex items-center justify-between gap-4">
+      <!-- Left: logo + pill nav -->
+      <div class="flex items-center gap-6 lg:gap-10">
+        <a href="index.html" class="shrink-0" aria-label="FinCoach home">
+          <img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-7 md:h-9 w-auto" />
+        </a>
+
+        <ul class="nav-pill hidden lg:flex items-center p-1.5">
+          <li class="has-mega" id="loansMenu">
+            <button class="nav-link" aria-expanded="false" aria-controls="megaLoans" id="loansBtn">
+              Loans <i class="fa-solid fa-chevron-down chev text-xs"></i>
+              <span class="mega-active-bar"></span>
+            </button>
+          </li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Right -->
+      <div class="hidden lg:flex items-center gap-2.5">
+        <a href="login.html" class="nav-text-btn" data-login-open><i class="fa-regular fa-user"></i> Log in</a>
+        <a href="apply.html" class="btn btn-dark !py-3 !px-6">Apply Now</a>
+        <a href="track.html" class="btn btn-track !py-3"><i class="fa-solid fa-location-crosshairs"></i> Track Application</a>
+      </div>
+
+      <!-- Mobile actions -->
+      <div class="lg:hidden flex items-center gap-2">
+        <a href="apply.html" class="btn btn-primary !py-2.5 !px-4 text-sm">Apply <i class="fa-solid fa-arrow-right text-xs"></i></a>
+      <button id="menuOpen" class="lg:hidden w-11 h-11 rounded-xl bg-[#f2f4f7] grid place-items-center text-ink" aria-label="Open menu">
+        <i class="fa-solid fa-bars-staggered text-lg"></i>
+      </button>
+      </div>
+    </div>
+
+    <!-- MEGA MENU — Loans | Tools + app panel (Oportun style) -->
+    <div id="megaLoans" class="mega hidden lg:block" role="region" aria-label="Loans menu">
+      <div class="max-w-site mx-auto px-6 py-9 grid grid-cols-12">
+        <div class="col-span-7 grid grid-cols-2 gap-10 pr-10 border-r border-line">
+          <div>
+            <h4>Loans</h4>
+            <a class="mm-link" href="loan.html?type=personal"><span class="mm-ic"><i class="fa-solid fa-user"></i></span>Personal Loan</a>
+            <a class="mm-link" href="loan.html?type=auto"><span class="mm-ic"><i class="fa-solid fa-car"></i></span>Auto Loan</a>
+            <a class="mm-link" href="loan.html?type=home"><span class="mm-ic"><i class="fa-solid fa-house"></i></span>Home Loan</a>
+            <a class="mm-link" href="loan.html?type=card"><span class="mm-ic"><i class="fa-regular fa-credit-card"></i></span>Credit Card</a>
+            <a class="mm-link" href="loan.html?type=sme"><span class="mm-ic"><i class="fa-solid fa-store"></i></span>SME Loan</a>
+          </div>
+          <div>
+            <h4>Tools</h4>
+            <a class="mm-link" href="emi-calculator.html"><span class="mm-ic"><i class="fa-solid fa-calculator"></i></span>EMI Calculator</a>
+            <a class="mm-link" href="faq.html"><span class="mm-ic"><i class="fa-regular fa-circle-question"></i></span>FAQs</a>
+            <a class="mm-link" href="blog.html"><span class="mm-ic"><i class="fa-regular fa-newspaper"></i></span>Blog</a>
+          </div>
+        </div>
+        <div class="col-span-5 pl-10">
+          <div class="rounded-[26px] bg-brand-tint p-7 relative overflow-hidden h-full">
+            <div class="absolute -right-10 -top-10 w-44 h-44 rounded-full bg-grad opacity-10"></div>
+            <img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-8 relative" />
+            <p class="mt-5 text-lg font-semibold leading-relaxed text-ink max-w-sm relative">Get the all-in-one app to apply for your loan — and track every step, right from your phone.</p>
+            <div class="flex flex-wrap gap-2 mt-6 relative">
+              <a href="#" class="store-badge"><i class="fa-brands fa-google-play text-xl"></i><div><small>GET IT ON</small><span>Google Play</span></div></a>
+              <a href="#" class="store-badge"><i class="fa-brands fa-apple text-2xl"></i><div><small>Download on the</small><span>App Store</span></div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile drawer -->
+<div id="drawerBackdrop" class="drawer-backdrop fixed inset-0 bg-ink/50 backdrop-blur-sm z-[60]"></div>
+<aside id="drawer" class="drawer fixed top-0 right-0 bottom-0 w-[88%] max-w-sm bg-white z-[70] flex flex-col" aria-label="Mobile menu">
+  <div class="flex items-center justify-between px-5 h-20 border-b border-line">
+    <img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-8" />
+    <button id="menuClose" class="w-10 h-10 rounded-xl bg-[#f2f4f7] grid place-items-center" aria-label="Close menu"><i class="fa-solid fa-xmark text-lg"></i></button>
+  </div>
+  <div class="flex-1 overflow-y-auto px-5 py-4">
+    <a href="about.html" class="drawer-link block py-4 border-b border-line font-head font-bold text-lg">About Us</a>
+    <div class="acc border-b border-line">
+      <button class="acc-head w-full flex items-center justify-between py-4 font-head font-bold text-lg">Loans <i class="fa-solid fa-chevron-down acc-chev text-sm"></i></button>
+      <div class="acc-body"><div>
+        <div class="pb-4 grid grid-cols-2 gap-4">
+          <div>
+            <p class="font-head font-extrabold mb-1">Loans</p>
+            <a class="block py-1.5 text-muted" href="loan.html?type=personal">Personal Loan</a>
+            <a class="block py-1.5 text-muted" href="loan.html?type=auto">Auto Loan</a>
+            <a class="block py-1.5 text-muted" href="loan.html?type=home">Home Loan</a>
+            <a class="block py-1.5 text-muted" href="loan.html?type=card">Credit Card</a>
+            <a class="block py-1.5 text-muted" href="loan.html?type=sme">SME Loan</a>
+          </div>
+          <div>
+            <p class="font-head font-extrabold mb-1">Tools</p>
+            <a class="block py-1.5 text-muted" href="emi-calculator.html">EMI Calculator</a>
+            <a class="block py-1.5 text-muted" href="faq.html">FAQs</a>
+            <a class="block py-1.5 text-muted" href="blog.html">Blog</a>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <a href="contact.html" class="drawer-link block py-4 border-b border-line font-head font-bold text-lg">Contact Us</a>
+  </div>
+  <div class="p-5 grid gap-3 border-t border-line">
+    <a href="apply.html" class="btn btn-primary">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="grid grid-cols-2 gap-3">
+      <a href="login.html" class="btn btn-ghost" data-login-open><i class="fa-regular fa-user"></i> Login</a>
+      <a href="track.html" class="btn btn-ghost"><i class="fa-solid fa-location-crosshairs text-brand"></i> Track</a>
+    </div>
+  </div>
+</aside>
+
+<main>
+
+<!-- =========================================================
+     APPLY ① — OneMain-style start: small cards left, form right
+     ========================================================= -->
+<section class="px-2.5 pt-2.5">
+  <div class="hs panel relative overflow-hidden !pb-16 md:!pb-20">
+    <div class="hs-dots absolute inset-0 pointer-events-none"></div>
+    <span class="hs-blob hs-blob-1"></span>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-10 md:pt-14">
+      <nav class="reveal crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand">Apply Now</span></nav>
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 mt-6 items-start">
+
+        <!-- LEFT -->
+        <div class="lg:col-span-5">
+          <h1 class="reveal w-h1">You may have more loan options <span class="text-grad">than you think.</span></h1>
+          <p class="reveal w-lead mt-4"><b class="text-ink">See your options in 5 minutes.</b> Free, and checking won't affect your credit score.</p>
+          <div class="grid grid-cols-2 gap-3 mt-8">
+            <div class="reveal ap-mini"><i class="fa-solid fa-stopwatch"></i><b>5 minutes</b><span>To see your offers</span></div>
+            <div class="reveal ap-mini"><i class="fa-solid fa-shield-halved"></i><b>No credit impact</b><span>Soft check only</span></div>
+            <div class="reveal ap-mini"><i class="fa-solid fa-building-columns"></i><b>6+ Banks &amp; FIs</b><span>Compared side by side</span></div>
+            <div class="reveal ap-mini"><i class="fa-solid fa-hand-holding-dollar"></i><b>100% free</b><span>No fees, ever</span></div>
+          </div>
+          <a href="https://www.youtube.com/watch?v=2QMfR_PKNSI" target="_blank" rel="noopener" class="reveal ap-video mt-3">
+            <span class="play-sm"><i class="fa-solid fa-play ml-0.5"></i></span>
+            <span><b class="font-head text-lg block leading-tight">Watch tutorial</b><span class="text-sm text-white/75">How to apply on FinCoach in 2 minutes</span></span>
+            <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-white/60"></i>
+          </a>
+        </div>
+
+        <!-- RIGHT: question form -->
+        <div class="lg:col-span-7" id="applyBox">
+          <form class="reveal ap-form" id="applyForm" novalidate>
+            <div class="flex items-center justify-between gap-4">
+              <p class="text-sm font-bold text-muted">Step <span id="apNum">1</span> of 3</p>
+              <p class="text-sm font-semibold text-muted"><i class="fa-solid fa-lock text-brand"></i> Secure &amp; private</p>
+            </div>
+            <div class="ap-progress mt-3"><span class="on"></span><span></span><span></span></div>
+
+            <!-- Step 1 -->
+            <div class="ap-step active" data-step="1">
+              <p class="ap-q mt-6">What kind of loan do you need?</p>
+              <div class="ap-choices c3 mt-4">
+                <label class="ap-choice"><input type="radio" name="type" value="personal" checked /><span><i class="fa-solid fa-user"></i>Personal</span></label>
+                <label class="ap-choice"><input type="radio" name="type" value="auto" /><span><i class="fa-solid fa-car"></i>Auto</span></label>
+                <label class="ap-choice"><input type="radio" name="type" value="home" /><span><i class="fa-solid fa-house"></i>Home</span></label>
+                <label class="ap-choice"><input type="radio" name="type" value="card" /><span><i class="fa-regular fa-credit-card"></i>Credit card</span></label>
+                <label class="ap-choice"><input type="radio" name="type" value="sme" /><span><i class="fa-solid fa-store"></i>SME</span></label>
+                <label class="ap-choice"><input type="radio" name="type" value="other" /><span><i class="fa-solid fa-ellipsis"></i>Other</span></label>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-4 mt-5">
+                <div><label class="ap-label" for="apAmount">How much do you need? (BDT)</label><input id="apAmount" class="ap-input" inputmode="numeric" value="5,00,000" required /></div>
+                <div><label class="ap-label" for="apTenure">For how long?</label>
+                  <select id="apTenure" class="ap-input"><option value="12">12 months</option><option value="24">24 months</option><option value="36" selected>36 months</option><option value="48">48 months</option><option value="60">60 months</option><option value="120">10 years</option><option value="240">20 years</option></select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="ap-step" data-step="2">
+              <p class="ap-q mt-6">Tell us a little about yourself</p>
+              <p class="ap-label mt-5">Employment type</p>
+              <div class="ap-choices c3">
+                <label class="ap-choice"><input type="radio" name="job" value="salaried" checked /><span><i class="fa-solid fa-briefcase"></i>Salaried</span></label>
+                <label class="ap-choice"><input type="radio" name="job" value="business" /><span><i class="fa-solid fa-store"></i>Business owner</span></label>
+                <label class="ap-choice"><input type="radio" name="job" value="self" /><span><i class="fa-solid fa-laptop"></i>Self-employed</span></label>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-4 mt-5">
+                <div><label class="ap-label" for="apIncome">Monthly income (BDT)</label><input id="apIncome" class="ap-input" inputmode="numeric" placeholder="e.g. 60,000" required /></div>
+                <div><label class="ap-label" for="apCity">City</label>
+                  <select id="apCity" class="ap-input"><option>Dhaka</option><option>Chattogram</option><option>Sylhet</option><option>Khulna</option><option>Rajshahi</option><option>Barishal</option><option>Rangpur</option><option>Mymensingh</option></select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="ap-step" data-step="3">
+              <p class="ap-q mt-6">Where should we send your offers?</p>
+              <div class="grid sm:grid-cols-2 gap-4 mt-5">
+                <div class="sm:col-span-2"><label class="ap-label" for="apName">Full name (as per NID)</label><input id="apName" class="ap-input" autocomplete="name" required /></div>
+                <div><label class="ap-label" for="apPhone">Mobile number</label><input id="apPhone" class="ap-input" type="tel" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX" autocomplete="tel-national" required /></div>
+                <div><label class="ap-label" for="apEmail">Email</label><input id="apEmail" class="ap-input" type="email" autocomplete="email" required /></div>
+              </div>
+              <label class="flex items-start gap-3 mt-5 text-muted cursor-pointer text-[15px]"><input type="checkbox" id="apConsent" required class="mt-1 w-4 h-4 accent-[#e8205a]" /><span>I agree to the <a href="terms.html" class="font-semibold text-ink underline">Terms</a> and <a href="privacy.html" class="font-semibold text-ink underline">Privacy Policy</a>, and to be contacted about my offers.</span></label>
+            </div>
+
+            <p class="ap-err hidden mt-4 text-sm font-semibold text-red-500"><i class="fa-solid fa-circle-exclamation"></i> <span>Please complete the highlighted fields.</span></p>
+            <div class="flex items-center gap-3 mt-7">
+              <button type="button" class="btn btn-ghost hidden" id="apBack"><i class="fa-solid fa-arrow-left"></i> Back</button>
+              <button type="submit" class="btn btn-primary flex-1 !py-4" id="apNext">Continue <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+            <p class="mt-4 text-center text-xs text-muted">Checking your options won't affect your credit score.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     APPLY ② — Eligibility results (LoanTube style)
+     ========================================================= -->
+<section id="results" class="hidden pt-14 md:pt-20 scroll-mt-28">
+  <div class="max-w-site mx-auto px-4 md:px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div>
+        <span class="eyebrow">Check eligibility</span>
+        <h2 class="w-h2 mt-4">Your matched offers</h2>
+        <p class="w-lead mt-2" id="resSummary"></p>
+      </div>
+      <button type="button" class="btn btn-ghost self-start md:self-auto" id="apEdit"><i class="fa-solid fa-pen"></i> Edit details</button>
+    </div>
+    <div class="overflow-x-auto mt-6">
+      <table class="el-table">
+        <thead><tr><th>Lender</th><th>Product name</th><th>Interest rate</th><th>Max amount</th><th>Monthly EMI</th><th>Eligibility</th><th></th></tr></thead>
+        <tbody id="resRows"></tbody>
+      </table>
+    </div>
+    <p class="mt-4 text-sm text-muted">Rates and eligibility are indicative. Final approval is made by the lender after verification.</p>
+  </div>
+</section>
+
+<!-- =========================================================
+     APPLY ③ — FAQs
+     ========================================================= -->
+<section class="pt-16 md:pt-24 pb-16 md:pb-24">
+  <div class="max-w-[900px] mx-auto px-4 md:px-6">
+    <h2 class="reveal w-h2 text-center">Frequently asked questions</h2>
+    <div class="mt-10 space-y-4" id="faqList">
+      <div class="reveal faq acc open">
+        <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Will checking my options affect my credit score?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="acc-body"><div><p class="px-6 pb-6 text-muted">No. Seeing your matched offers on FinCoach is a soft check and has no impact on your credit score.</p></div></div>
+      </div>
+      <div class="reveal faq acc">
+        <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">What documents will I need?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="acc-body"><div><p class="px-6 pb-6 text-muted">Usually your NID, a recent photo, salary certificate or trade licence, 6 months of bank statements and TIN. Exact requirements depend on the lender and product.</p></div></div>
+      </div>
+      <div class="reveal faq acc">
+        <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Does FinCoach charge any fee?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="acc-body"><div><p class="px-6 pb-6 text-muted">No. Comparing and applying through FinCoach is completely free. We never ask for money, processing fees or OTPs.</p></div></div>
+      </div>
+      <div class="reveal faq acc">
+        <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">How long does approval take?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="acc-body"><div><p class="px-6 pb-6 text-muted">Most lenders decide within 3–7 working days. You can follow every step on the <a href="track.html" class="text-brand font-semibold underline">Track Application</a> page.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer class="px-2.5 pb-2.5">
+  <div class="footer panel text-white relative overflow-hidden">
+    <div class="absolute -right-32 -top-32 w-96 h-96 rounded-full bg-grad opacity-[.12] blur-3xl pointer-events-none"></div>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-14 md:pt-20 pb-8">
+      <div class="grid grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10">
+        <div class="lg:col-span-2">
+          <h4 class="f-head">Quick Links</h4>
+          <ul class="mt-5 space-y-3">
+            <li><a class="f" href="about.html">About</a></li>
+            <li><a class="f" href="contact.html">Contact Us</a></li>
+            <li><a class="f" href="emi-calculator.html">EMI Calculator</a></li>
+            <li><a class="f" href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-2">
+          <h4 class="f-head">Products</h4>
+          <ul class="mt-5 space-y-3">
+            <li><a class="f" href="loan.html?type=personal">Personal Loan</a></li>
+            <li><a class="f" href="loan.html?type=auto">Auto Loan</a></li>
+            <li><a class="f" href="loan.html?type=home">Home Loan</a></li>
+            <li><a class="f" href="loan.html?type=card">Credit Card</a></li>
+            <li><a class="f" href="loan.html?type=sme">SME Loan</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-3">
+          <h4 class="f-head">Support</h4>
+          <ul class="mt-5 space-y-3">
+            <li><a class="f" href="faq.html">FAQs</a></li>
+            <li><a class="f" href="terms.html">Terms of Service</a></li>
+            <li><a class="f" href="privacy.html">Privacy Policy</a></li>
+            <li><a class="f" href="track.html">Track Application</a></li>
+          </ul>
+        </div>
+        <div class="col-span-2 lg:col-span-5">
+          <h4 class="f-head">Contact</h4>
+          <ul class="mt-5 space-y-3">
+            <li><a class="f inline-flex items-center gap-2.5" href="mailto:info@fincoachbd.com"><i class="fa-regular fa-envelope text-brand"></i>info@fincoachbd.com</a></li>
+            <li><a class="f inline-flex items-center gap-2.5" href="tel:+8809638229922"><i class="fa-solid fa-phone text-brand"></i>+880 9638 229922</a></li>
+          </ul>
+          <form class="newsletter mt-5" data-demo>
+            <input type="email" required placeholder="Your email for offers" aria-label="Email address" />
+            <button type="submit" class="btn btn-primary !py-2.5 !px-5" data-label="Subscribe">Subscribe</button>
+            <p data-ok class="hidden basis-full mt-2 text-sm font-semibold text-green-400"><i class="fa-solid fa-circle-check"></i> Subscribed — thank you!</p>
+          </form>
+          <p class="mt-6 font-semibold text-white">Get the FinCoach app</p>
+          <div class="flex flex-wrap gap-2 mt-3">
+            <a href="#" class="store-badge"><i class="fa-brands fa-google-play text-xl"></i><div><small>GET IT ON</small><span>Google Play</span></div></a>
+            <a href="#" class="store-badge"><i class="fa-brands fa-apple text-2xl"></i><div><small>Download on the</small><span>App Store</span></div></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <a href="index.html" class="footer-logo" aria-label="FinCoach home"><img src="assets/img/fincoach-logo-white.png" alt="FinCoach" /></a>
+        <div class="flex items-center gap-3">
+          <a href="https://www.facebook.com/FinCoachOfficial" target="_blank" rel="noopener" class="social social-fb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/company/FinCoachOfficial" target="_blank" rel="noopener" class="social social-in" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://www.youtube.com/@FinCoachOfficial" target="_blank" rel="noopener" class="social social-yt" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.instagram.com/FinCoachOfficial" target="_blank" rel="noopener" class="social social-ig" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="mt-6 flex flex-col md:flex-row justify-between gap-2 text-sm text-[#8d97ad] text-center md:text-left">
+        <p>Copyright © <span id="yr">2026</span> FinCoach Bangladesh Limited. All rights reserved.</p>
+        <p>Navana DH Tower, Level 8, 6 Panthapath, Dhaka 1215</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" class="fixed right-5 bottom-5 z-40 w-12 h-12 rounded-full bg-grad text-white shadow-lg grid place-items-center" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+
+<!-- Login / Register popup -->
+<div id="loginModal" class="lm" role="dialog" aria-modal="true" aria-labelledby="lmTitle" aria-hidden="true">
+  <div class="lm-backdrop" data-lm-close></div>
+  <div class="lm-box">
+    <button type="button" class="lm-close" data-lm-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="text-center">
+      <img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-8 mx-auto" />
+      <h2 id="lmTitle" class="mt-5 font-head font-extrabold text-[1.7rem] leading-tight">Log in to your account</h2>
+      <p class="mt-1.5 text-muted" id="lmSub">Track applications and manage your offers.</p>
+    </div>
+    <div class="auth-tabs mt-6" id="lmTabs">
+      <span class="tab-pill"></span>
+      <button type="button" class="active" data-lm-tab="login">Log in</button>
+      <button type="button" data-lm-tab="register">Create account</button>
+    </div>
+
+    <form class="lm-pane active mt-6" id="lmLogin" novalidate>
+      <div class="space-y-4">
+        <div class="field"><div class="ic-wrap"><i class="fa-regular fa-user f-ic"></i><input required placeholder="Mobile number or email" autocomplete="username" aria-label="Mobile number or email" /></div></div>
+        <div class="field"><div class="ic-wrap"><i class="fa-solid fa-lock f-ic"></i><input required type="password" placeholder="Password" autocomplete="current-password" class="!pr-14" aria-label="Password" /><button type="button" class="pw-toggle lm-eye" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div></div>
+      </div>
+      <div class="flex items-center justify-between mt-4 text-[15px]">
+        <label class="flex items-center gap-2 text-muted font-semibold cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-[#e8205a]" checked /> Remember me</label>
+        <a href="login.html" class="font-bold text-brand hover:underline">Forgot password?</a>
+      </div>
+      <p class="lm-err hidden mt-3 text-sm font-semibold text-red-500"><i class="fa-solid fa-circle-exclamation"></i> Please fill in all fields.</p>
+      <button type="submit" class="btn btn-primary w-full !py-4 text-lg mt-5">Log in <i class="fa-solid fa-arrow-right"></i></button>
+      <div class="divider my-5">or</div>
+      <a href="login.html" class="social-btn w-full"><i class="fa-solid fa-mobile-screen-button text-brand"></i> Log in with OTP</a>
+    </form>
+
+    <form class="lm-pane mt-6" id="lmRegister" novalidate>
+      <div class="space-y-4">
+        <div class="field"><div class="ic-wrap"><i class="fa-regular fa-user f-ic"></i><input required placeholder="Full name (as per NID)" autocomplete="name" aria-label="Full name" /></div></div>
+        <div class="field"><div class="ic-wrap"><i class="fa-solid fa-mobile-screen f-ic"></i><span class="prefix">+880</span><input required type="tel" inputmode="numeric" maxlength="11" class="has-prefix" placeholder="1XXX-XXXXXX" aria-label="Mobile number" /></div></div>
+        <div class="field"><div class="ic-wrap"><i class="fa-solid fa-lock f-ic"></i><input required type="password" placeholder="Create password" autocomplete="new-password" class="!pr-14" aria-label="Create password" /><button type="button" class="pw-toggle lm-eye" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div></div>
+      </div>
+      <label class="flex items-start gap-3 mt-4 text-muted cursor-pointer text-[15px]"><input type="checkbox" required class="mt-1 w-4 h-4 accent-[#e8205a]" /><span>I agree to the <a href="terms.html" class="font-semibold text-ink underline">Terms</a> and <a href="privacy.html" class="font-semibold text-ink underline">Privacy Policy</a>.</span></label>
+      <p class="lm-err hidden mt-3 text-sm font-semibold text-red-500"><i class="fa-solid fa-circle-exclamation"></i> Please complete all fields and accept the terms.</p>
+      <button type="submit" class="btn btn-primary w-full !py-4 text-lg mt-5">Create account <i class="fa-solid fa-arrow-right"></i></button>
+    </form>
+
+    <div class="lm-pane text-center py-4" id="lmDone">
+      <div class="check-anim mx-auto"><i class="fa-solid fa-check"></i></div>
+      <h3 class="mt-6 font-head font-extrabold text-2xl" id="lmDoneTitle">Welcome back!</h3>
+      <p class="text-muted mt-1" id="lmDoneSub">You're logged in.</p>
+      <div class="grid grid-cols-2 gap-3 mt-6">
+        <a href="index.html#products" class="btn btn-primary" data-lm-close>Compare</a>
+        <a href="track.html" class="btn btn-ghost">Track</a>
+      </div>
+    </div>
+    <p class="mt-6 text-center text-xs text-muted"><i class="fa-solid fa-lock text-brand"></i> Secured with 256-bit encryption</p>
+  </div>
+</div>
+
+<nav class="mobile-nav lg:hidden" aria-label="Quick navigation">
+  <a href="index.html" data-nav="index"><i class="fa-solid fa-house"></i><span>Home</span></a>
+  <a href="apply.html" data-nav="apply"><i class="fa-solid fa-hand-holding-dollar"></i><span>Apply</span></a>
+  <a href="track.html" data-nav="track" class="mn-main"><span class="mn-fab"><i class="fa-solid fa-location-crosshairs"></i></span><span>Track</span></a>
+  <a href="contact.html" data-nav="contact"><i class="fa-solid fa-headset"></i><span>Contact</span></a>
+  <a href="login.html" data-nav="login" data-login-open><i class="fa-regular fa-user"></i><span>Account</span></a>
+</nav>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

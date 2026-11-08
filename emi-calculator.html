@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EMI Calculator — FinCoach</title>
+  <meta name="description" content="Calculate your monthly loan EMI, total interest and repayment schedule." />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <!-- Fonts: Urbanist + Figtree (Wallex pairing) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Urbanist:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#e8205a', 2: '#b0188a', coral: '#f2545b', tint: '#fff1f5' },
+            ink: { DEFAULT: '#0b1530', 2: '#1c2740' },
+            muted: '#5d6a82',
+            line: '#eceef3'
+          },
+          fontFamily: { head: ['Urbanist', 'sans-serif'], body: ['Figtree', 'sans-serif'] },
+          maxWidth: { site: '1400px' }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="font-body">
+
+<!-- =========================================================
+     HEADER — announcement bar + navbar (LoanTube layout)
+     ========================================================= -->
+<header id="siteHeader" class="nav-wrap sticky top-0 z-50 bg-white">
+  <div class="topbar">
+    <div class="max-w-site mx-auto px-4 md:px-6 h-9 flex items-center justify-between gap-4 text-[13px]">
+      <p class="text-muted truncate"><b class="text-ink">0% processing fee.</b><span class="hidden sm:inline"> FinCoach is a loan marketplace, not a lender.</span></p>
+      <div class="flex items-center gap-2.5 shrink-0 text-muted">
+        <span class="hidden sm:inline">App available on</span>
+        <a href="#" class="tb-ic" aria-label="Download on the App Store"><i class="fa-brands fa-apple"></i></a>
+        <a href="#" class="tb-ic" aria-label="Get it on Google Play"><i class="fa-brands fa-google-play"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="relative">
+    <div class="max-w-site mx-auto px-4 md:px-6 h-[68px] md:h-[84px] flex items-center justify-between gap-4">
+      <!-- Left: logo + pill nav -->
+      <div class="flex items-center gap-6 lg:gap-10">
+        <a href="index.html" class="shrink-0" aria-label="FinCoach home">
+          <img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-7 md:h-9 w-auto" />
+        </a>
+
+        <ul class="nav-pill hidden lg:flex items-center p-1.5">
+          <li class="has-mega" id="loansMenu">
+            <button class="nav-link" aria-expanded="false" aria-controls="megaLoans" id="loansBtn">
+              Loans <i class="fa-solid fa-chevron-down chev text-xs"></i>
+              <span class="mega-active-bar"></span>
+            </button>
+          </li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Right -->
+      <div class="hidden lg:flex items-center gap-2.5">
+        <a href="login.html" class="nav-text-btn" data-login-open><i class="fa-regular fa-user"></i> Log in</a>
+        <a href="apply.html" class="btn btn-dark !py-3 !px-6">Apply Now</a>
+        <a href="track.html" class="btn btn-track !py-3"><i class="fa-solid fa-location-crosshairs"></i> Track Application</a>
+      </div>
+
+      <!-- Mobile actions -->
+      <div class="lg:hidden flex items-center gap-2">
+        <a href="apply.html" class="btn btn-primary !py-2.5 !px-4 text-sm">Apply <i class="fa-solid fa-arrow-right text-xs"></i></a>
+      <button id="menuOpen" class="lg:hidden w-11 h-11 rounded-xl bg-[#f2f4f7] grid place-items-center text-ink" aria-label="Open menu">
+        <i class="fa-solid fa-bars-staggered text-lg"></i>
+      </button>
+      </div>
+    </div>
+
+    <!-- MEGA MENU — Loans | Tools + app panel (Oportun style) -->
+    <div id="megaLoans" class="mega hidden lg:block" role="region" aria-label="Loans menu">
+      <div class="max-w-site mx-auto px-6 py-9 grid grid-cols-12">
+        <div class="col-span-7 grid grid-cols-2 gap-10 pr-10 border-r border-line">
+          <div>
+            <h4>Loans</h4>
+            <a class="mm-link" href="loan.html?type=personal"><span class="mm-ic"><i class="fa-solid fa-user"></i></span>Personal Loan</a>
+            <a class="mm-link" href="loan.html?type=auto"><span class="mm-ic"><i class="fa-solid fa-car"></i></span>Auto Loan</a>
+            <a class="mm-link" href="loan.html?type=home"><span class="mm-ic"><i class="fa-solid fa-house"></i></span>Home Loan</a>
+            <a class="mm-link" href="loan.html?type=card"><span class="mm-ic"><i class="fa-regular fa-credit-card"></i></span>Credit Card</a>
+            <a class="mm-link" href="loan.html?type=sme"><span class="mm-ic"><i class="fa-solid fa-store"></i></span>SME Loan</a>
+          </div>
+          <div>
+            <h4>Tools</h4>
+            <a class="mm-link" href="emi-calculator.html"><span class="mm-ic"><i class="fa-solid fa-calculator"></i></span>EMI Calculator</a>
+            <a class="mm-link" href="faq.html"><span class="mm-ic"><i class="fa-regular fa-circle-question"></i></span>FAQs</a>
+            <a class="mm-link" href="blog.html"><span class="mm-ic"><i class="fa-regular fa-newspaper"></i></span>Blog</a>
+          </div>
+        </div>
+        <div class="col-span-5 pl-10">
+          <div class="rounded-[26px] bg-brand-tint p-7 relative overflow-hidden h-full">
+            <div class="absolute -right-10 -top-10 w-44 h-44 rounded-full bg-grad opacity-10"></div>
+            <img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-8 relative" />
+            <p class="mt-5 text-lg font-semibold leading-relaxed text-ink max-w-sm relative">Get the all-in-one app to apply for your loan — and track every step, right from your phone.</p>
+            <div class="flex flex-wrap gap-2 mt-6 relative">
+              <a href="#" class="store-badge"><i class="fa-brands fa-google-play text-xl"></i><div><small>GET IT ON</small><span>Google Play</span></div></a>
+              <a href="#" class="store-badge"><i class="fa-brands fa-apple text-2xl"></i><div><small>Download on the</small><span>App Store</span></div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile drawer -->
+<div id="drawerBackdrop" class="drawer-backdrop fixed inset-0 bg-ink/50 backdrop-blur-sm z-[60]"></div>
+<aside id="drawer" class="drawer fixed top-0 right-0 bottom-0 w-[88%] max-w-sm bg-white z-[70] flex flex-col" aria-label="Mobile menu">
+  <div class="flex items-center justify-between px-5 h-20 border-b border-line">
+    <img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-8" />
+    <button id="menuClose" class="w-10 h-10 rounded-xl bg-[#f2f4f7] grid place-items-center" aria-label="Close menu"><i class="fa-solid fa-xmark text-lg"></i></button>
+  </div>
+  <div class="flex-1 overflow-y-auto px-5 py-4">
+    <a href="about.html" class="drawer-link block py-4 border-b border-line font-head font-bold text-lg">About Us</a>
+    <div class="acc border-b border-line">
+      <button class="acc-head w-full flex items-center justify-between py-4 font-head font-bold text-lg">Loans <i class="fa-solid fa-chevron-down acc-chev text-sm"></i></button>
+      <div class="acc-body"><div>
+        <div class="pb-4 grid grid-cols-2 gap-4">
+          <div>
+            <p class="font-head font-extrabold mb-1">Loans</p>
+            <a class="block py-1.5 text-muted" href="loan.html?type=personal">Personal Loan</a>
+            <a class="block py-1.5 text-muted" href="loan.html?type=auto">Auto Loan</a>
+            <a class="block py-1.5 text-muted" href="loan.html?type=home">Home Loan</a>
+            <a class="block py-1.5 text-muted" href="loan.html?type=card">Credit Card</a>
+            <a class="block py-1.5 text-muted" href="loan.html?type=sme">SME Loan</a>
+          </div>
+          <div>
+            <p class="font-head font-extrabold mb-1">Tools</p>
+            <a class="block py-1.5 text-muted" href="emi-calculator.html">EMI Calculator</a>
+            <a class="block py-1.5 text-muted" href="faq.html">FAQs</a>
+            <a class="block py-1.5 text-muted" href="blog.html">Blog</a>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <a href="contact.html" class="drawer-link block py-4 border-b border-line font-head font-bold text-lg">Contact Us</a>
+  </div>
+  <div class="p-5 grid gap-3 border-t border-line">
+    <a href="apply.html" class="btn btn-primary">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="grid grid-cols-2 gap-3">
+      <a href="login.html" class="btn btn-ghost" data-login-open><i class="fa-regular fa-user"></i> Login</a>
+      <a href="track.html" class="btn btn-ghost"><i class="fa-solid fa-location-crosshairs text-brand"></i> Track</a>
+    </div>
+  </div>
+</aside>
+
+<main>
+
+<section class="px-2.5 pt-2.5">
+  <div class="ab-hero">
+    <div class="ab-dots"></div>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-12 md:pt-16 pb-14 md:pb-16">
+      <nav class="reveal crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand">EMI Calculator</span></nav>
+      <div class="grid lg:grid-cols-2 gap-6 lg:gap-16 items-end mt-6">
+        <h1 class="reveal w-h1">Plan your loan with our <span class="text-grad">EMI calculator</span></h1>
+        <p class="reveal w-lead lg:pb-2">Move the sliders or type your numbers to see your monthly instalment, total interest and full repayment schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     EMI CALCULATOR — premium, wide
+     ========================================================= -->
+<section id="calculator" class="px-2.5 pt-10 md:pt-14">
+  <div class="max-w-site mx-auto px-4 md:px-6">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+      <p class="reveal font-head font-extrabold text-xl">Choose a loan type</p>
+      <div class="reveal emi2-types" role="group" aria-label="Loan type">
+        <button type="button" class="active" data-emi-rate="9"><i class="fa-solid fa-user"></i> Personal</button>
+        <button type="button" data-emi-rate="8.5"><i class="fa-solid fa-house"></i> Home</button>
+        <button type="button" data-emi-rate="9.5"><i class="fa-solid fa-car"></i> Auto</button>
+        <button type="button" data-emi-rate="10.5"><i class="fa-solid fa-store"></i> SME</button>
+      </div>
+    </div>
+
+    <div class="reveal emi2 mt-8 md:mt-10">
+      <!-- Inputs -->
+      <div class="emi2-in">
+        <div class="emi2-row">
+          <div class="emi2-head">
+            <label for="amt"><span class="emi2-ic"><i class="fa-solid fa-sack-dollar"></i></span>Loan amount</label>
+            <div class="emi2-box"><span>৳</span><input id="amtIn" inputmode="numeric" aria-label="Loan amount in Taka" /></div>
+          </div>
+          <input id="amt" type="range" class="rng emi2-rng" min="50000" max="10000000" step="10000" value="1000000" aria-label="Loan amount slider" />
+          <div class="emi2-minmax"><span>৳50K</span><span>৳25L</span><span>৳50L</span><span>৳75L</span><span>৳1 Cr</span></div>
+        </div>
+        <div class="emi2-row">
+          <div class="emi2-head">
+            <label for="ten"><span class="emi2-ic"><i class="fa-regular fa-calendar"></i></span>Loan tenure</label>
+            <div class="emi2-box"><input id="tenIn" inputmode="numeric" aria-label="Loan tenure in months" /><span>months</span></div>
+          </div>
+          <input id="ten" type="range" class="rng emi2-rng" min="6" max="300" step="6" value="60" aria-label="Loan tenure slider" />
+          <div class="emi2-minmax"><span>6 mo</span><span>5 yr</span><span>10 yr</span><span>15 yr</span><span>25 yr</span></div>
+        </div>
+        <div class="emi2-row">
+          <div class="emi2-head">
+            <label for="rate"><span class="emi2-ic"><i class="fa-solid fa-percent"></i></span>Interest rate (p.a.)</label>
+            <div class="emi2-box"><input id="rateIn" inputmode="decimal" aria-label="Interest rate" /><span>%</span></div>
+          </div>
+          <input id="rate" type="range" class="rng emi2-rng" min="5" max="24" step="0.1" value="9" aria-label="Interest rate slider" />
+          <div class="emi2-minmax"><span>5%</span><span>10%</span><span>15%</span><span>20%</span><span>24%</span></div>
+        </div>
+        <p class="emi2-note"><i class="fa-solid fa-circle-info"></i> Indicative only. Your final rate depends on the lender and your profile.</p>
+      </div>
+
+      <!-- Result -->
+      <div class="emi2-out">
+        <span class="emi2-glow"></span>
+        <div class="relative">
+          <p class="text-white/65 font-semibold">Your monthly EMI</p>
+          <p class="emi2-big"><small>৳</small><span id="emi">0</span></p>
+          <p class="text-white/65 text-sm">for <b class="text-white" id="tenTxt">60</b> months</p>
+
+          <div class="emi2-gauge">
+            <svg viewBox="0 0 220 120" aria-hidden="true">
+              <defs><linearGradient id="emiGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f2545b" /><stop offset="1" stop-color="#d63bbd" /></linearGradient></defs>
+              <path d="M20 110 A90 90 0 0 1 200 110" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="18" stroke-linecap="round" />
+              <path id="emiArc" d="M20 110 A90 90 0 0 1 200 110" fill="none" stroke="url(#emiGrad)" stroke-width="18" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100" />
+            </svg>
+            <div class="emi2-gauge-txt"><b id="emiPct">0%</b><span>of total is interest</span></div>
+          </div>
+
+          <dl class="emi2-legend">
+            <div><dt><i class="bg-white/40"></i>Principal</dt><dd>৳<span id="pVal">0</span></dd></div>
+            <div><dt><i class="bg-grad"></i>Total interest</dt><dd>৳<span id="iVal">0</span></dd></div>
+            <div class="is-total"><dt>Total payable</dt><dd>৳<span id="tVal">0</span></dd></div>
+          </dl>
+
+          <div class="grid sm:grid-cols-2 gap-3 mt-7">
+            <a href="apply.html" class="btn btn-primary !py-3.5">Compare &amp; Apply <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#schedule" class="btn emi2-ghost !py-3.5"><i class="fa-solid fa-table-list"></i> Repayment schedule</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     REPAYMENT SCHEDULE
+     ========================================================= -->
+<section id="schedule" class="pt-16 md:pt-24 scroll-mt-28">
+  <div class="max-w-site mx-auto px-4 md:px-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div><h2 class="reveal w-h2">Your repayment schedule</h2><p class="reveal w-lead mt-2">How each payment splits between principal and interest.</p></div>
+      <div class="inline-flex bg-[#eceef3] rounded-full p-1.5 self-start" id="schedTabs">
+        <button type="button" class="tab-btn active" data-mode="year">Yearly</button>
+        <button type="button" class="tab-btn" data-mode="month">Monthly</button>
+      </div>
+    </div>
+    <div class="sched-wrap mt-8">
+      <table class="sched">
+        <thead><tr><th>Period</th><th>Principal</th><th>Interest</th><th>Total paid</th><th>Balance</th></tr></thead>
+        <tbody id="schedBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- How EMI is calculated -->
+<section class="pt-16 md:pt-24 pb-16 md:pb-24">
+  <div class="max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-8 items-center">
+    <div class="min-w-0">
+      <h2 class="reveal w-h2">How is EMI calculated?</h2>
+      <p class="reveal w-lead mt-4">EMI (Equated Monthly Instalment) is the fixed amount you pay every month until the loan is repaid. It's calculated with this formula:</p>
+      <div class="reveal formula mt-6">EMI = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)</div>
+      <ul class="reveal lp-list mt-6">
+        <li><i class="fa-solid fa-check"></i><span><b>P</b> — the loan amount (principal)</span></li>
+        <li><i class="fa-solid fa-check"></i><span><b>r</b> — monthly interest rate (annual rate ÷ 12 ÷ 100)</span></li>
+        <li><i class="fa-solid fa-check"></i><span><b>n</b> — number of monthly instalments</span></li>
+      </ul>
+    </div>
+    <div class="reveal lp-box">
+      <p class="w-h3">Tips to lower your EMI</p>
+      <ul class="lp-list mt-4">
+        <li><i class="fa-solid fa-check"></i>Choose a longer tenure (you'll pay more interest overall)</li>
+        <li><i class="fa-solid fa-check"></i>Compare rates — even 0.5% makes a difference</li>
+        <li><i class="fa-solid fa-check"></i>Make a larger down payment on home and auto loans</li>
+        <li><i class="fa-solid fa-check"></i>Keep a good repayment record to qualify for better rates</li>
+      </ul>
+      <a href="apply.html" class="btn btn-primary mt-6">Compare offers <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer class="px-2.5 pb-2.5">
+  <div class="footer panel text-white relative overflow-hidden">
+    <div class="absolute -right-32 -top-32 w-96 h-96 rounded-full bg-grad opacity-[.12] blur-3xl pointer-events-none"></div>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-14 md:pt-20 pb-8">
+      <div class="grid grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10">
+        <div class="lg:col-span-2">
+          <h4 class="f-head">Quick Links</h4>
+          <ul class="mt-5 space-y-3">
+            <li><a class="f" href="about.html">About</a></li>
+            <li><a class="f" href="contact.html">Contact Us</a></li>
+            <li><a class="f" href="emi-calculator.html">EMI Calculator</a></li>
+            <li><a class="f" href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-2">
+          <h4 class="f-head">Products</h4>
+          <ul class="mt-5 space-y-3">
+            <li><a class="f" href="loan.html?type=personal">Personal Loan</a></li>
+            <li><a class="f" href="loan.html?type=auto">Auto Loan</a></li>
+            <li><a class="f" href="loan.html?type=home">Home Loan</a></li>
+            <li><a class="f" href="loan.html?type=card">Credit Card</a></li>
+            <li><a class="f" href="loan.html?type=sme">SME Loan</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-3">
+          <h4 class="f-head">Support</h4>
+          <ul class="mt-5 space-y-3">
+            <li><a class="f" href="faq.html">FAQs</a></li>
+            <li><a class="f" href="terms.html">Terms of Service</a></li>
+            <li><a class="f" href="privacy.html">Privacy Policy</a></li>
+            <li><a class="f" href="track.html">Track Application</a></li>
+          </ul>
+        </div>
+        <div class="col-span-2 lg:col-span-5">
+          <h4 class="f-head">Contact</h4>
+          <ul class="mt-5 space-y-3">
+            <li><a class="f inline-flex items-center gap-2.5" href="mailto:info@fincoachbd.com"><i class="fa-regular fa-envelope text-brand"></i>info@fincoachbd.com</a></li>
+            <li><a class="f inline-flex items-center gap-2.5" href="tel:+8809638229922"><i class="fa-solid fa-phone text-brand"></i>+880 9638 229922</a></li>
+          </ul>
+          <form class="newsletter mt-5" data-demo>
+            <input type="email" required placeholder="Your email for offers" aria-label="Email address" />
+            <button type="submit" class="btn btn-primary !py-2.5 !px-5" data-label="Subscribe">Subscribe</button>
+            <p data-ok class="hidden basis-full mt-2 text-sm font-semibold text-green-400"><i class="fa-solid fa-circle-check"></i> Subscribed — thank you!</p>
+          </form>
+          <p class="mt-6 font-semibold text-white">Get the FinCoach app</p>
+          <div class="flex flex-wrap gap-2 mt-3">
+            <a href="#" class="store-badge"><i class="fa-brands fa-google-play text-xl"></i><div><small>GET IT ON</small><span>Google Play</span></div></a>
+            <a href="#" class="store-badge"><i class="fa-brands fa-apple text-2xl"></i><div><small>Download on the</small><span>App Store</span></div></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <a href="index.html" class="footer-logo" aria-label="FinCoach home"><img src="assets/img/fincoach-logo-white.png" alt="FinCoach" /></a>
+        <div class="flex items-center gap-3">
+          <a href="https://www.facebook.com/FinCoachOfficial" target="_blank" rel="noopener" class="social social-fb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/company/FinCoachOfficial" target="_blank" rel="noopener" class="social social-in" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://www.youtube.com/@FinCoachOfficial" target="_blank" rel="noopener" class="social social-yt" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.instagram.com/FinCoachOfficial" target="_blank" rel="noopener" class="social social-ig" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="mt-6 flex flex-col md:flex-row justify-between gap-2 text-sm text-[#8d97ad] text-center md:text-left">
+        <p>Copyright © <span id="yr">2026</span> FinCoach Bangladesh Limited. All rights reserved.</p>
+        <p>Navana DH Tower, Level 8, 6 Panthapath, Dhaka 1215</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" class="fixed right-5 bottom-5 z-40 w-12 h-12 rounded-full bg-grad text-white shadow-lg grid place-items-center" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+
+<!-- Login / Register popup -->
+<div id="loginModal" class="lm" role="dialog" aria-modal="true" aria-labelledby="lmTitle" aria-hidden="true">
+  <div class="lm-backdrop" data-lm-close></div>
+  <div class="lm-box">
+    <button type="button" class="lm-close" data-lm-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="text-center">
+      <img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-8 mx-auto" />
+      <h2 id="lmTitle" class="mt-5 font-head font-extrabold text-[1.7rem] leading-tight">Log in to your account</h2>
+      <p class="mt-1.5 text-muted" id="lmSub">Track applications and manage your offers.</p>
+    </div>
+    <div class="auth-tabs mt-6" id="lmTabs">
+      <span class="tab-pill"></span>
+      <button type="button" class="active" data-lm-tab="login">Log in</button>
+      <button type="button" data-lm-tab="register">Create account</button>
+    </div>
+
+    <form class="lm-pane active mt-6" id="lmLogin" novalidate>
+      <div class="space-y-4">
+        <div class="field"><div class="ic-wrap"><i class="fa-regular fa-user f-ic"></i><input required placeholder="Mobile number or email" autocomplete="username" aria-label="Mobile number or email" /></div></div>
+        <div class="field"><div class="ic-wrap"><i class="fa-solid fa-lock f-ic"></i><input required type="password" placeholder="Password" autocomplete="current-password" class="!pr-14" aria-label="Password" /><button type="button" class="pw-toggle lm-eye" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div></div>
+      </div>
+      <div class="flex items-center justify-between mt-4 text-[15px]">
+        <label class="flex items-center gap-2 text-muted font-semibold cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-[#e8205a]" checked /> Remember me</label>
+        <a href="login.html" class="font-bold text-brand hover:underline">Forgot password?</a>
+      </div>
+      <p class="lm-err hidden mt-3 text-sm font-semibold text-red-500"><i class="fa-solid fa-circle-exclamation"></i> Please fill in all fields.</p>
+      <button type="submit" class="btn btn-primary w-full !py-4 text-lg mt-5">Log in <i class="fa-solid fa-arrow-right"></i></button>
+      <div class="divider my-5">or</div>
+      <a href="login.html" class="social-btn w-full"><i class="fa-solid fa-mobile-screen-button text-brand"></i> Log in with OTP</a>
+    </form>
+
+    <form class="lm-pane mt-6" id="lmRegister" novalidate>
+      <div class="space-y-4">
+        <div class="field"><div class="ic-wrap"><i class="fa-regular fa-user f-ic"></i><input required placeholder="Full name (as per NID)" autocomplete="name" aria-label="Full name" /></div></div>
+        <div class="field"><div class="ic-wrap"><i class="fa-solid fa-mobile-screen f-ic"></i><span class="prefix">+880</span><input required type="tel" inputmode="numeric" maxlength="11" class="has-prefix" placeholder="1XXX-XXXXXX" aria-label="Mobile number" /></div></div>
+        <div class="field"><div class="ic-wrap"><i class="fa-solid fa-lock f-ic"></i><input required type="password" placeholder="Create password" autocomplete="new-password" class="!pr-14" aria-label="Create password" /><button type="button" class="pw-toggle lm-eye" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div></div>
+      </div>
+      <label class="flex items-start gap-3 mt-4 text-muted cursor-pointer text-[15px]"><input type="checkbox" required class="mt-1 w-4 h-4 accent-[#e8205a]" /><span>I agree to the <a href="terms.html" class="font-semibold text-ink underline">Terms</a> and <a href="privacy.html" class="font-semibold text-ink underline">Privacy Policy</a>.</span></label>
+      <p class="lm-err hidden mt-3 text-sm font-semibold text-red-500"><i class="fa-solid fa-circle-exclamation"></i> Please complete all fields and accept the terms.</p>
+      <button type="submit" class="btn btn-primary w-full !py-4 text-lg mt-5">Create account <i class="fa-solid fa-arrow-right"></i></button>
+    </form>
+
+    <div class="lm-pane text-center py-4" id="lmDone">
+      <div class="check-anim mx-auto"><i class="fa-solid fa-check"></i></div>
+      <h3 class="mt-6 font-head font-extrabold text-2xl" id="lmDoneTitle">Welcome back!</h3>
+      <p class="text-muted mt-1" id="lmDoneSub">You're logged in.</p>
+      <div class="grid grid-cols-2 gap-3 mt-6">
+        <a href="index.html#products" class="btn btn-primary" data-lm-close>Compare</a>
+        <a href="track.html" class="btn btn-ghost">Track</a>
+      </div>
+    </div>
+    <p class="mt-6 text-center text-xs text-muted"><i class="fa-solid fa-lock text-brand"></i> Secured with 256-bit encryption</p>
+  </div>
+</div>
+
+<nav class="mobile-nav lg:hidden" aria-label="Quick navigation">
+  <a href="index.html" data-nav="index"><i class="fa-solid fa-house"></i><span>Home</span></a>
+  <a href="apply.html" data-nav="apply"><i class="fa-solid fa-hand-holding-dollar"></i><span>Apply</span></a>
+  <a href="track.html" data-nav="track" class="mn-main"><span class="mn-fab"><i class="fa-solid fa-location-crosshairs"></i></span><span>Track</span></a>
+  <a href="contact.html" data-nav="contact"><i class="fa-solid fa-headset"></i><span>Contact</span></a>
+  <a href="login.html" data-nav="login" data-login-open><i class="fa-regular fa-user"></i><span>Account</span></a>
+</nav>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="assets/js/pages.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

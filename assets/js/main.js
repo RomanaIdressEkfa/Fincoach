@@ -84,11 +84,31 @@
   const track = $('#marqueeTrack');
   if (track) track.innerHTML += track.innerHTML;
 
-  /* ---------- Reveal on scroll ---------- */
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  $$('.reveal').forEach((el, i) => { el.style.transitionDelay = `${(i % 4) * 70}ms`; io.observe(el); });
+  /* ---------- Scroll animations: AOS (falls back to IntersectionObserver) ---------- */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (window.AOS) {
+    const CARD = '.feature, .c-card, .value, .offer, .blog-card, .t-card, .price-card, .faq, .partner';
+    $$('.reveal').forEach((el) => {
+      el.classList.remove('reveal');
+      if (el.hasAttribute('data-aos')) return;
+      let effect = 'fade-up';
+      if (el.matches(CARD)) effect = 'zoom-in-up';
+      else if (el.matches('.eyebrow, .crumb')) effect = 'fade-down';
+      else if (el.matches('.vm-card, .auth-shell, .search-card, .map-wrap') || el.classList.contains('panel')) effect = 'fade-up';
+      el.setAttribute('data-aos', effect);
+      // Stagger siblings that animate together (cards in a grid, list items…)
+      const sibs = [...el.parentElement.children].filter(c => c.classList.contains('reveal') || c.hasAttribute('data-aos'));
+      const idx = sibs.indexOf(el);
+      if (idx > 0) el.setAttribute('data-aos-delay', String(Math.min(idx, 5) * 80));
+    });
+    AOS.init({ duration: 850, easing: 'ease-out-cubic', once: true, offset: 40, disable: reduceMotion });
+    window.addEventListener('load', () => AOS.refresh());
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    $$('.reveal').forEach((el, i) => { el.style.transitionDelay = `${(i % 4) * 70}ms`; io.observe(el); });
+  }
 
   /* ---------- Counters ---------- */
   const cio = new IntersectionObserver((entries) => {
@@ -161,25 +181,126 @@
     });
   }));
 
-  /* ---------- EMI calculator ---------- */
+  /* ---------- EMI calculator (Groww style, tenure in months) ---------- */
   const fmt = (n) => Math.round(n).toLocaleString('en-IN');
   const amt = $('#amt'), rate = $('#rate'), ten = $('#ten');
   if (amt) {
-  const fill = (el) => el.style.setProperty('--p', ((el.value - el.min) / (el.max - el.min)) * 100 + '%');
-  const calc = () => {
-    const P = +amt.value, r = +rate.value / 12 / 100, n = +ten.value;
-    const emi = r ? (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) : P / n;
-    $('#amtVal').textContent = fmt(P);
-    $('#rateVal').textContent = (+rate.value).toFixed(2);
-    $('#tenVal').textContent = n;
-    $('#emi').textContent = fmt(emi);
-    $('#pVal').textContent = fmt(P);
-    $('#iVal').textContent = fmt(emi * n - P);
-    $('#tVal').textContent = fmt(emi * n);
-    [amt, rate, ten].forEach(fill);
-  };
-  [amt, rate, ten].forEach(el => el.addEventListener('input', calc));
-  calc();
+    const amtIn = $('#amtIn'), rateIn = $('#rateIn'), tenIn = $('#tenIn'), arc = $('#emiArc');
+    const fill = (el) => el.style.setProperty('--p', ((el.value - el.min) / (el.max - el.min)) * 100 + '%');
+    const clamp = (v, el) => Math.min(Math.max(v, +el.min), +el.max);
+    const calc = (from) => {
+      const P = +amt.value, r = +rate.value / 12 / 100, n = +ten.value;
+      const emi = r ? (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) : P / n;
+      const total = emi * n, interest = total - P;
+      if (from !== amtIn) amtIn.value = fmt(P);
+      if (from !== rateIn) rateIn.value = (+rate.value).toFixed(1);
+      if (from !== tenIn) tenIn.value = n;
+      $('#emi').textContent = emi.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      $('#pVal').textContent = fmt(P); $('#iVal').textContent = fmt(interest); $('#tVal').textContent = fmt(total);
+      const tt = $('#tenTxt'); if (tt) tt.textContent = n;
+      const share = total ? interest / total : 0;
+      if (arc) arc.setAttribute('stroke-dasharray', (share * 100).toFixed(1) + ' 100');
+      $('#emiPct').textContent = Math.round(share * 100) + '%';
+      [amt, rate, ten].forEach(fill);
+    };
+    [amt, rate, ten].forEach(el => el.addEventListener('input', () => calc()));
+    const bind = (box, range, parse) => {
+      box.addEventListener('input', () => {
+        const v = parse(box.value);
+        if (!isNaN(v) && v > 0) { range.value = clamp(v, range); calc(box); }
+        if (box === amtIn) { const d = box.value.replace(/\D/g, ''); box.value = d ? fmt(+d) : ''; }
+      });
+      box.addEventListener('blur', () => calc());
+    };
+    bind(amtIn, amt, (s) => +s.replace(/\D/g, ''));
+    bind(rateIn, rate, (s) => parseFloat(s));
+    bind(tenIn, ten, (s) => parseInt(s, 10));
+    calc();
+    // Loan-type chips set a typical rate
+    $$('[data-emi-rate]').forEach(b => b.addEventListener('click', () => {
+      $$('[data-emi-rate]').forEach(x => x.classList.toggle('active', x === b));
+      rate.value = b.dataset.emiRate;
+      rate.dispatchEvent(new Event('input', { bubbles: true }));
+    }));
+  }
+
+  /* ---------- Hero slider (text + image) ---------- */
+  const hsTexts = $('#hsTexts');
+  if (hsTexts) {
+    const texts = $$('.hs-text', hsTexts), frames = $$('.hs-frame', $('#hsMedia')), navWrap = $('#hsNav'), dots = $$('button', navWrap);
+    const DUR = 6000; let idx = 0, timer, paused = false;
+    navWrap.style.setProperty('--hs-dur', DUR + 'ms');
+    const show = (i) => {
+      idx = (i + texts.length) % texts.length;
+      [texts, frames, dots].forEach(list => list.forEach((el, k) => el.classList.toggle('is-active', k === idx)));
+      texts.forEach((el, k) => el.setAttribute('aria-hidden', k === idx ? 'false' : 'true'));
+      dots.forEach(d => { const s = d.firstElementChild; s.style.animation = 'none'; void s.offsetWidth; s.style.animation = ''; });
+    };
+    const start = () => { clearInterval(timer); timer = setInterval(() => { if (!paused && !document.hidden) show(idx + 1); }, DUR); };
+    dots.forEach((d, i) => d.addEventListener('click', () => { show(i); start(); }));
+    const hero = $('#hero');
+    hero.addEventListener('mouseenter', () => { paused = true; navWrap.classList.add('paused'); });
+    hero.addEventListener('mouseleave', () => { paused = false; navWrap.classList.remove('paused'); });
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) start();
+  }
+
+  /* ---------- Testimonial (Wallex style) ---------- */
+  const twTexts = $('#twTexts');
+  if (twTexts) {
+    const items = $$('.tw-item', twTexts), photos = $$('#twPhotos img'); let t = 0;
+    const showT = (i) => {
+      t = (i + items.length) % items.length;
+      items.forEach((el, k) => { el.classList.toggle('is-active', k === t); el.setAttribute('aria-hidden', k === t ? 'false' : 'true'); });
+      photos.forEach((el, k) => el.classList.toggle('is-active', k === t));
+      $$('#twNames > *').forEach((el, k) => el.classList.toggle('is-active', k === t));
+    };
+    $('#twPrev').addEventListener('click', () => showT(t - 1));
+    $('#twNext').addEventListener('click', () => showT(t + 1));
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(() => { if (!document.hidden) showT(t + 1); }, 7000);
+  }
+
+  /* ---------- Blog slider (Prev / Next) ---------- */
+  const blTrack = $('#blTrack');
+  if (blTrack) {
+    const stepB = () => { const c = $('.bl3-card', blTrack); return c ? c.offsetWidth + 20 : 340; };
+    $('#blPrev').addEventListener('click', () => blTrack.scrollBy({ left: -stepB(), behavior: 'smooth' }));
+    $('#blNext').addEventListener('click', () => {
+      if (blTrack.scrollLeft + blTrack.clientWidth >= blTrack.scrollWidth - 4) blTrack.scrollTo({ left: 0, behavior: 'smooth' });
+      else blTrack.scrollBy({ left: stepB(), behavior: 'smooth' });
+    });
+  }
+
+  /* ---------- App QR code ---------- */
+  const qrEl = $('#appQr');
+  if (qrEl && window.QRCode) new QRCode(qrEl, { text: 'https://fincoach.com.bd/', width: 240, height: 240, colorDark: '#0b1530', colorLight: '#ffffff' });
+
+  /* ---------- Product card slider ---------- */
+  const scTrack = $('#scTrack');
+  if (scTrack) {
+    const bar = $('#scBar');
+    const step = () => { const c = $('.ol-card, .sc-card', scTrack); return c ? c.offsetWidth + 20 : 320; };
+    const atEnd = () => scTrack.scrollLeft + scTrack.clientWidth >= scTrack.scrollWidth - 4;
+    const go = (dir) => {
+      if (dir > 0 && atEnd()) scTrack.scrollTo({ left: 0, behavior: 'smooth' });
+      else scTrack.scrollBy({ left: dir * step(), behavior: 'smooth' });
+    };
+    $('#scPrev').addEventListener('click', () => go(-1));
+    $('#scNext').addEventListener('click', () => go(1));
+    const updateBar = () => {
+      if (!bar) return;
+      const max = scTrack.scrollWidth - scTrack.clientWidth;
+      const vis = scTrack.clientWidth / scTrack.scrollWidth;
+      bar.style.width = Math.max(vis * 100, 12) + '%';
+      bar.style.transform = `translateX(${max > 0 ? (scTrack.scrollLeft / max) * ((1 / Math.max(vis, .12)) - 1) * 100 : 0}%)`;
+    };
+    scTrack.addEventListener('scroll', updateBar, { passive: true });
+    window.addEventListener('resize', updateBar);
+    updateBar();
+    // Gentle autoplay, paused on hover / touch / focus
+    let paused = false;
+    ['mouseenter', 'touchstart', 'focusin'].forEach(ev => scTrack.addEventListener(ev, () => { paused = true; }, { passive: true }));
+    ['mouseleave', 'focusout'].forEach(ev => scTrack.addEventListener(ev, () => { paused = false; }));
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(() => { if (!paused && !document.hidden) go(1); }, 4500);
   }
 
   /* ---------- Steps visual ---------- */
@@ -368,82 +489,118 @@
 
     const render = (id, d) => {
       const done = d.current >= 5;
-      const pill = done
-        ? '<span class="status-pill bg-green-100 text-green-700"><i class="fa-solid fa-circle-check"></i> Disbursed</span>'
-        : `<span class="status-pill bg-brand-tint text-brand"><span class="live-dot !bg-brand"></span> ${STEPS[d.current][1]}</span>`;
-      const pct = done ? 100 : (d.current / 4) * 100;
+      const pct = done ? 100 : Math.round((d.current / 4) * 100);
+      const stepNo = done ? 5 : d.current + 1;
+      const statusTxt = done ? 'Disbursed' : STEPS[d.current][1];
+      const NEXT = [
+        ['Verifying your details', "We're checking your details and documents. This usually takes less than a day."],
+        ['Preparing for the lender', 'Your verified application is being prepared and sent to ' + d.bank + '.'],
+        [d.bank + ' is reviewing', 'The credit team is assessing your eligibility. Most decisions arrive within 3–7 working days.'],
+        ['Sign your offer', 'Your loan is approved — review and sign the offer letter to receive your funds.'],
+        ['Funds on the way', 'Your loan is being disbursed to your account.']
+      ];
+      const nx = done ? ['All done!', 'Your loan has been disbursed. Repayments start next month — you can track them in your dashboard.'] : NEXT[d.current];
+      const eta = done ? 'Completed ' + d.dates[4] : d.dates[Math.min(d.current + 1, 4)];
+      const docsDone = d.docs.filter(x => x[1]).length;
+      const C = (2 * Math.PI * 52).toFixed(1);
+      const stat = (ic, k, v) => `<div class="tr-stat"><i class="fa-solid ${ic}"></i><span><small>${k}</small><b>${v}</b></span></div>`;
+      const steps = STEPS.map(([ic, t], i) => {
+        const st = i < d.current || done ? 'done' : i === d.current ? 'current' : '';
+        return `<div class="tr-step ${st}"><span class="tr-node"><i class="fa-solid ${st === 'done' ? 'fa-check' : ic}"></i></span><p>${t}</p><small>${d.dates[i]}</small></div>`;
+      }).join('');
+      const events = d.activity.map(([ic, t, s, when, latest]) => {
+        const [date, time] = when.split(' · ');
+        return `<div class="tr-ev ${latest ? 'is-latest' : ''}">
+          <div class="tr-when"><b>${date.replace(/ \d{4}$/, '')}</b><span>${time || ''}</span></div>
+          <div class="tr-rail"><span class="tr-dot"><i class="fa-solid ${ic}"></i></span></div>
+          <div class="tr-box"><p class="font-bold">${t}${latest ? ' <span class="tr-new">Latest</span>' : ''}</p><p class="text-muted text-[15px] mt-0.5">${s}</p></div>
+        </div>`;
+      }).join('');
+      const docs = d.docs.map(([t, ok]) => `<div class="tr-doc ${ok ? '' : 'is-pending'}"><span class="tr-doc-ic"><i class="fa-regular ${ok ? 'fa-file-lines' : 'fa-file'}"></i></span><span class="flex-1 font-semibold text-[15px]">${t}</span>${ok ? '<i class="fa-solid fa-circle-check text-green-500"></i>' : '<button type="button" class="tr-upload"><i class="fa-solid fa-arrow-up-from-bracket"></i> Upload</button>'}</div>`).join('');
       return `
-      <div class="grid lg:grid-cols-12 gap-6">
-        <div class="lg:col-span-8 space-y-6">
-          <div class="result-in bg-white rounded-[30px] border border-line p-6 md:p-9 shadow-[0_40px_80px_-50px_rgba(11,21,48,.45)]">
-            <div class="flex flex-col md:flex-row md:items-start justify-between gap-5">
-              <div class="flex items-center gap-4">
-                <span class="w-16 h-16 rounded-2xl bg-grad text-white grid place-items-center text-2xl shadow-lg"><i class="fa-solid ${d.icon}"></i></span>
+      <div class="space-y-6">
+        <div class="result-in tr-hero">
+          <span class="tr-glow tr-glow-1"></span><span class="tr-glow tr-glow-2"></span>
+          <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-center">
+            <div>
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="tr-id"><i class="fa-solid fa-hashtag"></i>${id}<button type="button" class="tr-copy" data-copy="${id}" aria-label="Copy application ID"><i class="fa-regular fa-copy"></i></button></span>
+                <span class="tr-status ${done ? 'is-done' : ''}">${done ? '<i class="fa-solid fa-circle-check"></i>' : '<span class="live-dot"></span>'}${statusTxt}</span>
+              </div>
+              <div class="flex items-center gap-4 mt-5">
+                <span class="tr-ic"><i class="fa-solid ${d.icon}"></i></span>
                 <div>
-                  <p class="text-sm font-bold text-muted">Application ID · <span class="text-ink">${id}</span></p>
-                  <h3 class="font-head font-extrabold text-2xl md:text-3xl">${d.product}</h3>
-                  <p class="text-muted text-sm mt-0.5">Applied on ${d.applied} · ${d.name}</p>
+                  <h3 class="font-head font-extrabold text-[1.9rem] md:text-[2.4rem] leading-tight">${d.product}</h3>
+                  <p class="text-white/65 text-sm mt-1">Applied ${d.applied} · ${d.name} · Updated just now</p>
                 </div>
               </div>
-              <div class="flex flex-col md:items-end gap-2">${pill}<span class="text-xs text-muted font-semibold">Last updated: just now</span></div>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-7">
+                ${stat('fa-sack-dollar', 'Amount', d.amount)}${stat('fa-calendar-days', 'Tenure', d.tenure)}${stat('fa-percent', 'Rate', d.rate)}
+                <div class="tr-stat"><span class="tr-logo"><img src="${d.logo}" alt="" /></span><span><small>Lender</small><b>${d.bank.replace(' PLC.', '')}</b></span></div>
+              </div>
             </div>
-            <div class="hstep mt-10" id="hstep">
-              <div class="hstep-track"><div class="hstep-fill" data-pct="${pct}"></div></div>
-              ${STEPS.map(([ic, t], i) => `
-                <div class="hstep-item ${i < d.current || done ? 'done' : i === d.current ? 'current' : ''}">
-                  <div class="hstep-dot"><i class="fa-solid ${i < d.current || done ? 'fa-check' : ic}"></i></div>
-                  <div><p>${t}</p><small>${d.dates[i]}</small></div>
-                </div>`).join('')}
+            <div class="tr-ring">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <defs><linearGradient id="trGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2545b" /><stop offset="1" stop-color="#d63bbd" /></linearGradient></defs>
+                <circle cx="60" cy="60" r="52" class="tr-ring-bg" />
+                <circle cx="60" cy="60" r="52" class="tr-ring-fg" data-pct="${pct}" stroke-dasharray="0 ${C}" />
+              </svg>
+              <div class="tr-ring-txt"><b>${pct}%</b><span>Step ${stepNo} of 5</span></div>
             </div>
           </div>
-
-          <div class="result-in bg-white rounded-[30px] border border-line p-6 md:p-9" style="animation-delay:.1s">
-            <div class="flex items-center justify-between"><h3 class="font-head font-extrabold text-2xl">Activity</h3><span class="text-sm font-semibold text-muted">${d.activity.length} updates</span></div>
-            <div class="tl mt-7">
-              ${d.activity.map(([ic, t, s, when, latest]) => `
-                <div class="tl-item">
-                  <span class="tl-dot" ${latest ? 'style="background:var(--grad);border:0;color:#fff"' : ''}><i class="fa-solid ${ic} text-[10px]"></i></span>
-                  <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-1">
-                    <div><p class="font-bold">${t} ${latest ? '<span class="ml-1 text-[11px] font-bold text-brand bg-brand-tint rounded-full px-2 py-0.5 align-middle">Latest</span>' : ''}</p><p class="text-muted text-[15px] mt-0.5">${s}</p></div>
-                    <span class="text-xs font-semibold text-muted whitespace-nowrap sm:mt-1">${when}</span>
-                  </div>
-                </div>`).join('')}
-            </div>
+          <div class="tr-steps relative">
+            <div class="tr-line"><span class="tr-line-fill" data-pct="${pct}"></span></div>
+            ${steps}
           </div>
         </div>
 
-        <div class="lg:col-span-4 space-y-6">
-          <div class="result-in bg-white rounded-[30px] border border-line p-7" style="animation-delay:.15s">
-            <div class="flex items-center gap-3">
-              <span class="w-14 h-14 rounded-2xl border border-line bg-white grid place-items-center p-2"><img src="${d.logo}" alt="" class="max-h-9 object-contain" /></span>
-              <div><p class="text-xs font-bold text-muted uppercase tracking-wider">Lender</p><p class="font-head font-extrabold text-lg">${d.bank}</p></div>
+        <div class="result-in tr-next" style="animation-delay:.08s">
+          <span class="tr-next-ic"><i class="fa-solid ${done ? 'fa-champagne-glasses' : 'fa-wand-magic-sparkles'}"></i></span>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs font-bold uppercase tracking-wider text-brand">What happens next</p>
+            <p class="font-head font-extrabold text-lg mt-0.5">${nx[0]}</p>
+            <p class="text-muted text-[15px]">${nx[1]}</p>
+          </div>
+          <span class="tr-eta"><i class="fa-regular fa-clock"></i> ${eta}</span>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-8 result-in tr-card lg:self-start" style="animation-delay:.14s">
+            <div class="flex items-center justify-between">
+              <h3 class="font-head font-extrabold text-2xl">Activity</h3>
+              <span class="tr-count">${d.activity.length} updates</span>
             </div>
-            <div class="mt-5">
-              <div class="kv"><span>Amount</span><b>${d.amount}</b></div>
-              <div class="kv"><span>Tenure</span><b>${d.tenure}</b></div>
-              <div class="kv"><span>Indicative rate</span><b>${d.rate}</b></div>
-              <div class="kv"><span>Applicant</span><b>${d.name}</b></div>
-            </div>
+            <div class="tr-tl mt-7">${events}</div>
           </div>
 
-          <div class="result-in bg-ink text-white rounded-[30px] p-7 relative overflow-hidden" style="animation-delay:.2s">
-            <div class="absolute -right-12 -top-12 w-44 h-44 rounded-full bg-grad opacity-30 blur-2xl"></div>
-            <p class="text-xs font-bold text-white/60 uppercase tracking-wider relative">Your advisor</p>
-            <div class="flex items-center gap-3 mt-3 relative">
-              <span class="w-12 h-12 rounded-full bg-grad grid place-items-center font-bold">SA</span>
-              <div><p class="font-head font-extrabold text-lg">Sadia Akter</p><p class="text-sm text-[#aab3c8]">Relationship Officer</p></div>
+          <div class="lg:col-span-4 space-y-6">
+            <div class="result-in tr-card" style="animation-delay:.2s">
+              <p class="text-xs font-bold uppercase tracking-wider text-muted">Your advisor</p>
+              <div class="flex items-center gap-3 mt-4">
+                <span class="tr-ava">SA<i></i></span>
+                <div><p class="font-head font-extrabold text-lg leading-tight">Sadia Akter</p><p class="text-sm text-muted">Relationship Officer · Online</p></div>
+              </div>
+              <div class="grid grid-cols-3 gap-2 mt-5">
+                <a href="tel:+8809638229922" class="tr-act tr-act-main"><i class="fa-solid fa-phone"></i>Call</a>
+                <a href="mailto:info@fincoachbd.com" class="tr-act"><i class="fa-regular fa-envelope"></i>Email</a>
+                <a href="https://wa.me/8809638229922" target="_blank" rel="noopener" class="tr-act"><i class="fa-brands fa-whatsapp"></i>Chat</a>
+              </div>
             </div>
-            <div class="grid grid-cols-2 gap-2 mt-5 relative">
-              <a href="tel:+8809638229922" class="btn btn-primary !py-3 text-sm"><i class="fa-solid fa-phone"></i> Call</a>
-              <a href="mailto:info@fincoachbd.com" class="btn bg-white/10 text-white !py-3 text-sm hover:bg-white/20"><i class="fa-regular fa-envelope"></i> Email</a>
-            </div>
-          </div>
 
-          <div class="result-in bg-white rounded-[30px] border border-line p-7" style="animation-delay:.25s">
-            <h3 class="font-head font-extrabold text-lg">Documents</h3>
-            <div class="space-y-2.5 mt-4">
-              ${d.docs.map(([t, ok]) => `<div class="doc-row"><span class="font-semibold text-[15px]"><i class="fa-regular fa-file-lines text-brand mr-2"></i>${t}</span>${ok ? '<i class="fa-solid fa-circle-check text-green-500"></i>' : '<span class="text-xs font-bold text-amber-600 bg-amber-50 rounded-full px-2.5 py-1">Pending</span>'}</div>`).join('')}
+            <div class="result-in tr-card" style="animation-delay:.26s">
+              <div class="flex items-center justify-between">
+                <h3 class="font-head font-extrabold text-lg">Documents</h3>
+                <span class="text-sm font-bold ${docsDone === d.docs.length ? 'text-green-600' : 'text-ink'}">${docsDone} of ${d.docs.length} uploaded</span>
+              </div>
+              <div class="tr-bar mt-3"><span style="width:${(docsDone / d.docs.length) * 100}%"></span></div>
+              <div class="space-y-2.5 mt-5">${docs}</div>
             </div>
+
+            <a href="faq.html" class="result-in tr-help" style="animation-delay:.32s">
+              <span class="tr-next-ic tr-help-ic"><i class="fa-regular fa-circle-question"></i></span>
+              <span class="flex-1"><b class="block">Questions about your application?</b><span class="text-sm text-muted">Read our FAQs</span></span>
+              <i class="fa-solid fa-arrow-right text-muted"></i>
+            </a>
           </div>
         </div>
       </div>`;
@@ -471,10 +628,14 @@
         btn.disabled = false; btn.innerHTML = 'Track Now <i class="fa-solid fa-arrow-right"></i>';
         const d = DB[key];
         inner.innerHTML = d ? render(key, d) : notFound(q);
-        const fill = $('.hstep-fill', inner);
-        if (fill) setTimeout(() => {
-          const p = fill.dataset.pct + '%';
-          if (window.matchMedia('(max-width: 767px)').matches) fill.style.height = p; else fill.style.width = p;
+        setTimeout(() => {
+          const ring = $('.tr-ring-fg', inner), line = $('.tr-line-fill', inner);
+          if (ring) { const C = 2 * Math.PI * 52; ring.setAttribute('stroke-dasharray', (C * ring.dataset.pct / 100).toFixed(1) + ' ' + C.toFixed(1)); }
+          if (line) line.style.setProperty('--w', line.dataset.pct + '%');
+          $$('[data-copy]', inner).forEach(b => b.addEventListener('click', async () => {
+            try { await navigator.clipboard.writeText(b.dataset.copy); } catch (_) { /* ignore */ }
+            b.innerHTML = '<i class="fa-solid fa-check"></i>'; setTimeout(() => { b.innerHTML = '<i class="fa-regular fa-copy"></i>'; }, 1500);
+          }));
         }, 120);
       }, 1100);
     };
@@ -655,6 +816,180 @@
         show('success');
       }, 900);
     });
+  }
+
+  /* ---------- Login / Register popup (all pages) ---------- */
+  const lm = $('#loginModal');
+  if (lm) {
+    const tabsEl = $('#lmTabs'), title = $('#lmTitle'), sub = $('#lmSub');
+    let lastFocus = null;
+    const showPane = (name) => {
+      $$('.lm-pane', lm).forEach(p => p.classList.toggle('active', p.id === 'lm' + name[0].toUpperCase() + name.slice(1)));
+      tabsEl.classList.toggle('hidden', name === 'done');
+      tabsEl.classList.toggle('reg', name === 'register');
+      $$('button', tabsEl).forEach(b => b.classList.toggle('active', b.dataset.lmTab === name));
+      if (name === 'login') { title.textContent = 'Log in to your account'; sub.textContent = 'Track applications and manage your offers.'; }
+      if (name === 'register') { title.textContent = 'Create your free account'; sub.textContent = 'Compare, apply and track — in under a minute.'; }
+      $$('.lm-err', lm).forEach(e => e.classList.add('hidden'));
+    };
+    const openLm = (tab = 'login') => {
+      lastFocus = document.activeElement;
+      showPane(tab);
+      lm.classList.add('open'); lm.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lm-lock');
+      if (typeof setDrawer === 'function') setDrawer(false);
+      setTimeout(() => { const f = $('.lm-pane.active input', lm); if (f) f.focus(); }, 80);
+    };
+    const closeLm = () => {
+      lm.classList.remove('open'); lm.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lm-lock');
+      if (lastFocus) lastFocus.focus();
+    };
+    $$('[data-login-open]').forEach(b => b.addEventListener('click', (e) => { e.preventDefault(); openLm(b.dataset.loginOpen === 'register' ? 'register' : 'login'); }));
+    $$('[data-lm-close]', lm).forEach(b => b.addEventListener('click', closeLm));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lm.classList.contains('open')) closeLm(); });
+    $$('button', tabsEl).forEach(b => b.addEventListener('click', () => showPane(b.dataset.lmTab)));
+    $$('.lm-eye', lm).forEach(t => t.addEventListener('click', () => {
+      const inp = t.parentElement.querySelector('input'); const show = inp.type === 'password';
+      inp.type = show ? 'text' : 'password';
+      t.innerHTML = `<i class="fa-regular ${show ? 'fa-eye-slash' : 'fa-eye'}"></i>`;
+    }));
+    $$('input[type=tel]', lm).forEach(i => i.addEventListener('input', () => { i.value = i.value.replace(/\D/g, '').slice(0, 11); }));
+    const submitLm = (form, doneTitle, doneSub) => form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const ok = $$('input[required]', form).every(i => i.type === 'checkbox' ? i.checked : i.value.trim() && i.checkValidity());
+      $('.lm-err', form).classList.toggle('hidden', ok);
+      if (!ok) return;
+      const btn = $('button[type=submit]', form), label = btn.innerHTML;
+      btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Please wait…';
+      setTimeout(() => {
+        btn.disabled = false; btn.innerHTML = label; form.reset();
+        $('#lmDoneTitle').textContent = doneTitle; $('#lmDoneSub').textContent = doneSub;
+        title.textContent = ''; sub.textContent = '';
+        showPane('done');
+      }, 900);
+    });
+    submitLm($('#lmLogin'), 'Welcome back!', "You're logged in. Pick up where you left off.");
+    submitLm($('#lmRegister'), "You're all set!", 'Your free FinCoach account is ready.');
+  }
+
+  /* ---------- Hero scroll effect: laptop flattens, phone & card drift ---------- */
+  const heroSec = $('#hero');
+  if (heroSec && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const laptop = $('#heroLaptop'), phone = $('#heroPhone'), card = $('#heroCard'), arc = $('.hero-arc', heroSec);
+    const waveF = $('.wave-front', heroSec), waveB = $('.wave-back', heroSec);
+    const updateHero = () => {
+      const h = heroSec.offsetHeight || 1;
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      if (y > h * 1.3) return;
+      const p = Math.min(Math.max(y / (h * 0.6), 0), 1); // 0 at top → 1 as the hero scrolls away
+      if (laptop) laptop.style.transform = `perspective(1600px) rotateX(${(1 - p) * 6}deg) scale(${0.96 + p * 0.04})`;
+      if (phone) phone.style.transform = `translateY(${p * -70}px)`;
+      if (card) card.style.transform = `translateY(${p * -110}px) rotate(${p * 4}deg)`;
+      if (arc) arc.style.transform = `scale(${1 + p * 0.05})`;
+      if (waveF) waveF.style.transform = `translateX(${p * 14}px)`;
+      if (waveB) waveB.style.transform = `translateX(${p * -14}px)`;
+    };
+    window.addEventListener('scroll', updateHero, { passive: true });
+    window.addEventListener('resize', updateHero);
+    updateHero();
+  }
+
+  /* =========================================================
+     APPLY NOW wizard (apply.html) — front-end demo
+     ========================================================= */
+  const apForm = $('#applyForm');
+  if (apForm) {
+    const steps = $$('.ap-step', apForm), bars = $$('.ap-progress span', apForm);
+    const back = $('#apBack'), next = $('#apNext'), err = $('.ap-err', apForm);
+    const money = (n) => Math.round(n).toLocaleString('en-IN');
+    const digits = (s) => +String(s).replace(/\D/g, '') || 0;
+    let cur = 1;
+
+    // Pre-select loan type from ?type=
+    const qType = new URLSearchParams(location.search).get('type');
+    if (qType) {
+      const map = { consolidation: 'personal', emergency: 'personal', education: 'personal', travel: 'personal', deposit: 'other' };
+      const val = map[qType] || qType;
+      const r = $('input[name=type][value="' + val + '"]', apForm);
+      if (r) r.checked = true;
+    }
+    ['#apAmount', '#apIncome'].forEach(sel => { const el = $(sel); el.addEventListener('input', () => { const d = digits(el.value); el.value = d ? money(d) : ''; }); });
+    $('#apPhone').addEventListener('input', (e) => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 11); });
+
+    const show = (n) => {
+      cur = n;
+      steps.forEach(s => s.classList.toggle('active', +s.dataset.step === n));
+      bars.forEach((b, k) => b.classList.toggle('on', k < n));
+      $('#apNum').textContent = n;
+      back.classList.toggle('hidden', n === 1);
+      next.innerHTML = n === 3 ? 'See my offers <i class="fa-solid fa-magnifying-glass"></i>' : 'Continue <i class="fa-solid fa-arrow-right"></i>';
+      err.classList.add('hidden');
+    };
+    const validate = () => {
+      const step = steps[cur - 1];
+      let ok = true;
+      $$('input[required], select[required]', step).forEach(el => {
+        let good = el.type === 'checkbox' ? el.checked : el.value.trim() !== '' && el.checkValidity();
+        if (el.id === 'apAmount') good = digits(el.value) >= 10000;
+        if (el.id === 'apIncome') good = digits(el.value) >= 5000;
+        if (el.id === 'apPhone') good = /^01\d{9}$/.test(el.value);
+        el.classList.toggle('!border-red-400', !good);
+        if (!good) ok = false;
+      });
+      err.classList.toggle('hidden', ok);
+      return ok;
+    };
+    back.addEventListener('click', () => show(cur - 1));
+
+    const LENDERS = [
+      { logo: 'assets/img/partners/p1.png', name: 'IPDC Finance', rate: 9.0, max: 2000000 },
+      { logo: 'assets/img/partners/p5.jpg', name: 'NCC Bank', rate: 9.5, max: 2500000 },
+      { logo: 'assets/img/partners/p2.jpg', name: 'City Bank', rate: 9.75, max: 3000000 },
+      { logo: 'assets/img/partners/p3.jpg', name: 'IDLC Finance', rate: 10.25, max: 2000000 },
+      { logo: 'assets/img/partners/p6.jpg', name: 'Mutual Trust Bank', rate: 10.5, max: 1500000 },
+      { logo: 'assets/img/partners/p4.jpg', name: 'National Finance', rate: 11.0, max: 1000000 }
+    ];
+    const PRODUCT = { personal: 'Personal Loan', auto: 'Auto Loan', home: 'Home Loan', card: 'Credit Card', sme: 'SME Loan', other: 'Personal Loan' };
+    const RATE_ADJ = { home: -0.5, auto: 0.25, sme: 1, card: 0, personal: 0, other: 0 };
+
+    const renderResults = () => {
+      const type = $('input[name=type]:checked', apForm).value;
+      const P = digits($('#apAmount').value), n = +$('#apTenure').value, income = digits($('#apIncome').value);
+      $('#resSummary').innerHTML = 'For a <b class="text-ink">' + PRODUCT[type] + '</b> of <b class="text-ink">৳' + money(P) + '</b> over <b class="text-ink">' + n + ' months</b>.';
+      const rows = LENDERS.map(l => {
+        const rate = Math.max(l.rate + (RATE_ADJ[type] || 0), 7);
+        const r = rate / 12 / 100;
+        const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+        const ratio = income ? emi / income : 1;
+        const fit = P > l.max ? 'fair' : ratio <= 0.35 ? 'high' : ratio <= 0.5 ? 'good' : 'fair';
+        return { ...l, rate, emi, fit };
+      }).sort((a, b) => ({ high: 0, good: 1, fair: 2 }[a.fit] - { high: 0, good: 1, fair: 2 }[b.fit]) || a.rate - b.rate);
+      const label = { high: '<span class="el-pill el-high"><i class="fa-solid fa-circle-check"></i> High</span>', good: '<span class="el-pill el-good"><i class="fa-solid fa-thumbs-up"></i> Good</span>', fair: '<span class="el-pill el-fair"><i class="fa-solid fa-circle-info"></i> Fair</span>' };
+      $('#resRows').innerHTML = rows.map((x, k) => '<tr class="' + (k === 0 ? 'best' : '') + '">' +
+        '<td data-th="Lender"><img class="el-logo" src="' + x.logo + '" alt="' + x.name + '" />' + (k === 0 ? '<span class="el-pill el-high ml-2 align-middle">Best match</span>' : '') + '</td>' +
+        '<td data-th="Product name"><b>' + x.name + '</b><br><span class="text-sm text-muted">' + PRODUCT[type] + '</span></td>' +
+        '<td data-th="Interest rate"><b class="font-head text-lg">' + x.rate.toFixed(2) + '%</b> <span class="text-xs text-muted">p.a.</span></td>' +
+        '<td data-th="Max amount">৳' + money(x.max) + '</td>' +
+        '<td data-th="Monthly EMI"><b>৳' + money(x.emi) + '</b></td>' +
+        '<td data-th="Eligibility">' + label[x.fit] + '</td>' +
+        '<td><a href="login.html" data-login-open="register" class="btn btn-primary !py-2.5 !px-5 text-sm">Apply</a></td></tr>').join('');
+      // new Apply buttons open the login popup
+      const opener = $('.nav-text-btn[data-login-open]');
+      $$('#resRows [data-login-open]').forEach(b => b.addEventListener('click', (e) => { if (opener) { e.preventDefault(); opener.click(); } }));
+      const sec = $('#results');
+      sec.classList.remove('hidden');
+      sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    apForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!validate()) return;
+      if (cur < 3) { show(cur + 1); apForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); return; }
+      next.disabled = true; next.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Finding offers…';
+      setTimeout(() => { next.disabled = false; show(3); renderResults(); }, 1000);
+    });
+    $('#apEdit').addEventListener('click', () => { show(1); $('#applyBox').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
   }
 
   const yr = $('#yr');

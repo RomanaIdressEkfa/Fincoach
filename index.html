@@ -29,11 +29,12 @@
             line: '#eceef3'
           },
           fontFamily: { head: ['Urbanist', 'sans-serif'], body: ['Figtree', 'sans-serif'] },
-          maxWidth: { site: '1240px' }
+          maxWidth: { site: '1400px' }
         }
       }
     }
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body class="font-body">
@@ -42,10 +43,14 @@
      HEADER — announcement bar + navbar (LoanTube layout)
      ========================================================= -->
 <header id="siteHeader" class="nav-wrap sticky top-0 z-50 bg-white">
-  <div class="px-2.5 pt-2.5">
-    <div class="announce text-white text-center text-[13px] md:text-sm px-4 py-3">
-      <strong class="font-bold">0% Processing Fee on FinCoach.</strong>
-      <span class="text-white/85 hidden sm:inline"> FinCoach is a loan marketplace, not a lender. Loans are subject to eligibility &amp; approval by partner Banks/FIs.</span>
+  <div class="topbar">
+    <div class="max-w-site mx-auto px-4 md:px-6 h-9 flex items-center justify-between gap-4 text-[13px]">
+      <p class="text-muted truncate"><b class="text-ink">0% processing fee.</b><span class="hidden sm:inline"> FinCoach is a loan marketplace, not a lender.</span></p>
+      <div class="flex items-center gap-2.5 shrink-0 text-muted">
+        <span class="hidden sm:inline">App available on</span>
+        <a href="#" class="tb-ic" aria-label="Download on the App Store"><i class="fa-brands fa-apple"></i></a>
+        <a href="#" class="tb-ic" aria-label="Get it on Google Play"><i class="fa-brands fa-google-play"></i></a>
+      </div>
     </div>
   </div>
 
@@ -64,59 +69,54 @@
               <span class="mega-active-bar"></span>
             </button>
           </li>
-          <li><a href="about.html" class="nav-link">About Us</a></li>
-          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
       </div>
 
       <!-- Right -->
-      <div class="hidden lg:flex items-center gap-3">
-        <a href="track.html" class="btn btn-ghost !py-3"><i class="fa-solid fa-location-crosshairs text-brand"></i> Track Application</a>
-        <a href="login.html" class="btn btn-primary !py-3"><i class="fa-regular fa-user"></i> Login / Register</a>
+      <div class="hidden lg:flex items-center gap-2.5">
+        <a href="login.html" class="nav-text-btn" data-login-open><i class="fa-regular fa-user"></i> Log in</a>
+        <a href="apply.html" class="btn btn-dark !py-3 !px-6">Apply Now</a>
+        <a href="track.html" class="btn btn-track !py-3"><i class="fa-solid fa-location-crosshairs"></i> Track Application</a>
       </div>
 
       <!-- Mobile actions -->
       <div class="lg:hidden flex items-center gap-2">
-        <a href="#products" class="btn btn-primary !py-2.5 !px-4 text-sm">Apply <i class="fa-solid fa-arrow-right text-xs"></i></a>
+        <a href="apply.html" class="btn btn-primary !py-2.5 !px-4 text-sm">Apply <i class="fa-solid fa-arrow-right text-xs"></i></a>
       <button id="menuOpen" class="lg:hidden w-11 h-11 rounded-xl bg-[#f2f4f7] grid place-items-center text-ink" aria-label="Open menu">
         <i class="fa-solid fa-bars-staggered text-lg"></i>
       </button>
       </div>
     </div>
 
-    <!-- MEGA MENU — Loans (Oportun layout) -->
+    <!-- MEGA MENU — Loans | Tools + app panel (Oportun style) -->
     <div id="megaLoans" class="mega hidden lg:block" role="region" aria-label="Loans menu">
-      <div class="max-w-site mx-auto px-6 py-10 grid grid-cols-12 gap-8">
-        <div class="col-span-3">
-          <h4>Loans</h4>
-          <a class="m-link" href="#products">Personal loans</a>
-          <a class="m-link" href="#products">Secured personal loans</a>
-          <a class="m-link" href="#">Make a payment</a>
-          <a class="m-link" href="contact.html">Contact us</a>
-          <a class="m-link" href="contact.html">Locations</a>
+      <div class="max-w-site mx-auto px-6 py-9 grid grid-cols-12">
+        <div class="col-span-7 grid grid-cols-2 gap-10 pr-10 border-r border-line">
+          <div>
+            <h4>Loans</h4>
+            <a class="mm-link" href="loan.html?type=personal"><span class="mm-ic"><i class="fa-solid fa-user"></i></span>Personal Loan</a>
+            <a class="mm-link" href="loan.html?type=auto"><span class="mm-ic"><i class="fa-solid fa-car"></i></span>Auto Loan</a>
+            <a class="mm-link" href="loan.html?type=home"><span class="mm-ic"><i class="fa-solid fa-house"></i></span>Home Loan</a>
+            <a class="mm-link" href="loan.html?type=card"><span class="mm-ic"><i class="fa-regular fa-credit-card"></i></span>Credit Card</a>
+            <a class="mm-link" href="loan.html?type=sme"><span class="mm-ic"><i class="fa-solid fa-store"></i></span>SME Loan</a>
+          </div>
+          <div>
+            <h4>Tools</h4>
+            <a class="mm-link" href="emi-calculator.html"><span class="mm-ic"><i class="fa-solid fa-calculator"></i></span>EMI Calculator</a>
+            <a class="mm-link" href="faq.html"><span class="mm-ic"><i class="fa-regular fa-circle-question"></i></span>FAQs</a>
+            <a class="mm-link" href="blog.html"><span class="mm-ic"><i class="fa-regular fa-newspaper"></i></span>Blog</a>
+          </div>
         </div>
-        <div class="col-span-4">
-          <h4>Tools</h4>
-          <a class="m-link" href="#calculator">Loan calculator</a>
-          <a class="m-link" href="#faq">FAQs</a>
-          <a class="m-link" href="#">Glossary of financial terms</a>
-          <a class="m-link" href="#partners">Get support from our partners</a>
-
-          <h4 class="mt-7">Get savvy</h4>
-          <a class="m-link" href="#blog">What do you need to apply for a loan?</a>
-          <a class="m-link" href="#blog">What is an installment loan?</a>
-          <a href="#blog" class="inline-flex items-center gap-2 mt-2 font-bold text-ink hover:text-brand">More <i class="fa-solid fa-arrow-right text-xs"></i></a>
-        </div>
-        <div class="col-span-5">
-          <div class="rounded-[28px] bg-brand-tint p-8 relative overflow-hidden">
+        <div class="col-span-5 pl-10">
+          <div class="rounded-[26px] bg-brand-tint p-7 relative overflow-hidden h-full">
             <div class="absolute -right-10 -top-10 w-44 h-44 rounded-full bg-grad opacity-10"></div>
-            <div class="w-[70px] h-[70px] rounded-2xl bg-white border border-line grid place-items-center shadow-sm">
-              <div class="w-[36px] h-[38px] overflow-hidden"><img src="assets/img/fincoach-logo.png" alt="" class="h-[38px] max-w-none" /></div>
-            </div>
-            <p class="mt-6 text-lg font-semibold leading-relaxed text-ink max-w-sm">Get the all-in-one app to manage your loan. Plus it intelligently saves for you.</p>
-            <div class="flex flex-wrap gap-2 mt-5">
-              <a href="#" class="store-badge"><i class="fa-brands fa-apple text-2xl"></i><div><small>Download on the</small><span>App Store</span></div></a>
+            <img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-8 relative" />
+            <p class="mt-5 text-lg font-semibold leading-relaxed text-ink max-w-sm relative">Get the all-in-one app to apply for your loan — and track every step, right from your phone.</p>
+            <div class="flex flex-wrap gap-2 mt-6 relative">
               <a href="#" class="store-badge"><i class="fa-brands fa-google-play text-xl"></i><div><small>GET IT ON</small><span>Google Play</span></div></a>
+              <a href="#" class="store-badge"><i class="fa-brands fa-apple text-2xl"></i><div><small>Download on the</small><span>App Store</span></div></a>
             </div>
           </div>
         </div>
@@ -133,250 +133,332 @@
     <button id="menuClose" class="w-10 h-10 rounded-xl bg-[#f2f4f7] grid place-items-center" aria-label="Close menu"><i class="fa-solid fa-xmark text-lg"></i></button>
   </div>
   <div class="flex-1 overflow-y-auto px-5 py-4">
+    <a href="about.html" class="drawer-link block py-4 border-b border-line font-head font-bold text-lg">About Us</a>
     <div class="acc border-b border-line">
       <button class="acc-head w-full flex items-center justify-between py-4 font-head font-bold text-lg">Loans <i class="fa-solid fa-chevron-down acc-chev text-sm"></i></button>
       <div class="acc-body"><div>
-        <div class="pb-4 space-y-5">
+        <div class="pb-4 grid grid-cols-2 gap-4">
           <div>
             <p class="font-head font-extrabold mb-1">Loans</p>
-            <a class="block py-1.5 text-muted" href="#products">Personal loans</a>
-            <a class="block py-1.5 text-muted" href="#products">Secured personal loans</a>
-            <a class="block py-1.5 text-muted" href="#">Make a payment</a>
-            <a class="block py-1.5 text-muted" href="contact.html">Contact us</a>
-            <a class="block py-1.5 text-muted" href="contact.html">Locations</a>
+            <a class="block py-1.5 text-muted" href="loan.html?type=personal">Personal Loan</a>
+            <a class="block py-1.5 text-muted" href="loan.html?type=auto">Auto Loan</a>
+            <a class="block py-1.5 text-muted" href="loan.html?type=home">Home Loan</a>
+            <a class="block py-1.5 text-muted" href="loan.html?type=card">Credit Card</a>
+            <a class="block py-1.5 text-muted" href="loan.html?type=sme">SME Loan</a>
           </div>
           <div>
             <p class="font-head font-extrabold mb-1">Tools</p>
-            <a class="block py-1.5 text-muted" href="#calculator">Loan calculator</a>
-            <a class="block py-1.5 text-muted" href="#faq">FAQs</a>
-            <a class="block py-1.5 text-muted" href="#">Glossary of financial terms</a>
-            <a class="block py-1.5 text-muted" href="#partners">Get support from our partners</a>
-          </div>
-          <div>
-            <p class="font-head font-extrabold mb-1">Get savvy</p>
-            <a class="block py-1.5 text-muted" href="#blog">What do you need to apply for a loan?</a>
-            <a class="block py-1.5 text-muted" href="#blog">What is an installment loan?</a>
-            <a class="block py-1.5 font-bold" href="#blog">More →</a>
+            <a class="block py-1.5 text-muted" href="emi-calculator.html">EMI Calculator</a>
+            <a class="block py-1.5 text-muted" href="faq.html">FAQs</a>
+            <a class="block py-1.5 text-muted" href="blog.html">Blog</a>
           </div>
         </div>
       </div></div>
     </div>
-    <a href="about.html" class="drawer-link block py-4 border-b border-line font-head font-bold text-lg">About Us</a>
     <a href="contact.html" class="drawer-link block py-4 border-b border-line font-head font-bold text-lg">Contact Us</a>
   </div>
   <div class="p-5 grid gap-3 border-t border-line">
-    <a href="track.html" class="btn btn-ghost"><i class="fa-solid fa-location-crosshairs text-brand"></i> Track Application</a>
-    <a href="login.html" class="btn btn-primary"><i class="fa-regular fa-user"></i> Login / Register</a>
+    <a href="apply.html" class="btn btn-primary">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="grid grid-cols-2 gap-3">
+      <a href="login.html" class="btn btn-ghost" data-login-open><i class="fa-regular fa-user"></i> Login</a>
+      <a href="track.html" class="btn btn-ghost"><i class="fa-solid fa-location-crosshairs text-brand"></i> Track</a>
+    </div>
   </div>
 </aside>
 
 <main>
 
 <!-- =========================================================
-     HERO
+     HERO SLIDER — text + image change, bank logos strip (client layout)
      ========================================================= -->
-<section class="px-2.5 pt-2.5">
-  <div class="hero-bg panel relative overflow-hidden">
-    <div class="grid-lines absolute inset-0 pointer-events-none"></div>
-    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-16 md:pt-24 text-center">
-      <div class="reveal">
-        <span class="eyebrow">Bangladesh's Smart Loan Marketplace</span>
-      </div>
-      <h1 class="reveal mt-6 font-head font-extrabold text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[5.2rem] text-ink max-w-5xl mx-auto">
-        Apply for Any Loan,<br class="hidden sm:block" /> <span class="text-grad">Smarter &amp; Faster</span>
-      </h1>
-      <p class="reveal mt-6 text-lg md:text-xl text-muted max-w-2xl mx-auto font-medium">
-        The easy way to compare offers, check your eligibility and apply for loans, deposits &amp; credit cards from Bangladesh's leading Banks and FIs — all in one place.
-      </p>
-      <div class="reveal mt-9 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 max-w-sm sm:max-w-none mx-auto">
-        <a href="#products" class="btn btn-primary !px-8 !py-4 text-lg">Compare &amp; Apply <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="#how" class="btn btn-white !px-7 !py-4 text-lg shadow-sm"><span class="w-8 h-8 rounded-full bg-grad text-white grid place-items-center text-xs"><i class="fa-solid fa-play ml-0.5"></i></span> Watch Tutorial</a>
-      </div>
-      <div class="reveal mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 text-[15px] hero-checks">
-        <span class="hero-check"><i class="fa-solid fa-check"></i> 100% free to apply</span>
-        <span class="hero-check"><i class="fa-solid fa-check"></i> 6+ Partner Banks &amp; FIs</span>
-        <span class="hero-check"><i class="fa-solid fa-check"></i> Apply 24/7 from anywhere</span>
-      </div>
+<section class="px-2.5 pt-2.5" id="hero">
+  <div class="hs panel relative overflow-hidden">
+    <div class="hs-dots absolute inset-0 pointer-events-none"></div>
+    <span class="hs-blob hs-blob-1"></span><span class="hs-blob hs-blob-2"></span>
 
-      <!-- Dashboard mockup -->
-      <div class="reveal relative mt-16 md:mt-20 max-w-5xl mx-auto">
-        <!-- floating chips -->
-        <div class="float-chip floaty hidden lg:flex items-center gap-3 absolute -right-8 -top-6 z-20 px-4 py-3 text-left">
-          <span class="w-10 h-10 rounded-xl bg-green-100 text-green-600 grid place-items-center"><i class="fa-solid fa-circle-check"></i></span>
-          <div><p class="text-xs text-muted font-semibold">Loan Approved</p><p class="font-head font-extrabold">৳ 5,00,000</p></div>
-        </div>
-        <div class="float-chip floaty-2 hidden lg:flex items-center gap-3 absolute -right-10 -bottom-8 z-20 px-4 py-3 text-left">
-          <span class="w-10 h-10 rounded-xl bg-brand-tint text-brand grid place-items-center"><i class="fa-solid fa-percent"></i></span>
-          <div><p class="text-xs text-muted font-semibold">Best rate found</p><p class="font-head font-extrabold">9.0% p.a.</p></div>
-        </div>
+    <div class="relative max-w-site mx-auto px-4 md:px-6">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-6 items-center hs-grid">
+        <!-- LEFT: text slides -->
+        <div class="pt-12 md:pt-16 lg:pt-0 relative z-10">
+          <div class="hs-stack" id="hsTexts">
+            <div class="hs-text is-active" data-slide="0">
+              <span class="hs-eyebrow"><i class="fa-solid fa-user"></i> Personal loans</span>
+              <h1>Loans for real life.<br />See what's <span class="text-grad">possible.</span></h1>
+              <p>See your options from 6+ banks in minutes — free, with no impact on your credit.</p>
+            </div>
+            <div class="hs-text" data-slide="1" aria-hidden="true">
+              <span class="hs-eyebrow"><i class="fa-solid fa-house"></i> Home loans</span>
+              <h1>Your dream home,<br /><span class="text-grad">one step closer.</span></h1>
+              <p>Compare home loan rates from 8.5% p.a. and apply online — no queues, no paperwork.</p>
+            </div>
+            <div class="hs-text" data-slide="2" aria-hidden="true">
+              <span class="hs-eyebrow"><i class="fa-regular fa-credit-card"></i> Credit cards</span>
+              <h1>The right card,<br /><span class="text-grad">rewards included.</span></h1>
+              <p>Find cards with cashback, lounge access and first-year fee waivers in one place.</p>
+            </div>
+          </div>
 
-        <div class="mock relative z-10 text-left p-3 md:p-4">
-          <div class="flex items-center justify-between px-2 pb-3 border-b border-line">
+          <div class="mt-8 flex flex-col sm:flex-row sm:items-center gap-3" data-aos="fade-up" data-aos-delay="150">
+            <a href="apply.html" class="btn btn-primary !px-8 !py-4">Apply for a loan now <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#calculator" class="btn btn-white !px-7 !py-4 shadow-sm"><i class="fa-solid fa-calculator text-brand"></i> Check your EMI</a>
+          </div>
+
+          <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4" data-aos="fade-up" data-aos-delay="220">
             <div class="flex items-center gap-3">
-              <img src="assets/img/fincoach-logo.png" alt="" class="h-5" />
-              <span class="hidden sm:inline text-sm font-bold text-ink ml-4">Dashboard</span>
+              <span class="text-sm font-semibold text-muted">App available on</span>
+              <a href="#" class="hs-store" aria-label="App Store"><i class="fa-brands fa-apple"></i></a>
+              <a href="#" class="hs-store" aria-label="Google Play"><i class="fa-brands fa-google-play"></i></a>
             </div>
-            <div class="hidden md:flex items-center gap-2 bg-[#f5f6f9] rounded-full px-4 py-2 text-xs text-muted w-64"><i class="fa-solid fa-magnifying-glass"></i> Search loans, banks…</div>
-            <div class="flex items-center gap-2">
-              <span class="w-8 h-8 rounded-full bg-[#f5f6f9] grid place-items-center text-xs text-muted"><i class="fa-regular fa-bell"></i></span>
-              <span class="w-8 h-8 rounded-full bg-grad text-white grid place-items-center text-xs font-bold">RA</span>
-            </div>
-          </div>
-          <div class="grid grid-cols-12 gap-3 pt-4 lg:pl-[150px]">
-            <!-- loan card -->
-            <div class="col-span-12 lg:col-span-4 loan-card p-5 text-white min-h-[170px] flex flex-col justify-between">
-              <div class="flex items-center justify-between relative z-10">
-                <span class="text-xs font-semibold text-white/80">Active Personal Loan</span>
-                <i class="fa-solid fa-wifi rotate-90 text-white/80"></i>
-              </div>
-              <div class="relative z-10">
-                <p class="text-xs text-white/70">Outstanding</p>
-                <p class="font-head text-3xl font-extrabold">৳ 3,42,600</p>
-                <div class="mt-3 h-1.5 rounded-full bg-white/25"><div class="h-full w-[62%] rounded-full bg-white"></div></div>
-                <p class="mt-1.5 text-[11px] text-white/80">62% repaid · 14 EMIs left</p>
-              </div>
-            </div>
-            <!-- stats -->
-            <div class="col-span-12 lg:col-span-8 grid grid-cols-3 gap-3">
-              <div class="mock-card p-4">
-                <span class="text-[10px] font-bold text-green-700 bg-green-100 rounded-md px-2 py-0.5">+12%</span>
-                <p class="font-head text-xl md:text-2xl font-extrabold mt-3">742</p>
-                <p class="text-[11px] text-muted">Credit Score</p>
-              </div>
-              <div class="mock-card p-4">
-                <span class="text-[10px] font-bold text-brand bg-brand-tint rounded-md px-2 py-0.5">Due 5th</span>
-                <p class="font-head text-xl md:text-2xl font-extrabold mt-3">৳12,450</p>
-                <p class="text-[11px] text-muted">Next EMI</p>
-              </div>
-              <div class="mock-card p-4">
-                <span class="text-[10px] font-bold text-blue-700 bg-blue-100 rounded-md px-2 py-0.5">3 Offers</span>
-                <p class="font-head text-xl md:text-2xl font-extrabold mt-3">9.0%</p>
-                <p class="text-[11px] text-muted">Lowest Rate</p>
-              </div>
-              <!-- chart -->
-              <div class="mock-card col-span-3 md:col-span-2 p-4">
-                <div class="flex items-center justify-between">
-                  <p class="text-sm font-bold">Repayment Flow</p>
-                  <span class="text-[11px] text-muted border border-line rounded-full px-2 py-0.5">2026</span>
-                </div>
-                <div class="flex items-end gap-1.5 md:gap-2 h-24 mt-3">
-                  <div class="bar flex-1" style="height:40%"></div><div class="bar flex-1" style="height:62%"></div>
-                  <div class="bar flex-1" style="height:48%"></div><div class="bar on flex-1" style="height:85%"></div>
-                  <div class="bar flex-1" style="height:55%"></div><div class="bar flex-1" style="height:70%"></div>
-                  <div class="bar flex-1" style="height:45%"></div><div class="bar on flex-1" style="height:95%"></div>
-                  <div class="bar flex-1" style="height:60%"></div><div class="bar flex-1" style="height:74%"></div>
-                  <div class="bar flex-1" style="height:52%"></div><div class="bar flex-1" style="height:66%"></div>
-                </div>
-              </div>
-              <!-- tracker -->
-              <div class="mock-card hidden md:block p-4">
-                <p class="text-sm font-bold">Application</p>
-                <ul class="mt-3 space-y-2.5 text-[11px]">
-                  <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-grad text-white grid place-items-center text-[7px]"><i class="fa-solid fa-check"></i></span>Submitted</li>
-                  <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full bg-grad text-white grid place-items-center text-[7px]"><i class="fa-solid fa-check"></i></span>Verified</li>
-                  <li class="flex items-center gap-2"><span class="w-4 h-4 rounded-full border-2 border-brand"></span><b>Bank review</b></li>
-                  <li class="flex items-center gap-2 text-muted"><span class="w-4 h-4 rounded-full border-2 border-line"></span>Disbursed</li>
-                </ul>
-              </div>
+            <div class="hs-nav" id="hsNav" role="tablist" aria-label="Hero slides">
+              <button type="button" class="is-active" aria-label="Slide 1"><span></span></button>
+              <button type="button" aria-label="Slide 2"><span></span></button>
+              <button type="button" aria-label="Slide 3"><span></span></button>
             </div>
           </div>
         </div>
 
-        <!-- phone -->
-        <div class="phone hidden lg:block absolute -left-6 md:-left-20 -bottom-12 w-[180px] md:w-[215px] z-20 text-left">
-          <div class="phone-screen p-3">
-            <div class="flex items-center justify-between text-[10px] font-bold px-1"><span>9:41</span><span><i class="fa-solid fa-signal"></i> <i class="fa-solid fa-battery-full"></i></span></div>
-            <div class="flex items-center gap-2 mt-3">
-              <span class="w-7 h-7 rounded-full bg-grad text-white grid place-items-center text-[9px] font-bold">RA</span>
-              <div><p class="text-[9px] text-muted leading-none">Good morning</p><p class="text-[11px] font-bold">Rafiq Ahmed</p></div>
-            </div>
-            <div class="loan-card mt-3 p-3 text-white">
-              <p class="text-[9px] text-white/80 relative z-10">Eligible up to</p>
-              <p class="font-head font-extrabold text-lg relative z-10">৳ 8,00,000</p>
-              <p class="text-[9px] mt-2 text-white/80 relative z-10">Pre-approved · 3 banks</p>
-            </div>
-            <div class="grid grid-cols-4 gap-1 mt-3 text-center text-[8px] font-semibold">
-              <div><span class="mx-auto w-8 h-8 rounded-xl bg-brand-tint text-brand grid place-items-center text-[11px]"><i class="fa-solid fa-user"></i></span>Personal</div>
-              <div><span class="mx-auto w-8 h-8 rounded-xl bg-brand-tint text-brand grid place-items-center text-[11px]"><i class="fa-solid fa-car"></i></span>Car</div>
-              <div><span class="mx-auto w-8 h-8 rounded-xl bg-brand-tint text-brand grid place-items-center text-[11px]"><i class="fa-solid fa-house"></i></span>Home</div>
-              <div><span class="mx-auto w-8 h-8 rounded-xl bg-brand-tint text-brand grid place-items-center text-[11px]"><i class="fa-solid fa-credit-card"></i></span>Card</div>
-            </div>
-            <p class="text-[10px] font-bold mt-3">Recent offers</p>
-            <div class="mt-1.5 space-y-1.5">
-              <div class="flex items-center justify-between bg-[#f7f8fa] rounded-lg px-2 py-1.5 text-[9px]"><span class="font-semibold">IPDC Finance</span><span class="text-brand font-bold">9.0%</span></div>
-              <div class="flex items-center justify-between bg-[#f7f8fa] rounded-lg px-2 py-1.5 text-[9px]"><span class="font-semibold">NCC Bank</span><span class="text-brand font-bold">9.5%</span></div>
-            </div>
+        <!-- RIGHT: image slides -->
+        <div class="hs-media" data-aos="fade-left" data-aos-delay="100" data-aos-duration="1000">
+          <div class="hs-ring"></div><div class="hs-ring hs-ring-2"></div>
+          <div class="hs-stack hs-frames" id="hsMedia">
+            <figure class="hs-frame is-active" data-slide="0">
+              <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=900&q=75&auto=format&fit=crop" alt="Smiling customer using the FinCoach app" />
+              <figcaption class="hs-chip hs-chip-a"><span class="hs-chip-ic bg-green-100 text-green-600"><i class="fa-solid fa-circle-check"></i></span><span><small>Loan approved</small><b>৳ 5,00,000</b></span></figcaption>
+            </figure>
+            <figure class="hs-frame" data-slide="1">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=900&q=75&auto=format&fit=crop" alt="Happy home loan customer" loading="lazy" />
+              <figcaption class="hs-chip hs-chip-a"><span class="hs-chip-ic bg-brand-tint text-brand"><i class="fa-solid fa-percent"></i></span><span><small>Home loan from</small><b>8.5% p.a.</b></span></figcaption>
+            </figure>
+            <figure class="hs-frame" data-slide="2">
+              <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&q=75&auto=format&fit=crop" alt="Paying online with a credit card" loading="lazy" />
+              <figcaption class="hs-chip hs-chip-a"><span class="hs-chip-ic bg-blue-100 text-blue-600"><i class="fa-regular fa-credit-card"></i></span><span><small>Annual fee</small><b>0% in year 1</b></span></figcaption>
+            </figure>
           </div>
+          <div class="hs-chip hs-chip-b"><span class="hs-chip-ic bg-grad text-white"><i class="fa-solid fa-building-columns"></i></span><span><small>Compare</small><b>6+ Banks &amp; FIs</b></span></div>
         </div>
       </div>
     </div>
-    <div class="h-24 md:h-28"></div>
-  </div>
-</section>
 
-<!-- =========================================================
-     PARTNERS
-     ========================================================= -->
-<section id="partners" class="py-20 md:py-24">
-  <div class="max-w-site mx-auto px-4 md:px-6 text-center">
-    <h2 class="reveal font-head font-extrabold text-2xl md:text-3xl">Trusted by <span class="text-grad">6+ Partner Banks &amp; FIs</span> across Bangladesh</h2>
-  </div>
-  <div class="marquee mt-10 overflow-hidden">
-    <div class="marquee-track" id="marqueeTrack">
-      <div class="partner"><img src="assets/img/partners/p1.png" alt="Partner bank" /></div>
-      <div class="partner"><img src="assets/img/partners/p2.jpg" alt="Partner bank" /></div>
-      <div class="partner"><img src="assets/img/partners/p3.jpg" alt="Partner bank" /></div>
-      <div class="partner"><img src="assets/img/partners/p4.jpg" alt="Partner bank" /></div>
-      <div class="partner"><img src="assets/img/partners/p5.jpg" alt="Partner bank" /></div>
-      <div class="partner"><img src="assets/img/partners/p6.jpg" alt="Partner bank" /></div>
+    <!-- Bank logos strip (Wallex style: grayscale, real colour on hover) -->
+    <div class="hs-logos">
+      <p class="text-center text-sm text-muted">More than <b class="text-ink">25,000+</b> borrowers compared offers from our partners</p>
+      <div class="marquee mt-4 overflow-hidden" id="partners">
+        <div class="marquee-track logo-track" id="marqueeTrack">
+          <img src="assets/img/partners/p1.png" alt="IPDC Finance" />
+          <img src="assets/img/partners/p2.jpg" alt="City Bank" />
+          <img src="assets/img/partners/p3.jpg" alt="IDLC Finance" />
+          <img src="assets/img/partners/p4.jpg" alt="National Finance" />
+          <img src="assets/img/partners/p5.jpg" alt="NCC Bank" />
+          <img src="assets/img/partners/p6.jpg" alt="Mutual Trust Bank" />
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================
-     PERSONAL / BUSINESS
+     FIND THE RIGHT LOAN — slider (right to left), OneMain-style cards
      ========================================================= -->
-<section id="about" class="pb-16 md:pb-24">
+<section id="products" class="pt-16 md:pt-24 pb-4 overflow-hidden">
   <div class="max-w-site mx-auto px-4 md:px-6">
     <div class="text-center max-w-3xl mx-auto">
-      <span class="reveal eyebrow">Who we serve</span>
-      <h2 class="reveal mt-5 font-head font-extrabold text-[2rem] sm:text-4xl md:text-[3.4rem] leading-[1.08]">Powerful financing solutions built for every ambition</h2>
+      <h2 class="reveal font-head font-extrabold text-[2rem] sm:text-[2.25rem] md:text-[3rem] leading-[1.08]">Find the right loan for your needs</h2>
+      <p class="reveal mt-4 text-lg text-muted">Explore loans built to help you cover costs, simplify payments or plan for what's next.</p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-6 mt-10 md:mt-14">
-      <!-- Personal -->
-      <div class="reveal panel bg-grad relative overflow-hidden p-8 md:p-12 text-white min-h-[400px] flex flex-col">
-        <div class="absolute -right-16 -bottom-16 w-72 h-72 rounded-full bg-white/10"></div>
-        <div class="absolute right-16 -top-10 w-40 h-40 rounded-full bg-white/10"></div>
-        <span class="eyebrow dark self-start">For Personal</span>
-        <h3 class="mt-6 font-head font-extrabold text-3xl md:text-4xl leading-tight max-w-md">Personal, Car &amp; Home loans tailored to your life</h3>
-        <p class="mt-4 text-white/85 text-lg max-w-md">Compare rates from top banks, check eligibility instantly and get your facility faster — with zero paperwork hassle.</p>
-        <div class="mt-auto pt-8 relative z-10">
-          <a href="#products" class="btn btn-white">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="sc-track mt-10 md:mt-12" id="scTrack" tabindex="0" aria-label="Loan types">
+      <article class="ol-card" style="--t1:#fff0f4;--t2:#ffd9e4;--ac:#e8205a">
+        <div class="ol-top">
+          <span class="ol-ic"><img src="https://fincoach.com.bd/asset-client/img/deal/personal-loan-icon.svg" alt="" /></span>
+          <span class="ol-rate"><small>from</small><b>9.0%</b></span>
         </div>
-        <div class="hidden lg:flex absolute right-8 bottom-8 gap-3 z-10">
-          <span class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur grid place-items-center text-xl"><i class="fa-solid fa-user"></i></span>
-          <span class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur grid place-items-center text-xl"><i class="fa-solid fa-car-side"></i></span>
-          <span class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur grid place-items-center text-xl"><i class="fa-solid fa-house-chimney"></i></span>
+        <div class="ol-body">
+          <h3>Personal loans</h3>
+          <p>Money for the things that matter — weddings, education, travel or a big purchase.</p>
+          <div class="ol-tags"><span>Tackle bills</span><span>Big purchases</span></div>
         </div>
+        <div class="ol-foot">
+          <a href="apply.html?type=personal" class="ol-cta">Check offers <span><i class="fa-solid fa-arrow-right"></i></span></a>
+          <a href="loan.html?type=personal" class="ol-more">Learn more</a>
+        </div>
+      </article>
+      <article class="ol-card" style="--t1:#f6f0ff;--t2:#e6d9ff;--ac:#7c3aed">
+        <div class="ol-top">
+          <span class="ol-ic"><i class="fa-solid fa-layer-group"></i></span>
+          <span class="ol-rate"><small>from</small><b>9.5%</b></span>
+        </div>
+        <div class="ol-body">
+          <h3>Debt consolidation loans</h3>
+          <p>Combine card bills into one monthly payment with a clear end date.</p>
+          <div class="ol-tags"><span>Simplify bills</span><span>Pay down debt</span></div>
+        </div>
+        <div class="ol-foot">
+          <a href="apply.html?type=consolidation" class="ol-cta">Check offers <span><i class="fa-solid fa-arrow-right"></i></span></a>
+          <a href="loan.html?type=consolidation" class="ol-more">Learn more</a>
+        </div>
+      </article>
+      <article class="ol-card" style="--t1:#fff4ec;--t2:#ffe0cc;--ac:#ea580c">
+        <div class="ol-top">
+          <span class="ol-ic"><i class="fa-solid fa-umbrella"></i></span>
+          <span class="ol-rate"><small>from</small><b>10%</b></span>
+        </div>
+        <div class="ol-body">
+          <h3>Emergency loans</h3>
+          <p>Quick cash for medical bills, urgent repairs or the unexpected.</p>
+          <div class="ol-tags"><span>Surprise bill</span><span>Repairs</span></div>
+        </div>
+        <div class="ol-foot">
+          <a href="apply.html?type=emergency" class="ol-cta">Check offers <span><i class="fa-solid fa-arrow-right"></i></span></a>
+          <a href="loan.html?type=emergency" class="ol-more">Learn more</a>
+        </div>
+      </article>
+      <article class="ol-card" style="--t1:#eef5ff;--t2:#d6e6ff;--ac:#2563eb">
+        <div class="ol-top">
+          <span class="ol-ic"><img src="https://fincoach.com.bd/asset-client/img/deal/car-loan-icon.svg" alt="" /></span>
+          <span class="ol-rate"><small>from</small><b>9.5%</b></span>
+        </div>
+        <div class="ol-body">
+          <h3>Auto loans</h3>
+          <p>Finance a new or reconditioned car or bike with up to 70% funding.</p>
+          <div class="ol-tags"><span>New car</span><span>Bike</span></div>
+        </div>
+        <div class="ol-foot">
+          <a href="apply.html?type=auto" class="ol-cta">Check offers <span><i class="fa-solid fa-arrow-right"></i></span></a>
+          <a href="loan.html?type=auto" class="ol-more">Learn more</a>
+        </div>
+      </article>
+      <article class="ol-card" style="--t1:#fff0f4;--t2:#ffd9e4;--ac:#e8205a">
+        <div class="ol-top">
+          <span class="ol-ic"><img src="https://fincoach.com.bd/asset-client/img/deal/home-loan-icon.svg" alt="" /></span>
+          <span class="ol-rate"><small>from</small><b>8.5%</b></span>
+        </div>
+        <div class="ol-body">
+          <h3>Home loans</h3>
+          <p>Buy, build or renovate your home with tenures up to 25 years.</p>
+          <div class="ol-tags"><span>Buy a flat</span><span>Renovate</span></div>
+        </div>
+        <div class="ol-foot">
+          <a href="apply.html?type=home" class="ol-cta">Check offers <span><i class="fa-solid fa-arrow-right"></i></span></a>
+          <a href="loan.html?type=home" class="ol-more">Learn more</a>
+        </div>
+      </article>
+      <article class="ol-card" style="--t1:#f6f0ff;--t2:#e6d9ff;--ac:#7c3aed">
+        <div class="ol-top">
+          <span class="ol-ic"><img src="https://fincoach.com.bd/asset-client/img/deal/debit-card-icon.svg" alt="" /></span>
+          <span class="ol-rate"><b>0% fee yr 1</b></span>
+        </div>
+        <div class="ol-body">
+          <h3>Credit cards</h3>
+          <p>Cashback, rewards, lounge access and annual fee waivers.</p>
+          <div class="ol-tags"><span>Rewards</span><span>Travel</span></div>
+        </div>
+        <div class="ol-foot">
+          <a href="apply.html?type=card" class="ol-cta">Check offers <span><i class="fa-solid fa-arrow-right"></i></span></a>
+          <a href="loan.html?type=card" class="ol-more">Learn more</a>
+        </div>
+      </article>
+      <article class="ol-card" style="--t1:#ecfbf4;--t2:#cdf3e1;--ac:#059669">
+        <div class="ol-top">
+          <span class="ol-ic"><img src="https://fincoach.com.bd/asset-client/img/deal/sme-icon.svg" alt="" /></span>
+          <span class="ol-rate"><small>from</small><b>10.5%</b></span>
+        </div>
+        <div class="ol-body">
+          <h3>SME loans</h3>
+          <p>Working capital and term loans to grow your small business.</p>
+          <div class="ol-tags"><span>Working capital</span><span>Expansion</span></div>
+        </div>
+        <div class="ol-foot">
+          <a href="apply.html?type=sme" class="ol-cta">Check offers <span><i class="fa-solid fa-arrow-right"></i></span></a>
+          <a href="loan.html?type=sme" class="ol-more">Learn more</a>
+        </div>
+      </article>
+      <article class="ol-card" style="--t1:#eef5ff;--t2:#d6e6ff;--ac:#2563eb">
+        <div class="ol-top">
+          <span class="ol-ic"><i class="fa-solid fa-graduation-cap"></i></span>
+          <span class="ol-rate"><small>from</small><b>9.0%</b></span>
+        </div>
+        <div class="ol-body">
+          <h3>Education loans</h3>
+          <p>Tuition, admission and study-abroad costs with flexible repayment.</p>
+          <div class="ol-tags"><span>Tuition</span><span>Study abroad</span></div>
+        </div>
+        <div class="ol-foot">
+          <a href="apply.html?type=education" class="ol-cta">Check offers <span><i class="fa-solid fa-arrow-right"></i></span></a>
+          <a href="loan.html?type=education" class="ol-more">Learn more</a>
+        </div>
+      </article>
+      <article class="ol-card" style="--t1:#fff4ec;--t2:#ffe0cc;--ac:#ea580c">
+        <div class="ol-top">
+          <span class="ol-ic"><i class="fa-solid fa-plane-departure"></i></span>
+          <span class="ol-rate"><small>from</small><b>9.5%</b></span>
+        </div>
+        <div class="ol-body">
+          <h3>Travel loans</h3>
+          <p>Plan Umrah, Hajj or a family holiday and pay in easy instalments.</p>
+          <div class="ol-tags"><span>Umrah &amp; Hajj</span><span>Holidays</span></div>
+        </div>
+        <div class="ol-foot">
+          <a href="apply.html?type=travel" class="ol-cta">Check offers <span><i class="fa-solid fa-arrow-right"></i></span></a>
+          <a href="loan.html?type=travel" class="ol-more">Learn more</a>
+        </div>
+      </article>
+      <article class="ol-card" style="--t1:#fff8e6;--t2:#ffecb8;--ac:#d97706">
+        <div class="ol-top">
+          <span class="ol-ic"><i class="fa-solid fa-piggy-bank"></i></span>
+          <span class="ol-rate"><small>up to</small><b>11%</b></span>
+        </div>
+        <div class="ol-body">
+          <h3>Deposit schemes</h3>
+          <p>Grow your savings with the best FDR and DPS rates in the market.</p>
+          <div class="ol-tags"><span>FDR</span><span>DPS</span></div>
+        </div>
+        <div class="ol-foot">
+          <a href="apply.html?type=deposit" class="ol-cta">Check offers <span><i class="fa-solid fa-arrow-right"></i></span></a>
+          <a href="loan.html?type=deposit" class="ol-more">Learn more</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-between gap-4 mt-6">
+      <p class="text-sm font-semibold text-muted flex items-center gap-2"><i class="fa-solid fa-shield-halved text-brand"></i> Checking your offers won't affect your credit score.</p>
+      <div class="flex items-center gap-3">
+      <button type="button" class="sc-arrow" id="scPrev" aria-label="Previous"><i class="fa-solid fa-arrow-left"></i></button>
+      <button type="button" class="sc-arrow sc-arrow-main" id="scNext" aria-label="Next"><i class="fa-solid fa-arrow-right"></i></button>
       </div>
-      <!-- Business -->
-      <div class="reveal panel bg-ink relative overflow-hidden p-8 md:p-12 text-white min-h-[400px] flex flex-col">
-        <div class="absolute -right-24 -bottom-24 w-80 h-80 rounded-full bg-grad opacity-30 blur-2xl"></div>
-        <span class="eyebrow dark self-start">For Business</span>
-        <h3 class="mt-6 font-head font-extrabold text-3xl md:text-4xl leading-tight max-w-md">SME finance &amp; credit cards that fuel growth</h3>
-        <p class="mt-4 text-white/75 text-lg max-w-md">Working capital, term loans and business cards from leading institutions — matched to your business profile.</p>
-        <div class="mt-auto pt-8 relative z-10">
-          <a href="#products" class="btn btn-primary">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     COMPARE LOANS IN 3 SIMPLE STEPS
+     ========================================================= -->
+<section class="px-2.5 pt-16 md:pt-24">
+  <div class="panel bg-ink text-white relative overflow-hidden">
+    <div class="absolute -right-32 -top-32 w-[28rem] h-[28rem] rounded-full bg-grad opacity-25 blur-3xl"></div>
+    <div class="absolute -left-24 -bottom-24 w-96 h-96 rounded-full border-[40px] border-white/5"></div>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 py-14 md:py-20">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <p class="reveal font-semibold text-[#f7a0bb]">Ready to get started?</p>
+          <h2 class="reveal mt-2 font-head font-extrabold text-[2rem] sm:text-[2.25rem] md:text-[3rem] leading-[1.08]">Compare Loans in 3 Simple Steps</h2>
         </div>
-        <div class="hidden lg:block absolute right-8 bottom-8 z-10 bg-white/10 backdrop-blur border border-white/15 rounded-2xl p-4 w-56">
-          <p class="text-xs text-white/70">SME limit approved</p>
-          <p class="font-head font-extrabold text-2xl">৳ 25,00,000</p>
-          <div class="flex items-end gap-1 h-10 mt-2">
-            <div class="flex-1 rounded bg-white/25" style="height:30%"></div><div class="flex-1 rounded bg-white/25" style="height:55%"></div>
-            <div class="flex-1 rounded bg-white/25" style="height:45%"></div><div class="flex-1 rounded bg-grad" style="height:90%"></div>
-            <div class="flex-1 rounded bg-white/25" style="height:65%"></div>
-          </div>
+        <a href="apply.html" class="reveal btn btn-primary self-start md:self-auto">Get started <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5 mt-10 md:mt-12 steps3">
+        <div class="reveal step3">
+          <span class="step3-ic"><i class="fa-solid fa-file-pen"></i></span>
+          <h3><b>1.</b> Loan details</h3>
+          <p>Tell us how much you need, for how long and what it's for.</p>
+        </div>
+        <div class="reveal step3">
+          <span class="step3-ic"><i class="fa-solid fa-scale-balanced"></i></span>
+          <h3><b>2.</b> See offers</h3>
+          <p>We match you with offers you may qualify for from multiple banks and FIs.</p>
+        </div>
+        <div class="reveal step3">
+          <span class="step3-ic"><i class="fa-solid fa-circle-check"></i></span>
+          <h3><b>3.</b> Select &amp; apply</h3>
+          <p>Pick the offer that fits your plans and apply online — we'll guide you to the finish.</p>
         </div>
       </div>
     </div>
@@ -384,383 +466,494 @@
 </section>
 
 <!-- =========================================================
-     FIND YOUR BEST DEAL — features grid
+     DOWNLOAD APP
      ========================================================= -->
-<section id="products" class="pb-16 md:pb-24">
+<section class="px-2.5 pt-16 md:pt-24">
+  <div class="panel bg-[#f6f7f9] relative overflow-hidden">
+    <div class="app-arc"></div>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-10 items-center">
+      <div class="reveal app-visual">
+        <div class="phone w-[220px] sm:w-[240px] text-left app-v-phone">
+          <div class="phone-screen p-3.5 pb-8">
+            <div class="flex items-center justify-between text-[10px] font-bold px-1"><span>9:41</span><span class="w-16 h-4 rounded-full bg-ink"></span><span><i class="fa-solid fa-signal"></i> <i class="fa-solid fa-battery-full"></i></span></div>
+            <div class="flex items-center gap-2 mt-4">
+              <span class="w-8 h-8 rounded-full bg-grad text-white grid place-items-center text-[10px] font-bold">RA</span>
+              <div><p class="text-[9px] text-muted leading-none">Good morning</p><p class="text-xs font-bold">Rafiq Ahmed</p></div>
+            </div>
+            <div class="loan-card mt-4 p-4 text-white">
+              <p class="text-[10px] text-white/80 relative z-10">Eligible up to</p>
+              <p class="font-head font-extrabold text-xl relative z-10">৳ 8,00,000</p>
+              <div class="mt-2 h-1 rounded-full bg-white/25 relative z-10"><div class="h-full w-[70%] rounded-full bg-white"></div></div>
+            </div>
+            <div class="grid grid-cols-4 gap-1 mt-4 text-center text-[8px] font-semibold">
+              <div><span class="mx-auto w-9 h-9 rounded-xl bg-brand-tint text-brand grid place-items-center text-xs"><i class="fa-solid fa-scale-balanced"></i></span>Compare</div>
+              <div><span class="mx-auto w-9 h-9 rounded-xl bg-brand-tint text-brand grid place-items-center text-xs"><i class="fa-solid fa-file-arrow-up"></i></span>Upload</div>
+              <div><span class="mx-auto w-9 h-9 rounded-xl bg-brand-tint text-brand grid place-items-center text-xs"><i class="fa-solid fa-calculator"></i></span>EMI</div>
+              <div><span class="mx-auto w-9 h-9 rounded-xl bg-brand-tint text-brand grid place-items-center text-xs"><i class="fa-solid fa-location-crosshairs"></i></span>Track</div>
+            </div>
+            <div class="mt-4 rounded-xl bg-[#f7f8fa] p-3 flex items-center gap-2.5">
+              <span class="w-7 h-7 rounded-full bg-green-100 text-green-600 grid place-items-center text-[10px]"><i class="fa-solid fa-check"></i></span>
+              <div><p class="text-[10px] font-bold">Documents verified</p><p class="text-[9px] text-muted">Today, 2:10 PM</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="credit-card app-v-card">
+          <div class="flex items-start justify-between relative z-10"><img src="assets/img/fincoach-logo.png" alt="" class="h-4 brightness-0 invert opacity-95" /><i class="fa-solid fa-wifi rotate-90 text-white/80"></i></div>
+          <div class="chip relative z-10"></div>
+          <p class="relative z-10 font-head font-bold tracking-[.2em] text-[15px] whitespace-nowrap">4231 8890 1547 8739</p>
+          <div class="relative z-10 flex items-end justify-between text-[10px] text-white/80 mt-2"><div><p class="uppercase tracking-wider text-[8px] text-white/60">Card holder</p><p class="font-bold text-white tracking-wider">RAFIQ AHMED</p></div><div class="text-right"><p class="uppercase tracking-wider text-[8px] text-white/60">Expires</p><p class="font-bold text-white">09/29</p></div></div>
+        </div>
+      </div>
+
+      <div class="reveal py-12 lg:py-20">
+        <div class="app-card">
+          <div class="flex items-center gap-3">
+            <div><p class="font-head font-extrabold text-2xl md:text-3xl leading-tight">Download the<br /><span class="text-grad">FinCoach App</span></p></div>
+            <span class="ml-auto w-14 h-14 rounded-2xl bg-brand-tint grid place-items-center"><span class="w-[30px] h-[32px] overflow-hidden"><img src="assets/img/fincoach-logo.png" alt="" class="h-[32px] max-w-none" /></span></span>
+          </div>
+          <p class="mt-3 text-muted">Scan or click to download the app on your mobile.</p>
+          <div class="mt-6 flex flex-col sm:flex-row items-center gap-5">
+            <div class="qr-box"><div id="appQr" aria-label="QR code to download the FinCoach app"></div></div>
+            <span class="text-sm font-bold text-muted">OR</span>
+            <div class="flex flex-col gap-2.5 w-full sm:w-auto">
+              <a href="#" class="store-badge justify-center"><i class="fa-brands fa-google-play text-xl"></i><div><small>GET IT ON</small><span>Google Play</span></div></a>
+              <a href="#" class="store-badge justify-center"><i class="fa-brands fa-apple text-2xl"></i><div><small>Download on the</small><span>App Store</span></div></a>
+            </div>
+          </div>
+          <a href="https://www.youtube.com/watch?v=2QMfR_PKNSI" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-3 font-bold text-ink hover:text-brand">
+            <span class="w-10 h-10 rounded-full bg-grad text-white grid place-items-center text-xs shadow-lg"><i class="fa-solid fa-play ml-0.5"></i></span> Watch tutorial
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     EMI CALCULATOR — premium, wide
+     ========================================================= -->
+<section id="calculator" class="px-2.5 pt-16 md:pt-24">
   <div class="max-w-site mx-auto px-4 md:px-6">
     <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-      <div class="max-w-2xl">
-        <span class="reveal eyebrow">Find your best deal</span>
-        <h2 class="reveal mt-5 font-head font-extrabold text-[2rem] sm:text-4xl md:text-[3.4rem] leading-[1.08]">Every financial product you need, compared in seconds</h2>
-      </div>
-      <p class="reveal text-muted text-lg max-w-md">Simply put your basic information and find out what suits you best — transparent rates, no hidden charges.</p>
-    </div>
-
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 product-grid mt-10 md:mt-14">
-      <a href="#calculator" class="reveal feature">
-        <div class="f-icon"><img src="https://fincoach.com.bd/asset-client/img/deal/personal-loan-icon.svg" alt="" onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'fa-solid fa-user'}))" /></div>
-        <h3 class="mt-6 font-head font-extrabold text-xl">Personal Loan</h3>
-        <p class="mt-2 text-muted">Fund weddings, education, travel or emergencies with flexible tenures.</p>
-        <span class="f-link mt-5">Compare now <i class="fa-solid fa-arrow-right text-xs"></i></span>
-      </a>
-      <a href="#calculator" class="reveal feature">
-        <div class="f-icon"><img src="https://fincoach.com.bd/asset-client/img/deal/car-loan-icon.svg" alt="" onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'fa-solid fa-car'}))" /></div>
-        <h3 class="mt-6 font-head font-extrabold text-xl">Car &amp; Bike Loan</h3>
-        <p class="mt-2 text-muted">Drive home your dream ride with competitive auto financing.</p>
-        <span class="f-link mt-5">Compare now <i class="fa-solid fa-arrow-right text-xs"></i></span>
-      </a>
-      <a href="#calculator" class="reveal feature">
-        <div class="f-icon"><img src="https://fincoach.com.bd/asset-client/img/deal/home-loan-icon.svg" alt="" onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'fa-solid fa-house'}))" /></div>
-        <h3 class="mt-6 font-head font-extrabold text-xl">Home Loan</h3>
-        <p class="mt-2 text-muted">Buy, build or renovate your home with long-tenure home finance.</p>
-        <span class="f-link mt-5">Compare now <i class="fa-solid fa-arrow-right text-xs"></i></span>
-      </a>
-      <a href="#calculator" class="reveal feature">
-        <div class="f-icon"><img src="https://fincoach.com.bd/asset-client/img/deal/debit-card-icon.svg" alt="" onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'fa-solid fa-credit-card'}))" /></div>
-        <h3 class="mt-6 font-head font-extrabold text-xl">Credit Card</h3>
-        <p class="mt-2 text-muted">Find cards with the best rewards, cashback and annual fee waivers.</p>
-        <span class="f-link mt-5">Compare now <i class="fa-solid fa-arrow-right text-xs"></i></span>
-      </a>
-      <a href="#calculator" class="reveal feature">
-        <div class="f-icon"><img src="https://fincoach.com.bd/asset-client/img/deal/sme-icon.svg" alt="" onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'fa-solid fa-store'}))" /></div>
-        <h3 class="mt-6 font-head font-extrabold text-xl">SME Loan</h3>
-        <p class="mt-2 text-muted">Working capital and term loans to scale your small business.</p>
-        <span class="f-link mt-5">Compare now <i class="fa-solid fa-arrow-right text-xs"></i></span>
-      </a>
-      <a href="#calculator" class="reveal feature">
-        <div class="f-icon"><i class="fa-solid fa-piggy-bank"></i></div>
-        <h3 class="mt-6 font-head font-extrabold text-xl">Deposit Schemes</h3>
-        <p class="mt-2 text-muted">Grow your savings with the best FDR and DPS rates in the market.</p>
-        <span class="f-link mt-5">Compare now <i class="fa-solid fa-arrow-right text-xs"></i></span>
-      </a>
-      <a href="#calculator" class="reveal feature">
-        <div class="f-icon"><i class="fa-solid fa-calculator"></i></div>
-        <h3 class="mt-6 font-head font-extrabold text-xl">EMI Calculator</h3>
-        <p class="mt-2 text-muted">Plan ahead — know your monthly instalment before you apply.</p>
-        <span class="f-link mt-5">Calculate <i class="fa-solid fa-arrow-right text-xs"></i></span>
-      </a>
-      <a href="#calculator" class="reveal feature">
-        <div class="f-icon"><i class="fa-solid fa-shield-halved"></i></div>
-        <h3 class="mt-6 font-head font-extrabold text-xl">Eligibility Check</h3>
-        <p class="mt-2 text-muted">See what you qualify for in minutes — no impact on your credit.</p>
-        <span class="f-link mt-5">Check now <i class="fa-solid fa-arrow-right text-xs"></i></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================
-     SECURE / FAST / RELIABLE — split panel
-     ========================================================= -->
-<section class="px-2.5 pb-16 md:pb-24">
-  <div class="panel bg-[#f6f7f9] overflow-hidden">
-    <div class="max-w-site mx-auto px-4 md:px-6 py-16 md:py-24 grid lg:grid-cols-2 gap-14 items-center">
       <div>
-        <span class="reveal eyebrow">Why FinCoach</span>
-        <h2 class="reveal mt-5 font-head font-extrabold text-[2rem] sm:text-4xl md:text-[3.2rem] leading-[1.08]">Secure, Fast &amp; Reliable loan journeys</h2>
-        <p class="reveal mt-5 text-lg text-muted max-w-lg">FinCoach benefits customers and providers alike — promoting financial inclusion and digital empowerment across Bangladesh.</p>
-        <div class="reveal grid sm:grid-cols-2 gap-5 mt-9">
-          <div class="flex gap-3"><span class="check-dot"><i class="fa-solid fa-check"></i></span><p class="font-semibold">Compare offers from multiple banks in one place</p></div>
-          <div class="flex gap-3"><span class="check-dot"><i class="fa-solid fa-check"></i></span><p class="font-semibold">Bank-grade encryption protects your data</p></div>
-          <div class="flex gap-3"><span class="check-dot"><i class="fa-solid fa-check"></i></span><p class="font-semibold">Apply 24/7 from anywhere, at your convenience</p></div>
-          <div class="flex gap-3"><span class="check-dot"><i class="fa-solid fa-check"></i></span><p class="font-semibold">Real-time tracking of every application update</p></div>
+        <span class="reveal eyebrow">EMI Calculator</span>
+        <h2 class="reveal mt-4 font-head font-extrabold text-[2rem] sm:text-[2.25rem] md:text-[3rem] leading-[1.08]">Plan your loan <span class="text-grad">in seconds</span></h2>
+        <p class="reveal mt-3 text-lg text-muted">Move the sliders or type your numbers — your EMI updates instantly.</p>
+      </div>
+      <div class="reveal emi2-types" role="group" aria-label="Loan type">
+        <button type="button" class="active" data-emi-rate="9"><i class="fa-solid fa-user"></i> Personal</button>
+        <button type="button" data-emi-rate="8.5"><i class="fa-solid fa-house"></i> Home</button>
+        <button type="button" data-emi-rate="9.5"><i class="fa-solid fa-car"></i> Auto</button>
+        <button type="button" data-emi-rate="10.5"><i class="fa-solid fa-store"></i> SME</button>
+      </div>
+    </div>
+
+    <div class="reveal emi2 mt-8 md:mt-10">
+      <!-- Inputs -->
+      <div class="emi2-in">
+        <div class="emi2-row">
+          <div class="emi2-head">
+            <label for="amt"><span class="emi2-ic"><i class="fa-solid fa-sack-dollar"></i></span>Loan amount</label>
+            <div class="emi2-box"><span>৳</span><input id="amtIn" inputmode="numeric" aria-label="Loan amount in Taka" /></div>
+          </div>
+          <input id="amt" type="range" class="rng emi2-rng" min="50000" max="10000000" step="10000" value="1000000" aria-label="Loan amount slider" />
+          <div class="emi2-minmax"><span>৳50K</span><span>৳25L</span><span>৳50L</span><span>৳75L</span><span>৳1 Cr</span></div>
         </div>
-        <div class="reveal flex flex-wrap gap-3 mt-10">
-          <a href="#" class="store-badge"><i class="fa-brands fa-google-play text-xl"></i><div><small>GET IT ON</small><span>Google Play</span></div></a>
-          <a href="#" class="store-badge"><i class="fa-brands fa-apple text-2xl"></i><div><small>Download on the</small><span>App Store</span></div></a>
+        <div class="emi2-row">
+          <div class="emi2-head">
+            <label for="ten"><span class="emi2-ic"><i class="fa-regular fa-calendar"></i></span>Loan tenure</label>
+            <div class="emi2-box"><input id="tenIn" inputmode="numeric" aria-label="Loan tenure in months" /><span>months</span></div>
+          </div>
+          <input id="ten" type="range" class="rng emi2-rng" min="6" max="300" step="6" value="60" aria-label="Loan tenure slider" />
+          <div class="emi2-minmax"><span>6 mo</span><span>5 yr</span><span>10 yr</span><span>15 yr</span><span>25 yr</span></div>
         </div>
+        <div class="emi2-row">
+          <div class="emi2-head">
+            <label for="rate"><span class="emi2-ic"><i class="fa-solid fa-percent"></i></span>Interest rate (p.a.)</label>
+            <div class="emi2-box"><input id="rateIn" inputmode="decimal" aria-label="Interest rate" /><span>%</span></div>
+          </div>
+          <input id="rate" type="range" class="rng emi2-rng" min="5" max="24" step="0.1" value="9" aria-label="Interest rate slider" />
+          <div class="emi2-minmax"><span>5%</span><span>10%</span><span>15%</span><span>20%</span><span>24%</span></div>
+        </div>
+        <p class="emi2-note"><i class="fa-solid fa-circle-info"></i> Indicative only. Your final rate depends on the lender and your profile.</p>
       </div>
 
-      <!-- visual -->
-      <div class="reveal relative h-[430px] sm:h-[460px] md:h-[520px] why-visual">
-        <div class="absolute left-1/2 -translate-x-1/2 bottom-0 w-[440px] h-[440px] md:w-[500px] md:h-[500px] rounded-full bg-grad opacity-90"></div>
-        <div class="absolute left-1/2 -translate-x-1/2 bottom-0 w-[340px] h-[340px] md:w-[380px] md:h-[380px] rounded-full border-[18px] border-white/25"></div>
-        <!-- phone -->
-        <div class="phone absolute left-1/2 -translate-x-[70%] top-2 w-[230px] floaty">
-          <div class="phone-screen p-4">
-            <div class="flex items-center justify-between text-[10px] font-bold"><span>9:41</span><span><i class="fa-solid fa-wifi"></i> <i class="fa-solid fa-battery-full"></i></span></div>
-            <p class="font-head font-extrabold text-base mt-4">Track Application</p>
-            <p class="text-[10px] text-muted">ID: FC-2026-08814</p>
-            <div class="mt-4 space-y-3">
-              <div class="flex gap-2.5"><span class="w-5 h-5 rounded-full bg-grad text-white grid place-items-center text-[8px] shrink-0"><i class="fa-solid fa-check"></i></span><div><p class="text-[11px] font-bold">Application submitted</p><p class="text-[9px] text-muted">02 Nov, 10:24 AM</p></div></div>
-              <div class="flex gap-2.5"><span class="w-5 h-5 rounded-full bg-grad text-white grid place-items-center text-[8px] shrink-0"><i class="fa-solid fa-check"></i></span><div><p class="text-[11px] font-bold">Documents verified</p><p class="text-[9px] text-muted">03 Nov, 02:10 PM</p></div></div>
-              <div class="flex gap-2.5"><span class="w-5 h-5 rounded-full border-2 border-brand shrink-0 grid place-items-center"><span class="w-2 h-2 rounded-full bg-brand"></span></span><div><p class="text-[11px] font-bold">Bank assessment</p><p class="text-[9px] text-brand font-semibold">In progress</p></div></div>
-              <div class="flex gap-2.5 opacity-50"><span class="w-5 h-5 rounded-full border-2 border-line shrink-0"></span><div><p class="text-[11px] font-bold">Facility disbursed</p><p class="text-[9px] text-muted">Pending</p></div></div>
-            </div>
-            <div class="loan-card mt-4 p-3 text-white">
-              <p class="text-[9px] text-white/80 relative z-10">Requested amount</p>
-              <p class="font-head font-extrabold relative z-10">৳ 6,50,000</p>
-            </div>
-            <button class="mt-3 w-full rounded-full bg-ink text-white text-[11px] font-bold py-2">View details</button>
+      <!-- Result -->
+      <div class="emi2-out">
+        <span class="emi2-glow"></span>
+        <div class="relative">
+          <p class="text-white/65 font-semibold">Your monthly EMI</p>
+          <p class="emi2-big"><small>৳</small><span id="emi">0</span></p>
+          <p class="text-white/65 text-sm">for <b class="text-white" id="tenTxt">60</b> months</p>
+
+          <div class="emi2-gauge">
+            <svg viewBox="0 0 220 120" aria-hidden="true">
+              <defs><linearGradient id="emiGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f2545b" /><stop offset="1" stop-color="#d63bbd" /></linearGradient></defs>
+              <path d="M20 110 A90 90 0 0 1 200 110" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="18" stroke-linecap="round" />
+              <path id="emiArc" d="M20 110 A90 90 0 0 1 200 110" fill="none" stroke="url(#emiGrad)" stroke-width="18" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100" />
+            </svg>
+            <div class="emi2-gauge-txt"><b id="emiPct">0%</b><span>of total is interest</span></div>
+          </div>
+
+          <dl class="emi2-legend">
+            <div><dt><i class="bg-white/40"></i>Principal</dt><dd>৳<span id="pVal">0</span></dd></div>
+            <div><dt><i class="bg-grad"></i>Total interest</dt><dd>৳<span id="iVal">0</span></dd></div>
+            <div class="is-total"><dt>Total payable</dt><dd>৳<span id="tVal">0</span></dd></div>
+          </dl>
+
+          <div class="grid sm:grid-cols-2 gap-3 mt-7">
+            <a href="apply.html" class="btn btn-primary !py-3.5">Compare &amp; Apply <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="emi-calculator.html#schedule" class="btn emi2-ghost !py-3.5"><i class="fa-solid fa-table-list"></i> Repayment schedule</a>
           </div>
         </div>
-        <!-- card -->
-        <div class="loan-card floaty-2 absolute right-0 md:-right-2 top-[270px] w-[250px] p-5 text-white shadow-2xl rotate-[-8deg]">
-          <div class="flex justify-between relative z-10"><span class="text-xs font-bold">FinCoach</span><i class="fa-solid fa-wifi rotate-90"></i></div>
-          <div class="w-9 h-7 rounded-md bg-yellow-200/80 mt-5 relative z-10"></div>
-          <p class="font-head font-bold tracking-[.2em] mt-4 relative z-10">4231 •••• •••• 8739</p>
-          <div class="flex justify-between mt-3 text-[10px] text-white/80 relative z-10"><span>RAFIQ AHMED</span><span>09/29</span></div>
-        </div>
-        <div class="float-chip absolute left-0 bottom-16 px-4 py-3 flex items-center gap-3 floaty-2">
-          <span class="w-10 h-10 rounded-xl bg-brand-tint text-brand grid place-items-center"><i class="fa-solid fa-lock"></i></span>
-          <div><p class="text-xs text-muted font-semibold">256-bit SSL</p><p class="font-head font-extrabold">Secure &amp; Private</p></div>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================
-     COUNTERS
+     STATS — Wallex style (centred, dot below)
      ========================================================= -->
-<section class="pb-16 md:pb-24">
+<section class="pt-16 md:pt-24">
   <div class="max-w-site mx-auto px-4 md:px-6">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-y-10 lg:divide-x divide-line">
-      <div class="reveal text-center px-4 py-6 lg:py-0 rounded-3xl bg-[#f7f8fa] lg:bg-transparent"><p class="stat-num"><span class="text-grad" data-count="6">0</span><span class="text-grad">+</span></p><p class="mt-3 font-semibold text-muted">Partner Banks &amp; FIs</p></div>
-      <div class="reveal text-center px-4 py-6 lg:py-0 rounded-3xl bg-[#f7f8fa] lg:bg-transparent"><p class="stat-num"><span class="text-grad" data-count="25">0</span><span class="text-grad">K+</span></p><p class="mt-3 font-semibold text-muted">Applications Processed</p></div>
-      <div class="reveal text-center px-4 py-6 lg:py-0 rounded-3xl bg-[#f7f8fa] lg:bg-transparent"><p class="stat-num"><span class="text-grad" data-count="98">0</span><span class="text-grad">%</span></p><p class="mt-3 font-semibold text-muted">Positive Reviews</p></div>
-      <div class="reveal text-center px-4 py-6 lg:py-0 rounded-3xl bg-[#f7f8fa] lg:bg-transparent"><p class="stat-num"><span class="text-grad" data-count="24">0</span><span class="text-grad">/7</span></p><p class="mt-3 font-semibold text-muted">Online Support</p></div>
+    <div class="st3 grid grid-cols-2 lg:grid-cols-4 gap-y-10">
+      <div class="reveal"><p class="st3-num"><span data-count="98">0</span><sup>%</sup></p><p class="st3-lbl">Positive Reviews</p><i class="st3-dot"></i></div>
+      <div class="reveal"><p class="st3-num"><span data-count="25">0</span><sup>K+</sup></p><p class="st3-lbl">Applications Processed</p><i class="st3-dot"></i></div>
+      <div class="reveal"><p class="st3-num"><span data-count="6">0</span><sup>+</sup></p><p class="st3-lbl">Partner Banks &amp; FIs</p><i class="st3-dot"></i></div>
+      <div class="reveal"><p class="st3-num"><span data-count="24">0</span><sup>/7</sup></p><p class="st3-lbl">Online Application</p><i class="st3-dot"></i></div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================
-     TESTIMONIALS
+     TESTIMONIAL — Wallex style (slanted outline card, person breaks out)
      ========================================================= -->
-<section class="pb-16 md:pb-24">
+<section class="pt-16 md:pt-24">
   <div class="max-w-site mx-auto px-4 md:px-6">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-      <div class="max-w-2xl">
-        <span class="reveal eyebrow">Testimonials</span>
-        <h2 class="reveal mt-5 font-head font-extrabold text-[2rem] sm:text-4xl md:text-[3.2rem] leading-[1.08]">Loved by borrowers across Bangladesh</h2>
-      </div>
-      <div class="reveal flex gap-3">
-        <button id="tPrev" class="w-12 h-12 rounded-full border border-line grid place-items-center hover:bg-ink hover:text-white transition" aria-label="Previous"><i class="fa-solid fa-arrow-left"></i></button>
-        <button id="tNext" class="w-12 h-12 rounded-full bg-grad text-white grid place-items-center hover:opacity-90 transition" aria-label="Next"><i class="fa-solid fa-arrow-right"></i></button>
-      </div>
-    </div>
-    <div class="reveal mt-8 md:mt-12 overflow-hidden -mx-3">
-      <div class="t-track" id="tTrack">
-        <div class="t-slide"><div class="t-card h-full flex flex-col">
-          <div class="flex justify-between items-start"><i class="fa-solid fa-quote-left text-4xl text-grad"></i><span class="text-amber-400 text-sm">★★★★★</span></div>
-          <p class="mt-6 text-lg font-medium text-ink-2 leading-relaxed">I compared five personal loan offers in under ten minutes and got approved by IPDC within a week. FinCoach made it effortless!</p>
-          <div class="mt-auto pt-8 flex items-center gap-3"><span class="w-12 h-12 rounded-full bg-grad text-white grid place-items-center font-bold">NS</span><div><p class="font-head font-extrabold">Nusrat Sultana</p><p class="text-sm text-muted">Software Engineer, Dhaka</p></div></div>
-        </div></div>
-        <div class="t-slide"><div class="t-card h-full flex flex-col">
-          <div class="flex justify-between items-start"><i class="fa-solid fa-quote-left text-4xl text-grad"></i><span class="text-amber-400 text-sm">★★★★★</span></div>
-          <p class="mt-6 text-lg font-medium text-ink-2 leading-relaxed">As a small business owner I never had time to visit banks. I applied for SME finance at midnight and tracked everything from my phone.</p>
-          <div class="mt-auto pt-8 flex items-center gap-3"><span class="w-12 h-12 rounded-full bg-ink text-white grid place-items-center font-bold">KH</span><div><p class="font-head font-extrabold">Kamrul Hasan</p><p class="text-sm text-muted">Retail Owner, Chattogram</p></div></div>
-        </div></div>
-        <div class="t-slide"><div class="t-card h-full flex flex-col">
-          <div class="flex justify-between items-start"><i class="fa-solid fa-quote-left text-4xl text-grad"></i><span class="text-amber-400 text-sm">★★★★★</span></div>
-          <p class="mt-6 text-lg font-medium text-ink-2 leading-relaxed">Transparent rates and zero hidden charges. The EMI calculator helped me pick the perfect tenure for my home loan.</p>
-          <div class="mt-auto pt-8 flex items-center gap-3"><span class="w-12 h-12 rounded-full bg-grad text-white grid place-items-center font-bold">FR</span><div><p class="font-head font-extrabold">Farhana Rahman</p><p class="text-sm text-muted">Banker, Sylhet</p></div></div>
-        </div></div>
-        <div class="t-slide"><div class="t-card h-full flex flex-col">
-          <div class="flex justify-between items-start"><i class="fa-solid fa-quote-left text-4xl text-grad"></i><span class="text-amber-400 text-sm">★★★★★</span></div>
-          <p class="mt-6 text-lg font-medium text-ink-2 leading-relaxed">Got my first credit card through FinCoach with an annual fee waiver. Support team was quick and genuinely helpful.</p>
-          <div class="mt-auto pt-8 flex items-center gap-3"><span class="w-12 h-12 rounded-full bg-ink text-white grid place-items-center font-bold">TI</span><div><p class="font-head font-extrabold">Tanvir Islam</p><p class="text-sm text-muted">Marketing Lead, Dhaka</p></div></div>
-        </div></div>
+    <div class="reveal tw3">
+      <svg class="tw3-frame" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 400 L0 34 Q0 2 32 3 L948 46 Q984 48 974 82 L912 300" vector-effect="non-scaling-stroke" />
+      </svg>
+      <div class="tw3-grid">
+        <div class="tw3-text">
+          <i class="fa-solid fa-quote-left tw3-q"></i>
+          <div class="tw-stack" id="twTexts">
+            <p class="tw-item is-active tw3-quote">I compared five personal loan offers in ten minutes and got approved within a week — no hidden charges, no running between banks.</p>
+            <p class="tw-item tw3-quote" aria-hidden="true">As a small business owner I never had time to visit banks. I applied for SME finance at midnight and tracked every step from my phone.</p>
+            <p class="tw-item tw3-quote" aria-hidden="true">The EMI calculator helped me pick the right tenure for my home loan. Transparent rates and a genuinely helpful team.</p>
+          </div>
+          <div class="flex items-center gap-2 mt-8">
+            <button type="button" class="tw3-nav" id="twPrev" aria-label="Previous review"><i class="fa-solid fa-chevron-left"></i></button>
+            <button type="button" class="tw3-nav" id="twNext" aria-label="Next review"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+        <div class="tw3-media">
+          <span class="tw3-blob"></span>
+          <div class="tw-stack tw3-photos" id="twPhotos">
+            <img class="is-active" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=700&q=75&auto=format&fit=crop" alt="Nusrat Sultana" />
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=700&q=75&auto=format&fit=crop" alt="Kamrul Hasan" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=700&q=75&auto=format&fit=crop" alt="Farhana Rahman" loading="lazy" />
+          </div>
+        </div>
+        <div class="tw-stack tw3-names" id="twNames">
+          <p class="is-active"><b>Nusrat Sultana</b><span>Software Engineer, Dhaka</span></p>
+          <p><b>Kamrul Hasan</b><span>Retail Owner, Chattogram</span></p>
+          <p><b>Farhana Rahman</b><span>Banker, Sylhet</span></p>
+        </div>
       </div>
     </div>
-    <div class="flex justify-center gap-2 mt-8" id="tDots"></div>
   </div>
 </section>
 
 <!-- =========================================================
-     EMI CALCULATOR
+     BLOG — Wallex style (Prev / Next, tag on image)
      ========================================================= -->
-<section id="calculator" class="px-2.5 pb-16 md:pb-24">
-  <div class="panel bg-[#f6f7f9]">
-    <div class="max-w-site mx-auto px-4 md:px-6 py-16 md:py-24">
-      <div class="text-center max-w-3xl mx-auto">
-        <span class="reveal eyebrow">Plan ahead</span>
-        <h2 class="reveal mt-5 font-head font-extrabold text-[2rem] sm:text-4xl md:text-[3.4rem] leading-[1.08]">Know your EMI before you apply</h2>
-        <p class="reveal mt-4 text-lg text-muted">Adjust the amount, rate and tenure to see your monthly instalment instantly.</p>
+<section id="blog" class="pt-16 md:pt-24 pb-16 md:pb-24">
+  <div class="max-w-site mx-auto px-4 md:px-6">
+    <div class="flex items-end justify-between gap-6">
+      <h2 class="reveal font-head font-extrabold text-[2rem] sm:text-[2.25rem] md:text-[2.8rem] leading-[1.08]">Our latest blog</h2>
+      <div class="reveal flex items-center gap-2 shrink-0">
+        <button type="button" class="bl3-btn" id="blPrev"><i class="fa-solid fa-chevron-left text-xs"></i> Prev</button>
+        <button type="button" class="bl3-btn bl3-next" id="blNext">Next <i class="fa-solid fa-chevron-right text-xs"></i></button>
       </div>
+    </div>
+    <div class="bl3-track mt-8 md:mt-10" id="blTrack">
+      <a href="blog-post.html" class="bl3-card"><div class="bl3-img"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=70&auto=format&fit=crop" alt="" loading="lazy" /><span class="bl3-tag">News</span></div><h3>FinCoach signs an agreement with IPDC Finance PLC.</h3><p>More personal and home loan options are now available to FinCoach customers…</p></a>
+      <a href="blog-post.html" class="bl3-card"><div class="bl3-img"><img src="https://images.unsplash.com/photo-1607863680198-23d4b2565df0?w=700&q=70&auto=format&fit=crop" alt="" loading="lazy" /><span class="bl3-tag">Savings</span></div><h3>FDR vs DPS: which deposit suits your goals?</h3><p>A simple guide to choosing the right savings scheme for you and your family…</p></a>
+      <a href="blog-post.html" class="bl3-card"><div class="bl3-img"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&q=70&auto=format&fit=crop" alt="" loading="lazy" /><span class="bl3-tag">Guides</span></div><h3>What do you need to apply for a loan in Bangladesh?</h3><p>Documents, eligibility rules and practical tips to get approved faster…</p></a>
+      <a href="blog-post.html" class="bl3-card"><div class="bl3-img"><img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=700&q=70&auto=format&fit=crop" alt="" loading="lazy" /><span class="bl3-tag">News</span></div><h3>FinCoach partners with NCC Bank PLC.</h3><p>NCC Bank's loans and cards can now be compared and applied for on FinCoach…</p></a>
+      <a href="blog-post.html" class="bl3-card"><div class="bl3-img"><img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=700&q=70&auto=format&fit=crop" alt="" loading="lazy" /><span class="bl3-tag">Guides</span></div><h3>5 ways to improve your loan eligibility</h3><p>Simple steps that make lenders say yes more often…</p></a>
+    </div>
+  </div>
+</section>
 
-      <!-- EMI calculator -->
-      <div class="reveal mt-8 md:mt-12 bg-white rounded-[28px] border border-line p-5 md:p-10 grid lg:grid-cols-5 gap-8 md:gap-10">
-        <div class="lg:col-span-3">
-          <h3 class="font-head font-extrabold text-2xl md:text-3xl">EMI Calculator</h3>
-          <p class="text-muted mt-1">Plan your repayment before you apply.</p>
-          <div class="mt-8 space-y-8">
-            <div>
-              <div class="flex justify-between font-semibold"><label for="amt">Loan amount</label><span class="font-head font-extrabold text-lg">৳ <span id="amtVal"></span></span></div>
-              <input id="amt" type="range" class="rng mt-3" min="50000" max="5000000" step="10000" value="800000" />
-            </div>
-            <div>
-              <div class="flex justify-between font-semibold"><label for="rate">Interest rate (p.a.)</label><span class="font-head font-extrabold text-lg"><span id="rateVal"></span>%</span></div>
-              <input id="rate" type="range" class="rng mt-3" min="7" max="18" step="0.25" value="9" />
-            </div>
-            <div>
-              <div class="flex justify-between font-semibold"><label for="ten">Tenure</label><span class="font-head font-extrabold text-lg"><span id="tenVal"></span> months</span></div>
-              <input id="ten" type="range" class="rng mt-3" min="6" max="120" step="6" value="36" />
+<!-- =========================================================
+     ALTERNATIVE HEROES (switched off). To use one, move its <section> out of the
+     <template> and remove the active hero slider at the top of <main>.
+     ========================================================= -->
+<template id="heroSplitAlt">
+<!-- =========================================================
+     HERO — clean split: copy on the left, S-curve visual on the right
+     ========================================================= -->
+<section class="px-2.5 pt-2.5" id="heroSplit">
+  <div class="hero-v3 hero-v4 panel relative overflow-hidden">
+    <div class="absolute inset-0 hero-v3-bg pointer-events-none"></div>
+
+    <!-- RIGHT: S-curve brand shape (desktop) -->
+    <div class="hero-wave hidden lg:block" aria-hidden="true">
+      <svg viewBox="0 0 640 800" preserveAspectRatio="none" class="absolute inset-0 w-full h-full">
+        <defs>
+          <linearGradient id="hwGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f2545b" />
+            <stop offset=".45" stop-color="#e8205a" />
+            <stop offset="1" stop-color="#b0188a" />
+          </linearGradient>
+        </defs>
+        <path class="wave-back" fill="#e8205a" fill-opacity=".12" d="M70 0 C -10 140, 170 260, 60 400 C -40 540, 120 660, 30 800 L 640 800 L 640 0 Z" />
+        <path class="wave-front" fill="url(#hwGrad)" d="M120 0 C 40 140, 220 260, 110 400 C 10 540, 170 660, 80 800 L 640 800 L 640 0 Z" />
+      </svg>
+      <div class="hero-wave-deco">
+        <span class="ring ring-1"></span><span class="ring ring-2"></span>
+        <span class="glow"></span>
+      </div>
+    </div>
+
+    <div class="relative max-w-site mx-auto px-4 md:px-6">
+      <div class="grid lg:grid-cols-2 lg:gap-16 items-center lg:min-h-[600px]">
+
+        <!-- LEFT: copy -->
+        <div class="pt-12 md:pt-16 lg:py-16 relative z-10 max-w-[540px]">
+          <h1 class="font-head font-black text-[2.5rem] leading-[1.03] sm:text-[3.3rem] lg:text-[3.7rem] xl:text-[4.1rem] text-ink tracking-[-0.035em]" data-aos="fade-up">
+            Apply for any loan,<br /><span class="text-grad">smarter &amp; faster</span>
+          </h1>
+          <p class="mt-5 text-lg text-muted max-w-md" data-aos="fade-up" data-aos-delay="100">
+            Compare offers from Bangladesh's leading Banks &amp; FIs — free and paperless.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3" data-aos="fade-up" data-aos-delay="180">
+            <a href="#products" class="btn btn-primary !px-8 !py-4">Compare &amp; Apply <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#calculator" class="btn btn-white !px-7 !py-4 shadow-sm"><i class="fa-solid fa-calculator text-brand"></i> Check EMI</a>
+          </div>
+          <div class="mt-9 flex items-center gap-3" data-aos="fade-up" data-aos-delay="260">
+            <span class="flex -space-x-2">
+              <span class="ava-lg bg-grad">NS</span><span class="ava-lg bg-ink">KH</span><span class="ava-lg" style="background:#f2545b">FR</span>
+            </span>
+            <div class="leading-tight">
+              <p class="text-amber-400 text-sm">★★★★★</p>
+              <p class="text-sm text-muted"><b class="text-ink">25,000+</b> happy borrowers</p>
             </div>
           </div>
         </div>
-        <div class="lg:col-span-2 bg-ink rounded-[24px] p-6 md:p-8 text-white relative overflow-hidden flex flex-col">
-          <div class="absolute -right-16 -top-16 w-56 h-56 rounded-full bg-grad opacity-40 blur-2xl"></div>
-          <p class="text-white/70 font-semibold relative">Monthly EMI</p>
-          <p class="font-head font-extrabold text-5xl mt-2 relative">৳ <span id="emi">0</span></p>
-          <div class="mt-8 space-y-3 text-[15px] relative">
-            <div class="flex justify-between"><span class="text-white/70">Principal</span><b>৳ <span id="pVal"></span></b></div>
-            <div class="flex justify-between"><span class="text-white/70">Total interest</span><b>৳ <span id="iVal"></span></b></div>
-            <div class="h-px bg-white/15"></div>
-            <div class="flex justify-between"><span class="text-white/70">Total payable</span><b>৳ <span id="tVal"></span></b></div>
+
+        <!-- RIGHT: visual (stays inside the pink shape) -->
+        <div class="relative hero-visual">
+          <div class="hero-wave-m lg:hidden" aria-hidden="true">
+            <svg viewBox="0 0 400 120" preserveAspectRatio="none" class="absolute -top-px left-0 w-full h-[70px] sm:h-[90px]">
+              <path fill="#fff7fa" d="M0 0 H400 V40 C 320 110, 240 0, 160 60 C 100 105, 40 40, 0 80 Z" />
+            </svg>
           </div>
-          <a href="login.html" class="btn btn-primary mt-8 lg:mt-auto w-full relative">Check Eligibility <i class="fa-solid fa-arrow-right"></i></a>
+
+          <div class="hero-scene" data-aos="fade-left" data-aos-delay="150" data-aos-duration="1000">
+            <div class="hv-card" id="heroCard">
+              <div class="credit-card">
+                <div class="flex items-start justify-between relative z-10">
+                  <img src="assets/img/fincoach-logo.png" alt="" class="h-4 brightness-0 invert opacity-95" />
+                  <i class="fa-solid fa-wifi rotate-90 text-white/80"></i>
+                </div>
+                <div class="chip relative z-10"></div>
+                <p class="relative z-10 font-head font-bold tracking-[.2em] text-[15px] lg:text-lg whitespace-nowrap">4231 8890 1547 8739</p>
+                <div class="relative z-10 flex items-end justify-between text-[10px] text-white/80 mt-2">
+                  <div><p class="uppercase tracking-wider text-[8px] text-white/60">Card holder</p><p class="font-bold text-white tracking-wider">RAFIQ AHMED</p></div>
+                  <div class="text-right"><p class="uppercase tracking-wider text-[8px] text-white/60">Expires</p><p class="font-bold text-white">09/29</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hv-phone" id="heroPhone">
+              <div class="phone w-[230px] sm:w-[240px] text-left">
+                <div class="phone-screen p-3.5">
+                  <div class="flex items-center justify-between text-[10px] font-bold px-1"><span>9:41</span><span class="w-16 h-4 rounded-full bg-ink"></span><span><i class="fa-solid fa-signal"></i> <i class="fa-solid fa-battery-full"></i></span></div>
+                  <div class="flex items-center gap-2 mt-3">
+                    <span class="w-8 h-8 rounded-full bg-grad text-white grid place-items-center text-[10px] font-bold">RA</span>
+                    <div><p class="text-[9px] text-muted leading-none">Good morning</p><p class="text-xs font-bold">Rafiq Ahmed</p></div>
+                  </div>
+                  <div class="loan-card mt-3 p-3.5 text-white">
+                    <p class="text-[10px] text-white/80 relative z-10">Eligible up to</p>
+                    <p class="font-head font-extrabold text-xl relative z-10">৳ 8,00,000</p>
+                    <div class="mt-2 h-1 rounded-full bg-white/25 relative z-10"><div class="h-full w-[72%] rounded-full bg-white"></div></div>
+                  </div>
+                  <p class="text-[10px] font-bold mt-4">Best offers today</p>
+                  <div class="mt-1.5 space-y-1.5">
+                    <div class="flex items-center justify-between bg-[#f7f8fa] rounded-lg px-2.5 py-2 text-[10px]"><span class="font-semibold flex items-center gap-1.5"><img src="assets/img/partners/p1.png" alt="" class="h-3.5" />IPDC</span><span class="text-brand font-bold">9.0%</span></div>
+                    <div class="flex items-center justify-between bg-[#f7f8fa] rounded-lg px-2.5 py-2 text-[10px]"><span class="font-semibold flex items-center gap-1.5"><img src="assets/img/partners/p5.jpg" alt="" class="h-3.5" />NCC Bank</span><span class="text-brand font-bold">9.5%</span></div>
+                    <div class="flex items-center justify-between bg-[#f7f8fa] rounded-lg px-2.5 py-2 text-[10px]"><span class="font-semibold flex items-center gap-1.5"><img src="assets/img/partners/p2.jpg" alt="" class="h-3.5" />City Bank</span><span class="text-brand font-bold">9.75%</span></div>
+                  </div>
+                  <div class="mt-3 rounded-xl bg-ink text-white text-center text-[11px] font-bold py-2.5">Apply now</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="float-chip hero-chip hv-chip-1 flex items-center gap-3 px-4 py-3 text-left">
+              <span class="w-10 h-10 rounded-xl bg-green-100 text-green-600 grid place-items-center"><i class="fa-solid fa-circle-check"></i></span>
+              <div><p class="text-xs text-muted font-semibold">Loan approved</p><p class="font-head font-extrabold">৳ 5,00,000</p></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+</template>
+<template id="heroWallexAlt">
 <!-- =========================================================
-     HOW IT WORKS — steps
+     HERO — compact, Wallex-style stage with curved arc + devices
      ========================================================= -->
-<section id="how" class="pb-16 md:pb-24">
-  <div class="max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-14 items-center">
-    <div>
-      <span class="reveal eyebrow">How it works</span>
-      <h2 class="reveal mt-5 font-head font-extrabold text-[2rem] sm:text-4xl md:text-[3.2rem] leading-[1.08]">How do you start with us? Just 4 simple steps</h2>
-      <div class="mt-10 space-y-2" id="steps">
-        <div class="reveal step active" data-step="0">
-          <span class="step-num">01</span>
-          <div><h3 class="font-head font-extrabold text-xl">Choose Your Loan</h3><p class="text-muted mt-1">Just a few clicks! Simply put your basic information and find out what suits you best.</p></div>
-        </div>
-        <div class="reveal step" data-step="1">
-          <span class="step-num">02</span>
-          <div><h3 class="font-head font-extrabold text-xl">Create Account</h3><p class="text-muted mt-1">Sign up — it's totally free! Your account manages your application and keeps track of every update.</p></div>
-        </div>
-        <div class="reveal step" data-step="2">
-          <span class="step-num">03</span>
-          <div><h3 class="font-head font-extrabold text-xl">Submit Your Application</h3><p class="text-muted mt-1">Complete the form with necessary documents. Apply anytime (24/7) from anywhere at your convenience.</p></div>
-        </div>
-        <div class="reveal step" data-step="3">
-          <span class="step-num">04</span>
-          <div><h3 class="font-head font-extrabold text-xl">Get Your Facility</h3><p class="text-muted mt-1">Enjoy your desired facility or receive feedback on how to improve your eligibility for the future.</p></div>
-        </div>
+<section class="px-2.5 pt-2.5" id="heroWallex">
+  <div class="hero-bg hero-v2 panel relative overflow-hidden">
+    <div class="grid-lines absolute inset-0 pointer-events-none"></div>
+    <div class="hero-dots absolute inset-0 pointer-events-none"></div>
+    <span class="hero-blob hero-blob-1"></span>
+    <span class="hero-blob hero-blob-2"></span>
+
+    <!-- Copy -->
+    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-10 md:pt-12 text-center">
+      <h1 class="font-head font-extrabold text-[2.3rem] leading-[1.05] sm:text-5xl lg:text-[4.2rem] text-ink max-w-4xl mx-auto tracking-[-0.035em]" data-aos="fade-up" data-aos-delay="80">
+        Apply for Any Loan,<br class="hidden sm:block" /> <span class="text-grad">Smarter &amp; Faster</span>
+      </h1>
+      <p class="mt-5 text-base md:text-lg text-muted max-w-xl mx-auto font-medium" data-aos="fade-up" data-aos-delay="160">
+        The easy way to compare offers, check eligibility and apply for loans &amp; credit cards from Bangladesh's leading Banks and FIs.
+      </p>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 max-w-xs sm:max-w-none mx-auto" data-aos="fade-up" data-aos-delay="240">
+        <a href="#products" class="btn btn-primary !px-8 !py-4">Compare &amp; Apply <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="mt-7 flex flex-wrap justify-center gap-x-7 gap-y-2.5 text-sm hero-checks" data-aos="fade-up" data-aos-delay="300">
+        <span class="hero-check"><i class="fa-solid fa-check"></i> 100% free to apply</span>
+        <span class="hero-check"><i class="fa-solid fa-check"></i> 6+ Partner Banks &amp; FIs</span>
+        <span class="hero-check"><i class="fa-solid fa-check"></i> 24/7 online application</span>
       </div>
     </div>
 
-    <div class="reveal panel bg-grad relative overflow-hidden min-h-[440px] md:min-h-[520px] p-5 md:p-12 flex items-center justify-center">
-      <div class="absolute -left-20 -top-20 w-72 h-72 rounded-full bg-white/10"></div>
-      <div class="absolute -right-24 -bottom-24 w-96 h-96 rounded-full border-[30px] border-white/10"></div>
-      <div class="relative w-full max-w-sm bg-white rounded-[26px] p-7 shadow-2xl" id="stepVisual">
-        <!-- filled by JS -->
+    <!-- Stage: arc + devices (clipped by the panel bottom) -->
+    <div class="hero-stage relative mt-6 md:mt-8">
+      <div class="hero-arc" aria-hidden="true"><span class="hero-arc-ring"></span><span class="arc-bubble b1"></span><span class="arc-bubble b2"></span><span class="arc-bubble b3"></span><span class="arc-bubble b4"></span></div>
+
+      <div class="hero-devices" data-aos="fade-up" data-aos-delay="350" data-aos-duration="1000">
+        <!-- Laptop / web dashboard -->
+        <div class="laptop" id="heroLaptop">
+          <div class="laptop-screen">
+            <div class="flex h-full">
+              <!-- sidebar -->
+              <aside class="hidden md:flex flex-col w-[150px] lg:w-[170px] shrink-0 border-r border-line p-3 gap-1 text-left">
+                <span class="h-5 mb-4 mt-1"></span>
+                <span class="side-item active"><i class="fa-solid fa-grip"></i> Dashboard</span>
+                <span class="side-item"><i class="fa-solid fa-scale-balanced"></i> Compare</span>
+                <span class="side-item"><i class="fa-solid fa-file-signature"></i> Applications</span>
+                <span class="side-item"><i class="fa-solid fa-calculator"></i> EMI Planner</span>
+                <span class="side-item"><i class="fa-regular fa-credit-card"></i> Cards</span>
+                <span class="side-item"><i class="fa-solid fa-gear"></i> Settings</span>
+              </aside>
+              <!-- main -->
+              <div class="flex-1 min-w-0 p-3 md:p-4 text-left">
+                <div class="flex items-center justify-between gap-3">
+                  <p class="font-head font-extrabold text-sm md:text-base">Dashboard</p>
+                  <div class="hidden sm:flex items-center gap-2 bg-[#f5f6f9] rounded-full px-3 py-1.5 text-[10px] text-muted w-44"><i class="fa-solid fa-magnifying-glass"></i> Search loans, banks…</div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-full bg-[#f5f6f9] grid place-items-center text-[10px] text-muted"><i class="fa-regular fa-bell"></i></span>
+                    <span class="w-7 h-7 rounded-full bg-grad text-white grid place-items-center text-[10px] font-bold">RA</span>
+                  </div>
+                </div>
+                <div class="grid grid-cols-12 gap-2.5 mt-3">
+                  <div class="col-span-12 sm:col-span-5 loan-card p-4 text-white min-h-[120px] flex flex-col justify-between">
+                    <div class="flex items-center justify-between relative z-10"><span class="text-[10px] font-semibold text-white/80">Active Personal Loan</span><i class="fa-solid fa-wifi rotate-90 text-white/80 text-xs"></i></div>
+                    <div class="relative z-10">
+                      <p class="text-[10px] text-white/70">Outstanding</p>
+                      <p class="font-head text-xl md:text-2xl font-extrabold">৳ 3,42,600</p>
+                      <div class="mt-2 h-1 rounded-full bg-white/25"><div class="h-full w-[62%] rounded-full bg-white"></div></div>
+                    </div>
+                  </div>
+                  <div class="col-span-12 sm:col-span-7 grid grid-cols-3 gap-2.5">
+                    <div class="mock-card p-3"><span class="text-[9px] font-bold text-green-700 bg-green-100 rounded px-1.5 py-0.5">+12%</span><p class="font-head text-lg font-extrabold mt-2">742</p><p class="text-[10px] text-muted">Credit score</p></div>
+                    <div class="mock-card p-3"><span class="text-[9px] font-bold text-brand bg-brand-tint rounded px-1.5 py-0.5">Due 5th</span><p class="font-head text-lg font-extrabold mt-2">৳12,450</p><p class="text-[10px] text-muted">Next EMI</p></div>
+                    <div class="mock-card p-3"><span class="text-[9px] font-bold text-blue-700 bg-blue-100 rounded px-1.5 py-0.5">3 offers</span><p class="font-head text-lg font-extrabold mt-2">9.0%</p><p class="text-[10px] text-muted">Lowest rate</p></div>
+                  </div>
+                  <div class="col-span-12 md:col-span-8 mock-card p-3">
+                    <div class="flex items-center justify-between"><p class="text-xs font-bold">Repayment flow</p><span class="text-[9px] text-muted border border-line rounded-full px-2 py-0.5">2026</span></div>
+                    <div class="flex items-end gap-1.5 h-20 mt-2 hero-bars">
+                      <div class="bar flex-1" style="height:40%"></div><div class="bar flex-1" style="height:62%"></div><div class="bar flex-1" style="height:48%"></div><div class="bar on flex-1" style="height:85%"></div>
+                      <div class="bar flex-1" style="height:55%"></div><div class="bar flex-1" style="height:70%"></div><div class="bar flex-1" style="height:45%"></div><div class="bar on flex-1" style="height:95%"></div>
+                      <div class="bar flex-1" style="height:60%"></div><div class="bar flex-1" style="height:74%"></div><div class="bar flex-1" style="height:52%"></div><div class="bar flex-1" style="height:66%"></div>
+                    </div>
+                  </div>
+                  <div class="hidden md:block col-span-4 mock-card p-3">
+                    <p class="text-xs font-bold">Application</p>
+                    <ul class="mt-2 space-y-2 text-[10px]">
+                      <li class="flex items-center gap-2"><span class="w-3.5 h-3.5 rounded-full bg-grad text-white grid place-items-center text-[6px]"><i class="fa-solid fa-check"></i></span>Submitted</li>
+                      <li class="flex items-center gap-2"><span class="w-3.5 h-3.5 rounded-full bg-grad text-white grid place-items-center text-[6px]"><i class="fa-solid fa-check"></i></span>Verified</li>
+                      <li class="flex items-center gap-2"><span class="w-3.5 h-3.5 rounded-full border-2 border-brand"></span><b>Bank review</b></li>
+                      <li class="flex items-center gap-2 text-muted"><span class="w-3.5 h-3.5 rounded-full border-2 border-line"></span>Disbursed</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone (left) -->
+        <div class="hero-phone-wrap hidden md:block" id="heroPhone">
+          <div class="phone w-[200px] lg:w-[220px] text-left">
+            <div class="phone-screen p-3">
+              <div class="flex items-center justify-between text-[10px] font-bold px-1"><span>9:41</span><span class="w-16 h-4 rounded-full bg-ink"></span><span><i class="fa-solid fa-signal"></i> <i class="fa-solid fa-battery-full"></i></span></div>
+              <div class="flex items-center gap-2 mt-3">
+                <span class="w-7 h-7 rounded-full bg-grad text-white grid place-items-center text-[9px] font-bold">RA</span>
+                <div><p class="text-[9px] text-muted leading-none">Good morning</p><p class="text-[11px] font-bold">Rafiq Ahmed</p></div>
+                <span class="ml-auto w-6 h-6 rounded-full bg-[#f5f6f9] grid place-items-center text-[9px] text-muted"><i class="fa-regular fa-bell"></i></span>
+              </div>
+              <div class="loan-card mt-3 p-3 text-white">
+                <p class="text-[9px] text-white/80 relative z-10">Eligible up to</p>
+                <p class="font-head font-extrabold text-lg relative z-10">৳ 8,00,000</p>
+                <p class="text-[9px] mt-2 text-white/80 relative z-10">Pre-approved · 3 banks</p>
+              </div>
+              <div class="grid grid-cols-4 gap-1 mt-3 text-center text-[8px] font-semibold">
+                <div><span class="mx-auto w-8 h-8 rounded-xl bg-brand-tint text-brand grid place-items-center text-[11px]"><i class="fa-solid fa-user"></i></span>Personal</div>
+                <div><span class="mx-auto w-8 h-8 rounded-xl bg-brand-tint text-brand grid place-items-center text-[11px]"><i class="fa-solid fa-car"></i></span>Car</div>
+                <div><span class="mx-auto w-8 h-8 rounded-xl bg-brand-tint text-brand grid place-items-center text-[11px]"><i class="fa-solid fa-house"></i></span>Home</div>
+                <div><span class="mx-auto w-8 h-8 rounded-xl bg-brand-tint text-brand grid place-items-center text-[11px]"><i class="fa-solid fa-credit-card"></i></span>Card</div>
+              </div>
+              <p class="text-[10px] font-bold mt-3">Best offers today</p>
+              <div class="mt-1.5 space-y-1.5">
+                <div class="flex items-center justify-between bg-[#f7f8fa] rounded-lg px-2 py-1.5 text-[9px]"><span class="font-semibold">IPDC Finance</span><span class="text-brand font-bold">9.0%</span></div>
+                <div class="flex items-center justify-between bg-[#f7f8fa] rounded-lg px-2 py-1.5 text-[9px]"><span class="font-semibold">NCC Bank</span><span class="text-brand font-bold">9.5%</span></div>
+                <div class="flex items-center justify-between bg-[#f7f8fa] rounded-lg px-2 py-1.5 text-[9px]"><span class="font-semibold">City Bank</span><span class="text-brand font-bold">9.75%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card (right) -->
+        <div class="hero-card-wrap hidden md:block" id="heroCard">
+          <div class="credit-card">
+            <div class="flex items-start justify-between relative z-10">
+              <img src="assets/img/fincoach-logo.png" alt="" class="h-4 brightness-0 invert opacity-95" />
+              <i class="fa-solid fa-wifi rotate-90 text-white/80"></i>
+            </div>
+            <div class="chip relative z-10"></div>
+            <p class="relative z-10 font-head font-bold tracking-[.2em] text-[15px] lg:text-xl whitespace-nowrap">4231 8890 1547 8739</p>
+            <div class="relative z-10 flex items-end justify-between text-[10px] text-white/80 mt-3">
+              <div><p class="uppercase tracking-wider text-[8px] text-white/60">Card holder</p><p class="font-bold text-white tracking-wider">RAFIQ AHMED</p></div>
+              <div class="text-right"><p class="uppercase tracking-wider text-[8px] text-white/60">Expires</p><p class="font-bold text-white">09/29</p></div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
 
-<!-- =========================================================
-     FAQ
-     ========================================================= -->
-<section id="faq" class="pb-16 md:pb-24">
-  <div class="max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-12 gap-12">
-    <div class="lg:col-span-5">
-      <span class="reveal eyebrow">FAQ</span>
-      <h2 class="reveal mt-5 font-head font-extrabold text-[2rem] sm:text-4xl md:text-[3.2rem] leading-[1.08]">Questions? We've got answers</h2>
-      <p class="reveal mt-5 text-lg text-muted">Can't find what you're looking for? Our team is here to help, every day.</p>
-      <div class="reveal mt-8 bg-ink rounded-[24px] p-7 text-white relative overflow-hidden">
-        <div class="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-grad opacity-40 blur-xl"></div>
-        <p class="font-head font-extrabold text-xl relative">Still have questions?</p>
-        <p class="text-white/70 mt-1 relative">Call our hotline or drop us a message.</p>
-        <a href="tel:+8809638229922" class="btn btn-primary mt-5 relative"><i class="fa-solid fa-phone"></i> +880 9638 229922</a>
-      </div>
-    </div>
-    <div class="lg:col-span-7 space-y-4" id="faqList">
-      <div class="reveal faq acc open">
-        <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">What is FinCoach?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
-        <div class="acc-body"><div><p class="px-6 pb-6 text-muted">FinCoach is an online financial platform that offers easy access to a range of financial products and services from banks and FIs in Bangladesh. FinCoach is not a lender — we help you compare and apply.</p></div></div>
-      </div>
-      <div class="reveal faq acc">
-        <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Is it free to apply through FinCoach?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
-        <div class="acc-body"><div><p class="px-6 pb-6 text-muted">Yes. Creating an account, comparing offers and submitting applications on FinCoach is completely free. FinCoach never asks for money, processing fees or advance payments.</p></div></div>
-      </div>
-      <div class="reveal faq acc">
-        <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">What documents do I need to apply for a loan?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
-        <div class="acc-body"><div><p class="px-6 pb-6 text-muted">Typically your NID, recent photographs, salary certificate or trade licence, bank statements and TIN certificate. Exact requirements vary by product and partner bank.</p></div></div>
-      </div>
-      <div class="reveal faq acc">
-        <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">How can I track my application?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
-        <div class="acc-body"><div><p class="px-6 pb-6 text-muted">Use “Track Application” in the top bar or log in to your dashboard to see real-time status updates from submission to disbursement.</p></div></div>
-      </div>
-      <div class="reveal faq acc">
-        <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Is my personal data secure?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
-        <div class="acc-body"><div><p class="px-6 pb-6 text-muted">Absolutely. Your information is encrypted and shared only with the partner institutions you choose to apply with.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================
-     BLOG / NEWS
-     ========================================================= -->
-<section id="blog" class="pb-16 md:pb-24">
-  <div class="max-w-site mx-auto px-4 md:px-6">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-      <div>
-        <span class="reveal eyebrow">Trending now</span>
-        <h2 class="reveal mt-5 font-head font-extrabold text-[2rem] sm:text-4xl md:text-[3.2rem] leading-[1.08]">Latest news &amp; insights</h2>
-      </div>
-      <a href="#" class="reveal btn btn-dark self-start md:self-auto">View More Posts <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6 mt-8 md:mt-12">
-      <a href="#" class="reveal blog-card">
-        <div class="blog-thumb"><div class="art bg-grad grid place-items-center"><div class="bg-white rounded-2xl px-6 py-4 shadow-xl"><img src="assets/img/partners/p1.png" alt="" class="h-12 object-contain" /></div></div></div>
-        <div class="p-7"><div class="flex items-center gap-3 text-sm"><span class="font-bold text-brand bg-brand-tint rounded-full px-3 py-1">Partnership</span><span class="text-muted">Oct 2026</span></div>
-        <h3 class="font-head font-extrabold text-xl mt-4 leading-snug">FinCoach Bangladesh Limited Signs an Agreement with IPDC Finance PLC.</h3>
-        <span class="f-link mt-5">Read more <i class="fa-solid fa-arrow-right text-xs"></i></span></div>
-      </a>
-      <a href="#" class="reveal blog-card">
-        <div class="blog-thumb"><div class="art bg-ink grid place-items-center"><div class="bg-white rounded-2xl px-6 py-4 shadow-xl"><img src="assets/img/partners/p5.jpg" alt="" class="h-12 object-contain" /></div></div></div>
-        <div class="p-7"><div class="flex items-center gap-3 text-sm"><span class="font-bold text-brand bg-brand-tint rounded-full px-3 py-1">Partnership</span><span class="text-muted">Sep 2026</span></div>
-        <h3 class="font-head font-extrabold text-xl mt-4 leading-snug">FinCoach Bangladesh Limited Signs an Agreement with NCC Bank PLC.</h3>
-        <span class="f-link mt-5">Read more <i class="fa-solid fa-arrow-right text-xs"></i></span></div>
-      </a>
-      <a href="#" class="reveal blog-card">
-        <div class="blog-thumb"><div class="art grid place-items-center" style="background:linear-gradient(135deg,#ffe1ea,#f6d7ef)"><div class="bg-white rounded-2xl px-6 py-4 shadow-xl"><img src="assets/img/partners/p6.jpg" alt="" class="h-12 object-contain" /></div></div></div>
-        <div class="p-7"><div class="flex items-center gap-3 text-sm"><span class="font-bold text-brand bg-brand-tint rounded-full px-3 py-1">Partnership</span><span class="text-muted">Aug 2026</span></div>
-        <h3 class="font-head font-extrabold text-xl mt-4 leading-snug">FinCoach Bangladesh Limited Signs an Agreement with Mutual Trust Bank PLC.</h3>
-        <span class="f-link mt-5">Read more <i class="fa-solid fa-arrow-right text-xs"></i></span></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================
-     CTA + CONTACT
-     ========================================================= -->
-<section id="contact" class="px-2.5 pb-2.5">
-  <div class="panel bg-grad relative overflow-hidden">
-    <div class="absolute -left-24 -bottom-24 w-96 h-96 rounded-full border-[40px] border-white/10"></div>
-    <div class="absolute right-10 -top-20 w-72 h-72 rounded-full bg-white/10"></div>
-    <div class="relative max-w-site mx-auto px-4 md:px-6 py-16 md:py-20 grid lg:grid-cols-2 gap-12 items-center">
-      <div class="text-white">
-        <h2 class="reveal font-head font-extrabold text-[2rem] sm:text-4xl md:text-[3.4rem] leading-[1.05]">Ready to find your perfect loan?</h2>
-        <p class="reveal mt-5 text-lg text-white/85 max-w-lg">Join thousands of Bangladeshis who compare smarter and borrow better with FinCoach.</p>
-        <div class="reveal flex flex-col sm:flex-row gap-3 mt-8">
-          <a href="#products" class="btn btn-white">Compare &amp; Apply <i class="fa-solid fa-arrow-right"></i></a>
-          <a href="track.html" class="btn border-2 border-white/40 text-white px-6 py-3.5 hover:bg-white/10">Track Application</a>
-        </div>
-      </div>
-      <form class="reveal bg-white rounded-[28px] p-5 sm:p-7 md:p-9 shadow-2xl" onsubmit="event.preventDefault(); this.querySelector('[data-ok]').classList.remove('hidden'); this.reset();">
-        <h3 class="font-head font-extrabold text-2xl">Send us a message</h3>
-        <div class="grid sm:grid-cols-2 gap-4 mt-6">
-          <input required class="w-full rounded-xl border border-line bg-[#f7f8fa] px-4 py-3.5 outline-none focus:border-brand focus:bg-white transition" placeholder="Your Name*" />
-          <input required type="email" class="w-full rounded-xl border border-line bg-[#f7f8fa] px-4 py-3.5 outline-none focus:border-brand focus:bg-white transition" placeholder="Your Email*" />
-          <input required class="w-full rounded-xl border border-line bg-[#f7f8fa] px-4 py-3.5 outline-none focus:border-brand focus:bg-white transition" placeholder="Your Phone*" />
-          <input required class="w-full rounded-xl border border-line bg-[#f7f8fa] px-4 py-3.5 outline-none focus:border-brand focus:bg-white transition" placeholder="Subject*" />
-          <textarea required rows="4" class="sm:col-span-2 w-full rounded-xl border border-line bg-[#f7f8fa] px-4 py-3.5 outline-none focus:border-brand focus:bg-white transition resize-none" placeholder="Message*"></textarea>
-        </div>
-        <button class="btn btn-primary w-full mt-5">Send Message <i class="fa-solid fa-paper-plane"></i></button>
-        <p data-ok class="hidden mt-3 text-sm font-semibold text-green-600"><i class="fa-solid fa-circle-check"></i> Thanks! We'll get back to you shortly.</p>
-      </form>
-    </div>
-  </div>
-</section>
+</template>
 
 </main>
 
@@ -768,46 +961,69 @@
      FOOTER
      ========================================================= -->
 <footer class="px-2.5 pb-2.5">
-  <div class="footer panel text-white">
-    <div class="max-w-site mx-auto px-4 md:px-6 pt-16 md:pt-20 pb-8">
-      <div class="grid grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10 lg:gap-12">
-        <div class="col-span-2 lg:col-span-4">
-          <div class="inline-block bg-white rounded-2xl px-5 py-3"><img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-8" /></div>
-          <p class="mt-6 text-[#aab3c8] leading-relaxed max-w-sm">FinCoach is an online financial platform that offers easy access to a range of financial products and services from banks and FIs in Bangladesh. It benefits customers and providers alike, promoting financial inclusion and digital empowerment.</p>
-          <div class="flex gap-3 mt-7">
-            <a href="https://www.facebook.com/FinCoachOfficial" target="_blank" rel="noopener" class="social" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.linkedin.com/company/FinCoachOfficial" target="_blank" rel="noopener" class="social" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://www.youtube.com/@FinCoachOfficial" target="_blank" rel="noopener" class="social" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-            <a href="https://www.instagram.com/FinCoachOfficial" target="_blank" rel="noopener" class="social" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  <div class="footer panel text-white relative overflow-hidden">
+    <div class="absolute -right-32 -top-32 w-96 h-96 rounded-full bg-grad opacity-[.12] blur-3xl pointer-events-none"></div>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-14 md:pt-20 pb-8">
+      <div class="grid grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10">
+        <div class="lg:col-span-2">
+          <h4 class="f-head">Quick Links</h4>
+          <ul class="mt-5 space-y-3">
+            <li><a class="f" href="about.html">About</a></li>
+            <li><a class="f" href="contact.html">Contact Us</a></li>
+            <li><a class="f" href="emi-calculator.html">EMI Calculator</a></li>
+            <li><a class="f" href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-2">
+          <h4 class="f-head">Products</h4>
+          <ul class="mt-5 space-y-3">
+            <li><a class="f" href="loan.html?type=personal">Personal Loan</a></li>
+            <li><a class="f" href="loan.html?type=auto">Auto Loan</a></li>
+            <li><a class="f" href="loan.html?type=home">Home Loan</a></li>
+            <li><a class="f" href="loan.html?type=card">Credit Card</a></li>
+            <li><a class="f" href="loan.html?type=sme">SME Loan</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-3">
+          <h4 class="f-head">Support</h4>
+          <ul class="mt-5 space-y-3">
+            <li><a class="f" href="faq.html">FAQs</a></li>
+            <li><a class="f" href="terms.html">Terms of Service</a></li>
+            <li><a class="f" href="privacy.html">Privacy Policy</a></li>
+            <li><a class="f" href="track.html">Track Application</a></li>
+          </ul>
+        </div>
+        <div class="col-span-2 lg:col-span-5">
+          <h4 class="f-head">Contact</h4>
+          <ul class="mt-5 space-y-3">
+            <li><a class="f inline-flex items-center gap-2.5" href="mailto:info@fincoachbd.com"><i class="fa-regular fa-envelope text-brand"></i>info@fincoachbd.com</a></li>
+            <li><a class="f inline-flex items-center gap-2.5" href="tel:+8809638229922"><i class="fa-solid fa-phone text-brand"></i>+880 9638 229922</a></li>
+          </ul>
+          <form class="newsletter mt-5" data-demo>
+            <input type="email" required placeholder="Your email for offers" aria-label="Email address" />
+            <button type="submit" class="btn btn-primary !py-2.5 !px-5" data-label="Subscribe">Subscribe</button>
+            <p data-ok class="hidden basis-full mt-2 text-sm font-semibold text-green-400"><i class="fa-solid fa-circle-check"></i> Subscribed — thank you!</p>
+          </form>
+          <p class="mt-6 font-semibold text-white">Get the FinCoach app</p>
+          <div class="flex flex-wrap gap-2 mt-3">
+            <a href="#" class="store-badge"><i class="fa-brands fa-google-play text-xl"></i><div><small>GET IT ON</small><span>Google Play</span></div></a>
+            <a href="#" class="store-badge"><i class="fa-brands fa-apple text-2xl"></i><div><small>Download on the</small><span>App Store</span></div></a>
           </div>
         </div>
-        <div class="lg:col-span-2">
-          <h4 class="font-head font-extrabold text-lg">Our Company</h4>
-          <ul class="mt-5 space-y-3">
-            <li><a class="f" href="about.html">About Us</a></li><li><a class="f" href="contact.html">Contact Us</a></li>
-            <li><a class="f" href="#faq">FAQ</a></li><li><a class="f" href="#">Terms of Service</a></li>
-            <li><a class="f" href="#">Privacy Policy</a></li><li><a class="f" href="#blog">Blog</a></li>
-          </ul>
-        </div>
-        <div class="lg:col-span-2">
-          <h4 class="font-head font-extrabold text-lg">Products</h4>
-          <ul class="mt-5 space-y-3">
-            <li><a class="f" href="#products">Retail Loan</a></li><li><a class="f" href="#products">Credit Card</a></li>
-            <li><a class="f" href="#products">SME</a></li><li><a class="f" href="#calculator">Loan Calculator</a></li>
-          </ul>
-        </div>
-        <div class="col-span-2 lg:col-span-4">
-          <h4 class="font-head font-extrabold text-lg">Contact Us</h4>
-          <ul class="mt-5 space-y-4 text-[#aab3c8]">
-            <li class="flex gap-3"><span class="w-9 h-9 shrink-0 rounded-full bg-white/10 grid place-items-center text-brand"><i class="fa-solid fa-location-dot"></i></span>Navana DH Tower, Level 8, 6 Panthapath, Dhaka 1215, Bangladesh</li>
-            <li class="flex gap-3 items-center"><span class="w-9 h-9 shrink-0 rounded-full bg-white/10 grid place-items-center text-brand"><i class="fa-solid fa-envelope"></i></span><a class="f" href="mailto:info@fincoachbd.com">info@fincoachbd.com</a></li>
-            <li class="flex gap-3 items-center"><span class="w-9 h-9 shrink-0 rounded-full bg-white/10 grid place-items-center text-brand"><i class="fa-solid fa-phone"></i></span><a class="f" href="tel:+8809638229922">+880 9638 229922</a></li>
-          </ul>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <a href="index.html" class="footer-logo" aria-label="FinCoach home"><img src="assets/img/fincoach-logo-white.png" alt="FinCoach" /></a>
+        <div class="flex items-center gap-3">
+          <a href="https://www.facebook.com/FinCoachOfficial" target="_blank" rel="noopener" class="social social-fb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/company/FinCoachOfficial" target="_blank" rel="noopener" class="social social-in" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://www.youtube.com/@FinCoachOfficial" target="_blank" rel="noopener" class="social social-yt" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.instagram.com/FinCoachOfficial" target="_blank" rel="noopener" class="social social-ig" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         </div>
       </div>
-      <div class="mt-10 md:mt-14 pt-7 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-sm text-[#aab3c8]">
-        <p>© <span id="yr">2026</span> FinCoach Bangladesh Limited. All Rights Reserved.</p>
-        <p>Member of: BASIS · e-CAB</p>
+      <div class="mt-6 flex flex-col md:flex-row justify-between gap-2 text-sm text-[#8d97ad] text-center md:text-left">
+        <p>Copyright © <span id="yr">2026</span> FinCoach Bangladesh Limited. All rights reserved.</p>
+        <p>Navana DH Tower, Level 8, 6 Panthapath, Dhaka 1215</p>
       </div>
     </div>
   </div>
@@ -816,14 +1032,70 @@
 <button id="toTop" class="fixed right-5 bottom-5 z-40 w-12 h-12 rounded-full bg-grad text-white shadow-lg grid place-items-center" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 
 
-<!-- Mobile app-style bottom navigation -->
+<!-- Login / Register popup -->
+<div id="loginModal" class="lm" role="dialog" aria-modal="true" aria-labelledby="lmTitle" aria-hidden="true">
+  <div class="lm-backdrop" data-lm-close></div>
+  <div class="lm-box">
+    <button type="button" class="lm-close" data-lm-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="text-center">
+      <img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-8 mx-auto" />
+      <h2 id="lmTitle" class="mt-5 font-head font-extrabold text-[1.7rem] leading-tight">Log in to your account</h2>
+      <p class="mt-1.5 text-muted" id="lmSub">Track applications and manage your offers.</p>
+    </div>
+    <div class="auth-tabs mt-6" id="lmTabs">
+      <span class="tab-pill"></span>
+      <button type="button" class="active" data-lm-tab="login">Log in</button>
+      <button type="button" data-lm-tab="register">Create account</button>
+    </div>
+
+    <form class="lm-pane active mt-6" id="lmLogin" novalidate>
+      <div class="space-y-4">
+        <div class="field"><div class="ic-wrap"><i class="fa-regular fa-user f-ic"></i><input required placeholder="Mobile number or email" autocomplete="username" aria-label="Mobile number or email" /></div></div>
+        <div class="field"><div class="ic-wrap"><i class="fa-solid fa-lock f-ic"></i><input required type="password" placeholder="Password" autocomplete="current-password" class="!pr-14" aria-label="Password" /><button type="button" class="pw-toggle lm-eye" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div></div>
+      </div>
+      <div class="flex items-center justify-between mt-4 text-[15px]">
+        <label class="flex items-center gap-2 text-muted font-semibold cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-[#e8205a]" checked /> Remember me</label>
+        <a href="login.html" class="font-bold text-brand hover:underline">Forgot password?</a>
+      </div>
+      <p class="lm-err hidden mt-3 text-sm font-semibold text-red-500"><i class="fa-solid fa-circle-exclamation"></i> Please fill in all fields.</p>
+      <button type="submit" class="btn btn-primary w-full !py-4 text-lg mt-5">Log in <i class="fa-solid fa-arrow-right"></i></button>
+      <div class="divider my-5">or</div>
+      <a href="login.html" class="social-btn w-full"><i class="fa-solid fa-mobile-screen-button text-brand"></i> Log in with OTP</a>
+    </form>
+
+    <form class="lm-pane mt-6" id="lmRegister" novalidate>
+      <div class="space-y-4">
+        <div class="field"><div class="ic-wrap"><i class="fa-regular fa-user f-ic"></i><input required placeholder="Full name (as per NID)" autocomplete="name" aria-label="Full name" /></div></div>
+        <div class="field"><div class="ic-wrap"><i class="fa-solid fa-mobile-screen f-ic"></i><span class="prefix">+880</span><input required type="tel" inputmode="numeric" maxlength="11" class="has-prefix" placeholder="1XXX-XXXXXX" aria-label="Mobile number" /></div></div>
+        <div class="field"><div class="ic-wrap"><i class="fa-solid fa-lock f-ic"></i><input required type="password" placeholder="Create password" autocomplete="new-password" class="!pr-14" aria-label="Create password" /><button type="button" class="pw-toggle lm-eye" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div></div>
+      </div>
+      <label class="flex items-start gap-3 mt-4 text-muted cursor-pointer text-[15px]"><input type="checkbox" required class="mt-1 w-4 h-4 accent-[#e8205a]" /><span>I agree to the <a href="terms.html" class="font-semibold text-ink underline">Terms</a> and <a href="privacy.html" class="font-semibold text-ink underline">Privacy Policy</a>.</span></label>
+      <p class="lm-err hidden mt-3 text-sm font-semibold text-red-500"><i class="fa-solid fa-circle-exclamation"></i> Please complete all fields and accept the terms.</p>
+      <button type="submit" class="btn btn-primary w-full !py-4 text-lg mt-5">Create account <i class="fa-solid fa-arrow-right"></i></button>
+    </form>
+
+    <div class="lm-pane text-center py-4" id="lmDone">
+      <div class="check-anim mx-auto"><i class="fa-solid fa-check"></i></div>
+      <h3 class="mt-6 font-head font-extrabold text-2xl" id="lmDoneTitle">Welcome back!</h3>
+      <p class="text-muted mt-1" id="lmDoneSub">You're logged in.</p>
+      <div class="grid grid-cols-2 gap-3 mt-6">
+        <a href="#products" class="btn btn-primary" data-lm-close>Compare</a>
+        <a href="track.html" class="btn btn-ghost">Track</a>
+      </div>
+    </div>
+    <p class="mt-6 text-center text-xs text-muted"><i class="fa-solid fa-lock text-brand"></i> Secured with 256-bit encryption</p>
+  </div>
+</div>
+
 <nav class="mobile-nav lg:hidden" aria-label="Quick navigation">
   <a href="index.html" data-nav="index"><i class="fa-solid fa-house"></i><span>Home</span></a>
-  <a href="index.html#products" data-nav="loans"><i class="fa-solid fa-hand-holding-dollar"></i><span>Loans</span></a>
+  <a href="apply.html" data-nav="apply"><i class="fa-solid fa-hand-holding-dollar"></i><span>Apply</span></a>
   <a href="track.html" data-nav="track" class="mn-main"><span class="mn-fab"><i class="fa-solid fa-location-crosshairs"></i></span><span>Track</span></a>
   <a href="contact.html" data-nav="contact"><i class="fa-solid fa-headset"></i><span>Contact</span></a>
-  <a href="login.html" data-nav="login"><i class="fa-regular fa-user"></i><span>Account</span></a>
+  <a href="login.html" data-nav="login" data-login-open><i class="fa-regular fa-user"></i><span>Account</span></a>
 </nav>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
