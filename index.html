@@ -662,23 +662,71 @@
 </section>
 
 <!-- =========================================================
-     BLOG — Wallex style (Prev / Next, tag on image)
+     BLOG — premium magazine layout
      ========================================================= -->
 <section id="blog" class="pt-16 md:pt-24 pb-16 md:pb-24">
   <div class="max-w-site mx-auto px-4 md:px-6">
-    <div class="flex items-end justify-between gap-6">
-      <h2 class="reveal font-head font-extrabold text-[2rem] sm:text-[2.25rem] md:text-[2.8rem] leading-[1.08]">Our latest blog</h2>
-      <div class="reveal flex items-center gap-2 shrink-0">
-        <button type="button" class="bl3-btn" id="blPrev"><i class="fa-solid fa-chevron-left text-xs"></i> Prev</button>
-        <button type="button" class="bl3-btn bl3-next" id="blNext">Next <i class="fa-solid fa-chevron-right text-xs"></i></button>
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div>
+        <span class="reveal eyebrow">Insights &amp; news</span>
+        <h2 class="reveal mt-4 font-head font-extrabold text-[2rem] sm:text-[2.25rem] md:text-[2.8rem] leading-[1.08]">Our latest blog</h2>
+        <p class="reveal mt-3 text-lg text-muted max-w-xl">Smart money guides, loan tips and the latest from FinCoach and our partner banks.</p>
       </div>
+      <a href="blog.html" class="reveal bl4-all self-start md:self-auto">View all posts <span><i class="fa-solid fa-arrow-right"></i></span></a>
     </div>
-    <div class="bl3-track mt-8 md:mt-10" id="blTrack">
-      <a href="blog-post.html" class="bl3-card"><div class="bl3-img"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=70&auto=format&fit=crop" alt="" loading="lazy" /><span class="bl3-tag">News</span></div><h3>FinCoach signs an agreement with IPDC Finance PLC.</h3><p>More personal and home loan options are now available to FinCoach customers…</p></a>
-      <a href="blog-post.html" class="bl3-card"><div class="bl3-img"><img src="https://images.unsplash.com/photo-1607863680198-23d4b2565df0?w=700&q=70&auto=format&fit=crop" alt="" loading="lazy" /><span class="bl3-tag">Savings</span></div><h3>FDR vs DPS: which deposit suits your goals?</h3><p>A simple guide to choosing the right savings scheme for you and your family…</p></a>
-      <a href="blog-post.html" class="bl3-card"><div class="bl3-img"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&q=70&auto=format&fit=crop" alt="" loading="lazy" /><span class="bl3-tag">Guides</span></div><h3>What do you need to apply for a loan in Bangladesh?</h3><p>Documents, eligibility rules and practical tips to get approved faster…</p></a>
-      <a href="blog-post.html" class="bl3-card"><div class="bl3-img"><img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=700&q=70&auto=format&fit=crop" alt="" loading="lazy" /><span class="bl3-tag">News</span></div><h3>FinCoach partners with NCC Bank PLC.</h3><p>NCC Bank's loans and cards can now be compared and applied for on FinCoach…</p></a>
-      <a href="blog-post.html" class="bl3-card"><div class="bl3-img"><img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=700&q=70&auto=format&fit=crop" alt="" loading="lazy" /><span class="bl3-tag">Guides</span></div><h3>5 ways to improve your loan eligibility</h3><p>Simple steps that make lenders say yes more often…</p></a>
+
+    <div class="bl4 mt-10 md:mt-12">
+      <!-- Featured -->
+      <a href="blog-post.html" class="reveal bl4-feat">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1300&q=78&auto=format&fit=crop" alt="FinCoach and partner bank team celebrating a new agreement" />
+        <span class="bl4-shade"></span>
+        <div class="bl4-feat-top">
+          <span class="bl4-pill bl4-pill-light"><i class="fa-solid fa-star"></i> Featured</span>
+          <span class="bl4-pill bl4-pill-glass">Partnership</span>
+        </div>
+        <div class="bl4-feat-body">
+          <p class="bl4-meta-light"><i class="fa-regular fa-calendar"></i> Oct 2026 <span>•</span> <i class="fa-regular fa-clock"></i> 3 min read</p>
+          <h3>FinCoach signs an agreement with IPDC Finance PLC.</h3>
+          <p class="bl4-ex">More personal and home loan options — with faster approvals — are now available to FinCoach customers.</p>
+          <span class="bl4-read">Read article <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- Side list -->
+      <div class="bl4-side">
+        <a href="blog-post.html" class="reveal bl4-row">
+          <div class="bl4-thumb"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=75&auto=format&fit=crop" alt="House keys on a home model" loading="lazy" /></div>
+          <div class="bl4-row-body">
+            <span class="bl4-cat">Home loans</span>
+            <h3>Buying your first flat in Dhaka: a home loan checklist</h3>
+            <p class="bl4-meta"><i class="fa-regular fa-clock"></i> 6 min read <span>•</span> Sep 2026</p>
+          </div>
+        </a>
+        <a href="blog-post.html" class="reveal bl4-row">
+          <div class="bl4-thumb"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=75&auto=format&fit=crop" alt="Applying online on a laptop and phone" loading="lazy" /></div>
+          <div class="bl4-row-body">
+            <span class="bl4-cat">Guides</span>
+            <h3>What do you need to apply for a loan in Bangladesh?</h3>
+            <p class="bl4-meta"><i class="fa-regular fa-clock"></i> 5 min read <span>•</span> Aug 2026</p>
+          </div>
+        </a>
+        <a href="blog-post.html" class="reveal bl4-row">
+          <div class="bl4-thumb"><img src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?w=600&q=75&auto=format&fit=crop" alt="Stacking coins to save" loading="lazy" /></div>
+          <div class="bl4-row-body">
+            <span class="bl4-cat">Savings</span>
+            <h3>FDR vs DPS: which deposit suits your goals?</h3>
+            <p class="bl4-meta"><i class="fa-regular fa-clock"></i> 4 min read <span>•</span> Aug 2026</p>
+          </div>
+        </a>
+        <a href="blog-post.html" class="reveal bl4-row">
+          <div class="bl4-thumb"><img src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=600&q=75&auto=format&fit=crop" alt="Planning a monthly budget" loading="lazy" /></div>
+          <div class="bl4-row-body">
+            <span class="bl4-cat">Money tips</span>
+            <h3>5 ways to improve your loan eligibility</h3>
+            <p class="bl4-meta"><i class="fa-regular fa-clock"></i> 4 min read <span>•</span> Jul 2026</p>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </section>
