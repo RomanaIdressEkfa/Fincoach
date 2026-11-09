@@ -1954,3 +1954,59 @@ body.lm-lock { overflow: hidden; }
 .ct5-f input:focus, .ct5-f textarea:focus { border-color: var(--brand); background: #fff; box-shadow: 0 0 0 4px rgba(232,32,90,.1); }
 @media (prefers-reduced-motion: reduce) { .ab5-float { animation: none; } }
 .ct5-banner > img { object-position: 60% 35%; }
+
+/* Download app — open layout (no box) */
+.ap2-open { background: none; border-radius: 0; overflow: visible; }
+.ap2-open + * {}
+#hero ~ section:has(.ap2-open) { overflow-x: clip; }
+.ap2-orb { position: absolute; z-index: 0; left: 50%; top: 52%; width: min(520px, 92vw); aspect-ratio: 1; transform: translate(-50%, -50%); pointer-events: none; }
+.ap2-orb i { position: absolute; border-radius: 50%; }
+.ap2-orb i:nth-child(1) { inset: 14%; background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.35), transparent 45%), linear-gradient(135deg, #f2545b, #e8205a 50%, #b0188a);
+  box-shadow: 0 50px 100px -30px rgba(232,32,90,.55); }
+.ap2-orb i:nth-child(2) { inset: 4%; border: 1.5px dashed rgba(232,32,90,.3); animation: twSpin 40s linear infinite; }
+.ap2-orb i:nth-child(3) { inset: -6%; background: radial-gradient(closest-side, rgba(232,32,90,.16), transparent 70%); filter: blur(10px); }
+.ap2-visual > :not(.ap2-orb) { z-index: 1; }
+.ap2-open .ap2-box { background: #fff; border: 1px solid var(--line); }
+@media (min-width: 1024px) { .ap2-open > .relative { min-height: 600px; } }
+@media (prefers-reduced-motion: reduce) { .ap2-orb i { animation: none; } }
+
+/* ==========================================================
+   Download app v3 — contained card aligned to site width
+   ========================================================== */
+.ap3 { position: relative; overflow: hidden; isolation: isolate; border-radius: 34px; padding: 1.5rem 1.25rem 2rem;
+  background: linear-gradient(135deg, #fff7fa 0%, #ffeef4 45%, #f6efff 100%); border: 1px solid #f8dde7;
+  box-shadow: 0 50px 100px -60px rgba(232,32,90,.45); }
+@media (min-width: 768px) { .ap3 { padding: 2.5rem 3rem; } }
+.ap3-grid { position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(232,32,90,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(232,32,90,.06) 1px, transparent 1px);
+  background-size: 44px 44px; -webkit-mask-image: radial-gradient(ellipse at 75% 30%, #000 10%, transparent 70%); mask-image: radial-gradient(ellipse at 75% 30%, #000 10%, transparent 70%); }
+.ap3-glow { position: absolute; z-index: -1; border-radius: 50%; filter: blur(70px); }
+.ap3-glow-1 { width: 380px; height: 380px; right: -100px; top: -140px; background: rgba(232,32,90,.18); }
+.ap3-glow-2 { width: 320px; height: 320px; left: 30%; bottom: -200px; background: rgba(176,24,138,.14); }
+
+.ap3-visual { position: relative; height: 560px; }
+@media (max-width: 639px) { .ap3-visual { height: 500px; } }
+.ap3-visual > :not(.ap2-orb) { z-index: 1; }
+.ap3-chip { position: absolute; z-index: 3; display: flex; align-items: center; gap: .65rem; padding: .65rem .95rem .65rem .65rem; border-radius: 18px;
+  background: rgba(255,255,255,.95); backdrop-filter: blur(10px); box-shadow: 0 24px 40px -18px rgba(11,21,48,.35); animation: floaty 6s ease-in-out infinite; }
+.ap3-chip > span { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; }
+.ap3-chip small { display: block; font-size: .7rem; color: var(--muted); font-weight: 600; }
+.ap3-chip b { font-family: "Urbanist", sans-serif; font-weight: 800; color: var(--ink); white-space: nowrap; }
+.ap3-chip-a { left: 2%; top: 90px; }
+.ap3-chip-b { right: 4%; bottom: 60px; animation-delay: -2s; }
+.ap3-chip-c { right: 2%; top: 40px; animation-delay: -4s; }
+@media (max-width: 639px) { .ap3-chip-a { left: -6px; top: 50px; } .ap3-chip-b { right: -6px; bottom: 20px; } .ap3-chip-c { display: none; } }
+
+.ap3-feat { padding: 1rem; border-radius: 20px; background: rgba(255,255,255,.85); border: 1px solid rgba(255,255,255,.95); box-shadow: 0 18px 36px -30px rgba(11,21,48,.4); transition: transform .3s; }
+.ap3-feat:hover { transform: translateY(-3px); }
+.ap3-feat i { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; font-size: .85rem; color: #fff; background: var(--grad); box-shadow: 0 10px 18px -10px rgba(232,32,90,.7); }
+.ap3-feat b { display: block; margin-top: .7rem; font-family: "Urbanist", sans-serif; font-weight: 800; }
+.ap3-feat span { display: block; font-size: .82rem; color: var(--muted); }
+
+.ap3-dl { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; padding: 1.1rem; border-radius: 24px; background: #fff; border: 1px solid var(--line); box-shadow: 0 30px 60px -40px rgba(11,21,48,.45); }
+.ap3-dl .ap2-qr #appQr img, .ap3-dl .ap2-qr #appQr canvas { width: 118px !important; height: 118px !important; }
+.ap3-badges { display: flex; flex-wrap: wrap; gap: .6rem; }
+.ap3-badges a { display: block; transition: transform .25s, filter .25s; }
+.ap3-badges a:hover { transform: translateY(-2px); filter: drop-shadow(0 10px 16px rgba(11,21,48,.25)); }
+.ap3-badges img { height: 48px; width: auto; display: block; }
+@media (max-width: 400px) { .ap3-badges img { height: 42px; } .ap3-dl { justify-content: center; text-align: center; } .ap3-badges { justify-content: center; } }
+@media (prefers-reduced-motion: reduce) { .ap3-chip { animation: none; } }
