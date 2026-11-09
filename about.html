@@ -169,64 +169,84 @@
 <main>
 
 <!-- =========================================================
-     ABOUT ① — Wallex style: curve + dots, vision & mission, story
+     ABOUT ① — Hero: curved, dotted panel + bento (Wallex look, premium)
      ========================================================= -->
 <section class="px-2.5 pt-2.5">
-  <div class="ab-hero">
-    <div class="ab-dots"></div>
-    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-12 md:pt-20">
+  <div class="ab5-hero">
+    <span class="ab5-dots"></span><span class="ab5-glow"></span>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-12 md:pt-16">
       <nav class="reveal crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand">About</span></nav>
-      <div class="grid lg:grid-cols-2 gap-6 lg:gap-16 items-end mt-6">
-        <h1 class="reveal w-h1">Empowering Bangladesh with <span class="text-grad">smarter finance</span></h1>
-        <p class="reveal w-lead lg:pb-2">A seamless, paperless way to compare and apply for loans, deposits and cards from the country's leading banks and financial institutions.</p>
+      <div class="grid lg:grid-cols-12 gap-6 lg:gap-12 items-end mt-6">
+        <div class="lg:col-span-7">
+          <span class="reveal ab5-kicker"><span></span>About FinCoach</span>
+          <h1 class="reveal ab5-h1 mt-5">Empowering Bangladesh with <span class="text-grad">smarter, fairer finance</span></h1>
+        </div>
+        <div class="lg:col-span-5">
+          <p class="reveal ab5-lead">FinCoach Bangladesh Limited is a digital marketplace that makes loans, deposits and cards from the country's leading banks simple to compare and paperless to apply for.</p>
+          <div class="reveal flex flex-wrap items-center gap-3 mt-6">
+            <a href="apply.html" class="btn btn-primary">Check your offers <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="contact.html" class="btn btn-white shadow-sm">Talk to us</a>
+          </div>
+        </div>
       </div>
 
-      <div class="grid lg:grid-cols-12 gap-5 mt-10 md:mt-12 pb-16 md:pb-24">
-        <div class="reveal lg:col-span-8 ab-photo">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=75&auto=format&fit=crop" alt="Customers completing a payment" />
-          <div class="ab-photo-chip"><span class="hs-chip-ic bg-grad text-white"><i class="fa-solid fa-bolt"></i></span><span><small>Apply anytime</small><b>24/7, paperless</b></span></div>
+      <!-- Bento -->
+      <div class="ab5-bento mt-10 md:mt-14">
+        <div class="reveal ab5-photo">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&q=78&auto=format&fit=crop" alt="The FinCoach team at work" />
+          <span class="ab5-photo-shade"></span>
+          <div class="ab5-photo-tag">
+            <span class="ab5-ava-row"><i style="background:#e8205a">NS</i><i style="background:#0b1530">KH</i><i style="background:#f2545b">FR</i></span>
+            <span><b>25,000+</b> borrowers helped</span>
+          </div>
         </div>
-        <div class="lg:col-span-4 grid sm:grid-cols-2 lg:grid-cols-1 gap-5">
-          <div class="reveal vm2 vm2-pink">
-            <i class="fa-regular fa-lightbulb vm2-ic"></i>
-            <div><h3>Our Vision</h3><p>To become Bangladesh's leading digital marketplace for financial services — building a financially inclusive, empowered society.</p></div>
-          </div>
-          <div class="reveal vm2 vm2-dark">
-            <i class="fa-regular fa-paper-plane vm2-ic"></i>
-            <div><h3>Our Mission</h3><p>A transparent, convenient platform where everyone — including the unbanked — can access the financial products they need.</p></div>
-          </div>
+        <div class="reveal ab5-vm ab5-vm-pink">
+          <span class="ab5-vm-ic"><i class="fa-regular fa-lightbulb"></i></span>
+          <div><p class="ab5-vm-k">Our Vision</p><p class="ab5-vm-t">To become Bangladesh's leading digital marketplace for financial services — building a financially inclusive, empowered society.</p></div>
+        </div>
+        <div class="reveal ab5-vm ab5-vm-dark">
+          <span class="ab5-vm-ic"><i class="fa-regular fa-paper-plane"></i></span>
+          <div><p class="ab5-vm-k">Our Mission</p><p class="ab5-vm-t">A transparent, convenient platform where everyone — including the unbanked — can access the financial products they need.</p></div>
         </div>
       </div>
+
+      <!-- Stats strip -->
+      <div class="reveal ab5-stats">
+        <div><b><span data-count="6">0</span>+</b><span>Partner Banks &amp; FIs</span></div>
+        <div><b><span data-count="25">0</span>K+</b><span>Applications processed</span></div>
+        <div><b><span data-count="98">0</span>%</b><span>Positive reviews</span></div>
+        <div><b>24/7</b><span>Paperless application</span></div>
+      </div>
     </div>
+    <svg class="ab5-curve" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120 L0 40 Q720 150 1440 40 L1440 120 Z" /></svg>
   </div>
 </section>
 
+<!-- =========================================================
+     ABOUT ① (cont.) — The FinCoach Story
+     ========================================================= -->
 <section class="pt-16 md:pt-24 pb-16 md:pb-24">
-  <div class="max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-7">
-      <h2 class="reveal w-h2">The FinCoach Story</h2>
-      <div class="reveal mt-5 space-y-4 text-muted leading-relaxed">
-        <p>FinCoach Bangladesh Limited began with a simple idea: finding the right loan shouldn't mean visiting branch after branch, filling in endless forms and guessing which offer is fair. As digital banking grew, choosing between products only got harder.</p>
-        <p>So we built one place to compare loans, deposits and cards side by side — with real rates, clear terms and a paperless application you can complete anytime, from anywhere.</p>
-        <p>For banks and FIs, FinCoach opens the door to a broad customer base at almost zero marketing cost. Together we're promoting financial inclusion and a more digitally empowered Bangladesh.</p>
+  <div class="max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <div class="reveal lg:col-span-5 order-2 lg:order-1 relative">
+      <div class="ab5-story-img">
+        <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=1000&q=78&auto=format&fit=crop" alt="Partners shaking hands on a deal" />
       </div>
-      <div class="reveal ab-line"></div>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
-        <div class="reveal"><p class="sw-num !text-[2.6rem]"><span data-count="6">0</span><sup>+</sup></p><p class="sw-lbl text-sm">Partner Banks &amp; FIs</p></div>
-        <div class="reveal"><p class="sw-num !text-[2.6rem]"><span data-count="25">0</span><sup>K+</sup></p><p class="sw-lbl text-sm">Applications</p></div>
-        <div class="reveal"><p class="sw-num !text-[2.6rem]"><span data-count="98">0</span><sup>%</sup></p><p class="sw-lbl text-sm">Positive reviews</p></div>
-        <div class="reveal"><p class="sw-num !text-[2.6rem]"><span data-count="24">0</span><sup>/7</sup></p><p class="sw-lbl text-sm">Online access</p></div>
-      </div>
+      <div class="ab5-float ab5-float-a"><span class="bg-green-100 text-green-600"><i class="fa-solid fa-circle-check"></i></span><div><small>Loan approved</small><b>৳ 5,00,000</b></div></div>
+      <div class="ab5-float ab5-float-b"><span class="bg-grad text-white"><i class="fa-solid fa-user-tie"></i></span><div><small>Free expert</small><b>Advisory support</b></div></div>
     </div>
-    <div class="reveal lg:col-span-5 relative">
-      <div class="ab-story-img">
-        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&q=75&auto=format&fit=crop" alt="Applying online with a card and laptop" />
+    <div class="lg:col-span-7 order-1 lg:order-2">
+      <span class="reveal ab5-kicker"><span></span>Our story</span>
+      <h2 class="reveal ab5-h2 mt-4">The FinCoach Story</h2>
+      <div class="reveal ab5-line"></div>
+      <div class="reveal space-y-4 text-[1.05rem] leading-relaxed text-muted">
+        <p><b class="text-ink">FinCoach began with a simple idea:</b> finding the right loan shouldn't mean visiting branch after branch, filling in endless forms and guessing which offer is fair.</p>
+        <p>So we built one place to compare loans, deposits and cards side by side — with real rates, clear terms and a paperless application you can complete anytime, from anywhere.</p>
+        <p>For banks and FIs, FinCoach opens the door to a broad customer base at almost zero marketing cost — promoting financial inclusion and a more digitally empowered Bangladesh.</p>
       </div>
-      <div class="credit-card ab-story-card">
-        <div class="flex items-start justify-between relative z-10"><img src="assets/img/fincoach-logo.png" alt="" class="h-4 brightness-0 invert opacity-95" /><i class="fa-solid fa-wifi rotate-90 text-white/80"></i></div>
-        <div class="chip relative z-10"></div>
-        <p class="relative z-10 font-head font-bold tracking-[.2em] text-[15px] whitespace-nowrap">4231 8890 1547 8739</p>
-        <div class="relative z-10 flex items-end justify-between text-[10px] text-white/80 mt-2"><div><p class="uppercase tracking-wider text-[8px] text-white/60">Card holder</p><p class="font-bold text-white tracking-wider">RAFIQ AHMED</p></div><div class="text-right"><p class="uppercase tracking-wider text-[8px] text-white/60">Expires</p><p class="font-bold text-white">09/29</p></div></div>
+      <div class="grid sm:grid-cols-3 gap-3 mt-8">
+        <div class="reveal ab5-pt"><i class="fa-solid fa-scale-balanced"></i><b>Compare</b><span>Real rates side by side</span></div>
+        <div class="reveal ab5-pt"><i class="fa-solid fa-file-circle-check"></i><b>Apply</b><span>100% paperless, 24/7</span></div>
+        <div class="reveal ab5-pt"><i class="fa-solid fa-location-crosshairs"></i><b>Track</b><span>Every step, in real time</span></div>
       </div>
     </div>
   </div>
@@ -235,21 +255,22 @@
 <!-- =========================================================
      ABOUT ② — The FinCoach Pledge (LoanTube style)
      ========================================================= -->
-<section class="pb-16 md:pb-24">
-  <div class="max-w-site mx-auto px-4 md:px-6">
-    <p class="reveal font-head font-bold text-brand text-lg">The FinCoach Pledge</p>
-    <h2 class="reveal mt-3 w-h2 max-w-3xl">We will always work within a proper set of guidelines.</h2>
-    <div class="grid md:grid-cols-3 mt-10 md:mt-14 pledge-cols">
-      <div class="reveal pledge-col"><span class="pledge-num">1</span><p>FinCoach is a legitimate loan comparison platform. We don't just compare the offers you receive — we make sure you only deal with fair, licensed and reputable lenders.</p></div>
-      <div class="reveal pledge-col"><span class="pledge-num">2</span><p>We compare real interest rates and charges, so what you see is what you get — and you know exactly how much you'll pay back.</p></div>
-      <div class="reveal pledge-col"><span class="pledge-num">3</span><p>Our team will do everything we can to protect borrowers from loan sharks and make sure no one falls into their trap.</p></div>
-    </div>
-    <div class="reveal pledge-strip mt-10 md:mt-14">
-      <div class="flex-1">
-        <p class="font-head font-extrabold text-lg">The FinCoach Pledge</p>
-        <p class="text-muted text-[15px]">Checking your options on FinCoach won't affect your credit, and we never sell your data to third parties.</p>
+<section class="px-2.5">
+  <div class="ab5-pledge">
+    <span class="ab5-pledge-glow"></span>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 py-16 md:py-24">
+      <div class="grid lg:grid-cols-12 gap-6 items-end">
+        <div class="lg:col-span-7">
+          <p class="reveal font-head font-bold text-[#f7a0bb] text-lg">The FinCoach Pledge</p>
+          <h2 class="reveal ab5-h2 !text-white mt-3">We will always work within a proper set of guidelines.</h2>
+        </div>
+        <p class="reveal lg:col-span-5 text-white/70 text-lg">Three promises our team makes to every borrower, every time.</p>
       </div>
-      <a href="apply.html" class="btn btn-primary shrink-0">Check eligibility</a>
+      <div class="grid md:grid-cols-3 gap-5 mt-10 md:mt-14">
+        <div class="reveal ab5-pc"><span class="ab5-pc-n">01</span><p>FinCoach is a legitimate loan comparison platform. We don't just compare the offers you receive — we make sure you only deal with fair, licensed and reputable lenders.</p></div>
+        <div class="reveal ab5-pc"><span class="ab5-pc-n">02</span><p>We compare real interest rates and charges, so what you see is what you get — and you know exactly how much you'll pay back.</p></div>
+        <div class="reveal ab5-pc"><span class="ab5-pc-n">03</span><p>Our team will do everything we can to protect borrowers from loan sharks and make sure no one falls into their trap.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -257,7 +278,7 @@
 <!-- =========================================================
      SECURE / FAST / RELIABLE — split panel
      ========================================================= -->
-<section class="px-2.5 pb-16 md:pb-24">
+<section class="px-2.5 pt-16 md:pt-24 pb-16 md:pb-24">
   <div class="panel bg-[#f6f7f9] overflow-hidden">
     <div class="max-w-site mx-auto px-4 md:px-6 py-16 md:py-24 grid lg:grid-cols-2 gap-14 items-center">
       <div>
@@ -316,29 +337,43 @@
 </section>
 
 <!-- =========================================================
-     ABOUT ④ — Partners (Wallex style)
+     ABOUT ④ — Partners (Wallex style, text from LoanTube partners)
      ========================================================= -->
 <section class="pb-16 md:pb-24">
   <div class="max-w-site mx-auto px-4 md:px-6">
-    <div class="grid lg:grid-cols-2 gap-6 lg:gap-16 items-end">
-      <h2 class="reveal w-h2">We've partnered with the best in the business</h2>
-      <p class="reveal w-lead lg:pb-2">Offers from highly reputable banks and financial institutions to help with your financial needs.</p>
-    </div>
-    <div class="reveal logo-grid mt-10 md:mt-12">
-      <img src="assets/img/partners/p1.png" alt="IPDC Finance" />
-      <img src="assets/img/partners/p2.jpg" alt="City Bank" />
-      <img src="assets/img/partners/p3.jpg" alt="IDLC Finance" />
-      <img src="assets/img/partners/p4.jpg" alt="National Finance" />
-      <img src="assets/img/partners/p5.jpg" alt="NCC Bank" />
-      <img src="assets/img/partners/p6.jpg" alt="Mutual Trust Bank" />
-    </div>
-    <div class="flex flex-wrap items-center justify-between gap-4 mt-10 pt-8 border-t border-line">
-      <div class="flex flex-wrap items-center gap-3">
-        <span class="text-sm font-bold text-muted uppercase tracking-wider">Member of</span>
-        <span class="rounded-2xl border border-line bg-white px-5 py-2.5 font-head font-extrabold">BASIS</span>
-        <span class="rounded-2xl border border-line bg-white px-5 py-2.5 font-head font-extrabold">e-CAB</span>
+    <div class="grid lg:grid-cols-12 gap-6 lg:gap-16 items-end">
+      <div class="lg:col-span-7">
+        <span class="reveal ab5-kicker"><span></span>Our partners</span>
+        <h2 class="reveal ab5-h2 mt-4">We've partnered with the best in the business</h2>
       </div>
-      <a href="contact.html" class="btn btn-dark">Become a partner <i class="fa-solid fa-arrow-right"></i></a>
+      <p class="reveal lg:col-span-5 ab5-lead">Offers from highly reputable, licensed banks and financial institutions — so you can borrow with confidence.</p>
+    </div>
+    <div class="reveal ab5-logos mt-10 md:mt-12">
+      <div><img src="assets/img/partners/p1.png" alt="IPDC Finance" /></div>
+      <div><img src="assets/img/partners/p2.jpg" alt="City Bank" /></div>
+      <div><img src="assets/img/partners/p3.jpg" alt="IDLC Finance" /></div>
+      <div><img src="assets/img/partners/p4.jpg" alt="National Finance" /></div>
+      <div><img src="assets/img/partners/p5.jpg" alt="NCC Bank" /></div>
+      <div><img src="assets/img/partners/p6.jpg" alt="Mutual Trust Bank" /></div>
+    </div>
+
+    <div class="reveal ab5-cta mt-10 md:mt-14">
+      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=75&auto=format&fit=crop" alt="" aria-hidden="true" />
+      <span class="ab5-cta-shade"></span>
+      <div class="relative grid lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-8">
+          <p class="text-white/75 font-semibold">For banks &amp; financial institutions</p>
+          <h3 class="font-head font-extrabold text-[1.8rem] md:text-[2.3rem] leading-tight text-white mt-1">Reach thousands of ready-to-borrow customers.</h3>
+          <div class="flex flex-wrap gap-3 mt-4 text-white/80 text-sm font-semibold">
+            <span><i class="fa-solid fa-check text-[#f7a0bb] mr-1"></i> Verified applications</span>
+            <span><i class="fa-solid fa-check text-[#f7a0bb] mr-1"></i> Near-zero marketing cost</span>
+            <span><i class="fa-solid fa-check text-[#f7a0bb] mr-1"></i> Member of BASIS · e-CAB</span>
+          </div>
+        </div>
+        <div class="lg:col-span-4 lg:text-right">
+          <a href="contact.html" class="btn btn-white !px-7 !py-4">Become a partner <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

@@ -169,37 +169,37 @@
 <main>
 
 <!-- =========================================================
-     CONTACT HERO — Wallex layout: title left, text right, wide banner
+     CONTACT ① — Wallex layout, premium
      ========================================================= -->
 <section class="px-2.5 pt-2.5">
-  <div class="hero-bg panel relative overflow-hidden">
-    <div class="grid-lines absolute inset-0 pointer-events-none"></div>
-    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-12 md:pt-20 pb-12 md:pb-16">
-      <nav class="reveal crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand">Contact Us</span></nav>
-      <div class="grid lg:grid-cols-2 gap-6 lg:gap-16 items-end mt-6">
-        <h1 class="reveal w-h1">Connect with us.<br /><span class="text-grad">Let's make it happen!</span></h1>
-        <p class="reveal w-lead lg:pb-2">Our support team is here to help with any question about loans, cards or your application — fast, friendly and free. Reach out anytime.</p>
+  <div class="ab5-hero ct5-hero">
+    <span class="ab5-dots"></span><span class="ab5-glow"></span>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-12 md:pt-16 pb-14 md:pb-20">
+      <nav class="reveal crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand">Contact</span></nav>
+      <div class="grid lg:grid-cols-12 gap-6 lg:gap-12 items-end mt-6">
+        <div class="lg:col-span-7">
+          <span class="reveal ab5-kicker"><span></span>Contact us</span>
+          <h1 class="reveal ab5-h1 mt-5">Connect with us. <span class="text-grad">Let's make it happen!</span></h1>
+        </div>
+        <div class="lg:col-span-5">
+          <p class="reveal ab5-lead">Questions about a loan, a card or your application? Our team is here to help — fast, friendly and always free.</p>
+          <div class="reveal ct5-online mt-5"><span class="live-dot"></span> Support team is online · replies within 1 business day</div>
+        </div>
       </div>
 
-      <!-- Wide banner (in place of Wallex's photo) -->
-      <div class="reveal contact-banner mt-10 md:mt-12">
-        <div class="cb-ring cb-ring-1"></div><div class="cb-ring cb-ring-2"></div>
-        <div class="relative grid md:grid-cols-3 gap-6 md:gap-8 items-center h-full">
-          <div class="text-white">
-            <div class="flex -space-x-3">
-              <span class="ava-lg bg-white text-brand">SA</span><span class="ava-lg bg-ink">TR</span><span class="ava-lg" style="background:#f7a0bb">MH</span>
-            </div>
-            <p class="mt-4 font-head font-extrabold text-2xl md:text-3xl leading-tight">Real people,<br />ready to help</p>
-            <p class="mt-2 text-white/85">Average reply within one business day.</p>
+      <!-- Banner -->
+      <div class="reveal ct5-banner mt-10 md:mt-12">
+        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1600&q=78&auto=format&fit=crop" alt="A friendly FinCoach support advisor" />
+        <span class="ct5-banner-shade"></span>
+        <div class="relative grid md:grid-cols-12 gap-6 items-end h-full">
+          <div class="md:col-span-6 text-white">
+            <span class="ct5-pill"><i class="fa-solid fa-headset"></i> Real people, ready to help</span>
+            <p class="font-head font-extrabold text-[1.7rem] md:text-[2.4rem] leading-tight mt-4">Expert loan advice,<br />at no cost to you.</p>
           </div>
-          <div class="hidden md:flex flex-col gap-3">
-            <div class="cb-bubble cb-in">Hi! I'd like to compare personal loans 👋</div>
-            <div class="cb-bubble cb-out">Of course! I've found 3 offers from 9.0% p.a. for you.</div>
-            <div class="cb-bubble cb-in cb-typing"><span></span><span></span><span></span></div>
-          </div>
-          <div class="grid grid-cols-2 md:grid-cols-1 gap-3">
-            <div class="glass rounded-2xl px-5 py-4 text-white"><p class="font-head font-extrabold text-2xl">24/7</p><p class="text-sm text-white/85">Online application</p></div>
-            <div class="glass rounded-2xl px-5 py-4 text-white"><p class="font-head font-extrabold text-2xl">100%</p><p class="text-sm text-white/85">Free for customers</p></div>
+          <div class="md:col-span-6 grid grid-cols-3 gap-3">
+            <div class="ct5-stat"><b>&lt; 1 day</b><span>Avg. reply time</span></div>
+            <div class="ct5-stat"><b>24/7</b><span>Online applications</span></div>
+            <div class="ct5-stat"><b>100%</b><span>Free for customers</span></div>
           </div>
         </div>
       </div>
@@ -208,41 +208,94 @@
 </section>
 
 <!-- =========================================================
-     FORM + CALL / EMAIL
+     CONTACT ② — Call us · Email us · Inquiry form
      ========================================================= -->
-<section class="py-16 md:py-24">
-  <div class="max-w-[1080px] mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-    <form class="reveal bg-white rounded-[28px] border border-line p-6 md:p-9 shadow-[0_40px_80px_-50px_rgba(11,21,48,.45)]" data-demo>
-      <h2 class="w-h3 !text-[1.6rem]">Send us a message</h2>
-      <p class="text-muted mt-1">We'll get back to you shortly.</p>
-      <div class="space-y-4 mt-7">
-        <div class="field"><i class="fa-regular fa-user f-ic"></i><input required name="name" placeholder="Your Name" /></div>
-        <div class="field"><i class="fa-regular fa-envelope f-ic"></i><input required type="email" name="email" placeholder="Your Email" /></div>
-        <div class="field"><i class="fa-solid fa-mobile-screen f-ic"></i><input required type="tel" name="phone" placeholder="Your Phone" /></div>
-        <div class="field"><i class="fa-regular fa-bookmark f-ic"></i><input required name="subject" placeholder="Your Subject" /></div>
-        <div class="field"><i class="fa-regular fa-message f-ic"></i><textarea required name="message" rows="5" placeholder="Your Message"></textarea></div>
+<section class="pt-16 md:pt-24 pb-16 md:pb-24">
+  <div class="max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+    <!-- Left: contact methods -->
+    <div class="lg:col-span-5 space-y-5">
+      <div class="reveal">
+        <span class="ab5-kicker"><span></span>Get in touch</span>
+        <h2 class="ab5-h2 mt-4">We'd love to hear from you</h2>
+        <p class="ab5-lead mt-3">Choose whatever is easiest for you — we'll get back to you quickly.</p>
       </div>
-      <button type="submit" class="btn btn-primary !px-9 !py-4 text-lg mt-7 w-full sm:w-auto" data-label='Send Message <i class="fa-solid fa-paper-plane"></i>'>Send Message <i class="fa-solid fa-paper-plane"></i></button>
-      <p data-ok class="hidden mt-4 font-semibold text-green-600"><i class="fa-solid fa-circle-check"></i> Thanks! Your message has been received.</p>
-    </form>
 
-    <div class="lg:pt-6">
-      <div class="reveal contact-item">
-        <h3 class="w-h3">Call Us</h3>
-        <p class="text-muted mt-2">We're here to help with any question or support you need. Call our team for quick, friendly answers.</p>
-        <div class="flex flex-wrap items-center gap-3 mt-5">
-          <a href="tel:+8809638229922" class="contact-line"><span class="ci-dot"><i class="fa-solid fa-phone"></i></span>+880 9638 229922</a>
-          <button type="button" class="copy-btn" data-copy="+8809638229922"><i class="fa-regular fa-copy"></i> Copy</button>
+      <div class="reveal ct5-card">
+        <span class="ct5-ic"><i class="fa-solid fa-phone-volume"></i></span>
+        <div class="flex-1 min-w-0">
+          <p class="ct5-k">Call us</p>
+          <a href="tel:+8809638229922" class="ct5-v">+880 9638 229922</a>
+          <p class="ct5-s">Sun – Thu · 9:00 AM – 6:00 PM</p>
+        </div>
+        <div class="ct5-acts">
+          <a href="tel:+8809638229922" class="ct5-act ct5-act-main" aria-label="Call now"><i class="fa-solid fa-phone"></i></a>
+          <button type="button" class="ct5-act" data-copy="+8809638229922" aria-label="Copy phone number"><i class="fa-regular fa-copy"></i></button>
         </div>
       </div>
-      <div class="reveal contact-item">
-        <h3 class="w-h3">Email Us</h3>
-        <p class="text-muted mt-2">Prefer writing? Send us an email and we'll reply within one business day.</p>
-        <div class="flex flex-wrap items-center gap-3 mt-5">
-          <a href="mailto:info@fincoachbd.com" class="contact-line"><span class="ci-dot"><i class="fa-solid fa-envelope"></i></span>info@fincoachbd.com</a>
-          <button type="button" class="copy-btn" data-copy="info@fincoachbd.com"><i class="fa-regular fa-copy"></i> Copy</button>
+
+      <div class="reveal ct5-card">
+        <span class="ct5-ic"><i class="fa-regular fa-envelope"></i></span>
+        <div class="flex-1 min-w-0">
+          <p class="ct5-k">Email us</p>
+          <a href="mailto:info@fincoachbd.com" class="ct5-v">info@fincoachbd.com</a>
+          <p class="ct5-s">We reply within one business day</p>
+        </div>
+        <div class="ct5-acts">
+          <a href="mailto:info@fincoachbd.com" class="ct5-act ct5-act-main" aria-label="Send email"><i class="fa-solid fa-paper-plane"></i></a>
+          <button type="button" class="ct5-act" data-copy="info@fincoachbd.com" aria-label="Copy email"><i class="fa-regular fa-copy"></i></button>
         </div>
       </div>
+
+      <div class="reveal ct5-safe">
+        <i class="fa-solid fa-shield-halved"></i>
+        <p><b>Stay safe:</b> FinCoach never asks for money, processing fees or OTPs. Only trust our official number and email above.</p>
+      </div>
+
+      <div class="reveal flex items-center gap-3 pt-1">
+        <span class="text-sm font-bold text-muted">Follow us</span>
+        <a href="https://www.facebook.com/FinCoachOfficial" target="_blank" rel="noopener" class="social social-fb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.linkedin.com/company/FinCoachOfficial" target="_blank" rel="noopener" class="social social-in" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://www.youtube.com/@FinCoachOfficial" target="_blank" rel="noopener" class="social social-yt" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.instagram.com/FinCoachOfficial" target="_blank" rel="noopener" class="social social-ig" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+
+    <!-- Right: inquiry form -->
+    <div class="lg:col-span-7">
+      <form class="reveal ct5-form" data-demo>
+        <span class="ct5-form-glow"></span>
+        <div class="relative">
+          <h3 class="font-head font-extrabold text-[1.6rem] md:text-[1.9rem]">Send us an inquiry</h3>
+          <p class="text-muted mt-1">Fill in the form and the right person will contact you.</p>
+
+          <input type="hidden" name="topic" value="Loan inquiry" />
+          <div class="chip-group flex flex-wrap gap-2 mt-6">
+            <button type="button" class="chip active" data-value="Loan inquiry">Loan inquiry</button>
+            <button type="button" class="chip" data-value="Credit card">Credit card</button>
+            <button type="button" class="chip" data-value="My application">My application</button>
+            <button type="button" class="chip" data-value="Partnership">Partnership</button>
+            <button type="button" class="chip" data-value="Other">Other</button>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4 mt-6">
+            <label class="ct5-f"><span>Full name</span><input required name="name" placeholder="e.g. Rafiq Ahmed" autocomplete="name" /></label>
+            <label class="ct5-f"><span>Mobile number</span><input required type="tel" name="phone" placeholder="01XXX-XXXXXX" autocomplete="tel" /></label>
+            <label class="ct5-f sm:col-span-2"><span>Email address</span><input required type="email" name="email" placeholder="you@email.com" autocomplete="email" /></label>
+            <label class="ct5-f sm:col-span-2"><span>Your message</span><textarea required name="message" rows="5" placeholder="Tell us how we can help…"></textarea></label>
+          </div>
+
+          <label class="flex items-start gap-3 mt-5 text-muted cursor-pointer text-[15px]">
+            <input type="checkbox" required class="mt-1 w-4 h-4 accent-[#e8205a]" />
+            <span>I agree to the <a href="terms.html" class="font-semibold text-ink underline">Terms</a> and <a href="privacy.html" class="font-semibold text-ink underline">Privacy Policy</a>.</span>
+          </label>
+
+          <div class="flex flex-col sm:flex-row sm:items-center gap-4 mt-7">
+            <button type="submit" class="btn btn-primary !px-9 !py-4 text-lg w-full sm:w-auto" data-label='Send inquiry <i class="fa-solid fa-paper-plane"></i>'>Send inquiry <i class="fa-solid fa-paper-plane"></i></button>
+            <p class="text-sm text-muted"><i class="fa-solid fa-lock text-brand"></i> Your details are private and secure.</p>
+          </div>
+          <p data-ok class="hidden mt-4 font-semibold text-green-600"><i class="fa-solid fa-circle-check"></i> Thank you! We've received your inquiry and will be in touch soon.</p>
+        </div>
+      </form>
     </div>
   </div>
 </section>
