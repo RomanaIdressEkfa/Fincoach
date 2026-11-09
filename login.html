@@ -169,20 +169,19 @@
 <main>
 
 <section class="px-2.5 pt-2.5 pb-16 md:pb-24">
-  <div class="hero-bg panel relative overflow-hidden">
-    <div class="grid-lines absolute inset-0 pointer-events-none"></div>
-    <div class="absolute -left-24 top-24 w-80 h-80 rounded-full bg-grad opacity-[.08] blur-2xl"></div>
-    <div class="absolute -right-24 bottom-10 w-96 h-96 rounded-full bg-grad opacity-[.08] blur-2xl"></div>
+  <div class="ab5-hero ct5-hero">
+    <span class="ab5-dots"></span><span class="ab5-glow"></span>
 
     <div class="relative max-w-site mx-auto px-4 md:px-6 pt-12 md:pt-16 pb-16 md:pb-24">
       <div class="text-center">
         <nav class="reveal crumb justify-center" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand" id="crumbLabel">Login</span></nav>
-        <h1 class="reveal mt-5 font-head font-extrabold text-[2.4rem] leading-[1.05] sm:text-5xl lg:text-[3.8rem] text-ink" id="authTitle">Welcome <span class="text-grad">back</span></h1>
-        <p class="reveal mt-4 text-lg text-muted max-w-xl mx-auto font-medium" id="authSub">Log in to manage your applications, compare offers and track every update.</p>
+        <div class="reveal mt-6"><span class="ab5-kicker justify-center"><span></span>Your FinCoach account<span></span></span></div>
+        <h1 class="reveal ab5-h1 mt-4" id="authTitle">Welcome <span class="text-grad">back</span></h1>
+        <p class="reveal ab5-lead mt-4 max-w-xl mx-auto" id="authSub">Log in to manage your applications, compare offers and track every update.</p>
       </div>
 
       <!-- ===== Sliding auth card ===== -->
-      <div class="reveal auth-shell auth-slider mt-8 md:mt-12 max-w-6xl mx-auto" id="authSlider">
+      <div class="reveal auth-shell auth-slider lg2-auth mt-8 md:mt-12 max-w-6xl mx-auto" id="authSlider">
 
         <!-- Mobile tabs (desktop uses the sliding panel) -->
         <div class="lg:hidden auth-mobile-banner">
@@ -221,7 +220,7 @@
                 <div class="ic-wrap"><i class="fa-solid fa-lock f-ic"></i><input id="lgPw" type="password" required placeholder="Password" autocomplete="current-password" class="!pr-14" aria-label="Password" /><button type="button" class="pw-toggle" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div>
               </div>
             </div>
-            <div class="flex items-center justify-between mt-4">
+            <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mt-4">
               <label class="flex items-center gap-2 text-muted font-semibold cursor-pointer select-none text-[15px]"><input type="checkbox" class="w-4 h-4 accent-[#e8205a]" checked /> Keep me logged in</label>
               <button type="button" class="text-[15px] font-bold text-brand hover:underline" data-goto="forgot">Forgot password?</button>
             </div>
@@ -344,10 +343,11 @@
       </div>
 
       <!-- trust row -->
-      <div class="reveal mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-[15px]">
-        <span class="hero-check"><i class="fa-solid fa-lock"></i> 256-bit SSL encryption</span>
-        <span class="hero-check"><i class="fa-solid fa-check"></i> Free forever for customers</span>
-        <span class="hero-check"><i class="fa-solid fa-building-columns"></i> 6+ Partner Banks &amp; FIs</span>
+      <div class="reveal lg2-trust mt-10 md:mt-12 max-w-6xl mx-auto">
+        <div><i class="fa-solid fa-lock"></i><span><b>256-bit SSL</b><small>Bank-grade encryption</small></span></div>
+        <div><i class="fa-solid fa-gift"></i><span><b>Free forever</b><small>No fees for customers</small></span></div>
+        <div><i class="fa-solid fa-building-columns"></i><span><b>6+ Banks &amp; FIs</b><small>Compare in one place</small></span></div>
+        <div><i class="fa-solid fa-user-shield"></i><span><b>No OTP requests</b><small>We never ask for your code</small></span></div>
       </div>
     </div>
   </div>

@@ -265,7 +265,7 @@
   /* Blog post: reading progress + active TOC */
   const readBar = $('#readBar');
   if (readBar) {
-    const art = $('.ps2-article'), links = $$('#postToc a'), heads = links.map((a) => $(a.getAttribute('href'))).filter(Boolean);
+    const art = $('.ps2-article, .lg2-article'), links = $$('#postToc a'), heads = links.map((a) => $(a.getAttribute('href'))).filter(Boolean);
     const onScroll = () => {
       const r = art.getBoundingClientRect(), total = art.offsetHeight - window.innerHeight * .6;
       readBar.style.width = Math.min(Math.max(-r.top / Math.max(total, 1), 0), 1) * 100 + '%';

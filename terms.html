@@ -167,29 +167,62 @@
 </aside>
 
 <main>
+<div class="ps2-progress" aria-hidden="true"><span id="readBar"></span></div>
 
 <section class="px-2.5 pt-2.5">
-  <div class="ab-hero">
-    <div class="ab-dots"></div>
+  <div class="ab5-hero ct5-hero">
+    <span class="ab5-dots"></span><span class="ab5-glow"></span>
     <div class="relative max-w-site mx-auto px-4 md:px-6 pt-12 md:pt-16 pb-14 md:pb-16">
-      <nav class="reveal crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand">Terms of Service</span></nav>
-      <h1 class="reveal w-h1 mt-6">Terms of Service</h1>
-      <p class="reveal w-lead mt-3">Last updated: 1 November 2026</p>
+      <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand">Terms of Service</span></nav>
+      <div class="grid lg:grid-cols-12 gap-6 lg:gap-12 items-end mt-6">
+        <div class="lg:col-span-7">
+          <span class="ab5-kicker"><span></span>Legal</span>
+          <h1 class="ab5-h1 mt-5">Terms of <span class="text-grad">Service</span></h1>
+          <p class="ab5-lead mt-4 max-w-xl">The rules for using the FinCoach website and app — written in plain language.</p>
+        </div>
+        <div class="lg:col-span-5 lg:justify-self-end">
+          <div class="lg2-meta">
+            <span><i class="fa-regular fa-calendar"></i> Updated 1 November 2026</span>
+            <span><i class="fa-regular fa-clock"></i> 4 min read</span>
+          </div>
+          <a href="privacy.html" class="lg2-switch mt-3"><i class="fa-solid fa-user-shield"></i><span><small>Also read</small><b>Privacy Policy</b></span><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="pt-12 md:pt-16 pb-16 md:pb-24">
-  <div class="max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-12 gap-10">
+  <div class="max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-12 gap-10 lg:gap-14">
     <aside class="lg:col-span-4">
-      <nav class="legal-toc lg:sticky lg:top-36" aria-label="On this page">
-        <p class="font-head font-extrabold">On this page</p>
-        <ol><li><a href="#s1">Our service</a></li><li><a href="#s2">Eligibility</a></li><li><a href="#s3">Your account</a></li><li><a href="#s4">Information you provide</a></li><li><a href="#s5">Offers and decisions</a></li><li><a href="#s6">Fees</a></li><li><a href="#s7">Acceptable use</a></li><li><a href="#s8">Liability</a></li><li><a href="#s9">Changes</a></li><li><a href="#s10">Governing law</a></li></ol>
-      </nav>
+      <div class="lg:sticky lg:top-32 space-y-4">
+        <nav class="ps2-toc lg2-toc" aria-label="On this page" id="postToc">
+          <p>On this page</p>
+          <a href="#s1" class="active"><span>01</span>Our service</a>
+          <a href="#s2"><span>02</span>Eligibility</a>
+          <a href="#s3"><span>03</span>Your account</a>
+          <a href="#s4"><span>04</span>Information you provide</a>
+          <a href="#s5"><span>05</span>Offers and decisions</a>
+          <a href="#s6"><span>06</span>Fees</a>
+          <a href="#s7"><span>07</span>Acceptable use</a>
+          <a href="#s8"><span>08</span>Liability</a>
+          <a href="#s9"><span>09</span>Changes</a>
+          <a href="#s10"><span>10</span>Governing law</a>
+        </nav>
+        <div class="ct5-safe hidden lg:flex"><i class="fa-solid fa-shield-halved"></i><p><b>Stay safe:</b> FinCoach never asks for money, processing fees or OTPs.</p></div>
+      </div>
     </aside>
-    <article class="lg:col-span-8 prose-fc">
-      <div class="legal-note"><i class="fa-solid fa-circle-info"></i> Sample text for the website design. FinCoach's legal team must review and replace it before launch.</div>
+    <article class="lg:col-span-8 prose-fc lg2-article">
+      <div class="legal-note lg2-note"><i class="fa-solid fa-circle-info"></i> Sample text for the website design. FinCoach's legal team must review and replace it before launch.</div>
       <p class="lead">These Terms of Service govern your use of the FinCoach website and app, operated by FinCoach Bangladesh Limited ("FinCoach", "we", "us"). By using our services you agree to these terms.</p>
+      <div class="lg2-glance">
+        <p class="lg2-glance-t"><i class="fa-solid fa-bolt"></i> At a glance</p>
+        <div class="lg2-glance-g">
+          <div><span><i class="fa-solid fa-handshake"></i></span><b>We are a marketplace</b><small>FinCoach compares offers — banks make the final decision.</small></div>
+          <div><span><i class="fa-solid fa-gift"></i></span><b>Free for you</b><small>No fees, ever. We never ask for money or OTPs.</small></div>
+          <div><span><i class="fa-solid fa-scale-balanced"></i></span><b>Bangladesh law</b><small>These terms are governed by the laws of Bangladesh.</small></div>
+        </div>
+      </div>
       <h2 id="s1">1. Our service</h2>
       <p>FinCoach is an online marketplace that lets you compare and apply for financial products offered by banks and financial institutions ("Partners"). FinCoach is not a lender and does not make credit decisions.</p>
       <h2 id="s2">2. Eligibility</h2>
@@ -211,7 +244,13 @@
       <p>We may update these terms from time to time. We will post the new version here with the updated date.</p>
       <h2 id="s10">10. Governing law</h2>
       <p>These terms are governed by the laws of Bangladesh. Disputes are subject to the courts of Dhaka.</p>
-      <div class="post-cta"><div><p class="font-head font-extrabold text-xl">Questions about this policy?</p><p class="text-muted">Email info@fincoachbd.com or call +880 9638 229922.</p></div><a href="contact.html" class="btn btn-primary shrink-0">Contact us</a></div>
+      <div class="ps2-cta">
+        <span class="ab5-pledge-glow"></span>
+        <div class="relative flex flex-col md:flex-row md:items-center justify-between gap-5">
+          <div><p class="font-head font-extrabold text-2xl text-white">Questions about this policy?</p><p class="text-white/70 mt-1">Email info@fincoachbd.com or call +880 9638 229922.</p></div>
+          <a href="contact.html" class="btn btn-primary shrink-0">Contact us <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
     </article>
   </div>
 </section>

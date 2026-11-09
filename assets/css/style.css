@@ -2483,3 +2483,43 @@ body.lm-lock { overflow: hidden; }
 .tr2-step h3 { margin-top: .4rem; font-family: "Urbanist", sans-serif; font-weight: 800; font-size: 1.2rem; }
 .tr2-step p { margin-top: .4rem; font-size: .92rem; line-height: 1.6; color: rgba(255,255,255,.68); }
 .ec2-tip-ic { width: 50px; height: 50px; border-radius: 16px; display: grid; place-items: center; font-size: 1.2rem; background: var(--tint); color: var(--brand); }
+
+/* ==========================================================
+   Legal v2 (Terms / Privacy) + Login shell
+   ========================================================== */
+.lg2-meta { display: flex; flex-wrap: wrap; gap: .5rem; }
+.lg2-meta span { display: inline-flex; align-items: center; gap: .45rem; padding: .45rem .9rem; border-radius: 99px; background: rgba(255,255,255,.8); border: 1px solid #f4dbe4; font-size: .85rem; font-weight: 700; color: var(--ink-2); }
+.lg2-meta i { color: var(--brand); }
+.lg2-switch { display: flex; align-items: center; gap: .85rem; padding: .8rem 1rem; border-radius: 20px; background: #fff; border: 1px solid #f4dbe4; box-shadow: 0 24px 44px -32px rgba(232,32,90,.55); transition: all .3s; min-width: 280px; }
+.lg2-switch:hover { transform: translateY(-3px); border-color: #f6b6c9; }
+.lg2-switch > i:first-child { width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center; background: var(--grad); color: #fff; }
+.lg2-switch small { display: block; font-size: .75rem; font-weight: 700; color: var(--muted); }
+.lg2-switch b { font-family: "Urbanist", sans-serif; font-weight: 800; color: var(--ink); }
+.lg2-switch > i:last-child { margin-left: auto; color: var(--brand); transition: transform .25s; }
+.lg2-switch:hover > i:last-child { transform: translateX(4px); }
+.lg2-toc a { display: flex; gap: .7rem; align-items: baseline; }
+.lg2-toc a span { font-family: "Urbanist", sans-serif; font-weight: 800; font-size: .78rem; color: #c3c9d6; min-width: 1.2rem; }
+.lg2-toc a.active span { color: var(--brand); }
+.lg2-article { font-size: 1.05rem; }
+.lg2-article h2 { scroll-margin-top: 8rem; padding-top: 1.8rem; border-top: 1px dashed #ece4e8; }
+.lg2-article .lead + .lg2-glance + h2, .lg2-article .lg2-glance + h2 { border-top: 0; padding-top: 0; }
+.lg2-note { border-radius: 16px !important; }
+.lg2-glance { margin: 1.8rem 0 2.4rem; padding: 1.4rem; border-radius: 24px; background: linear-gradient(135deg, #fff4f7, #fff); border: 1px solid #f8d2de; line-height: 1.45; }
+.lg2-glance-t { margin: 0 !important; font-family: "Urbanist", sans-serif; font-weight: 800; color: var(--brand); }
+.lg2-glance-t i { margin-right: .35rem; }
+.lg2-glance-g { display: grid; gap: .7rem; margin-top: 1rem; }
+@media (min-width: 768px) { .lg2-glance-g { grid-template-columns: repeat(3, 1fr); } }
+.lg2-glance-g > div { padding: 1rem; border-radius: 18px; background: #fff; border: 1px solid #f4e4ea; }
+.lg2-glance-g span { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--tint); color: var(--brand); }
+.lg2-glance-g b { display: block; margin-top: .7rem; font-family: "Urbanist", sans-serif; font-weight: 800; color: var(--ink); font-size: 1rem; }
+.lg2-glance-g small { display: block; margin-top: .2rem; font-size: .85rem; color: var(--muted); }
+
+.lg2-auth { box-shadow: 0 70px 120px -60px rgba(11,21,48,.55), 0 0 0 8px rgba(255,255,255,.6) !important; }
+.lg2-trust { display: grid; grid-template-columns: repeat(2, 1fr); gap: .5rem; padding: .5rem; border-radius: 24px; background: #fff; border: 1px solid #f4e2e9; box-shadow: 0 30px 60px -40px rgba(232,32,90,.45); }
+@media (min-width: 1024px) { .lg2-trust { grid-template-columns: repeat(4, 1fr); } }
+.lg2-trust > div { display: flex; align-items: center; gap: .75rem; padding: .8rem .9rem; border-radius: 18px; }
+@media (min-width: 1024px) { .lg2-trust > div + div { border-left: 1px dashed #f0d3dd; border-radius: 0; } }
+.lg2-trust i { width: 40px; height: 40px; flex: none; border-radius: 12px; display: grid; place-items: center; background: var(--tint); color: var(--brand); }
+.lg2-trust b { display: block; font-family: "Urbanist", sans-serif; font-weight: 800; color: var(--ink); font-size: .95rem; }
+.lg2-trust small { display: block; font-size: .78rem; color: var(--muted); font-weight: 600; }
+@media (max-width: 479px) { .lg2-trust > div { padding: .65rem .5rem; gap: .55rem; } .lg2-trust i { width: 34px; height: 34px; } .lg2-trust b { font-size: .85rem; } .lg2-trust small { display: none; } }
