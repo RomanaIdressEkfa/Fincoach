@@ -261,13 +261,13 @@
      FOOTER
      ========================================================= -->
 <footer class="px-2.5 pb-2.5">
-  <div class="footer panel text-white relative overflow-hidden">
-    <div class="absolute -right-32 -top-32 w-96 h-96 rounded-full bg-grad opacity-[.12] blur-3xl pointer-events-none"></div>
+  <div class="footer ft2 panel text-white relative overflow-hidden">
+    <span class="ft2-glow"></span><span class="ft2-glow ft2-glow-2"></span>
     <div class="relative max-w-site mx-auto px-4 md:px-6 pt-14 md:pt-20 pb-8">
       <div class="grid grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10">
         <div class="lg:col-span-2">
-          <h4 class="f-head">Quick Links</h4>
-          <ul class="mt-5 space-y-3">
+          <h4 class="ft2-h">Quick Links</h4>
+          <ul class="ft2-list">
             <li><a class="f" href="about.html">About</a></li>
             <li><a class="f" href="contact.html">Contact Us</a></li>
             <li><a class="f" href="emi-calculator.html">EMI Calculator</a></li>
@@ -275,8 +275,8 @@
           </ul>
         </div>
         <div class="lg:col-span-2">
-          <h4 class="f-head">Products</h4>
-          <ul class="mt-5 space-y-3">
+          <h4 class="ft2-h">Products</h4>
+          <ul class="ft2-list">
             <li><a class="f" href="loan.html?type=personal">Personal Loan</a></li>
             <li><a class="f" href="loan.html?type=auto">Auto Loan</a></li>
             <li><a class="f" href="loan.html?type=home">Home Loan</a></li>
@@ -285,8 +285,8 @@
           </ul>
         </div>
         <div class="lg:col-span-3">
-          <h4 class="f-head">Support</h4>
-          <ul class="mt-5 space-y-3">
+          <h4 class="ft2-h">Support</h4>
+          <ul class="ft2-list">
             <li><a class="f" href="faq.html">FAQs</a></li>
             <li><a class="f" href="terms.html">Terms of Service</a></li>
             <li><a class="f" href="privacy.html">Privacy Policy</a></li>
@@ -294,25 +294,28 @@
           </ul>
         </div>
         <div class="col-span-2 lg:col-span-5">
-          <h4 class="f-head">Contact</h4>
-          <ul class="mt-5 space-y-3">
-            <li><a class="f inline-flex items-center gap-2.5" href="mailto:info@fincoachbd.com"><i class="fa-regular fa-envelope text-brand"></i>info@fincoachbd.com</a></li>
-            <li><a class="f inline-flex items-center gap-2.5" href="tel:+8809638229922"><i class="fa-solid fa-phone text-brand"></i>+880 9638 229922</a></li>
-          </ul>
-          <form class="newsletter mt-5" data-demo>
-            <input type="email" required placeholder="Your email for offers" aria-label="Email address" />
-            <button type="submit" class="btn btn-primary !py-2.5 !px-5" data-label="Subscribe">Subscribe</button>
-            <p data-ok class="hidden basis-full mt-2 text-sm font-semibold text-green-400"><i class="fa-solid fa-circle-check"></i> Subscribed — thank you!</p>
-          </form>
-          <p class="mt-6 font-semibold text-white">Get the FinCoach app</p>
-          <div class="flex flex-wrap gap-2 mt-3">
-            <a href="#" class="store-badge"><i class="fa-brands fa-google-play text-xl"></i><div><small>GET IT ON</small><span>Google Play</span></div></a>
-            <a href="#" class="store-badge"><i class="fa-brands fa-apple text-2xl"></i><div><small>Download on the</small><span>App Store</span></div></a>
+          <div class="ft2-box">
+            <h4 class="ft2-h">Contact</h4>
+            <ul class="ft2-contact">
+              <li><a href="mailto:info@fincoachbd.com"><span><i class="fa-regular fa-envelope"></i></span>info@fincoachbd.com</a></li>
+              <li><a href="tel:+8809638229922"><span><i class="fa-solid fa-phone"></i></span>+880 9638 229922</a></li>
+            </ul>
+            <form class="newsletter ft2-nl mt-5" data-demo>
+              <input type="email" required placeholder="Your email" aria-label="Email address" />
+              <button type="submit" class="btn btn-primary !py-2.5 !px-5" data-label="Subscribe">Subscribe</button>
+              <p data-ok class="hidden basis-full mt-2 text-sm font-semibold text-green-400"><i class="fa-solid fa-circle-check"></i> Subscribed — thank you!</p>
+            </form>
+            <p class="mt-6 font-semibold text-white">Get the FinCoach app</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <a href="#" class="store-badge"><i class="fa-brands fa-google-play text-xl"></i><div><small>GET IT ON</small><span>Google Play</span></div></a>
+              <a href="#" class="store-badge"><i class="fa-brands fa-apple text-2xl"></i><div><small>Download on the</small><span>App Store</span></div></a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="ft2-line mt-12"></div>
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
         <a href="index.html" class="footer-logo" aria-label="FinCoach home"><img src="assets/img/fincoach-logo-white.png" alt="FinCoach" /></a>
         <div class="flex items-center gap-3">
           <a href="https://www.facebook.com/FinCoachOfficial" target="_blank" rel="noopener" class="social social-fb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -323,7 +326,7 @@
       </div>
       <div class="mt-6 flex flex-col md:flex-row justify-between gap-2 text-sm text-[#8d97ad] text-center md:text-left">
         <p>Copyright © <span id="yr">2026</span> FinCoach Bangladesh Limited. All rights reserved.</p>
-        <p>Navana DH Tower, Level 8, 6 Panthapath, Dhaka 1215</p>
+        <p><i class="fa-solid fa-location-dot text-[#ff9ec0] mr-1.5"></i>Navana DH Tower, Level 8, 6 Panthapath, Dhaka 1215</p>
       </div>
     </div>
   </div>
