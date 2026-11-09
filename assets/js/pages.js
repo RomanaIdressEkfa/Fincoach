@@ -262,6 +262,19 @@
     $$('#blogCats .chip').forEach((c) => c.addEventListener('click', () => { bcat = c.dataset.cat; setTimeout(run, 0); }));
   }
 
+  /* Blog post v3 extras: minutes left, save, helpful */
+  const readLeft = $('#readLeft');
+  if (readLeft) {
+    const art = $('.ps2-article'), total = 5;
+    const upd = () => { const r = art.getBoundingClientRect(), p = Math.min(Math.max(-r.top / Math.max(art.offsetHeight - innerHeight * .6, 1), 0), 1);
+      const left = Math.ceil(total * (1 - p)); readLeft.textContent = p >= .98 ? 'Finished' : left + ' min left'; readLeft.classList.toggle('is-done', p >= .98); };
+    addEventListener('scroll', upd, { passive: true }); upd();
+  }
+  const saveBtn = $('#saveBtn');
+  if (saveBtn) saveBtn.addEventListener('click', () => { const on = saveBtn.classList.toggle('is-on'); saveBtn.querySelector('i').className = on ? 'fa-solid fa-bookmark' : 'fa-regular fa-bookmark'; saveBtn.querySelector('span').textContent = on ? 'Saved' : 'Save'; });
+  const helpful = $('#helpful');
+  if (helpful) $$('button', helpful).forEach((b) => b.addEventListener('click', () => { $$('button', helpful).forEach((x) => x.classList.toggle('is-on', x === b)); $('em', helpful).classList.remove('hidden'); }));
+
   /* Blog post: reading progress + active TOC */
   const readBar = $('#readBar');
   if (readBar) {

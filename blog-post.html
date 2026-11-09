@@ -174,7 +174,7 @@
      POST ① — Header
      ========================================================= -->
 <section class="px-2.5 pt-2.5">
-  <div class="ab5-hero ps2-hero">
+  <div class="ab5-hero ps2-hero ps3-hero">
     <span class="ab5-dots"></span><span class="ab5-glow"></span>
     <div class="relative max-w-[920px] mx-auto px-4 md:px-6 pt-12 md:pt-16 pb-44 md:pb-56 text-center">
       <nav class="crumb justify-center" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><a href="blog.html">Blog</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand">Guides</span></nav>
@@ -188,13 +188,24 @@
         <span><i class="fa-regular fa-calendar"></i> 12 Aug 2026</span>
         <span><i class="fa-regular fa-clock"></i> 5 min read</span>
       </div>
+      <div class="ps3-actions mt-6">
+        <a href="#" class="ps3-act" aria-label="Share on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="ps3-act" aria-label="Share on LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" class="ps3-act" aria-label="Share on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <button type="button" class="ps3-act" data-copy="https://fincoach.com.bd/blog" aria-label="Copy link"><i class="fa-solid fa-link"></i></button>
+        <span class="ps3-sep"></span>
+        <button type="button" class="ps3-save" id="saveBtn"><i class="fa-regular fa-bookmark"></i> <span>Save</span></button>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="relative z-10 -mt-36 md:-mt-48">
   <div class="max-w-site mx-auto px-4 md:px-6">
-    <img class="ps2-cover" src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1800&q=78&auto=format&fit=crop" alt="Applying for a loan online on a laptop and phone" />
+    <figure class="ps3-figure">
+      <img class="ps2-cover" src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1800&q=78&auto=format&fit=crop" alt="Applying for a loan online on a laptop and phone" />
+      <figcaption><i class="fa-solid fa-camera"></i> Applying online takes just minutes with FinCoach.</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -205,8 +216,8 @@
   <div class="max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-12 gap-10 xl:gap-12">
     <aside class="lg:col-span-3 order-2 lg:order-1">
       <div class="lg:sticky lg:top-32 space-y-4">
-        <nav class="ps2-toc" aria-label="On this page" id="postToc">
-          <p>On this page</p>
+        <nav class="ps2-toc ps3-toc" aria-label="On this page" id="postToc">
+          <p class="flex items-center justify-between gap-2">On this page <span class="ps3-left" id="readLeft">5 min left</span></p>
           <a href="#p1" class="active">1. Check your eligibility</a>
           <a href="#p2">2. Prepare your documents</a>
           <a href="#p3">3. Compare before you apply</a>
@@ -236,7 +247,7 @@
         </ul>
       </div>
 
-      <h2 id="p1">1. Check your eligibility first</h2>
+      <h2 id="p1"><span class="ps3-n">01</span>Check your eligibility first</h2>
       <p>Most banks and financial institutions in Bangladesh look at your age, income, job stability and repayment history. Typical requirements for a personal loan are:</p>
       <ul>
         <li>Age between 22 and 60 years</li>
@@ -244,7 +255,7 @@
         <li>A minimum monthly income — often ৳25,000 or more</li>
       </ul>
 
-      <h2 id="p2">2. Prepare your documents</h2>
+      <h2 id="p2"><span class="ps3-n">02</span>Prepare your documents</h2>
       <p>Keeping these ready can save days of back-and-forth:</p>
       <div class="ps2-docs">
         <div><i class="fa-solid fa-id-card"></i><span>NID &amp; photos</span></div>
@@ -253,13 +264,17 @@
         <div><i class="fa-solid fa-receipt"></i><span>TIN certificate</span></div>
       </div>
 
-      <blockquote><i class="fa-solid fa-lightbulb"></i> Make sure the name on every document matches your NID exactly. Small spelling differences are one of the most common reasons for delays.</blockquote>
+      <blockquote class="ps3-tip"><span class="ps3-tip-ic"><i class="fa-solid fa-lightbulb"></i></span><div><b>Pro tip</b><p>Make sure the name on every document matches your NID exactly. Small spelling differences are one of the most common reasons for delays.</p></div></blockquote>
 
-      <h2 id="p3">3. Compare before you apply</h2>
+      <h2 id="p3"><span class="ps3-n">03</span>Compare before you apply</h2>
       <p>Interest rates, processing fees and early-settlement charges vary between lenders. Comparing several offers side by side — like you can on FinCoach — helps you see the real cost and pick the EMI that fits your budget.</p>
 
-      <h2 id="p4">4. Keep your EMI affordable</h2>
+      <h2 id="p4"><span class="ps3-n">04</span>Keep your EMI affordable</h2>
       <p>A common rule of thumb is to keep all your monthly loan payments below 40–50% of your income. Use the <a href="emi-calculator.html">EMI calculator</a> to test different amounts and tenures before applying.</p>
+      <div class="ps3-stat">
+        <div class="ps3-stat-n">40–50<small>%</small></div>
+        <div><b>The golden EMI rule</b><p>Keep all your monthly loan payments below this share of your take-home income.</p></div>
+      </div>
 
       <div class="ps2-cta">
         <span class="ab5-pledge-glow"></span>
@@ -269,9 +284,14 @@
         </div>
       </div>
 
-      <div class="ps2-author">
+      <div class="ps3-endbar">
+        <div class="ps3-tags"><span>Tags:</span><a href="blog.html">Personal loan</a><a href="blog.html">Documents</a><a href="blog.html">Eligibility</a><a href="blog.html">EMI</a></div>
+        <div class="ps3-helpful" id="helpful"><span>Was this helpful?</span><button type="button" data-v="yes"><i class="fa-regular fa-thumbs-up"></i> Yes</button><button type="button" data-v="no"><i class="fa-regular fa-thumbs-down"></i> No</button><em class="hidden"><i class="fa-solid fa-circle-check"></i> Thanks for your feedback!</em></div>
+      </div>
+
+      <div class="ps2-author ps3-author">
         <span class="ava-lg bg-grad !w-14 !h-14 !text-sm">FC</span>
-        <div><p class="font-head font-extrabold text-lg text-ink">FinCoach Editorial</p><p class="text-muted text-[15px] mt-1">Our loan and credit team writes simple, practical guides to help Bangladeshis borrow smarter and save better.</p></div>
+        <div><p class="font-head font-extrabold text-lg text-ink">FinCoach Editorial</p><p class="text-muted text-[15px] mt-1">Our loan and credit team writes simple, practical guides to help Bangladeshis borrow smarter and save better.</p><div class="ps3-author-links"><a href="blog.html">More from this author <i class="fa-solid fa-arrow-right"></i></a><span><i class="fa-solid fa-circle-check"></i> Reviewed by FinCoach credit experts</span></div></div>
       </div>
     </article>
 
