@@ -878,65 +878,82 @@
      ========================================================= -->
 <section id="blog" class="pt-16 md:pt-24 pb-16 md:pb-24">
   <div class="max-w-site mx-auto px-4 md:px-6">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-      <div>
-        <span class="reveal eyebrow">Insights &amp; news</span>
-        <h2 class="reveal mt-4 font-head font-extrabold text-[2rem] sm:text-[2.25rem] md:text-[2.8rem] leading-[1.08]">Our latest blog</h2>
-        <p class="reveal mt-3 text-lg text-muted max-w-xl">Smart money guides, loan tips and the latest from FinCoach and our partner banks.</p>
+    <div class="grid lg:grid-cols-12 gap-6 items-end">
+      <div class="lg:col-span-7">
+        <span class="reveal ab5-kicker"><span></span>Insights &amp; news</span>
+        <h2 class="reveal ab5-h2 mt-4">Our latest <span class="text-grad">blog</span></h2>
+        <p class="reveal ab5-lead mt-3 max-w-xl">Smart money guides, loan tips and the latest from FinCoach and our partner banks.</p>
       </div>
-      <a href="blog.html" class="reveal bl4-all self-start md:self-auto">View all posts <span><i class="fa-solid fa-arrow-right"></i></span></a>
+      <div class="reveal lg:col-span-5 flex flex-wrap lg:justify-end items-center gap-2">
+        <a href="blog.html" class="bl5-chip">Guides</a>
+        <a href="blog.html" class="bl5-chip">Savings</a>
+        <a href="blog.html" class="bl5-chip">News</a>
+        <a href="blog.html" class="bl4-all ml-1">View all posts <span><i class="fa-solid fa-arrow-right"></i></span></a>
+      </div>
     </div>
 
-    <div class="bl4 mt-10 md:mt-12">
+    <div class="bl5 mt-10 md:mt-12">
       <!-- Featured -->
-      <a href="blog-post.html" class="reveal bl4-feat">
-        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1300&q=78&auto=format&fit=crop" alt="FinCoach and partner bank team celebrating a new agreement" />
-        <span class="bl4-shade"></span>
-        <div class="bl4-feat-top">
-          <span class="bl4-pill bl4-pill-light"><i class="fa-solid fa-star"></i> Featured</span>
-          <span class="bl4-pill bl4-pill-glass">Partnership</span>
+      <a href="blog-post.html" class="reveal bl5-feat">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&q=80&auto=format&fit=crop" alt="FinCoach and partner bank team celebrating a new agreement" />
+        <span class="bl5-shade"></span>
+        <div class="bl5-feat-top">
+          <span class="bl5-badge"><i class="fa-solid fa-star"></i> Editor's pick</span>
+          <span class="bl5-badge bl5-badge-glass"><i class="fa-regular fa-clock"></i> 3 min read</span>
         </div>
-        <div class="bl4-feat-body">
-          <p class="bl4-meta-light"><i class="fa-regular fa-calendar"></i> Oct 2026 <span>•</span> <i class="fa-regular fa-clock"></i> 3 min read</p>
+        <div class="bl5-glass">
+          <span class="bl5-cat bl5-cat-light">Partnership</span>
           <h3>FinCoach signs an agreement with IPDC Finance PLC.</h3>
-          <p class="bl4-ex">More personal and home loan options — with faster approvals — are now available to FinCoach customers.</p>
-          <span class="bl4-read">Read article <i class="fa-solid fa-arrow-right"></i></span>
+          <p>More personal and home loan options — with faster approvals — are now available to FinCoach customers.</p>
+          <div class="bl5-author">
+            <span class="bl5-ava">FC</span>
+            <div class="leading-tight"><b>FinCoach Editorial</b><small>Oct 2026</small></div>
+            <span class="bl5-go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+          </div>
         </div>
       </a>
 
       <!-- Side list -->
-      <div class="bl4-side">
-        <a href="blog-post.html" class="reveal bl4-row">
-          <div class="bl4-thumb"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=75&auto=format&fit=crop" alt="House keys on a home model" loading="lazy" /></div>
-          <div class="bl4-row-body">
-            <span class="bl4-cat">Home loans</span>
+      <div class="bl5-side">
+        <a href="blog-post.html" class="reveal bl5-row">
+          <span class="bl5-num">01</span>
+          <div class="bl5-thumb"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=75&auto=format&fit=crop" alt="House keys on a home model" loading="lazy" /></div>
+          <div class="bl5-row-body">
+            <span class="bl5-cat">Home loans</span>
             <h3>Buying your first flat in Dhaka: a home loan checklist</h3>
-            <p class="bl4-meta"><i class="fa-regular fa-clock"></i> 6 min read <span>•</span> Sep 2026</p>
+            <p class="bl5-meta"><i class="fa-regular fa-clock"></i> 6 min read <span>•</span> Sep 2026</p>
           </div>
+          <span class="bl5-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
         </a>
-        <a href="blog-post.html" class="reveal bl4-row">
-          <div class="bl4-thumb"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=75&auto=format&fit=crop" alt="Applying online on a laptop and phone" loading="lazy" /></div>
-          <div class="bl4-row-body">
-            <span class="bl4-cat">Guides</span>
+        <a href="blog-post.html" class="reveal bl5-row">
+          <span class="bl5-num">02</span>
+          <div class="bl5-thumb"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=75&auto=format&fit=crop" alt="Applying online on a laptop and phone" loading="lazy" /></div>
+          <div class="bl5-row-body">
+            <span class="bl5-cat">Guides</span>
             <h3>What do you need to apply for a loan in Bangladesh?</h3>
-            <p class="bl4-meta"><i class="fa-regular fa-clock"></i> 5 min read <span>•</span> Aug 2026</p>
+            <p class="bl5-meta"><i class="fa-regular fa-clock"></i> 5 min read <span>•</span> Aug 2026</p>
           </div>
+          <span class="bl5-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
         </a>
-        <a href="blog-post.html" class="reveal bl4-row">
-          <div class="bl4-thumb"><img src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?w=600&q=75&auto=format&fit=crop" alt="Stacking coins to save" loading="lazy" /></div>
-          <div class="bl4-row-body">
-            <span class="bl4-cat">Savings</span>
+        <a href="blog-post.html" class="reveal bl5-row">
+          <span class="bl5-num">03</span>
+          <div class="bl5-thumb"><img src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?w=600&q=75&auto=format&fit=crop" alt="Stacking coins to save" loading="lazy" /></div>
+          <div class="bl5-row-body">
+            <span class="bl5-cat">Savings</span>
             <h3>FDR vs DPS: which deposit suits your goals?</h3>
-            <p class="bl4-meta"><i class="fa-regular fa-clock"></i> 4 min read <span>•</span> Aug 2026</p>
+            <p class="bl5-meta"><i class="fa-regular fa-clock"></i> 4 min read <span>•</span> Aug 2026</p>
           </div>
+          <span class="bl5-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
         </a>
-        <a href="blog-post.html" class="reveal bl4-row">
-          <div class="bl4-thumb"><img src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=600&q=75&auto=format&fit=crop" alt="Planning a monthly budget" loading="lazy" /></div>
-          <div class="bl4-row-body">
-            <span class="bl4-cat">Money tips</span>
+        <a href="blog-post.html" class="reveal bl5-row">
+          <span class="bl5-num">04</span>
+          <div class="bl5-thumb"><img src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=600&q=75&auto=format&fit=crop" alt="Planning a monthly budget" loading="lazy" /></div>
+          <div class="bl5-row-body">
+            <span class="bl5-cat">Money tips</span>
             <h3>5 ways to improve your loan eligibility</h3>
-            <p class="bl4-meta"><i class="fa-regular fa-clock"></i> 4 min read <span>•</span> Jul 2026</p>
+            <p class="bl5-meta"><i class="fa-regular fa-clock"></i> 4 min read <span>•</span> Jul 2026</p>
           </div>
+          <span class="bl5-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
         </a>
       </div>
     </div>
