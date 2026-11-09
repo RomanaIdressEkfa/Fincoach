@@ -169,96 +169,200 @@
 <main>
 
 <!-- =========================================================
-     LOAN PRODUCT — filled from ?type= (see assets/js/pages.js)
+     LOAN ① — Hero (content filled from ?type= by pages.js)
      ========================================================= -->
 <section class="px-2.5 pt-2.5">
-  <div class="hs panel relative overflow-hidden !pb-16 md:!pb-20">
-    <div class="hs-dots absolute inset-0 pointer-events-none"></div>
-    <span class="hs-blob hs-blob-1"></span>
-    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-10 md:pt-14">
+  <div class="ab5-hero lp2-hero">
+    <span class="ab5-dots"></span><span class="ab5-glow"></span>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-10 md:pt-14 pb-14 md:pb-20">
       <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><a href="index.html#products">Loans</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand" data-l="name">Personal Loan</span></nav>
-      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center mt-6">
-        <div>
-          <span class="hs-eyebrow"><i class="fa-solid fa-user" data-l-icon></i> <span data-l="name">Personal Loan</span></span>
-          <h1 class="w-h1 mt-5" data-l="title">Money for the things that matter</h1>
-          <p class="w-lead mt-4" data-l="lead"></p>
-          <div class="grid grid-cols-3 gap-3 mt-8 max-w-lg">
-            <div class="lp-stat"><small>Rate from</small><b data-l="rate">9.0%</b></div>
-            <div class="lp-stat"><small>Up to</small><b data-l="max">৳20 Lakh</b></div>
-            <div class="lp-stat"><small>Tenure</small><b data-l="tenure">12–60 mo</b></div>
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center mt-6">
+        <div class="lg:col-span-7">
+          <span class="lp2-badge"><span class="lp2-badge-ic"><i class="fa-solid fa-user" data-l-icon></i></span><span data-l="name">Personal Loan</span><span class="lp2-badge-dot">•</span><span>From <b data-l="rate">9.0%</b></span></span>
+          <h1 class="ab5-h1 mt-5" data-l="title">Money for the things that matter</h1>
+          <p class="ab5-lead mt-4 max-w-xl" data-l="lead"></p>
+          <div class="grid grid-cols-3 gap-3 mt-8 max-w-xl">
+            <div class="lp2-stat"><i class="fa-solid fa-percent"></i><small>Rate from</small><b data-l="rate">9.0%</b></div>
+            <div class="lp2-stat"><i class="fa-solid fa-sack-dollar"></i><small>Up to</small><b data-l="max">৳20 Lakh</b></div>
+            <div class="lp2-stat"><i class="fa-regular fa-calendar"></i><small>Tenure</small><b data-l="tenure">12–60 mo</b></div>
           </div>
           <div class="mt-8 flex flex-col sm:flex-row gap-3">
             <a href="apply.html" class="btn btn-primary !px-8 !py-4" data-l-apply>Check for offers <i class="fa-solid fa-arrow-right"></i></a>
-            <a href="emi-calculator.html" class="btn btn-white !px-7 !py-4 shadow-sm"><i class="fa-solid fa-calculator text-brand"></i> Calculate EMI</a>
+            <a href="#rates" class="btn btn-white !px-7 !py-4 shadow-sm"><i class="fa-solid fa-table-list text-brand"></i> Compare rates</a>
           </div>
-          <p class="mt-4 text-sm text-muted"><i class="fa-solid fa-shield-halved text-brand"></i> Checking your options won't affect your credit score.</p>
+          <div class="flex flex-wrap gap-x-6 gap-y-2 mt-6 text-sm font-semibold text-ink-2">
+            <span><i class="fa-solid fa-shield-halved text-brand mr-1.5"></i>No impact on credit score</span>
+            <span><i class="fa-solid fa-bolt text-brand mr-1.5"></i>Decision in <b data-l="speed">3–7 days</b></span>
+            <span><i class="fa-solid fa-hand-holding-dollar text-brand mr-1.5"></i>100% free</span>
+          </div>
         </div>
-        <div class="relative flex justify-center">
-          <div class="hs-ring"></div>
-          <figure class="hs-frame is-active w-[min(420px,88vw)]">
-            <img data-l-img src="" alt="" />
-            <figcaption class="hs-chip hs-chip-a"><span class="hs-chip-ic bg-green-100 text-green-600"><i class="fa-solid fa-circle-check"></i></span><span><small>Decision in</small><b data-l="speed">3–7 days</b></span></figcaption>
-          </figure>
+
+        <div class="lg:col-span-5 relative lp2-visual">
+          <div class="lp2-arch"><img data-l-img src="" alt="" /></div>
+          <div class="lp2-calc" id="lpCalc">
+            <div class="flex items-center justify-between">
+              <p class="font-head font-extrabold">Quick EMI</p>
+              <span class="lp2-calc-rate"><span id="lpcRate">9.0</span>% p.a.</span>
+            </div>
+            <div class="flex items-center justify-between mt-3 text-sm"><span class="text-muted font-semibold">Amount</span><b>৳ <span id="lpcAmtV">5,00,000</span></b></div>
+            <input id="lpcAmt" type="range" class="rng mt-2" min="50000" max="2000000" step="10000" value="500000" aria-label="Loan amount" />
+            <div class="flex items-center justify-between mt-3 text-sm"><span class="text-muted font-semibold">Tenure</span><b><span id="lpcTenV">36</span> months</b></div>
+            <input id="lpcTen" type="range" class="rng mt-2" min="6" max="60" step="6" value="36" aria-label="Tenure in months" />
+            <div class="lp2-calc-out"><span>Monthly EMI</span><b>৳ <span id="lpcEmi">0</span></b></div>
+          </div>
+          <div class="lp2-chip"><span class="bg-green-100 text-green-600"><i class="fa-solid fa-circle-check"></i></span><div><small>Loan approved</small><b>৳ 5,00,000</b></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Uses / features -->
+<!-- Partner strip -->
+<section class="pt-10 md:pt-12">
+  <div class="max-w-site mx-auto px-4 md:px-6">
+    <div class="lp2-partners">
+      <p>Compare offers from <b>6+ trusted partners</b></p>
+      <div class="lp2-plogos">
+        <img src="assets/img/partners/p1.png" alt="IPDC Finance" /><img src="assets/img/partners/p2.jpg" alt="City Bank" /><img src="assets/img/partners/p3.jpg" alt="IDLC Finance" /><img src="assets/img/partners/p5.jpg" alt="NCC Bank" /><img src="assets/img/partners/p6.jpg" alt="Mutual Trust Bank" /><img src="assets/img/partners/p4.jpg" alt="National Finance" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     LOAN ② — Why choose
+     ========================================================= -->
 <section class="pt-16 md:pt-24">
   <div class="max-w-site mx-auto px-4 md:px-6">
-    <div class="grid lg:grid-cols-2 gap-6 lg:gap-16 items-end">
-      <h2 class="reveal w-h2">Why choose a <span data-l="nameLower">personal loan</span> through FinCoach</h2>
-      <p class="reveal w-lead lg:pb-2">Compare real offers from licensed banks and FIs side by side, then apply online — free and paperless.</p>
+    <div class="grid lg:grid-cols-12 gap-6 lg:gap-16 items-end">
+      <div class="lg:col-span-7">
+        <span class="reveal ab5-kicker"><span></span>Why FinCoach</span>
+        <h2 class="reveal ab5-h2 mt-4">Why choose a <span class="text-grad" data-l="nameLower">personal loan</span> through FinCoach</h2>
+      </div>
+      <p class="reveal lg:col-span-5 ab5-lead">Real offers from licensed banks and FIs, compared side by side — then apply online, free and paperless.</p>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10 md:mt-12" id="lpFeatures"></div>
   </div>
 </section>
 
-<!-- Eligibility + documents -->
-<section class="px-2.5 pt-16 md:pt-24">
-  <div class="panel bg-[#f6f7f9]">
-    <div class="max-w-site mx-auto px-4 md:px-6 py-14 md:py-20 grid lg:grid-cols-2 gap-6">
-      <div class="reveal lp-box">
-        <span class="step3-ic"><i class="fa-solid fa-user-check"></i></span>
-        <h3 class="w-h3 mt-5">Who can apply</h3>
-        <ul class="lp-list mt-4" id="lpElig"></ul>
+<!-- =========================================================
+     LOAN ③ — Partner offers (bento cards)
+     ========================================================= -->
+<section id="rates" class="pt-16 md:pt-24 scroll-mt-28">
+  <div class="max-w-site mx-auto px-4 md:px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-5">
+      <div>
+        <span class="reveal ab5-kicker"><span></span>Compare offers</span>
+        <h2 class="reveal ab5-h2 mt-4">Today's best <span class="text-grad" data-l="nameLower">personal loan</span> offers</h2>
+        <p class="reveal text-muted mt-2">EMI shown for <b class="text-ink">৳5,00,000</b> over <b class="text-ink">36 months</b> · Updated <span id="lpDate">today</span></p>
       </div>
-      <div class="reveal lp-box">
-        <span class="step3-ic"><i class="fa-regular fa-folder-open"></i></span>
-        <h3 class="w-h3 mt-5">Documents you'll need</h3>
-        <ul class="lp-list mt-4" id="lpDocs"></ul>
+      <div class="reveal of-sort" role="group" aria-label="Sort offers">
+        <span>Sort by</span>
+        <button type="button" class="active" data-sort="rate">Lowest rate</button>
+        <button type="button" data-sort="fee">Lowest fee</button>
+      </div>
+    </div>
+    <div class="of-grid mt-8" id="lpOffers"></div>
+    <p class="text-xs text-muted mt-4"><i class="fa-solid fa-circle-info text-brand"></i> Indicative rates. Final rate and approval depend on the lender and your profile.</p>
+  </div>
+</section>
+
+<!-- =========================================================
+     LOAN ④ — Eligibility checker + documents
+     ========================================================= -->
+<section class="px-2.5 pt-16 md:pt-24">
+  <div class="el2">
+    <span class="ab5-dots"></span><span class="ab5-glow"></span>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 py-14 md:py-20">
+      <div class="grid lg:grid-cols-12 gap-6 items-end">
+        <div class="lg:col-span-7">
+          <span class="reveal ab5-kicker"><span></span>Before you apply</span>
+          <h2 class="reveal ab5-h2 mt-4">Who can apply &amp; what you'll need</h2>
+        </div>
+        <p class="reveal lg:col-span-5 ab5-lead">Tick what applies to you and keep these documents ready — your application will move much faster.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-5 mt-10 md:mt-12">
+        <!-- Eligibility checker -->
+        <div class="reveal lg:col-span-6 el2-card">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <p class="el2-k">Eligibility check</p>
+              <h3 class="font-head font-extrabold text-xl mt-1">Do you qualify?</h3>
+            </div>
+            <div class="el2-ring" id="elRing">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" class="el2-ring-bg" /><circle cx="32" cy="32" r="27" class="el2-ring-fg" id="elRingFg" /></svg>
+              <b id="elCount">0/4</b>
+            </div>
+          </div>
+          <ul class="el2-list mt-5" id="lpElig"></ul>
+          <div class="el2-result" id="elResult">
+            <span><i class="fa-regular fa-hand-pointer"></i></span>
+            <p id="elMsg">Tick each point that applies to you.</p>
+          </div>
+        </div>
+
+        <!-- Documents -->
+        <div class="reveal lg:col-span-6 el2-card">
+          <p class="el2-k">Checklist</p>
+          <h3 class="font-head font-extrabold text-xl mt-1">Documents you'll need</h3>
+          <div class="el2-docs mt-5" id="lpDocs"></div>
+          <div class="el2-tip">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <p><b>Tip:</b> clear phone photos are fine — you can upload everything online during your application.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- How it works -->
+<!-- =========================================================
+     LOAN ⑤ — How it works
+     ========================================================= -->
 <section class="pt-16 md:pt-24">
   <div class="max-w-site mx-auto px-4 md:px-6">
-    <h2 class="reveal w-h2 text-center">Get your <span data-l="nameLower">personal loan</span> in 3 steps</h2>
-    <div class="grid md:grid-cols-3 gap-5 mt-10 md:mt-12">
-      <div class="reveal step3 border border-line"><span class="step3-ic"><i class="fa-solid fa-file-pen"></i></span><h3><b>1.</b> Tell us what you need</h3><p>Amount, tenure and a few details about you — it takes about 2 minutes.</p></div>
-      <div class="reveal step3 border border-line"><span class="step3-ic"><i class="fa-solid fa-scale-balanced"></i></span><h3><b>2.</b> Compare offers</h3><p>See matched offers from multiple banks with real rates and EMIs.</p></div>
-      <div class="reveal step3 border border-line"><span class="step3-ic"><i class="fa-solid fa-circle-check"></i></span><h3><b>3.</b> Apply &amp; get funded</h3><p>Apply online, upload documents and track every step until disbursement.</p></div>
+    <div class="text-center max-w-2xl mx-auto">
+      <span class="reveal ab5-kicker justify-center"><span></span>How it works</span>
+      <h2 class="reveal ab5-h2 mt-4">Get your <span class="text-grad" data-l="nameLower">personal loan</span> in 3 steps</h2>
+    </div>
+    <div class="lp2-steps mt-10 md:mt-14">
+      <div class="reveal lp2-step"><span class="lp2-step-n">1</span><span class="lp2-step-ic"><i class="fa-solid fa-file-pen"></i></span><h3>Tell us what you need</h3><p>Amount, tenure and a few details about you — about 2 minutes.</p></div>
+      <div class="reveal lp2-step"><span class="lp2-step-n">2</span><span class="lp2-step-ic"><i class="fa-solid fa-scale-balanced"></i></span><h3>Compare offers</h3><p>See matched offers from multiple banks with real rates and EMIs.</p></div>
+      <div class="reveal lp2-step"><span class="lp2-step-n">3</span><span class="lp2-step-ic"><i class="fa-solid fa-circle-check"></i></span><h3>Apply &amp; get funded</h3><p>Apply online, upload documents and track every step until disbursement.</p></div>
     </div>
   </div>
 </section>
 
-<!-- Product FAQ -->
+<!-- =========================================================
+     LOAN ⑥ — FAQ
+     ========================================================= -->
 <section class="pt-16 md:pt-24">
-  <div class="max-w-[900px] mx-auto px-4 md:px-6">
-    <h2 class="reveal w-h2 text-center">Questions about <span data-l="nameLower">personal loans</span></h2>
-    <div class="mt-10 space-y-4" id="faqList"></div>
+  <div class="max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-4">
+      <span class="reveal ab5-kicker"><span></span>FAQ</span>
+      <h2 class="reveal ab5-h2 mt-4">Questions about <span class="text-grad" data-l="nameLower">personal loans</span></h2>
+      <div class="reveal lp2-help mt-8">
+        <span class="lp2-help-ic"><i class="fa-solid fa-headset"></i></span>
+        <p class="font-head font-extrabold text-lg mt-4">Talk to an advisor</p>
+        <p class="text-white/70 text-sm mt-1">Free, friendly help choosing the right offer.</p>
+        <a href="tel:+8809638229922" class="btn btn-primary w-full mt-5"><i class="fa-solid fa-phone"></i> +880 9638 229922</a>
+      </div>
+    </div>
+    <div class="lg:col-span-8 space-y-4" id="faqList"></div>
   </div>
 </section>
 
-<!-- Other loans -->
+<!-- =========================================================
+     LOAN ⑦ — Other loans
+     ========================================================= -->
 <section class="pt-16 md:pt-24 pb-16 md:pb-24">
   <div class="max-w-site mx-auto px-4 md:px-6">
-    <h2 class="reveal w-h2">Explore other loans</h2>
-    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8" id="lpOthers"></div>
+    <div class="flex items-end justify-between gap-4">
+      <h2 class="reveal ab5-h2">Explore other loans</h2>
+      <a href="index.html#products" class="reveal bl4-all shrink-0 hidden sm:inline-flex">All loans <span><i class="fa-solid fa-arrow-right"></i></span></a>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8" id="lpOthers"></div>
   </div>
 </section>
 

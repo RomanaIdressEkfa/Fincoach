@@ -119,14 +119,101 @@
     $$('[data-l-icon]').forEach((el) => { el.className = `fa-solid ${L.icon}`; });
     const img = $('[data-l-img]'); img.src = IMG(L.img); img.alt = L.name;
     $$('[data-l-apply]').forEach((a) => { a.href = `apply.html?type=${L.apply}`; });
-    $('#lpFeatures').innerHTML = L.features.map(([i, t, d]) => `
-      <div class="reveal feature"><div class="f-icon"><i class="fa-solid ${i}"></i></div><h3 class="mt-6 font-head font-extrabold text-xl">${t}</h3><p class="mt-2 text-muted">${d}</p></div>`).join('');
-    const li = (s) => `<li><i class="fa-solid fa-check"></i>${esc(s)}</li>`;
-    $('#lpElig').innerHTML = L.elig.map(li).join('');
-    $('#lpDocs').innerHTML = L.docs.map(li).join('');
+    $('#lpFeatures').innerHTML = L.features.map(([i, t, d], n) => `
+      <div class="reveal lp2-feat"><span class="lp2-feat-n">0${n + 1}</span><span class="lp2-feat-ic"><i class="fa-solid ${i}"></i></span><h3>${t}</h3><p>${d}</p></div>`).join('');
+    // Eligibility checker (tick items, ring fills)
+    const eligEl = $('#lpElig');
+    eligEl.innerHTML = L.elig.map((s) => `<li><button type="button" class="el2-item" aria-pressed="false"><span class="el2-box"><i class="fa-solid fa-check"></i></span>${esc(s)}</button></li>`).join('');
+    const ringFg = $('#elRingFg'), cnt = $('#elCount'), res = $('#elResult'), msg = $('#elMsg');
+    const updElig = () => {
+      const items = $$('.el2-item', eligEl), on = items.filter((b) => b.getAttribute('aria-pressed') === 'true').length, tot = items.length;
+      const C = 2 * Math.PI * 27;
+      if (ringFg) ringFg.setAttribute('stroke-dasharray', `${(C * on / tot).toFixed(1)} ${C.toFixed(1)}`);
+      if (cnt) cnt.textContent = `${on}/${tot}`;
+      if (!res) return;
+      const ok = on === tot;
+      res.classList.toggle('is-ok', ok);
+      res.firstElementChild.innerHTML = `<i class="fa-solid ${ok ? 'fa-check' : on ? 'fa-hourglass-half' : 'fa-regular fa-hand-pointer'}"></i>`.replace('fa-solid fa-regular', 'fa-regular');
+      msg.innerHTML = ok ? `You're likely eligible! <a href="apply.html?type=${L.apply}">Check your offers →</a>` : on ? `${tot - on} more to go — keep ticking.` : 'Tick each point that applies to you.';
+    };
+    $$('.el2-item', eligEl).forEach((b) => b.addEventListener('click', () => { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); updElig(); }));
+    updElig();
+
+    // Documents as icon tiles
+    const docIc = (s) => /NID|passport|ID/i.test(s) ? 'fa-id-card' : /photo/i.test(s) ? 'fa-camera' : /salary|income|trade|licen|proof/i.test(s) ? 'fa-file-invoice-dollar'
+      : /statement|bank/i.test(s) ? 'fa-building-columns' : /TIN|tax/i.test(s) ? 'fa-receipt' : /property|deed|plan|valuation/i.test(s) ? 'fa-house-circle-check'
+      : /quotation|package|vehicle|admission|offer/i.test(s) ? 'fa-file-signature' : 'fa-file-lines';
+    $('#lpDocs').innerHTML = L.docs.map((s) => `<div class="el2-doc"><i class="fa-solid ${docIc(s)}"></i><span>${esc(s)}</span></div>`).join('');
     $('#faqList').innerHTML = L.faq.map(([q, a], k) => faqItem(esc(q), esc(a), k === 0)).join('');
     $('#lpOthers').innerHTML = Object.entries(LOANS).filter(([k]) => k !== key).slice(0, 8).map(([k, o]) => `
-      <a href="loan.html?type=${k}" class="reveal lp-other"><span class="mm-ic"><i class="fa-solid ${o.icon}"></i></span><span><b>${o.name}</b><small>from ${o.rate}</small></span><i class="fa-solid fa-arrow-right ml-auto text-muted"></i></a>`).join('');
+      <a href="loan.html?type=${k}" class="reveal lp2-other"><span class="lp2-other-ic"><i class="fa-solid ${o.icon}"></i></span><b>${o.name}</b><small>from ${o.rate}</small><i class="fa-solid fa-arrow-right lp2-other-go"></i></a>`).join('');
+
+    // Partner rate comparison table
+    const base = parseFloat(L.rate);
+    const numeric = !isNaN(base) && base > 0 && !/up to/i.test(L.rate);
+    const LENDERS = [
+      ['assets/img/partners/p1.png', 'IPDC Finance', 0, '1%'], ['assets/img/partners/p5.jpg', 'NCC Bank', 0.5, '1%'],
+      ['assets/img/partners/p2.jpg', 'City Bank', 0.75, '0.5%'], ['assets/img/partners/p3.jpg', 'IDLC Finance', 1, '1%'],
+      ['assets/img/partners/p6.jpg', 'Mutual Trust Bank', 1.25, '0.75%']
+    ];
+    // Offer cards (bento) with sorting
+    const og = $('#lpOffers');
+    if (og) {
+      const money = (n) => Math.round(n).toLocaleString('en-IN');
+      const emiOf = (r) => { const m = r / 12 / 100, n = 36, P = 500000; return (P * m * Math.pow(1 + m, n)) / (Math.pow(1 + m, n) - 1); };
+      const offers = LENDERS.map(([logo, name, add, fee]) => ({ logo, name, fee, feeN: parseFloat(fee), rate: numeric ? base + add : null }));
+      const card = (o, best) => {
+        const rateTxt = o.rate != null ? o.rate.toFixed(2) + '%' : esc(L.rate);
+        const emi = o.rate != null ? '৳' + money(emiOf(o.rate)) : '—';
+        return `<article class="of-card ${best ? 'of-best' : ''}">
+          ${best ? '<span class="of-ribbon"><i class="fa-solid fa-crown"></i> Best offer for you</span>' : ''}
+          <div class="of-head"><span class="of-logo"><img src="${o.logo}" alt="" /></span><div><p class="of-name">${o.name}</p><p class="of-sub">${esc(L.name)}</p></div></div>
+          <div class="of-rate"><b>${rateTxt}</b>${o.rate != null ? '<span>p.a.</span>' : ''}</div>
+          <div class="of-meta"><div><small>Monthly EMI</small><b>${emi}</b></div><div><small>Processing fee</small><b>${o.fee}</b></div></div>
+          ${best ? `<ul class="of-perks"><li><i class="fa-solid fa-check"></i>Up to ${esc(L.max)}</li><li><i class="fa-solid fa-check"></i>Tenure ${esc(L.tenure)}</li><li><i class="fa-solid fa-check"></i>Decision in ${esc(L.speed)}</li></ul>` : ''}
+          <div class="of-foot"><a href="loan.html?type=${key}#faqList" class="of-link">Details</a><a href="apply.html?type=${L.apply}" class="btn ${best ? 'btn-white' : 'btn-primary'} !py-2.5 !px-5 text-sm">Apply${best ? ' now' : ''} <i class="fa-solid fa-arrow-right"></i></a></div>
+        </article>`;
+      };
+      const draw = (by) => {
+        const list = [...offers].sort((a, b) => by === 'fee' ? a.feeN - b.feeN || (a.rate || 0) - (b.rate || 0) : (a.rate || 0) - (b.rate || 0) || a.feeN - b.feeN);
+        og.innerHTML = list.map((o, i) => card(o, i === 0)).join('');
+      };
+      $$('.of-sort button').forEach((b) => b.addEventListener('click', () => { $$('.of-sort button').forEach((x) => x.classList.toggle('active', x === b)); draw(b.dataset.sort); }));
+      draw('rate');
+      const dt = $('#lpDate'); if (dt) dt.textContent = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
+
+    const rt = $('#lpRates');
+    if (rt) {
+      rt.innerHTML = LENDERS.map(([logo, name, add, fee], k) => `
+        <tr class="${k === 0 ? 'is-best' : ''}">
+          <td data-th="Lender"><div class="flex items-center gap-3"><span class="lp2-tlogo"><img src="${logo}" alt="" /></span><span><b>${name}</b>${k === 0 ? '<span class="lp2-best">Best rate</span>' : ''}</span></div></td>
+          <td data-th="Interest rate"><b class="lp2-rate">${numeric ? (base + add).toFixed(2) + '%' : esc(L.rate)}</b>${numeric ? ' <small>p.a.</small>' : ''}</td>
+          <td data-th="Max amount">${esc(L.max)}</td>
+          <td data-th="Tenure">${esc(L.tenure)}</td>
+          <td data-th="Processing fee">${fee}</td>
+          <td><a href="apply.html?type=${L.apply}" class="btn ${k === 0 ? 'btn-primary' : 'btn-ghost'} !py-2.5 !px-5 text-sm">Apply</a></td>
+        </tr>`).join('');
+      const dt = $('#lpDate'); if (dt) dt.textContent = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
+
+    // Quick EMI widget in hero
+    const qa = $('#lpcAmt'), qt = $('#lpcTen');
+    if (qa) {
+      const r0 = numeric ? base : 9;
+      $('#lpcRate').textContent = r0.toFixed(1);
+      if (!numeric) $('#lpCalc').classList.add('hidden');
+      const money = (n) => Math.round(n).toLocaleString('en-IN');
+      const fill = (el) => el.style.setProperty('--p', ((el.value - el.min) / (el.max - el.min)) * 100 + '%');
+      const upd = () => {
+        const P = +qa.value, n = +qt.value, r = r0 / 12 / 100;
+        const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+        $('#lpcAmtV').textContent = money(P); $('#lpcTenV').textContent = n; $('#lpcEmi').textContent = money(emi);
+        fill(qa); fill(qt);
+      };
+      [qa, qt].forEach((el) => el.addEventListener('input', upd));
+      upd();
+    }
   }
 
   /* =========================================================
