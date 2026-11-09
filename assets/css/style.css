@@ -2826,3 +2826,70 @@ body.lm-lock { overflow: hidden; }
 .ft2 .social { transition: transform .25s, box-shadow .25s; }
 .ft2 .social:hover { transform: translateY(-3px); box-shadow: 0 12px 22px -10px rgba(0,0,0,.6); }
 @media (min-width: 1024px) { .ft2-box { margin-top: -1.7rem; } }
+
+/* ==========================================================
+   EMI calculator v3 — pro polish (same design)
+   ========================================================== */
+/* Loan type switch */
+.emi2-types { background: #fff; border: 1px solid #eef0f4; box-shadow: 0 16px 34px -26px rgba(11,21,48,.45); }
+.emi2-types button.active { color: #fff; background: var(--grad); box-shadow: 0 10px 20px -10px rgba(232,32,90,.75); }
+.emi2-types button:not(.active):hover { background: #fff5f8; }
+
+/* Card */
+.emi2 { position: relative; border: 0; box-shadow: 0 0 0 1px #eef0f4, 0 70px 120px -60px rgba(11,21,48,.5), 0 30px 60px -50px rgba(232,32,90,.35); }
+.emi2-in { position: relative; background:
+    radial-gradient(60% 50% at 0% 0%, rgba(232,32,90,.06), transparent 70%),
+    linear-gradient(180deg, #fff, #fffbfc); }
+.emi2-in::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(232,32,90,.12) 1px, transparent 1.2px); background-size: 20px 20px;
+  -webkit-mask-image: radial-gradient(ellipse 45% 35% at 0% 0%, #000, transparent 75%); mask-image: radial-gradient(ellipse 45% 35% at 0% 0%, #000, transparent 75%); }
+.emi2-row { position: relative; }
+.emi2-row + .emi2-row { padding-top: 2rem; margin-top: 2rem; border-top: 1px dashed #f0e4e9; }
+.emi2-ic { width: 40px; height: 40px; background: linear-gradient(135deg, #fff0f4, #ffe1ea); box-shadow: inset 0 0 0 1px rgba(232,32,90,.12); }
+.emi2-head label { font-size: 1.05rem; }
+
+/* Value boxes */
+.emi2-box { padding: .65rem 1.05rem; background: #fff; border-color: #ebedf2; box-shadow: 0 8px 20px -16px rgba(11,21,48,.35); font-size: 1.15rem; }
+.emi2-box input { font-family: "Urbanist", sans-serif; font-weight: 800; color: var(--ink); }
+.emi2-box:hover { border-color: #f6c1d2; }
+
+/* Sliders: gradient fill + glowing handle */
+input[type=range].emi2-rng { height: 10px; background:
+    linear-gradient(90deg, #f2545b, #e8205a 60%, #d63bbd) 0 0 / var(--p, 50%) 100% no-repeat,
+    #ffe3ec; box-shadow: inset 0 1px 2px rgba(11,21,48,.08); cursor: pointer; }
+input[type=range].emi2-rng::-webkit-slider-thumb { width: 26px; height: 26px; border: 0; background: #fff;
+  box-shadow: 0 0 0 7px rgba(232,32,90,.16), 0 0 0 1px rgba(232,32,90,.25), 0 8px 18px -4px rgba(232,32,90,.6), inset 0 0 0 7px #e8205a; transition: box-shadow .2s, transform .2s; }
+input[type=range].emi2-rng:hover::-webkit-slider-thumb, input[type=range].emi2-rng:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 10px rgba(232,32,90,.2), 0 0 0 1px rgba(232,32,90,.3), 0 10px 22px -4px rgba(232,32,90,.7), inset 0 0 0 7px #e8205a; }
+input[type=range].emi2-rng:active::-webkit-slider-thumb { transform: scale(1.12); }
+input[type=range].emi2-rng::-moz-range-thumb { width: 12px; height: 12px; border: 7px solid #e8205a; background: #fff; box-shadow: 0 0 0 7px rgba(232,32,90,.16), 0 8px 18px -4px rgba(232,32,90,.6); }
+.emi2-minmax span { position: relative; padding-top: .45rem; }
+.emi2-minmax span::before { content: ""; position: absolute; top: 0; left: 50%; width: 1px; height: 5px; background: #e3d5db; }
+.emi2-minmax span:first-child::before { left: 0; } .emi2-minmax span:last-child::before { left: auto; right: 0; }
+.emi2-note { background: #fff7f9; border: 1px solid #fbe1e9; }
+
+/* Result panel */
+.emi2-out { background: radial-gradient(90% 70% at 100% 0%, #4a1748 0%, transparent 60%), radial-gradient(60% 50% at 0% 100%, rgba(232,32,90,.18), transparent 70%), linear-gradient(165deg, #121e40, #0b1530 60%); }
+.emi2-out > .relative > p:first-child { display: flex; align-items: center; gap: .6rem; }
+.emi2-out > .relative > p:first-child::after { content: "LIVE"; display: inline-flex; align-items: center; gap: .3rem; padding: .2rem .55rem; border-radius: 99px; font-size: .62rem; font-weight: 800; letter-spacing: .1em;
+  color: #86efac; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.3); }
+.emi2-big { background: linear-gradient(180deg, #fff 40%, #ffc6d7); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.emi2-gauge::before { content: ""; position: absolute; left: 50%; bottom: 0; width: 70%; height: 60%; transform: translateX(-50%); border-radius: 50% 50% 0 0; background: radial-gradient(closest-side, rgba(232,32,90,.25), transparent); filter: blur(10px); }
+.emi2-gauge svg { position: relative; }
+.emi2-legend { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.1); backdrop-filter: blur(6px); }
+.emi2-legend .is-total { margin: 0 -1.1rem; padding: .85rem 1.1rem; border-radius: 0 0 18px 18px; background: rgba(232,32,90,.12); }
+.emi2-out .btn-primary { box-shadow: 0 16px 30px -14px rgba(232,32,90,.85), inset 0 1px 0 rgba(255,255,255,.25); }
+
+/* Mobile */
+@media (max-width: 639px) {
+  .emi2-types { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; }
+  .emi2-types button { justify-content: center; padding: .6rem .3rem; font-size: .8rem; flex-direction: column; gap: .25rem; }
+  .emi2-head { gap: .6rem; }
+  .emi2-box { min-width: 0; flex: 1 1 100%; justify-content: space-between; }
+  .emi2-box input { flex: 1; width: auto !important; }
+  .emi2 { border-radius: 26px; }
+}
+.emi2 { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1024px) { .emi2 { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); } }
+.emi2-in, .emi2-row, .emi2-out { min-width: 0; }
+.emi2-box input { min-width: 0; }
+@media (max-width: 639px) { .emi2-box input { width: 100% !important; } .emi2-in { padding: 1.4rem 1.2rem; } }
