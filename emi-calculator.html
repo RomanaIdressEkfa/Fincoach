@@ -169,13 +169,21 @@
 <main>
 
 <section class="px-2.5 pt-2.5">
-  <div class="ab-hero">
-    <div class="ab-dots"></div>
+  <div class="ab5-hero ct5-hero">
+    <span class="ab5-dots"></span><span class="ab5-glow"></span>
     <div class="relative max-w-site mx-auto px-4 md:px-6 pt-12 md:pt-16 pb-14 md:pb-16">
-      <nav class="reveal crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand">EMI Calculator</span></nav>
-      <div class="grid lg:grid-cols-2 gap-6 lg:gap-16 items-end mt-6">
-        <h1 class="reveal w-h1">Plan your loan with our <span class="text-grad">EMI calculator</span></h1>
-        <p class="reveal w-lead lg:pb-2">Move the sliders or type your numbers to see your monthly instalment, total interest and full repayment schedule.</p>
+      <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand">EMI Calculator</span></nav>
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end mt-6">
+        <div class="lg:col-span-7">
+          <span class="ab5-kicker"><span></span>Free loan tool</span>
+          <h1 class="ab5-h1 mt-5">Plan your loan with our <span class="text-grad">EMI calculator</span></h1>
+          <p class="ab5-lead mt-4 max-w-xl">Move the sliders or type your numbers to see your monthly instalment, total interest and full repayment schedule — instantly.</p>
+        </div>
+        <div class="lg:col-span-5 ec2-hl">
+          <div><i class="fa-solid fa-bolt"></i><b>Instant</b><span>Results as you type</span></div>
+          <div><i class="fa-solid fa-table-list"></i><b>Full schedule</b><span>Yearly &amp; monthly</span></div>
+          <div><i class="fa-solid fa-gift"></i><b>100% free</b><span>No sign-up needed</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -282,26 +290,51 @@
 
 <!-- How EMI is calculated -->
 <section class="pt-16 md:pt-24 pb-16 md:pb-24">
-  <div class="max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-8 items-center">
-    <div class="min-w-0">
-      <h2 class="reveal w-h2">How is EMI calculated?</h2>
-      <p class="reveal w-lead mt-4">EMI (Equated Monthly Instalment) is the fixed amount you pay every month until the loan is repaid. It's calculated with this formula:</p>
-      <div class="reveal formula mt-6">EMI = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)</div>
-      <ul class="reveal lp-list mt-6">
-        <li><i class="fa-solid fa-check"></i><span><b>P</b> — the loan amount (principal)</span></li>
-        <li><i class="fa-solid fa-check"></i><span><b>r</b> — monthly interest rate (annual rate ÷ 12 ÷ 100)</span></li>
-        <li><i class="fa-solid fa-check"></i><span><b>n</b> — number of monthly instalments</span></li>
-      </ul>
+  <div class="max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-12 gap-6 lg:gap-8">
+    <div class="reveal lg:col-span-7 ab5-pledge ec2-formula">
+      <span class="ab5-pledge-glow"></span>
+      <div class="relative">
+        <span class="ab5-kicker !text-[#ff9ec0]"><span></span>The maths</span>
+        <h2 class="ab5-h2 !text-white mt-4">How is EMI calculated?</h2>
+        <p class="text-white/70 mt-3 max-w-xl leading-relaxed">EMI (Equated Monthly Instalment) is the fixed amount you pay every month until the loan is repaid. Banks use this standard formula:</p>
+        <div class="ec2-eq mt-7">EMI = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)</div>
+        <div class="ec2-vars mt-5">
+          <div><b>P</b><span>Loan amount (principal)</span></div>
+          <div><b>r</b><span>Monthly rate = annual rate ÷ 12 ÷ 100</span></div>
+          <div><b>n</b><span>Number of monthly instalments</span></div>
+        </div>
+        <div class="ec2-ex mt-5">
+          <span class="ec2-ex-ic"><i class="fa-solid fa-calculator"></i></span>
+          <p><b>Example:</b> ৳10,00,000 at 9% for 60 months → r = 0.0075, n = 60 → <b class="text-white">EMI ≈ ৳20,758</b></p>
+        </div>
+      </div>
     </div>
-    <div class="reveal lp-box">
-      <p class="w-h3">Tips to lower your EMI</p>
-      <ul class="lp-list mt-4">
-        <li><i class="fa-solid fa-check"></i>Choose a longer tenure (you'll pay more interest overall)</li>
-        <li><i class="fa-solid fa-check"></i>Compare rates — even 0.5% makes a difference</li>
-        <li><i class="fa-solid fa-check"></i>Make a larger down payment on home and auto loans</li>
-        <li><i class="fa-solid fa-check"></i>Keep a good repayment record to qualify for better rates</li>
-      </ul>
-      <a href="apply.html" class="btn btn-primary mt-6">Compare offers <i class="fa-solid fa-arrow-right"></i></a>
+
+    <div class="reveal lg:col-span-5 ec2-tips">
+      <span class="ec2-tip-ic"><i class="fa-solid fa-lightbulb"></i></span>
+      <h3 class="font-head font-extrabold text-2xl mt-4">Tips to lower your EMI</h3>
+      <ol class="mt-5">
+        <li><span>01</span><div><b>Choose a longer tenure</b><p>Lower monthly payment — but you'll pay more interest overall.</p></div></li>
+        <li><span>02</span><div><b>Compare rates</b><p>Even 0.5% less can save thousands over the loan.</p></div></li>
+        <li><span>03</span><div><b>Pay a bigger down payment</b><p>Borrow less on home and auto loans.</p></div></li>
+        <li><span>04</span><div><b>Keep a clean record</b><p>A good repayment history unlocks better rates.</p></div></li>
+      </ol>
+      <a href="apply.html" class="btn btn-primary w-full mt-6">Compare offers <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="px-2.5 pb-2.5">
+  <div class="panel bg-grad relative overflow-hidden">
+    <div class="absolute -left-24 -bottom-24 w-96 h-96 rounded-full border-[40px] border-white/10"></div>
+    <div class="absolute right-10 -top-20 w-72 h-72 rounded-full bg-white/10"></div>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 py-14 md:py-16 flex flex-col lg:flex-row lg:items-center justify-between gap-8 text-white">
+      <div>
+        <h2 class="font-head font-extrabold text-[2rem] md:text-[2.8rem] leading-[1.08]">Happy with your EMI?</h2>
+        <p class="mt-3 text-lg text-white/85">See real offers from 6+ banks in 5 minutes — free, with no impact on your credit score.</p>
+      </div>
+      <a href="apply.html" class="btn btn-white !px-8 !py-4 self-start lg:self-auto">Check your offers <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 </section>

@@ -2433,3 +2433,53 @@ body.lm-lock { overflow: hidden; }
 .ps2-author { display: flex; gap: 1rem; align-items: flex-start; margin-top: 2.5rem; padding: 1.5rem; border-radius: 22px; background: #f7f8fa; line-height: 1.5; }
 .ps2-author p { margin-top: 0; }
 .ps2-author .ava-lg { flex: none; }
+
+/* ==========================================================
+   EMI calculator v2 — hero highlights, formula, tips
+   ========================================================== */
+.ec2-hl { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; }
+.ec2-hl > div { padding: 1rem; border-radius: 20px; background: rgba(255,255,255,.8); border: 1px solid #f4dbe4; box-shadow: 0 20px 40px -32px rgba(232,32,90,.5); backdrop-filter: blur(6px); }
+.ec2-hl i { width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; background: var(--grad); color: #fff; font-size: .85rem; }
+.ec2-hl b { display: block; margin-top: .7rem; font-family: "Urbanist", sans-serif; font-weight: 800; font-size: 1.02rem; color: var(--ink); }
+.ec2-hl span { display: block; font-size: .78rem; font-weight: 600; color: var(--muted); }
+@media (max-width: 479px) { .ec2-hl { gap: .45rem; } .ec2-hl > div { padding: .8rem .7rem; } .ec2-hl b { font-size: .9rem; } }
+.ec2-formula { padding: 2rem 1.5rem; }
+@media (min-width: 768px) { .ec2-formula { padding: 2.8rem; } }
+.ec2-eq { font-family: "Urbanist", sans-serif; font-weight: 800; font-size: clamp(1.05rem, 2.3vw, 1.6rem); padding: 1.2rem 1.4rem; border-radius: 18px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); overflow-x: auto; white-space: nowrap;
+  background-image: linear-gradient(90deg, #fff, #ffc3d6); -webkit-background-clip: text; background-clip: text; color: transparent; box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+@media (max-width: 420px) { .ec2-eq { white-space: normal; } }
+.ec2-vars { display: grid; gap: .6rem; }
+@media (min-width: 640px) { .ec2-vars { grid-template-columns: repeat(3, 1fr); } }
+.ec2-vars > div { display: flex; align-items: center; gap: .75rem; padding: .8rem .9rem; border-radius: 16px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); }
+.ec2-vars b { width: 40px; height: 40px; flex: none; border-radius: 12px; display: grid; place-items: center; background: var(--grad); font-family: "Urbanist", sans-serif; font-weight: 900; font-size: 1.15rem; font-style: italic; }
+.ec2-vars span { font-size: .85rem; line-height: 1.4; color: rgba(255,255,255,.75); }
+.ec2-ex { display: flex; align-items: center; gap: .85rem; padding: .9rem 1rem; border-radius: 16px; background: rgba(232,32,90,.14); border: 1px solid rgba(232,32,90,.35); }
+.ec2-ex p { font-size: .92rem; color: rgba(255,255,255,.8); line-height: 1.5; }
+.ec2-ex-ic { width: 38px; height: 38px; flex: none; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,.12); }
+.ec2-tips { padding: 1.8rem 1.5rem; border-radius: 32px; background: #fff; border: 1px solid var(--line); box-shadow: 0 40px 80px -60px rgba(11,21,48,.5); }
+@media (min-width: 768px) { .ec2-tips { padding: 2.4rem; } }
+.ec2-tips ol { display: grid; gap: .25rem; }
+.ec2-tips li { display: flex; gap: 1rem; padding: .85rem 0; border-bottom: 1px dashed #eadfe4; }
+.ec2-tips li:last-child { border-bottom: 0; }
+.ec2-tips li > span { font-family: "Urbanist", sans-serif; font-weight: 900; font-size: 1.35rem; line-height: 1.2; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; min-width: 2rem; }
+.ec2-tips li b { font-family: "Urbanist", sans-serif; font-weight: 800; color: var(--ink); }
+.ec2-tips li p { font-size: .9rem; color: var(--muted); margin-top: .15rem; line-height: 1.5; }
+
+/* ==========================================================
+   Track v2 — status timeline
+   ========================================================== */
+.tr2-steps { position: relative; display: grid; gap: 1rem; }
+@media (min-width: 640px) { .tr2-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) {
+  .tr2-steps { grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+  .tr2-steps::before { content: ""; position: absolute; left: 2.5rem; right: 2.5rem; top: 2.65rem; height: 2px; background: linear-gradient(90deg, rgba(232,32,90,.8), rgba(232,32,90,.15)); z-index: 0; }
+}
+.tr2-step { position: relative; z-index: 1; padding: 1.5rem; border-radius: 26px; background: rgba(17,29,61,.85); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(6px); transition: all .35s; }
+.tr2-step:hover { border-color: rgba(232,32,90,.5); transform: translateY(-6px); }
+.tr2-top { display: flex; align-items: center; justify-content: space-between; }
+.tr2-ic { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: var(--grad); box-shadow: 0 0 0 6px rgba(232,32,90,.15), 0 14px 26px -12px rgba(232,32,90,.8); }
+.tr2-top em { font-style: normal; font-size: .75rem; font-weight: 800; color: #ff9ec0; background: rgba(232,32,90,.15); border: 1px solid rgba(232,32,90,.3); padding: .3rem .65rem; border-radius: 99px; }
+.tr2-step > b { display: block; margin-top: 1.4rem; font-family: "Urbanist", sans-serif; font-weight: 900; font-size: 2.4rem; line-height: 1; color: rgba(255,255,255,.12); }
+.tr2-step h3 { margin-top: .4rem; font-family: "Urbanist", sans-serif; font-weight: 800; font-size: 1.2rem; }
+.tr2-step p { margin-top: .4rem; font-size: .92rem; line-height: 1.6; color: rgba(255,255,255,.68); }
+.ec2-tip-ic { width: 50px; height: 50px; border-radius: 16px; display: grid; place-items: center; font-size: 1.2rem; background: var(--tint); color: var(--brand); }
