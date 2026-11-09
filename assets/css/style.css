@@ -2675,3 +2675,37 @@ body.lm-lock { overflow: hidden; }
 @media (max-width: 639px) { .hs-logos > p::before, .hs-logos > p::after { display: none; } }
 
 @media (prefers-reduced-motion: reduce) { #hero .btn-primary::before, .hs-media::after { animation: none; } .hs-text { filter: none; } }
+
+/* ==========================================================
+   Loan cards v3 — premium polish (same design)
+   ========================================================== */
+#products { position: relative; }
+#products::before { content: ""; position: absolute; z-index: -1; left: 50%; top: 40px; width: min(900px, 90vw); height: 420px; transform: translateX(-50%); border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(232,32,90,.08), transparent); pointer-events: none; }
+.ol-card { box-shadow: 0 1px 0 rgba(255,255,255,1) inset, 0 1px 2px rgba(11,21,48,.04), 0 28px 50px -38px rgba(11,21,48,.4); }
+/* coloured band: fine diagonal texture + glossy top + hover sheen */
+.ol-top { isolation: isolate; box-shadow: inset 0 1px 0 rgba(255,255,255,.4); }
+.ol-top > .ol-ic, .ol-top > .ol-rate { z-index: 2; }
+.ol-top .ol-ic::after { content: ""; position: absolute; inset: -6px; border-radius: 24px; border: 1.5px solid rgba(255,255,255,.35); pointer-events: none; }
+.ol-card .ol-top { background-image:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 2px, transparent 2px 12px),
+    radial-gradient(90% 120% at 100% 0%, rgba(255,255,255,.28) 0%, transparent 55%),
+    linear-gradient(135deg, color-mix(in srgb, var(--ac) 62%, #fff) 0%, color-mix(in srgb, var(--ac) 92%, #fff) 100%); }
+.ol-rate { gap: .25rem; padding: .34rem .8rem; box-shadow: 0 10px 20px -12px rgba(0,0,0,.5); }
+.ol-rate b { font-size: 1.02rem; letter-spacing: -.01em; }
+.ol-card h3 { transition: color .3s; }
+.ol-card:hover h3 { color: var(--ac); }
+.ol-tags span { border: 1px solid color-mix(in srgb, var(--ac) 18%, transparent); }
+.ol-foot { border-top: 1px dashed #e9eaf0; }
+.ol-more { position: relative; }
+.ol-more::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1.5px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .3s; }
+.ol-more:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* footer row: note pill, progress bar, arrows */
+.sc-note { display: inline-flex; align-items: center; gap: .6rem; padding: .4rem 1rem .4rem .4rem; border-radius: 99px; background: #fff; border: 1px solid #eef0f4; box-shadow: 0 10px 24px -20px rgba(11,21,48,.4); font-size: .88rem; font-weight: 600; color: var(--ink-2); }
+.sc-note > span { width: 28px; height: 28px; border-radius: 99px; display: grid; place-items: center; background: #e9f9ef; color: #16a34a; font-size: .75rem; }
+.sc-prog { width: 140px; height: 4px; border-radius: 99px; background: #eceef3; overflow: hidden; }
+.sc-prog span { display: block; height: 100%; width: 18%; border-radius: inherit; background: var(--grad); transition: transform .2s linear; }
+.sc-arrow { box-shadow: 0 10px 22px -16px rgba(11,21,48,.5); }
+.sc-arrow-main { box-shadow: 0 14px 28px -12px rgba(232,32,90,.7), inset 0 1px 0 rgba(255,255,255,.25); }
+@media (max-width: 479px) { .sc-note { font-size: .8rem; } }
