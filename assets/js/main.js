@@ -56,6 +56,8 @@
   $('#menuClose').addEventListener('click', () => setDrawer(false));
   backdrop.addEventListener('click', () => setDrawer(false));
   $$('a', drawer).forEach(a => a.addEventListener('click', () => setDrawer(false)));
+  { const file = location.pathname.split('/').pop() || 'index.html', here = file + location.search;
+    $$('a[href]', drawer).forEach((l) => { const h = l.getAttribute('href'); if (h === here || (!h.includes('?') && h === file)) l.classList.add('is-current'); }); }
 
   /* ---------- Mobile bottom nav: highlight current page ---------- */
   const mNav = $('.mobile-nav');

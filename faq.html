@@ -45,7 +45,7 @@
 <header id="siteHeader" class="nav-wrap sticky top-0 z-50 bg-white">
   <div class="topbar">
     <div class="max-w-site mx-auto px-4 md:px-6 h-9 flex items-center justify-between gap-4 text-[13px]">
-      <p class="text-muted truncate"><b class="text-ink">0% processing fee.</b><span class="hidden sm:inline"> FinCoach is a loan marketplace, not a lender.</span></p>
+      <p class="tb-msg text-muted truncate"><span class="tb-badge"><i class="fa-solid fa-bolt"></i></span><b class="text-ink">0% processing fee.</b><span class="hidden sm:inline"> FinCoach is a loan marketplace, not a lender.</span></p>
       <div class="flex items-center gap-2.5 shrink-0 text-muted">
         <span class="hidden sm:inline">App available on</span>
         <a href="#" class="tb-ic" aria-label="Download on the App Store"><i class="fa-brands fa-apple"></i></a>
@@ -76,15 +76,15 @@
 
       <!-- Right -->
       <div class="hidden lg:flex items-center gap-2.5">
-        <a href="login.html" class="nav-text-btn" data-login-open><i class="fa-regular fa-user"></i> Log in</a>
-        <a href="apply.html" class="btn btn-dark !py-3 !px-6">Apply Now</a>
-        <a href="track.html" class="btn btn-track !py-3"><i class="fa-solid fa-location-crosshairs"></i> Track Application</a>
+        <a href="login.html" class="nav-text-btn" data-login-open><span class="nt-ic"><i class="fa-regular fa-user"></i></span> Log in</a>
+        <a href="apply.html" class="btn btn-dark btn-apply !py-3 !px-6">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="track.html" class="btn btn-track !py-3"><i class="fa-solid fa-location-crosshairs"></i> <span>Track<span class="hidden xl:inline">&nbsp;Application</span></span></a>
       </div>
 
       <!-- Mobile actions -->
       <div class="lg:hidden flex items-center gap-2">
-        <a href="apply.html" class="btn btn-primary !py-2.5 !px-4 text-sm">Apply <i class="fa-solid fa-arrow-right text-xs"></i></a>
-      <button id="menuOpen" class="lg:hidden w-11 h-11 rounded-xl bg-[#f2f4f7] grid place-items-center text-ink" aria-label="Open menu">
+        <a href="apply.html" class="btn btn-primary btn-apply-m !py-2.5 !px-4 text-sm">Apply <i class="fa-solid fa-arrow-right text-xs"></i></a>
+      <button id="menuOpen" class="nav-burger lg:hidden w-11 h-11 rounded-xl grid place-items-center text-ink" aria-label="Open menu">
         <i class="fa-solid fa-bars-staggered text-lg"></i>
       </button>
       </div>
@@ -133,9 +133,9 @@
     <button id="menuClose" class="w-10 h-10 rounded-xl bg-[#f2f4f7] grid place-items-center" aria-label="Close menu"><i class="fa-solid fa-xmark text-lg"></i></button>
   </div>
   <div class="flex-1 overflow-y-auto px-5 py-4">
-    <a href="about.html" class="drawer-link block py-4 border-b border-line font-head font-bold text-lg">About Us</a>
+    <a href="about.html" class="drawer-link"><span class="dl-ic"><i class="fa-solid fa-building"></i></span>About Us<i class="fa-solid fa-arrow-right dl-go"></i></a>
     <div class="acc border-b border-line">
-      <button class="acc-head w-full flex items-center justify-between py-4 font-head font-bold text-lg">Loans <i class="fa-solid fa-chevron-down acc-chev text-sm"></i></button>
+      <button class="acc-head drawer-acc w-full flex items-center justify-between font-head font-bold text-lg"><span class="flex items-center gap-3"><span class="dl-ic"><i class="fa-solid fa-hand-holding-dollar"></i></span>Loans &amp; tools</span> <i class="fa-solid fa-chevron-down acc-chev text-sm"></i></button>
       <div class="acc-body"><div>
         <div class="pb-4 grid grid-cols-2 gap-4">
           <div>
@@ -155,7 +155,8 @@
         </div>
       </div></div>
     </div>
-    <a href="contact.html" class="drawer-link block py-4 border-b border-line font-head font-bold text-lg">Contact Us</a>
+    <a href="contact.html" class="drawer-link"><span class="dl-ic"><i class="fa-solid fa-headset"></i></span>Contact Us<i class="fa-solid fa-arrow-right dl-go"></i></a>
+    <a href="tel:+8809638229922" class="dl-help"><span><i class="fa-solid fa-phone"></i></span><div><small>Need help? Call us</small><b>+880 9638 229922</b></div></a>
   </div>
   <div class="p-5 grid gap-3 border-t border-line">
     <a href="apply.html" class="btn btn-primary">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
