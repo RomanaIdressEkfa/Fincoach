@@ -284,7 +284,7 @@
   const scTrack = $('#scTrack');
   if (scTrack) {
     const bar = $('#scBar');
-    const step = () => { const c = $('.ol-card, .sc-card', scTrack); return c ? c.offsetWidth + 20 : 320; };
+    const step = () => { const c = $('.lc2, .ol-card, .sc-card', scTrack); return c ? c.offsetWidth + 20 : 320; };
     const atEnd = () => scTrack.scrollLeft + scTrack.clientWidth >= scTrack.scrollWidth - 4;
     const go = (dir) => {
       if (dir > 0 && atEnd()) scTrack.scrollTo({ left: 0, behavior: 'smooth' });
