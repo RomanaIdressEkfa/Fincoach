@@ -169,96 +169,25 @@
 <main>
 
 <!-- =========================================================
-     APPLY ① — OneMain-style start: small cards left, form right
+     APPLY ① — Hero
      ========================================================= -->
 <section class="px-2.5 pt-2.5">
-  <div class="hs panel relative overflow-hidden !pb-16 md:!pb-20">
-    <div class="hs-dots absolute inset-0 pointer-events-none"></div>
-    <span class="hs-blob hs-blob-1"></span>
-    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-10 md:pt-14">
-      <nav class="reveal crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand">Apply Now</span></nav>
-      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 mt-6 items-start">
-
-        <!-- LEFT -->
-        <div class="lg:col-span-5">
-          <h1 class="reveal w-h1">You may have more loan options <span class="text-grad">than you think.</span></h1>
-          <p class="reveal w-lead mt-4"><b class="text-ink">See your options in 5 minutes.</b> Free, and checking won't affect your credit score.</p>
-          <div class="grid grid-cols-2 gap-3 mt-8">
-            <div class="reveal ap-mini"><i class="fa-solid fa-stopwatch"></i><b>5 minutes</b><span>To see your offers</span></div>
-            <div class="reveal ap-mini"><i class="fa-solid fa-shield-halved"></i><b>No credit impact</b><span>Soft check only</span></div>
-            <div class="reveal ap-mini"><i class="fa-solid fa-building-columns"></i><b>6+ Banks &amp; FIs</b><span>Compared side by side</span></div>
-            <div class="reveal ap-mini"><i class="fa-solid fa-hand-holding-dollar"></i><b>100% free</b><span>No fees, ever</span></div>
-          </div>
-          <a href="https://www.youtube.com/watch?v=2QMfR_PKNSI" target="_blank" rel="noopener" class="reveal ap-video mt-3">
-            <span class="play-sm"><i class="fa-solid fa-play ml-0.5"></i></span>
-            <span><b class="font-head text-lg block leading-tight">Watch tutorial</b><span class="text-sm text-white/75">How to apply on FinCoach in 2 minutes</span></span>
-            <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-white/60"></i>
-          </a>
+  <div class="ab5-hero ap5-hero">
+    <span class="ab5-dots"></span><span class="ab5-glow"></span>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-10 md:pt-14 pb-40 md:pb-48">
+      <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand">Apply Now</span></nav>
+      <div class="grid lg:grid-cols-12 gap-6 lg:gap-12 items-end mt-6">
+        <div class="lg:col-span-7">
+          <span class="ab5-kicker"><span></span>Check your eligibility</span>
+          <h1 class="ab5-h1 mt-5">You may have more loan options <span class="text-grad">than you think.</span></h1>
         </div>
-
-        <!-- RIGHT: question form -->
-        <div class="lg:col-span-7" id="applyBox">
-          <form class="reveal ap-form" id="applyForm" novalidate>
-            <div class="flex items-center justify-between gap-4">
-              <p class="text-sm font-bold text-muted">Step <span id="apNum">1</span> of 3</p>
-              <p class="text-sm font-semibold text-muted"><i class="fa-solid fa-lock text-brand"></i> Secure &amp; private</p>
-            </div>
-            <div class="ap-progress mt-3"><span class="on"></span><span></span><span></span></div>
-
-            <!-- Step 1 -->
-            <div class="ap-step active" data-step="1">
-              <p class="ap-q mt-6">What kind of loan do you need?</p>
-              <div class="ap-choices c3 mt-4">
-                <label class="ap-choice"><input type="radio" name="type" value="personal" checked /><span><i class="fa-solid fa-user"></i>Personal</span></label>
-                <label class="ap-choice"><input type="radio" name="type" value="auto" /><span><i class="fa-solid fa-car"></i>Auto</span></label>
-                <label class="ap-choice"><input type="radio" name="type" value="home" /><span><i class="fa-solid fa-house"></i>Home</span></label>
-                <label class="ap-choice"><input type="radio" name="type" value="card" /><span><i class="fa-regular fa-credit-card"></i>Credit card</span></label>
-                <label class="ap-choice"><input type="radio" name="type" value="sme" /><span><i class="fa-solid fa-store"></i>SME</span></label>
-                <label class="ap-choice"><input type="radio" name="type" value="other" /><span><i class="fa-solid fa-ellipsis"></i>Other</span></label>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4 mt-5">
-                <div><label class="ap-label" for="apAmount">How much do you need? (BDT)</label><input id="apAmount" class="ap-input" inputmode="numeric" value="5,00,000" required /></div>
-                <div><label class="ap-label" for="apTenure">For how long?</label>
-                  <select id="apTenure" class="ap-input"><option value="12">12 months</option><option value="24">24 months</option><option value="36" selected>36 months</option><option value="48">48 months</option><option value="60">60 months</option><option value="120">10 years</option><option value="240">20 years</option></select>
-                </div>
-              </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="ap-step" data-step="2">
-              <p class="ap-q mt-6">Tell us a little about yourself</p>
-              <p class="ap-label mt-5">Employment type</p>
-              <div class="ap-choices c3">
-                <label class="ap-choice"><input type="radio" name="job" value="salaried" checked /><span><i class="fa-solid fa-briefcase"></i>Salaried</span></label>
-                <label class="ap-choice"><input type="radio" name="job" value="business" /><span><i class="fa-solid fa-store"></i>Business owner</span></label>
-                <label class="ap-choice"><input type="radio" name="job" value="self" /><span><i class="fa-solid fa-laptop"></i>Self-employed</span></label>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4 mt-5">
-                <div><label class="ap-label" for="apIncome">Monthly income (BDT)</label><input id="apIncome" class="ap-input" inputmode="numeric" placeholder="e.g. 60,000" required /></div>
-                <div><label class="ap-label" for="apCity">City</label>
-                  <select id="apCity" class="ap-input"><option>Dhaka</option><option>Chattogram</option><option>Sylhet</option><option>Khulna</option><option>Rajshahi</option><option>Barishal</option><option>Rangpur</option><option>Mymensingh</option></select>
-                </div>
-              </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="ap-step" data-step="3">
-              <p class="ap-q mt-6">Where should we send your offers?</p>
-              <div class="grid sm:grid-cols-2 gap-4 mt-5">
-                <div class="sm:col-span-2"><label class="ap-label" for="apName">Full name (as per NID)</label><input id="apName" class="ap-input" autocomplete="name" required /></div>
-                <div><label class="ap-label" for="apPhone">Mobile number</label><input id="apPhone" class="ap-input" type="tel" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX" autocomplete="tel-national" required /></div>
-                <div><label class="ap-label" for="apEmail">Email</label><input id="apEmail" class="ap-input" type="email" autocomplete="email" required /></div>
-              </div>
-              <label class="flex items-start gap-3 mt-5 text-muted cursor-pointer text-[15px]"><input type="checkbox" id="apConsent" required class="mt-1 w-4 h-4 accent-[#e8205a]" /><span>I agree to the <a href="terms.html" class="font-semibold text-ink underline">Terms</a> and <a href="privacy.html" class="font-semibold text-ink underline">Privacy Policy</a>, and to be contacted about my offers.</span></label>
-            </div>
-
-            <p class="ap-err hidden mt-4 text-sm font-semibold text-red-500"><i class="fa-solid fa-circle-exclamation"></i> <span>Please complete the highlighted fields.</span></p>
-            <div class="flex items-center gap-3 mt-7">
-              <button type="button" class="btn btn-ghost hidden" id="apBack"><i class="fa-solid fa-arrow-left"></i> Back</button>
-              <button type="submit" class="btn btn-primary flex-1 !py-4" id="apNext">Continue <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-            <p class="mt-4 text-center text-xs text-muted">Checking your options won't affect your credit score.</p>
-          </form>
+        <div class="lg:col-span-5">
+          <p class="ab5-lead"><b class="text-ink">See your personalised offers in about 5 minutes.</b> Free, secure — and checking won't affect your credit score.</p>
+          <div class="ap5-trust mt-5">
+            <span><i class="fa-solid fa-shield-halved"></i> Soft check only</span>
+            <span><i class="fa-solid fa-building-columns"></i> 6+ Banks &amp; FIs</span>
+            <span><i class="fa-solid fa-lock"></i> 256-bit SSL</span>
+          </div>
         </div>
       </div>
     </div>
@@ -266,50 +195,184 @@
 </section>
 
 <!-- =========================================================
-     APPLY ② — Eligibility results (LoanTube style)
+     APPLY ② — Application (form + live summary)
+     ========================================================= -->
+<section class="relative z-10 -mt-32 md:-mt-40" id="applyBox">
+  <div class="max-w-site mx-auto px-4 md:px-6">
+    <div class="ap5-shell">
+      <!-- Form -->
+      <form class="ap5-form" id="applyForm" novalidate>
+        <!-- Stepper -->
+        <ol class="ap5-steps" aria-label="Application steps">
+          <li class="is-active" data-sn="1"><span class="ap5-sn"><i class="fa-solid fa-sack-dollar"></i></span><div><small>Step 1</small><b>Loan details</b></div></li>
+          <li data-sn="2"><span class="ap5-sn"><i class="fa-solid fa-user"></i></span><div><small>Step 2</small><b>About you</b></div></li>
+          <li data-sn="3"><span class="ap5-sn"><i class="fa-solid fa-paper-plane"></i></span><div><small>Step 3</small><b>Contact</b></div></li>
+        </ol>
+        <div class="ap-progress mt-5"><span class="on"></span><span></span><span></span></div>
+        <p class="sr-only">Step <span id="apNum">1</span> of 3</p>
+
+        <!-- Step 1 -->
+        <div class="ap-step active" data-step="1">
+          <p class="ap5-q mt-7">What kind of loan do you need?</p>
+          <div class="ap5-types mt-4">
+            <label class="ap5-type"><input type="radio" name="type" value="personal" checked /><span><i class="fa-solid fa-user"></i><b>Personal</b><small>from 9.0%</small></span></label>
+            <label class="ap5-type"><input type="radio" name="type" value="auto" /><span><i class="fa-solid fa-car"></i><b>Auto</b><small>from 9.5%</small></span></label>
+            <label class="ap5-type"><input type="radio" name="type" value="home" /><span><i class="fa-solid fa-house"></i><b>Home</b><small>from 8.5%</small></span></label>
+            <label class="ap5-type"><input type="radio" name="type" value="card" /><span><i class="fa-regular fa-credit-card"></i><b>Credit card</b><small>0% fee yr 1</small></span></label>
+            <label class="ap5-type"><input type="radio" name="type" value="sme" /><span><i class="fa-solid fa-store"></i><b>SME</b><small>from 10.5%</small></span></label>
+            <label class="ap5-type"><input type="radio" name="type" value="other" /><span><i class="fa-solid fa-ellipsis"></i><b>Other</b><small>Tell us more</small></span></label>
+          </div>
+
+          <div class="ap5-field mt-7">
+            <div class="flex items-center justify-between gap-3">
+              <label class="ap5-label" for="apAmount">How much do you need?</label>
+              <div class="ap5-amt"><span>৳</span><input id="apAmount" inputmode="numeric" value="5,00,000" required aria-label="Loan amount" /></div>
+            </div>
+            <input id="apAmtRange" type="range" class="rng mt-4" min="50000" max="5000000" step="10000" value="500000" aria-label="Loan amount slider" />
+            <div class="ap5-quick mt-3" id="apQuick">
+              <button type="button" data-amt="100000">৳1 Lakh</button><button type="button" data-amt="500000" class="active">৳5 Lakh</button><button type="button" data-amt="1000000">৳10 Lakh</button><button type="button" data-amt="2000000">৳20 Lakh</button><button type="button" data-amt="5000000">৳50 Lakh</button>
+            </div>
+          </div>
+
+          <div class="ap5-field mt-6">
+            <label class="ap5-label">For how long?</label>
+            <select id="apTenure" class="sr-only" aria-label="Tenure"><option value="12">12 months</option><option value="24">24 months</option><option value="36" selected>36 months</option><option value="48">48 months</option><option value="60">60 months</option><option value="120">10 years</option><option value="240">20 years</option></select>
+            <div class="ap5-tenure mt-3" id="apTen">
+              <button type="button" data-ten="12">1 yr</button><button type="button" data-ten="24">2 yrs</button><button type="button" data-ten="36" class="active">3 yrs</button><button type="button" data-ten="48">4 yrs</button><button type="button" data-ten="60">5 yrs</button><button type="button" data-ten="120">10 yrs</button><button type="button" data-ten="240">20 yrs</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="ap-step" data-step="2">
+          <p class="ap5-q mt-7">Tell us a little about yourself</p>
+          <p class="text-muted mt-1">This helps us match you with lenders likely to approve you.</p>
+          <p class="ap5-label mt-6">Employment type</p>
+          <div class="ap5-types ap5-types-3 mt-3">
+            <label class="ap5-type"><input type="radio" name="job" value="salaried" checked /><span><i class="fa-solid fa-briefcase"></i><b>Salaried</b><small>Job holder</small></span></label>
+            <label class="ap5-type"><input type="radio" name="job" value="business" /><span><i class="fa-solid fa-store"></i><b>Business owner</b><small>Trade licence</small></span></label>
+            <label class="ap5-type"><input type="radio" name="job" value="self" /><span><i class="fa-solid fa-laptop"></i><b>Self-employed</b><small>Professional</small></span></label>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4 mt-6">
+            <label class="ct5-f"><span>Monthly income (BDT)</span><input id="apIncome" inputmode="numeric" placeholder="e.g. 60,000" required /></label>
+            <label class="ct5-f"><span>City</span>
+              <select id="apCity" class="ap5-select"><option>Dhaka</option><option>Chattogram</option><option>Sylhet</option><option>Khulna</option><option>Rajshahi</option><option>Barishal</option><option>Rangpur</option><option>Mymensingh</option></select>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="ap-step" data-step="3">
+          <p class="ap5-q mt-7">Where should we send your offers?</p>
+          <p class="text-muted mt-1">We'll only use these details for your application.</p>
+          <div class="grid sm:grid-cols-2 gap-4 mt-6">
+            <label class="ct5-f sm:col-span-2"><span>Full name (as per NID)</span><input id="apName" autocomplete="name" placeholder="e.g. Rafiq Ahmed" required /></label>
+            <label class="ct5-f"><span>Mobile number</span><input id="apPhone" type="tel" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX" autocomplete="tel-national" required /></label>
+            <label class="ct5-f"><span>Email</span><input id="apEmail" type="email" autocomplete="email" placeholder="you@email.com" required /></label>
+          </div>
+          <label class="flex items-start gap-3 mt-5 text-muted cursor-pointer text-[15px]"><input type="checkbox" id="apConsent" required class="mt-1 w-4 h-4 accent-[#e8205a]" /><span>I agree to the <a href="terms.html" class="font-semibold text-ink underline">Terms</a> and <a href="privacy.html" class="font-semibold text-ink underline">Privacy Policy</a>, and to be contacted about my offers.</span></label>
+        </div>
+
+        <p class="ap-err hidden mt-5 text-sm font-semibold text-red-500"><i class="fa-solid fa-circle-exclamation"></i> <span>Please complete the highlighted fields.</span></p>
+        <div class="ap5-actions">
+          <button type="button" class="btn btn-ghost hidden" id="apBack"><i class="fa-solid fa-arrow-left"></i> Back</button>
+          <button type="submit" class="btn btn-primary flex-1 !py-4 text-lg" id="apNext">Continue <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <p class="mt-4 text-center text-xs text-muted"><i class="fa-solid fa-shield-halved text-brand"></i> Checking your options won't affect your credit score.</p>
+      </form>
+
+      <!-- Live summary -->
+      <aside class="ap5-side">
+        <span class="ap5-side-glow"></span>
+        <div class="relative">
+          <p class="text-xs font-bold uppercase tracking-[.14em] text-[#f7a0bb]">Your application</p>
+          <div class="flex items-center gap-3 mt-4">
+            <span class="ap5-side-ic" id="sumIc"><i class="fa-solid fa-user"></i></span>
+            <div><p class="font-head font-extrabold text-xl leading-tight" id="sumType">Personal Loan</p><p class="text-sm text-white/60">Estimated offer</p></div>
+          </div>
+          <div class="ap5-emi">
+            <small>Est. monthly EMI</small>
+            <b>৳ <span id="sumEmi">0</span></b>
+            <span>at about <b id="sumRate">9.0</b>% p.a.</span>
+          </div>
+          <dl class="ap5-sum">
+            <div><dt>Amount</dt><dd>৳ <span id="sumAmt">5,00,000</span></dd></div>
+            <div><dt>Tenure</dt><dd id="sumTen">36 months</dd></div>
+            <div><dt>Total payable</dt><dd>৳ <span id="sumTot">0</span></dd></div>
+          </dl>
+          <ul class="ap5-check">
+            <li data-chk="1"><i class="fa-solid fa-check"></i> Loan details</li>
+            <li data-chk="2"><i class="fa-solid fa-check"></i> About you</li>
+            <li data-chk="3"><i class="fa-solid fa-check"></i> Contact details</li>
+          </ul>
+          <a href="https://www.youtube.com/watch?v=2QMfR_PKNSI" target="_blank" rel="noopener" class="ap5-video">
+            <span><i class="fa-solid fa-play"></i></span><div><b>Watch tutorial</b><small>How to apply in 2 minutes</small></div>
+          </a>
+          <div class="ap5-adv">
+            <span class="tr-ava !w-10 !h-10 !text-xs">SA<i></i></span>
+            <div class="flex-1 min-w-0"><b class="block text-sm">Need help?</b><small class="text-white/60">Free advisor support</small></div>
+            <a href="tel:+8809638229922" class="ap5-call" aria-label="Call an advisor"><i class="fa-solid fa-phone"></i></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     APPLY ③ — Results (offer cards)
      ========================================================= -->
 <section id="results" class="hidden pt-14 md:pt-20 scroll-mt-28">
   <div class="max-w-site mx-auto px-4 md:px-6">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-      <div>
-        <span class="eyebrow">Check eligibility</span>
-        <h2 class="w-h2 mt-4">Your matched offers</h2>
-        <p class="w-lead mt-2" id="resSummary"></p>
+    <div class="ap5-found">
+      <span class="ap5-found-ic"><i class="fa-solid fa-circle-check"></i></span>
+      <div class="flex-1 min-w-0">
+        <p class="text-xs font-bold uppercase tracking-[.14em] text-brand">Great news</p>
+        <h2 class="font-head font-extrabold text-[1.6rem] md:text-[2rem] leading-tight mt-1"><span id="resCount">6</span> lenders matched your profile</h2>
+        <p class="text-muted mt-1" id="resSummary"></p>
       </div>
-      <button type="button" class="btn btn-ghost self-start md:self-auto" id="apEdit"><i class="fa-solid fa-pen"></i> Edit details</button>
+      <button type="button" class="btn btn-ghost shrink-0" id="apEdit"><i class="fa-solid fa-pen"></i> Edit details</button>
     </div>
-    <div class="overflow-x-auto mt-6">
-      <table class="el-table">
-        <thead><tr><th>Lender</th><th>Product name</th><th>Interest rate</th><th>Max amount</th><th>Monthly EMI</th><th>Eligibility</th><th></th></tr></thead>
-        <tbody id="resRows"></tbody>
-      </table>
-    </div>
-    <p class="mt-4 text-sm text-muted">Rates and eligibility are indicative. Final approval is made by the lender after verification.</p>
+    <div class="ap5-offers mt-6" id="resRows"></div>
+    <p class="mt-4 text-xs text-muted"><i class="fa-solid fa-circle-info text-brand"></i> Rates and eligibility are indicative. Final approval is made by the lender after verification.</p>
   </div>
 </section>
 
 <!-- =========================================================
-     APPLY ③ — FAQs
+     APPLY ④ — Why + FAQ
      ========================================================= -->
 <section class="pt-16 md:pt-24 pb-16 md:pb-24">
-  <div class="max-w-[900px] mx-auto px-4 md:px-6">
-    <h2 class="reveal w-h2 text-center">Frequently asked questions</h2>
-    <div class="mt-10 space-y-4" id="faqList">
-      <div class="reveal faq acc open">
-        <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Will checking my options affect my credit score?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
-        <div class="acc-body"><div><p class="px-6 pb-6 text-muted">No. Seeing your matched offers on FinCoach is a soft check and has no impact on your credit score.</p></div></div>
+  <div class="max-w-site mx-auto px-4 md:px-6">
+    <div class="grid sm:grid-cols-3 gap-4">
+      <div class="ap5-why"><span><i class="fa-solid fa-stopwatch"></i></span><div><b>5 minutes</b><small>To see your offers</small></div></div>
+      <div class="ap5-why"><span><i class="fa-solid fa-shield-halved"></i></span><div><b>No credit impact</b><small>Soft check only</small></div></div>
+      <div class="ap5-why"><span><i class="fa-solid fa-hand-holding-dollar"></i></span><div><b>100% free</b><small>No fees, ever</small></div></div>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-10 mt-16 md:mt-20">
+      <div class="lg:col-span-4">
+        <span class="reveal ab5-kicker"><span></span>FAQ</span>
+        <h2 class="reveal ab5-h2 mt-4">Questions before you apply?</h2>
+        <p class="reveal ab5-lead mt-3">Can't find your answer? Our team is happy to help.</p>
+        <a href="faq.html" class="reveal bl4-all mt-6">All FAQs <span><i class="fa-solid fa-arrow-right"></i></span></a>
       </div>
-      <div class="reveal faq acc">
-        <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">What documents will I need?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
-        <div class="acc-body"><div><p class="px-6 pb-6 text-muted">Usually your NID, a recent photo, salary certificate or trade licence, 6 months of bank statements and TIN. Exact requirements depend on the lender and product.</p></div></div>
-      </div>
-      <div class="reveal faq acc">
-        <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Does FinCoach charge any fee?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
-        <div class="acc-body"><div><p class="px-6 pb-6 text-muted">No. Comparing and applying through FinCoach is completely free. We never ask for money, processing fees or OTPs.</p></div></div>
-      </div>
-      <div class="reveal faq acc">
-        <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">How long does approval take?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
-        <div class="acc-body"><div><p class="px-6 pb-6 text-muted">Most lenders decide within 3–7 working days. You can follow every step on the <a href="track.html" class="text-brand font-semibold underline">Track Application</a> page.</p></div></div>
+      <div class="lg:col-span-8 space-y-4" id="faqList">
+        <div class="reveal faq acc open">
+          <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Will checking my options affect my credit score?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
+          <div class="acc-body"><div><p class="px-6 pb-6 text-muted">No. Seeing your matched offers on FinCoach is a soft check and has no impact on your credit score.</p></div></div>
+        </div>
+        <div class="reveal faq acc">
+          <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">What documents will I need?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
+          <div class="acc-body"><div><p class="px-6 pb-6 text-muted">Usually your NID, a recent photo, salary certificate or trade licence, 6 months of bank statements and TIN. Exact requirements depend on the lender and product.</p></div></div>
+        </div>
+        <div class="reveal faq acc">
+          <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Does FinCoach charge any fee?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
+          <div class="acc-body"><div><p class="px-6 pb-6 text-muted">No. Comparing and applying through FinCoach is completely free. We never ask for money, processing fees or OTPs.</p></div></div>
+        </div>
+        <div class="reveal faq acc">
+          <button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">How long does approval take?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button>
+          <div class="acc-body"><div><p class="px-6 pb-6 text-muted">Most lenders decide within 3–7 working days. You can follow every step on the <a href="track.html" class="text-brand font-semibold underline">Track Application</a> page.</p></div></div>
+        </div>
       </div>
     </div>
   </div>

@@ -908,23 +908,53 @@
     const back = $('#apBack'), next = $('#apNext'), err = $('.ap-err', apForm);
     const money = (n) => Math.round(n).toLocaleString('en-IN');
     const digits = (s) => +String(s).replace(/\D/g, '') || 0;
+    const amtIn = $('#apAmount'), amtRange = $('#apAmtRange'), tenSel = $('#apTenure');
     let cur = 1;
+
+    const PRODUCT = { personal: 'Personal Loan', auto: 'Auto Loan', home: 'Home Loan', card: 'Credit Card', sme: 'SME Loan', other: 'Personal Loan' };
+    const ICON = { personal: 'fa-user', auto: 'fa-car', home: 'fa-house', card: 'fa-credit-card', sme: 'fa-store', other: 'fa-ellipsis' };
+    const BASE = { personal: 9, auto: 9.5, home: 8.5, card: 9, sme: 10.5, other: 9 };
+    const emiOf = (P, rate, n) => { const r = rate / 12 / 100; return r ? (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) : P / n; };
+    const typeVal = () => $('input[name=type]:checked', apForm).value;
 
     // Pre-select loan type from ?type=
     const qType = new URLSearchParams(location.search).get('type');
     if (qType) {
       const map = { consolidation: 'personal', emergency: 'personal', education: 'personal', travel: 'personal', deposit: 'other' };
-      const val = map[qType] || qType;
-      const r = $('input[name=type][value="' + val + '"]', apForm);
+      const r = $('input[name=type][value="' + (map[qType] || qType) + '"]', apForm);
       if (r) r.checked = true;
     }
-    ['#apAmount', '#apIncome'].forEach(sel => { const el = $(sel); el.addEventListener('input', () => { const d = digits(el.value); el.value = d ? money(d) : ''; }); });
+
+    // Live summary panel
+    const fill = (el) => el.style.setProperty('--p', ((el.value - el.min) / (el.max - el.min)) * 100 + '%');
+    const updSummary = () => {
+      const t = typeVal(), P = digits(amtIn.value), n = +tenSel.value, rate = BASE[t];
+      $('#sumType').textContent = PRODUCT[t];
+      $('#sumIc').innerHTML = '<i class="fa-solid ' + ICON[t] + '"></i>';
+      $('#sumRate').textContent = rate.toFixed(1);
+      $('#sumAmt').textContent = money(P);
+      $('#sumTen').textContent = n >= 120 ? (n / 12) + ' years' : n + ' months';
+      const e = P ? emiOf(P, rate, n) : 0;
+      $('#sumEmi').textContent = money(e);
+      $('#sumTot').textContent = money(e * n);
+      $$('#apQuick button').forEach(b => b.classList.toggle('active', +b.dataset.amt === P));
+      fill(amtRange);
+    };
+    amtIn.addEventListener('input', () => { const d = digits(amtIn.value); amtIn.value = d ? money(d) : ''; if (d) amtRange.value = Math.min(Math.max(d, +amtRange.min), +amtRange.max); updSummary(); });
+    amtRange.addEventListener('input', () => { amtIn.value = money(+amtRange.value); updSummary(); });
+    $$('#apQuick button').forEach(b => b.addEventListener('click', () => { amtIn.value = money(+b.dataset.amt); amtRange.value = b.dataset.amt; updSummary(); }));
+    $$('#apTen button').forEach(b => b.addEventListener('click', () => { tenSel.value = b.dataset.ten; $$('#apTen button').forEach(x => x.classList.toggle('active', x === b)); updSummary(); }));
+    $$('input[name=type]', apForm).forEach(r => r.addEventListener('change', updSummary));
+    $('#apIncome').addEventListener('input', (e) => { const d = digits(e.target.value); e.target.value = d ? money(d) : ''; });
     $('#apPhone').addEventListener('input', (e) => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 11); });
+    updSummary();
 
     const show = (n) => {
       cur = n;
       steps.forEach(s => s.classList.toggle('active', +s.dataset.step === n));
       bars.forEach((b, k) => b.classList.toggle('on', k < n));
+      $$('.ap5-steps li').forEach(li => { const k = +li.dataset.sn; li.classList.toggle('is-active', k === n); li.classList.toggle('is-done', k < n); });
+      $$('.ap5-check li').forEach(li => li.classList.toggle('is-done', +li.dataset.chk < n || (n === 3 && li.dataset.done === '1')));
       $('#apNum').textContent = n;
       back.classList.toggle('hidden', n === 1);
       next.innerHTML = n === 3 ? 'See my offers <i class="fa-solid fa-magnifying-glass"></i>' : 'Continue <i class="fa-solid fa-arrow-right"></i>';
@@ -938,7 +968,7 @@
         if (el.id === 'apAmount') good = digits(el.value) >= 10000;
         if (el.id === 'apIncome') good = digits(el.value) >= 5000;
         if (el.id === 'apPhone') good = /^01\d{9}$/.test(el.value);
-        el.classList.toggle('!border-red-400', !good);
+        el.classList.toggle('is-invalid', !good);
         if (!good) ok = false;
       });
       err.classList.toggle('hidden', ok);
@@ -947,40 +977,40 @@
     back.addEventListener('click', () => show(cur - 1));
 
     const LENDERS = [
-      { logo: 'assets/img/partners/p1.png', name: 'IPDC Finance', rate: 9.0, max: 2000000 },
-      { logo: 'assets/img/partners/p5.jpg', name: 'NCC Bank', rate: 9.5, max: 2500000 },
-      { logo: 'assets/img/partners/p2.jpg', name: 'City Bank', rate: 9.75, max: 3000000 },
-      { logo: 'assets/img/partners/p3.jpg', name: 'IDLC Finance', rate: 10.25, max: 2000000 },
-      { logo: 'assets/img/partners/p6.jpg', name: 'Mutual Trust Bank', rate: 10.5, max: 1500000 },
-      { logo: 'assets/img/partners/p4.jpg', name: 'National Finance', rate: 11.0, max: 1000000 }
+      { logo: 'assets/img/partners/p1.png', name: 'IPDC Finance', add: 0, max: 2000000, fee: '1%', days: '3–5 days' },
+      { logo: 'assets/img/partners/p5.jpg', name: 'NCC Bank', add: 0.5, max: 2500000, fee: '1%', days: '5–7 days' },
+      { logo: 'assets/img/partners/p2.jpg', name: 'City Bank', add: 0.75, max: 3000000, fee: '0.5%', days: '3–7 days' },
+      { logo: 'assets/img/partners/p3.jpg', name: 'IDLC Finance', add: 1.25, max: 2000000, fee: '1%', days: '5–7 days' },
+      { logo: 'assets/img/partners/p6.jpg', name: 'Mutual Trust Bank', add: 1.5, max: 1500000, fee: '0.75%', days: '5–10 days' },
+      { logo: 'assets/img/partners/p4.jpg', name: 'National Finance', add: 2, max: 1000000, fee: '1.5%', days: '7–10 days' }
     ];
-    const PRODUCT = { personal: 'Personal Loan', auto: 'Auto Loan', home: 'Home Loan', card: 'Credit Card', sme: 'SME Loan', other: 'Personal Loan' };
-    const RATE_ADJ = { home: -0.5, auto: 0.25, sme: 1, card: 0, personal: 0, other: 0 };
 
     const renderResults = () => {
-      const type = $('input[name=type]:checked', apForm).value;
-      const P = digits($('#apAmount').value), n = +$('#apTenure').value, income = digits($('#apIncome').value);
+      const type = typeVal(), P = digits(amtIn.value), n = +tenSel.value, income = digits($('#apIncome').value);
       $('#resSummary').innerHTML = 'For a <b class="text-ink">' + PRODUCT[type] + '</b> of <b class="text-ink">৳' + money(P) + '</b> over <b class="text-ink">' + n + ' months</b>.';
+      const order = { high: 0, good: 1, fair: 2 };
       const rows = LENDERS.map(l => {
-        const rate = Math.max(l.rate + (RATE_ADJ[type] || 0), 7);
-        const r = rate / 12 / 100;
-        const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-        const ratio = income ? emi / income : 1;
+        const rate = BASE[type] + l.add, emi = emiOf(P, rate, n), ratio = income ? emi / income : 1;
         const fit = P > l.max ? 'fair' : ratio <= 0.35 ? 'high' : ratio <= 0.5 ? 'good' : 'fair';
         return { ...l, rate, emi, fit };
-      }).sort((a, b) => ({ high: 0, good: 1, fair: 2 }[a.fit] - { high: 0, good: 1, fair: 2 }[b.fit]) || a.rate - b.rate);
-      const label = { high: '<span class="el-pill el-high"><i class="fa-solid fa-circle-check"></i> High</span>', good: '<span class="el-pill el-good"><i class="fa-solid fa-thumbs-up"></i> Good</span>', fair: '<span class="el-pill el-fair"><i class="fa-solid fa-circle-info"></i> Fair</span>' };
-      $('#resRows').innerHTML = rows.map((x, k) => '<tr class="' + (k === 0 ? 'best' : '') + '">' +
-        '<td data-th="Lender"><img class="el-logo" src="' + x.logo + '" alt="' + x.name + '" />' + (k === 0 ? '<span class="el-pill el-high ml-2 align-middle">Best match</span>' : '') + '</td>' +
-        '<td data-th="Product name"><b>' + x.name + '</b><br><span class="text-sm text-muted">' + PRODUCT[type] + '</span></td>' +
-        '<td data-th="Interest rate"><b class="font-head text-lg">' + x.rate.toFixed(2) + '%</b> <span class="text-xs text-muted">p.a.</span></td>' +
-        '<td data-th="Max amount">৳' + money(x.max) + '</td>' +
-        '<td data-th="Monthly EMI"><b>৳' + money(x.emi) + '</b></td>' +
-        '<td data-th="Eligibility">' + label[x.fit] + '</td>' +
-        '<td><a href="login.html" data-login-open="register" class="btn btn-primary !py-2.5 !px-5 text-sm">Apply</a></td></tr>').join('');
-      // new Apply buttons open the login popup
+      }).sort((a, b) => order[a.fit] - order[b.fit] || a.rate - b.rate);
+      const FIT = { high: ['el-high', 'fa-circle-check', 'High chance', 92], good: ['el-good', 'fa-thumbs-up', 'Good chance', 74], fair: ['el-fair', 'fa-circle-info', 'Fair chance', 48] };
+      $('#resCount').textContent = rows.length;
+      $('#resRows').innerHTML = rows.map((x, k) => {
+        const [cls, ic, txt, pct] = FIT[x.fit];
+        return '<article class="ap5-offer' + (k === 0 ? ' is-best' : '') + '">' +
+          (k === 0 ? '<span class="ap5-best"><i class="fa-solid fa-crown"></i> Best match</span>' : '') +
+          '<div class="ap5-o-lender"><span class="ap5-o-logo"><img src="' + x.logo + '" alt="" /></span><div><b>' + x.name + '</b><small>' + PRODUCT[type] + '</small></div></div>' +
+          '<div class="ap5-o-cell"><small>Interest rate</small><b class="ap5-o-rate">' + x.rate.toFixed(2) + '%</b></div>' +
+          '<div class="ap5-o-cell"><small>Monthly EMI</small><b>৳' + money(x.emi) + '</b></div>' +
+          '<div class="ap5-o-cell"><small>Max amount</small><b>৳' + money(x.max) + '</b></div>' +
+          '<div class="ap5-o-cell ap5-o-fit"><small>Approval</small><span class="el-pill ' + cls + '"><i class="fa-solid ' + ic + '"></i> ' + txt + '</span><span class="ap5-o-bar"><i style="width:' + pct + '%"></i></span></div>' +
+          '<div class="ap5-o-cta"><a href="login.html" data-login-open="register" class="btn ' + (k === 0 ? 'btn-primary' : 'btn-dark') + ' !py-3 !px-6">Apply <i class="fa-solid fa-arrow-right"></i></a><small>Fee ' + x.fee + ' · ' + x.days + '</small></div>' +
+        '</article>';
+      }).join('');
       const opener = $('.nav-text-btn[data-login-open]');
       $$('#resRows [data-login-open]').forEach(b => b.addEventListener('click', (e) => { if (opener) { e.preventDefault(); opener.click(); } }));
+      $$('.ap5-check li').forEach(li => li.classList.add('is-done'));
       const sec = $('#results');
       sec.classList.remove('hidden');
       sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -989,9 +1019,9 @@
     apForm.addEventListener('submit', (e) => {
       e.preventDefault();
       if (!validate()) return;
-      if (cur < 3) { show(cur + 1); apForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); return; }
-      next.disabled = true; next.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Finding offers…';
-      setTimeout(() => { next.disabled = false; show(3); renderResults(); }, 1000);
+      if (cur < 3) { show(cur + 1); $('#applyBox').scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+      next.disabled = true; next.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Finding your offers…';
+      setTimeout(() => { next.disabled = false; show(3); renderResults(); }, 1100);
     });
     $('#apEdit').addEventListener('click', () => { show(1); $('#applyBox').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
   }
