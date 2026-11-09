@@ -168,62 +168,112 @@
 
 <main>
 
+<!-- =========================================================
+     FAQ ① — Hero with search
+     ========================================================= -->
 <section class="px-2.5 pt-2.5">
-  <div class="ab-hero">
-    <div class="ab-dots"></div>
-    <div class="relative max-w-[860px] mx-auto px-4 md:px-6 pt-12 md:pt-16 pb-16 md:pb-20 text-center">
-      <nav class="reveal crumb justify-center" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand">FAQs</span></nav>
-      <h1 class="reveal w-h1 mt-6">How can we <span class="text-grad">help you?</span></h1>
-      <p class="reveal w-lead mx-auto mt-4">Answers to the most common questions about FinCoach, loans and your application.</p>
-      <div class="reveal faq-search mt-8">
+  <div class="ab5-hero fq2-hero">
+    <span class="ab5-dots"></span><span class="ab5-glow"></span>
+    <div class="relative max-w-[920px] mx-auto px-4 md:px-6 pt-12 md:pt-16 pb-16 md:pb-20 text-center">
+      <nav class="crumb justify-center" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand">FAQs</span></nav>
+      <div class="mt-6"><span class="ab5-kicker justify-center"><span></span>Help centre<span></span></span></div>
+      <h1 class="ab5-h1 mt-4">How can we <span class="text-grad">help you?</span></h1>
+      <p class="ab5-lead mt-4 max-w-xl mx-auto">Quick answers about FinCoach, applying for a loan, documents and tracking your application.</p>
+      <div class="fq2-search mt-8">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input id="faqSearch" type="search" placeholder="Search questions, e.g. documents, fees, tracking…" aria-label="Search FAQs" />
+        <input id="faqSearch" type="search" placeholder="Search for answers — e.g. documents, fees, OTP…" aria-label="Search FAQs" />
+        <kbd>Ctrl K</kbd>
+      </div>
+      <div class="fq2-pop mt-4">
+        <span>Popular:</span>
+        <button type="button" data-q="documents">Documents</button>
+        <button type="button" data-q="credit score">Credit score</button>
+        <button type="button" data-q="track">Tracking</button>
+        <button type="button" data-q="fee">Fees</button>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pt-12 md:pt-16 pb-16 md:pb-24">
-  <div class="max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-12 gap-10">
+<!-- =========================================================
+     FAQ ② — Topic tiles
+     ========================================================= -->
+<section class="pt-12 md:pt-16">
+  <div class="max-w-site mx-auto px-4 md:px-6">
+    <div class="fq2-topics" id="faqCats">
+      <button type="button" class="chip fq2-topic active" data-cat="all"><i class="fa-solid fa-border-all"></i><b>All questions</b><small>12 answers</small></button>
+      <button type="button" class="chip fq2-topic" data-cat="general"><i class="fa-solid fa-circle-info"></i><b>About FinCoach</b><small>3 answers</small></button>
+      <button type="button" class="chip fq2-topic" data-cat="apply"><i class="fa-solid fa-file-pen"></i><b>Applying</b><small>3 answers</small></button>
+      <button type="button" class="chip fq2-topic" data-cat="docs"><i class="fa-regular fa-folder-open"></i><b>Documents</b><small>2 answers</small></button>
+      <button type="button" class="chip fq2-topic" data-cat="track"><i class="fa-solid fa-location-crosshairs"></i><b>Tracking</b><small>2 answers</small></button>
+      <button type="button" class="chip fq2-topic" data-cat="safety"><i class="fa-solid fa-shield-halved"></i><b>Safety &amp; privacy</b><small>2 answers</small></button>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     FAQ ③ — Questions
+     ========================================================= -->
+<section class="pt-10 md:pt-12 pb-16 md:pb-24">
+  <div class="max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-12 gap-8 lg:gap-12">
+    <div class="lg:col-span-8">
+      <div class="flex items-center justify-between gap-4 mb-5">
+        <h2 class="font-head font-extrabold text-2xl" id="faqHeading">All questions</h2>
+        <span class="fq2-count"><b id="faqShown">12</b> results</span>
+      </div>
+      <div id="faqAll">
+        <div id="faqList" class="space-y-3">
+          <div class="faq acc open" data-cat="general"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">What is FinCoach?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">FinCoach is an online financial platform that lets you compare and apply for loans, deposits and cards from banks and FIs in Bangladesh. FinCoach is not a lender.</p></div></div></div>
+          <div class="faq acc" data-cat="general"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Is FinCoach free to use?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Yes. Comparing offers, creating an account and applying through FinCoach is completely free for customers — no fee of any kind.</p></div></div></div>
+          <div class="faq acc" data-cat="general"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Which banks and FIs do you work with?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">We partner with 6+ licensed banks and financial institutions, including IPDC Finance, City Bank, IDLC Finance, NCC Bank and Mutual Trust Bank.</p></div></div></div>
+          <div class="faq acc" data-cat="apply"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">How do I apply for a loan?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Click "Apply Now", answer a few questions about the loan and yourself, then compare your matched offers and apply to the one you like.</p></div></div></div>
+          <div class="faq acc" data-cat="apply"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Will checking my offers affect my credit score?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">No. Seeing your options is a soft check with no impact on your credit score.</p></div></div></div>
+          <div class="faq acc" data-cat="apply"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">How long does approval take?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Most lenders decide within 3–7 working days. Home and SME loans can take a little longer because of valuation and verification.</p></div></div></div>
+          <div class="faq acc" data-cat="docs"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">What documents do I need?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Usually your NID, photos, salary certificate or trade licence, bank statements and TIN. Each loan page lists the exact documents.</p></div></div></div>
+          <div class="faq acc" data-cat="docs"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Can I upload documents from my phone?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Yes. You can upload clear photos or PDFs from your phone or computer during the application.</p></div></div></div>
+          <div class="faq acc" data-cat="track"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">How can I track my application?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Use the Track Application page with your Application ID or registered mobile number, or log in to your dashboard.</p></div></div></div>
+          <div class="faq acc" data-cat="track"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Where do I find my Application ID?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">We send it by SMS and email right after you submit. It looks like FC-2026-08814.</p></div></div></div>
+          <div class="faq acc" data-cat="safety"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Is my personal data safe?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Yes. Your data is encrypted and only shared with the lenders you choose to apply to. We never sell your data.</p></div></div></div>
+          <div class="faq acc" data-cat="safety"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Will FinCoach ever ask me for money or an OTP?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Never. FinCoach does not charge fees or ask for OTPs. If anyone does, please report it to +880 9638 229922.</p></div></div></div>
+        </div>
+        <div id="faqEmpty" class="hidden fq2-empty">
+          <span><i class="fa-solid fa-magnifying-glass"></i></span>
+          <p class="font-head font-extrabold text-xl mt-4">No answers match your search</p>
+          <p class="text-muted mt-1">Try another word, or ask our team directly.</p>
+          <a href="contact.html" class="btn btn-primary mt-5">Ask our team <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
     <aside class="lg:col-span-4">
-      <div class="lg:sticky lg:top-36">
-        <div class="flex lg:flex-col flex-wrap gap-2" id="faqCats">
-          <button type="button" class="chip active" data-cat="all">All questions</button>
-          <button type="button" class="chip" data-cat="general">About FinCoach</button>
-          <button type="button" class="chip" data-cat="apply">Applying</button>
-          <button type="button" class="chip" data-cat="docs">Documents</button>
-          <button type="button" class="chip" data-cat="track">Tracking</button>
-          <button type="button" class="chip" data-cat="safety">Safety &amp; privacy</button>
+      <div class="lg:sticky lg:top-32 space-y-4">
+        <div class="lp2-help">
+          <span class="lp2-help-ic"><i class="fa-solid fa-headset"></i></span>
+          <p class="font-head font-extrabold text-xl mt-4">Still need help?</p>
+          <p class="text-white/70 text-sm mt-1">Our support team replies within one business day.</p>
+          <div class="grid gap-2 mt-5">
+            <a href="tel:+8809638229922" class="fq2-contact"><i class="fa-solid fa-phone"></i><span><b>Call us</b><small>+880 9638 229922</small></span></a>
+            <a href="mailto:info@fincoachbd.com" class="fq2-contact"><i class="fa-regular fa-envelope"></i><span><b>Email us</b><small>info@fincoachbd.com</small></span></a>
+            <a href="contact.html" class="fq2-contact"><i class="fa-regular fa-message"></i><span><b>Send an inquiry</b><small>Contact form</small></span></a>
+          </div>
         </div>
-        <div class="mt-6 bg-ink rounded-[24px] p-6 text-white relative overflow-hidden hidden lg:block">
-          <div class="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-grad opacity-40 blur-xl"></div>
-          <p class="font-head font-extrabold text-lg relative">Still need help?</p>
-          <p class="text-white/70 mt-1 text-sm relative">Our team replies within one business day.</p>
-          <a href="contact.html" class="btn btn-primary mt-4 relative">Contact us</a>
-        </div>
+        <div class="ct5-safe"><i class="fa-solid fa-shield-halved"></i><p><b>Stay safe:</b> FinCoach never asks for money, processing fees or OTPs.</p></div>
       </div>
     </aside>
+  </div>
+</section>
 
-    <div class="lg:col-span-8 space-y-4" id="faqAll">
-      <div id="faqList" class="space-y-4">
-        <div class="faq acc open" data-cat="general"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">What is FinCoach?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">FinCoach is an online financial platform that lets you compare and apply for loans, deposits and cards from banks and FIs in Bangladesh. FinCoach is not a lender.</p></div></div></div>
-        <div class="faq acc" data-cat="general"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Is FinCoach free to use?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Yes. Comparing offers, creating an account and applying through FinCoach is completely free for customers.</p></div></div></div>
-        <div class="faq acc" data-cat="general"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Which banks and FIs do you work with?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">We partner with 6+ licensed banks and financial institutions, including IPDC Finance, City Bank, IDLC Finance, NCC Bank and Mutual Trust Bank.</p></div></div></div>
-        <div class="faq acc" data-cat="apply"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">How do I apply for a loan?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Click "Apply Now", answer a few questions about the loan and yourself, then compare your matched offers and apply to the one you like.</p></div></div></div>
-        <div class="faq acc" data-cat="apply"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Will checking my offers affect my credit score?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">No. Seeing your options is a soft check with no impact on your credit score.</p></div></div></div>
-        <div class="faq acc" data-cat="apply"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">How long does approval take?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Most lenders decide within 3–7 working days. Home and SME loans can take a little longer because of valuation and verification.</p></div></div></div>
-        <div class="faq acc" data-cat="docs"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">What documents do I need?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Usually your NID, photos, salary certificate or trade licence, bank statements and TIN. Each loan page lists the exact documents.</p></div></div></div>
-        <div class="faq acc" data-cat="docs"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Can I upload documents from my phone?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Yes. You can upload clear photos or PDFs from your phone or computer during the application.</p></div></div></div>
-        <div class="faq acc" data-cat="track"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">How can I track my application?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Use the Track Application page with your Application ID or registered mobile number, or log in to your dashboard.</p></div></div></div>
-        <div class="faq acc" data-cat="track"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Where do I find my Application ID?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">We send it by SMS and email right after you submit. It looks like FC-2026-08814.</p></div></div></div>
-        <div class="faq acc" data-cat="safety"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Is my personal data safe?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Yes. Your data is encrypted and only shared with the lenders you choose to apply to. We never sell your data.</p></div></div></div>
-        <div class="faq acc" data-cat="safety"><button class="acc-head w-full flex items-center justify-between gap-4 p-6 text-left"><span class="font-head font-extrabold text-lg">Will FinCoach ever ask me for money or an OTP?</span><span class="acc-chev"><i class="fa-solid fa-plus"></i></span></button><div class="acc-body"><div><p class="px-6 pb-6 text-muted">Never. FinCoach does not charge fees or ask for OTPs. If anyone does, please report it to +880 9638 229922.</p></div></div></div>
+<!-- CTA -->
+<section class="px-2.5 pb-2.5">
+  <div class="panel bg-grad relative overflow-hidden">
+    <div class="absolute -left-24 -bottom-24 w-96 h-96 rounded-full border-[40px] border-white/10"></div>
+    <div class="absolute right-10 -top-20 w-72 h-72 rounded-full bg-white/10"></div>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 py-14 md:py-16 flex flex-col lg:flex-row lg:items-center justify-between gap-8 text-white">
+      <div>
+        <h2 class="font-head font-extrabold text-[2rem] md:text-[2.8rem] leading-[1.08]">Ready to find your loan?</h2>
+        <p class="mt-3 text-lg text-white/85">Compare offers from 6+ banks in 5 minutes — free.</p>
       </div>
-      <div id="faqEmpty" class="hidden text-center py-12 rounded-[24px] border border-dashed border-line">
-        <i class="fa-regular fa-face-frown text-3xl text-muted"></i>
-        <p class="mt-3 font-bold">No questions match your search</p>
-        <a href="contact.html" class="btn btn-primary mt-5">Ask our team</a>
-      </div>
+      <a href="apply.html" class="btn btn-white !px-8 !py-4 self-start lg:self-auto">Check your offers <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 </section>

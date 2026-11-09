@@ -235,6 +235,46 @@
     };
     faqSearch.addEventListener('input', apply);
     chips.forEach((c) => c.addEventListener('click', () => { cat = c.dataset.cat; chips.forEach((x) => x.classList.toggle('active', x === c)); apply(); }));
+    // v2 extras: result count, heading, popular searches, Ctrl+K
+    const shownEl = $('#faqShown'), head = $('#faqHeading');
+    const refresh = () => {
+      if (shownEl) shownEl.textContent = items.filter((it) => it.style.display !== 'none').length;
+      if (head) { const a = chips.find((c) => c.classList.contains('active')); head.textContent = faqSearch.value.trim() ? 'Search results' : (a ? a.querySelector('b') ? a.querySelector('b').textContent : a.textContent : 'All questions'); }
+    };
+    faqSearch.addEventListener('input', refresh);
+    chips.forEach((c) => c.addEventListener('click', refresh));
+    $$('.fq2-pop button').forEach((b) => b.addEventListener('click', () => { faqSearch.value = b.dataset.q; faqSearch.dispatchEvent(new Event('input')); $('#faqAll').scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
+    document.addEventListener('keydown', (e) => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); faqSearch.focus(); } });
+    refresh();
+  }
+
+  /* Blog search + empty state */
+  const blogSearch = $('#blogSearch');
+  if (blogSearch) {
+    const posts = $$('#blogGrid .blog-card'), empty = $('#blogEmpty');
+    let bcat = 'all';
+    const run = () => {
+      const q = blogSearch.value.trim().toLowerCase(); let n = 0;
+      posts.forEach((p) => { const ok = (bcat === 'all' || p.dataset.cat === bcat) && (!q || p.textContent.toLowerCase().includes(q)); p.style.display = ok ? '' : 'none'; if (ok) n++; });
+      if (empty) empty.classList.toggle('hidden', n > 0);
+    };
+    blogSearch.addEventListener('input', run);
+    $$('#blogCats .chip').forEach((c) => c.addEventListener('click', () => { bcat = c.dataset.cat; setTimeout(run, 0); }));
+  }
+
+  /* Blog post: reading progress + active TOC */
+  const readBar = $('#readBar');
+  if (readBar) {
+    const art = $('.ps2-article'), links = $$('#postToc a'), heads = links.map((a) => $(a.getAttribute('href'))).filter(Boolean);
+    const onScroll = () => {
+      const r = art.getBoundingClientRect(), total = art.offsetHeight - window.innerHeight * .6;
+      readBar.style.width = Math.min(Math.max(-r.top / Math.max(total, 1), 0), 1) * 100 + '%';
+      let cur = heads[0];
+      heads.forEach((h) => { if (h.getBoundingClientRect().top < 160) cur = h; });
+      links.forEach((a) => a.classList.toggle('active', cur && a.getAttribute('href') === '#' + cur.id));
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 
   /* =========================================================
