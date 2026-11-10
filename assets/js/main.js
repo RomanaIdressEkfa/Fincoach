@@ -906,6 +906,8 @@
      ========================================================= */
   const apForm = $('#applyForm');
   if (apForm) {
+    const TOTAL = 4;
+    const STEP_NAMES = ['Loan details', 'About you', 'Finances', 'Contact'];
     const steps = $$('.ap-step', apForm), bars = $$('.ap-progress span', apForm);
     const back = $('#apBack'), next = $('#apNext'), err = $('.ap-err', apForm);
     const money = (n) => Math.round(n).toLocaleString('en-IN');
@@ -913,11 +915,28 @@
     const amtIn = $('#apAmount'), amtRange = $('#apAmtRange'), tenSel = $('#apTenure');
     let cur = 1;
 
-    const PRODUCT = { personal: 'Personal Loan', auto: 'Auto Loan', home: 'Home Loan', card: 'Credit Card', sme: 'SME Loan', other: 'Personal Loan' };
-    const ICON = { personal: 'fa-user', auto: 'fa-car', home: 'fa-house', card: 'fa-credit-card', sme: 'fa-store', other: 'fa-ellipsis' };
+    const PRODUCT = { personal: 'Personal Loan', auto: 'Car & Bike Loan', home: 'Home Loan', card: 'Credit Card', sme: 'SME Loan', other: 'Personal Loan' };
+    const ICON = { personal: 'fa-user', auto: 'fa-car-side', home: 'fa-house', card: 'fa-credit-card', sme: 'fa-store', other: 'fa-ellipsis' };
     const BASE = { personal: 9, auto: 9.5, home: 8.5, card: 9, sme: 10.5, other: 9 };
     const emiOf = (P, rate, n) => { const r = rate / 12 / 100; return r ? (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) : P / n; };
     const typeVal = () => $('input[name=type]:checked', apForm).value;
+    const radio = (name) => ($('input[name="' + name + '"]:checked', apForm) || {}).value;
+    const isShown = (el) => !el.closest('[hidden]');
+    const moneyMask = (el) => el.addEventListener('input', () => { const d = digits(el.value); el.value = d ? money(d) : ''; updSummary(); });
+
+    // ---- Populate selects (DOB, business age, business types)
+    const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const nowY = new Date().getFullYear();
+    const opts = (sel, list) => sel && sel.insertAdjacentHTML('beforeend', list.map(([v, t]) => '<option value="' + v + '">' + t + '</option>').join(''));
+    ['ap', 'co'].forEach(p => {
+      opts($('#' + p + 'DobD'), Array.from({ length: 31 }, (_, i) => [i + 1, String(i + 1).padStart(2, '0')]));
+      opts($('#' + p + 'DobM'), MONTHS.map((m, i) => [i + 1, m]));
+      opts($('#' + p + 'DobY'), Array.from({ length: 53 }, (_, i) => nowY - 18 - i).map(y => [y, y]));
+      opts($('#' + p + 'BizY'), Array.from({ length: 31 }, (_, i) => [i, i === 30 ? '30+ years' : i + (i === 1 ? ' year' : ' years')]));
+      opts($('#' + p + 'BizM'), Array.from({ length: 11 }, (_, i) => [i + 1, (i + 1) + ' mo']));
+    });
+    const BIZ = ['Agriculture & Food', 'Art & Culture', 'Ayurvedic Medicine', 'Bakery, Confectionery & Beverage', 'Bank & Insurance', 'Beauty Treatment', 'Book & Stationery', 'Boutique', 'Brick Field', 'Brick, Sand & Stone', 'BR-Sheet, CI Sheet', 'Cable / Hardware Items', 'Car, Vehicles & Automotive', 'Cement', 'Ceramic Tiles & Mosaic', 'Charcoal Manufacturer', 'Chemical & Paper', "Children's Goods", 'Commercial', 'Community & Organization', 'Computer & Electronics', 'Computer & Internet', 'Construction Material', 'Consultancy Services', 'Corn', 'Cotton Processing Mill', 'Crockeries', 'Dairy', 'Dal (Pulse)', 'Design & Multimedia', 'Dry Fish', 'Dyeing / Spinning', 'Edible Oil', 'Education & Career', 'Egg', 'Electrical Equipment & Supplies', 'Embroidery', 'Export & Import', 'Fancy Ladies Items', 'Fashion & Jewelry', 'Fertilizer / Bio', 'Fish Merchant', 'Fisheries', 'Furniture & Decoration', 'Garments, Buying & Accessories', 'Hardware & Metal', 'Health & Medicine', 'Hotel & Restaurant', 'Household & Handicrafts', 'IT & Software', 'Jute Goods & Tea', 'Leather & Leather Goods', 'Legal & Financial', 'Machinery & Machine Tools', 'Manufacturing', 'Manufacturing Industries', 'Medical & Hospitals', 'Mills & Industries', 'Multinational Group', 'News, Media & Events', 'NGOs', 'Oil & Gas Industries', 'Online Business', 'Optical & Photo', 'Plastic & Rubber', 'Precast Concrete Products', 'Real Estate & Properties', 'Recreation & Fitness', 'Shipping & Transportation', 'Shopping & eCommerce', 'Supplier', 'Telecommunication', 'Textiles & Textile Goods', 'Tours & Travels', 'Trading', 'Transportation Equipment'];
+    $$('[data-biztypes]', apForm).forEach(s => opts(s, BIZ.map(b => [b, b])));
 
     // Pre-select loan type from ?type=
     const qType = new URLSearchParams(location.search).get('type');
@@ -927,56 +946,146 @@
       if (r) r.checked = true;
     }
 
-    // Live summary panel
+    // ---- Conditional blocks
+    const syncReveal = () => {
+      $('#apBiz').hidden = radio('job') !== 'business';
+      $('#apLoans').hidden = radio('hasLoan') !== 'yes';
+      $('#apCards').hidden = radio('hasCard') !== 'yes';
+      $('#apCo').hidden = !$('#apCoOn').checked;
+      $('#coBiz').hidden = radio('coJob') !== 'business';
+      ['apLoans', 'apCards'].forEach(id => { const box = $('#' + id); if (!box.hidden && !$('[data-list]', box).children.length) addRow(box); });
+      updSummary();
+    };
+
+    // ---- Repeaters (existing loans / cards)
+    const renumber = (box) => $$('.ap5-row', box).forEach((r, i) => { $('[data-n]', r).textContent = i + 1; $('[data-del]', r).hidden = $$('.ap5-row', box).length === 1; });
+    const addRow = (box) => {
+      const tpl = $(box.id === 'apLoans' ? '#tplLoan' : '#tplCard');
+      const row = tpl.content.firstElementChild.cloneNode(true);
+      $$('input[inputmode=numeric]', row).forEach(moneyMask);
+      $$('select, input[type=checkbox]', row).forEach(el => el.addEventListener('change', updSummary));
+      $('[data-del]', row).addEventListener('click', () => { row.remove(); renumber(box); updSummary(); });
+      $('[data-list]', box).appendChild(row);
+      renumber(box);
+      return row;
+    };
+    ['#apLoans', '#apCards'].forEach(id => $('[data-add]', $(id)).addEventListener('click', () => { const r = addRow($(id)); $('input', r).focus(); }));
+
+    // ---- Obligations & DTI
+    const sumRows = (id, k) => $$('#' + id + ' [data-k="' + k + '"]').reduce((s, el) => s + digits(el.value), 0);
+    const obligations = () => {
+      let t = 0;
+      if (radio('hasLoan') === 'yes') t += sumRows('apLoans', 'emi');
+      if (radio('hasCard') === 'yes') $$('#apCards .ap5-row').forEach(r => { if (!$('[data-k=close]', r).checked) t += digits($('[data-k=limit]', r).value) * 0.05; });
+      if ($('#apCoOn').checked) t += digits($('#coEmi').value);
+      return t;
+    };
+    const totalIncome = () => digits($('#apIncome').value) + ($('#apCoOn').checked ? digits($('#coIncome').value) : 0);
+
+    // ---- Live summary panel
     const fill = (el) => el.style.setProperty('--p', ((el.value - el.min) / (el.max - el.min)) * 100 + '%');
-    const updSummary = () => {
+    const tenLabel = (n) => n >= 120 ? (n / 12) + ' years' : n + ' months';
+    function updSummary() {
       const t = typeVal(), P = digits(amtIn.value), n = +tenSel.value, rate = BASE[t];
-      $('#sumType').textContent = PRODUCT[t];
-      $('#sumIc').innerHTML = '<i class="fa-solid ' + ICON[t] + '"></i>';
+      const e = P ? emiOf(P, rate, n) : 0, ex = obligations(), inc = totalIncome();
+      $('#sumType').textContent = $('#mSumType').textContent = PRODUCT[t];
+      $('#sumIc').innerHTML = $('#mSumIc').innerHTML = '<i class="fa-solid ' + ICON[t] + '"></i>';
       $('#sumRate').textContent = rate.toFixed(1);
-      $('#sumAmt').textContent = money(P);
-      $('#sumTen').textContent = n >= 120 ? (n / 12) + ' years' : n + ' months';
-      const e = P ? emiOf(P, rate, n) : 0;
-      $('#sumEmi').textContent = money(e);
+      $('#sumAmt').textContent = $('#mSumAmt').textContent = money(P);
+      $('#sumTen').textContent = $('#apTenNote').textContent = tenLabel(n);
+      $('#sumEmi').textContent = $('#mSumEmi').textContent = money(e);
       $('#sumTot').textContent = money(e * n);
+      $('#sumExist').textContent = money(ex);
+      const box = $('#sumDti');
+      if (inc) {
+        const pct = Math.round(((e + ex) / inc) * 100);
+        const lvl = pct <= 40 ? 'ok' : pct <= 55 ? 'mid' : 'high';
+        box.dataset.lvl = lvl;
+        $('#sumDtiTxt').textContent = pct + '%';
+        $('#sumDtiBar').style.width = Math.min(pct, 100) + '%';
+        $('#sumDtiNote').textContent = { ok: 'Healthy — strong approval chances.', mid: 'Moderate — consider a longer tenure.', high: 'High — try a smaller amount or add a co-applicant.' }[lvl];
+      } else {
+        box.dataset.lvl = 'none'; $('#sumDtiTxt').textContent = 'Add income'; $('#sumDtiBar').style.width = '0';
+        $('#sumDtiNote').textContent = 'Lenders usually prefer under 50%.';
+      }
       $$('#apQuick button').forEach(b => b.classList.toggle('active', +b.dataset.amt === P));
       fill(amtRange);
-    };
+    }
     amtIn.addEventListener('input', () => { const d = digits(amtIn.value); amtIn.value = d ? money(d) : ''; if (d) amtRange.value = Math.min(Math.max(d, +amtRange.min), +amtRange.max); updSummary(); });
     amtRange.addEventListener('input', () => { amtIn.value = money(+amtRange.value); updSummary(); });
     $$('#apQuick button').forEach(b => b.addEventListener('click', () => { amtIn.value = money(+b.dataset.amt); amtRange.value = b.dataset.amt; updSummary(); }));
     $$('#apTen button').forEach(b => b.addEventListener('click', () => { tenSel.value = b.dataset.ten; $$('#apTen button').forEach(x => x.classList.toggle('active', x === b)); updSummary(); }));
     $$('input[name=type]', apForm).forEach(r => r.addEventListener('change', updSummary));
-    $('#apIncome').addEventListener('input', (e) => { const d = digits(e.target.value); e.target.value = d ? money(d) : ''; });
+    $$('input[name=job], input[name=hasLoan], input[name=hasCard], input[name=coJob], #apCoOn', apForm).forEach(r => r.addEventListener('change', syncReveal));
+    ['#apIncome', '#coIncome', '#coEmi'].forEach(s => moneyMask($(s)));
+    ['#apOwn', '#coOwn'].forEach(s => $(s).addEventListener('input', (e) => { e.target.value = String(Math.min(digits(e.target.value), 100) || '').slice(0, 3); }));
     $('#apPhone').addEventListener('input', (e) => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 11); });
-    updSummary();
+
+    // Age hint
+    const ageOf = (p) => {
+      const d = +$('#' + p + 'DobD').value, m = +$('#' + p + 'DobM').value, y = +$('#' + p + 'DobY').value;
+      if (!d || !m || !y) return null;
+      const now = new Date(); let a = now.getFullYear() - y;
+      if (now.getMonth() + 1 < m || (now.getMonth() + 1 === m && now.getDate() < d)) a--;
+      return a;
+    };
+    $$('#apDobD, #apDobM, #apDobY').forEach(s => s.addEventListener('change', () => {
+      const a = ageOf('ap'), h = $('#apAge');
+      if (a === null) return;
+      const ok = a >= 22 && a <= 60;
+      h.classList.toggle('is-warn', !ok); h.classList.toggle('is-ok', ok);
+      h.innerHTML = '<i class="fa-solid ' + (ok ? 'fa-circle-check' : 'fa-triangle-exclamation') + '"></i> You are ' + a + ' — ' + (ok ? 'within most lenders\' age range.' : 'some lenders may not be available (most accept 22–60).');
+    }));
+    syncReveal();
+
+    // ---- Review card (step 4)
+    const renderReview = () => {
+      const job = radio('job'), loans = radio('hasLoan') === 'yes' ? $$('#apLoans .ap5-row').length : 0, cards = radio('hasCard') === 'yes' ? $$('#apCards .ap5-row').length : 0;
+      const items = [
+        ['fa-sack-dollar', 'Loan', PRODUCT[typeVal()] + ' · ৳' + money(digits(amtIn.value)) + ' · ' + tenLabel(+tenSel.value), 1],
+        ['fa-briefcase', 'Income', job.charAt(0).toUpperCase() + job.slice(1) + ' · ৳' + money(digits($('#apIncome').value)) + '/mo', 2],
+        ['fa-wallet', 'Commitments', (loans ? loans + ' loan' + (loans > 1 ? 's' : '') : 'No loans') + ' · ' + (cards ? cards + ' card' + (cards > 1 ? 's' : '') : 'No cards') + ($('#apCoOn').checked ? ' · Co-applicant' : ''), 3]
+      ];
+      $('#apReview').innerHTML = '<p class="ap5-review-h">Review your details</p>' + items.map(([ic, k, v, s]) =>
+        '<div class="ap5-review-i"><span><i class="fa-solid ' + ic + '"></i></span><div><small>' + k + '</small><b>' + v + '</b></div><button type="button" data-go="' + s + '">Edit</button></div>').join('');
+      $$('#apReview [data-go]').forEach(b => b.addEventListener('click', () => show(+b.dataset.go)));
+    };
 
     const show = (n) => {
       cur = n;
       steps.forEach(s => s.classList.toggle('active', +s.dataset.step === n));
       bars.forEach((b, k) => b.classList.toggle('on', k < n));
       $$('.ap5-steps li').forEach(li => { const k = +li.dataset.sn; li.classList.toggle('is-active', k === n); li.classList.toggle('is-done', k < n); });
-      $$('.ap5-check li').forEach(li => li.classList.toggle('is-done', +li.dataset.chk < n || (n === 3 && li.dataset.done === '1')));
+      $$('.ap5-check li').forEach(li => li.classList.toggle('is-done', +li.dataset.chk < n));
       $('#apNum').textContent = n;
+      $('#apStepName').textContent = STEP_NAMES[n - 1];
+      const left = TOTAL - n + 1;
+      $('#apEta').innerHTML = '<i class="fa-regular fa-clock"></i> About ' + left + ' min left';
       back.classList.toggle('hidden', n === 1);
-      next.innerHTML = n === 3 ? 'See my offers <i class="fa-solid fa-magnifying-glass"></i>' : 'Continue <i class="fa-solid fa-arrow-right"></i>';
+      next.innerHTML = n === TOTAL ? 'See my offers <i class="fa-solid fa-magnifying-glass"></i>' : 'Continue <i class="fa-solid fa-arrow-right"></i>';
+      if (n === TOTAL) renderReview();
       err.classList.add('hidden');
     };
     const validate = () => {
       const step = steps[cur - 1];
-      let ok = true;
-      $$('input[required], select[required]', step).forEach(el => {
+      let ok = true, first = null;
+      $$('input[required], select[required]', step).filter(isShown).forEach(el => {
         let good = el.type === 'checkbox' ? el.checked : el.value.trim() !== '' && el.checkValidity();
         if (el.id === 'apAmount') good = digits(el.value) >= 10000;
-        if (el.id === 'apIncome') good = digits(el.value) >= 5000;
-        if (el.id === 'apPhone') good = /^01\d{9}$/.test(el.value);
+        if (el.id === 'apIncome' || el.id === 'coIncome') good = digits(el.value) >= 5000;
+        if (el.id === 'apOwn' || el.id === 'coOwn') good = digits(el.value) >= 1 && digits(el.value) <= 100;
+        if (el.id === 'apPhone') good = /^01[3-9]\d{8}$/.test(el.value);
         el.classList.toggle('is-invalid', !good);
-        if (!good) ok = false;
+        (el.closest('.ap5-pre, .ap5-suf, .ap5-consent, .ap5-amt') || el).classList.toggle('is-invalid', !good);
+        if (!good) { ok = false; first = first || el; }
       });
       err.classList.toggle('hidden', ok);
+      if (first) first.focus({ preventScroll: false });
       return ok;
     };
-    back.addEventListener('click', () => show(cur - 1));
+    apForm.addEventListener('input', (e) => { if (e.target.classList.contains('is-invalid')) { e.target.classList.remove('is-invalid'); const w = e.target.closest('.ap5-pre, .ap5-suf, .ap5-consent, .ap5-amt'); if (w) w.classList.remove('is-invalid'); } });
+    apForm.addEventListener('change', (e) => { if (e.target.matches('select, input[type=checkbox]')) { e.target.classList.remove('is-invalid'); const w = e.target.closest('.ap5-consent'); if (w) w.classList.remove('is-invalid'); } });
+    back.addEventListener('click', () => { show(cur - 1); $('#applyBox').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
 
     const LENDERS = [
       { logo: 'assets/img/partners/p1.png', name: 'IPDC Finance', add: 0, max: 2000000, fee: '1%', days: '3–5 days' },
@@ -988,12 +1097,12 @@
     ];
 
     const renderResults = () => {
-      const type = typeVal(), P = digits(amtIn.value), n = +tenSel.value, income = digits($('#apIncome').value);
-      $('#resSummary').innerHTML = 'For a <b class="text-ink">' + PRODUCT[type] + '</b> of <b class="text-ink">৳' + money(P) + '</b> over <b class="text-ink">' + n + ' months</b>.';
+      const type = typeVal(), P = digits(amtIn.value), n = +tenSel.value, income = totalIncome(), ex = obligations();
+      $('#resSummary').innerHTML = 'For a <b class="text-ink">' + PRODUCT[type] + '</b> of <b class="text-ink">৳' + money(P) + '</b> over <b class="text-ink">' + tenLabel(n) + '</b>.';
       const order = { high: 0, good: 1, fair: 2 };
       const rows = LENDERS.map(l => {
-        const rate = BASE[type] + l.add, emi = emiOf(P, rate, n), ratio = income ? emi / income : 1;
-        const fit = P > l.max ? 'fair' : ratio <= 0.35 ? 'high' : ratio <= 0.5 ? 'good' : 'fair';
+        const rate = BASE[type] + l.add, emi = emiOf(P, rate, n), ratio = income ? (emi + ex) / income : 1;
+        const fit = P > l.max ? 'fair' : ratio <= 0.4 ? 'high' : ratio <= 0.55 ? 'good' : 'fair';
         return { ...l, rate, emi, fit };
       }).sort((a, b) => order[a.fit] - order[b.fit] || a.rate - b.rate);
       const FIT = { high: ['el-high', 'fa-circle-check', 'High chance', 92], good: ['el-good', 'fa-thumbs-up', 'Good chance', 74], fair: ['el-fair', 'fa-circle-info', 'Fair chance', 48] };
@@ -1021,9 +1130,9 @@
     apForm.addEventListener('submit', (e) => {
       e.preventDefault();
       if (!validate()) return;
-      if (cur < 3) { show(cur + 1); $('#applyBox').scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+      if (cur < TOTAL) { show(cur + 1); $('#applyBox').scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
       next.disabled = true; next.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Finding your offers…';
-      setTimeout(() => { next.disabled = false; show(3); renderResults(); }, 1100);
+      setTimeout(() => { next.disabled = false; show(TOTAL); renderResults(); }, 1100);
     });
     $('#apEdit').addEventListener('click', () => { show(1); $('#applyBox').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
   }

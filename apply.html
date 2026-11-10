@@ -207,79 +207,232 @@
         <ol class="ap5-steps" aria-label="Application steps">
           <li class="is-active" data-sn="1"><span class="ap5-sn"><i class="fa-solid fa-sack-dollar"></i></span><div><small>Step 1</small><b>Loan details</b></div></li>
           <li data-sn="2"><span class="ap5-sn"><i class="fa-solid fa-user"></i></span><div><small>Step 2</small><b>About you</b></div></li>
-          <li data-sn="3"><span class="ap5-sn"><i class="fa-solid fa-paper-plane"></i></span><div><small>Step 3</small><b>Contact</b></div></li>
+          <li data-sn="3"><span class="ap5-sn"><i class="fa-solid fa-wallet"></i></span><div><small>Step 3</small><b>Finances</b></div></li>
+          <li data-sn="4"><span class="ap5-sn"><i class="fa-solid fa-paper-plane"></i></span><div><small>Step 4</small><b>Contact</b></div></li>
         </ol>
-        <div class="ap-progress mt-5"><span class="on"></span><span></span><span></span></div>
-        <p class="sr-only">Step <span id="apNum">1</span> of 3</p>
+        <div class="ap-progress mt-5"><span class="on"></span><span></span><span></span><span></span></div>
+        <div class="ap5-meta"><span>Step <b id="apNum">1</b> of 4 · <b id="apStepName">Loan details</b></span><span id="apEta"><i class="fa-regular fa-clock"></i> About 4 min left</span></div>
 
-        <!-- Step 1 -->
+        <!-- Mobile live estimate -->
+        <div class="ap5-mbar" aria-live="polite">
+          <span class="ap5-mbar-ic" id="mSumIc"><i class="fa-solid fa-user"></i></span>
+          <div class="min-w-0 flex-1"><small>Est. monthly EMI</small><b>৳ <span id="mSumEmi">0</span></b></div>
+          <div class="text-right"><small id="mSumType">Personal Loan</small><b>৳ <span id="mSumAmt">5,00,000</span></b></div>
+        </div>
+
+        <!-- ============ Step 1 — Loan details ============ -->
         <div class="ap-step active" data-step="1">
           <p class="ap5-q mt-7">What kind of loan do you need?</p>
-          <div class="ap5-types mt-4">
+          <p class="ap5-sub">Pick a product — you can change this any time.</p>
+          <div class="ap5-types mt-5">
             <label class="ap5-type"><input type="radio" name="type" value="personal" checked /><span><i class="fa-solid fa-user"></i><b>Personal</b><small>from 9.0%</small></span></label>
-            <label class="ap5-type"><input type="radio" name="type" value="auto" /><span><i class="fa-solid fa-car"></i><b>Auto</b><small>from 9.5%</small></span></label>
+            <label class="ap5-type"><input type="radio" name="type" value="auto" /><span><i class="fa-solid fa-car-side"></i><b>Car &amp; Bike</b><small>from 9.5%</small></span></label>
             <label class="ap5-type"><input type="radio" name="type" value="home" /><span><i class="fa-solid fa-house"></i><b>Home</b><small>from 8.5%</small></span></label>
             <label class="ap5-type"><input type="radio" name="type" value="card" /><span><i class="fa-regular fa-credit-card"></i><b>Credit card</b><small>0% fee yr 1</small></span></label>
             <label class="ap5-type"><input type="radio" name="type" value="sme" /><span><i class="fa-solid fa-store"></i><b>SME</b><small>from 10.5%</small></span></label>
             <label class="ap5-type"><input type="radio" name="type" value="other" /><span><i class="fa-solid fa-ellipsis"></i><b>Other</b><small>Tell us more</small></span></label>
           </div>
 
-          <div class="ap5-field mt-7">
-            <div class="flex items-center justify-between gap-3">
+          <div class="ap5-card mt-7">
+            <div class="flex flex-wrap items-center justify-between gap-3">
               <label class="ap5-label" for="apAmount">How much do you need?</label>
               <div class="ap5-amt"><span>৳</span><input id="apAmount" inputmode="numeric" value="5,00,000" required aria-label="Loan amount" /></div>
             </div>
-            <input id="apAmtRange" type="range" class="rng mt-4" min="50000" max="5000000" step="10000" value="500000" aria-label="Loan amount slider" />
-            <div class="ap5-quick mt-3" id="apQuick">
+            <input id="apAmtRange" type="range" class="rng mt-5" min="50000" max="5000000" step="10000" value="500000" aria-label="Loan amount slider" />
+            <div class="flex justify-between text-xs font-semibold text-muted mt-2"><span>৳50K</span><span>৳50 Lakh</span></div>
+            <div class="ap5-quick mt-4" id="apQuick">
               <button type="button" data-amt="100000">৳1 Lakh</button><button type="button" data-amt="500000" class="active">৳5 Lakh</button><button type="button" data-amt="1000000">৳10 Lakh</button><button type="button" data-amt="2000000">৳20 Lakh</button><button type="button" data-amt="5000000">৳50 Lakh</button>
             </div>
           </div>
 
-          <div class="ap5-field mt-6">
-            <label class="ap5-label">For how long?</label>
+          <div class="ap5-card mt-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <label class="ap5-label">Expected loan tenure</label>
+              <span class="ap5-pill-note" id="apTenNote">36 months</span>
+            </div>
             <select id="apTenure" class="sr-only" aria-label="Tenure"><option value="12">12 months</option><option value="24">24 months</option><option value="36" selected>36 months</option><option value="48">48 months</option><option value="60">60 months</option><option value="120">10 years</option><option value="240">20 years</option></select>
-            <div class="ap5-tenure mt-3" id="apTen">
+            <div class="ap5-tenure mt-4" id="apTen">
               <button type="button" data-ten="12">1 yr</button><button type="button" data-ten="24">2 yrs</button><button type="button" data-ten="36" class="active">3 yrs</button><button type="button" data-ten="48">4 yrs</button><button type="button" data-ten="60">5 yrs</button><button type="button" data-ten="120">10 yrs</button><button type="button" data-ten="240">20 yrs</button>
             </div>
           </div>
         </div>
 
-        <!-- Step 2 -->
+        <!-- ============ Step 2 — About you ============ -->
         <div class="ap-step" data-step="2">
           <p class="ap5-q mt-7">Tell us a little about yourself</p>
-          <p class="text-muted mt-1">This helps us match you with lenders likely to approve you.</p>
-          <p class="ap5-label mt-6">Employment type</p>
-          <div class="ap5-types ap5-types-3 mt-3">
-            <label class="ap5-type"><input type="radio" name="job" value="salaried" checked /><span><i class="fa-solid fa-briefcase"></i><b>Salaried</b><small>Job holder</small></span></label>
-            <label class="ap5-type"><input type="radio" name="job" value="business" /><span><i class="fa-solid fa-store"></i><b>Business owner</b><small>Trade licence</small></span></label>
-            <label class="ap5-type"><input type="radio" name="job" value="self" /><span><i class="fa-solid fa-laptop"></i><b>Self-employed</b><small>Professional</small></span></label>
+          <p class="ap5-sub">This helps us match you with lenders likely to approve you.</p>
+
+          <div class="ap5-sec mt-6"><span>1</span>Date of birth</div>
+          <div class="ap5-dob mt-3" data-dob="me">
+            <label class="ct5-f"><span>Day</span><select class="ap5-select" id="apDobD" required aria-label="Day of birth"><option value="">DD</option></select></label>
+            <label class="ct5-f"><span>Month</span><select class="ap5-select" id="apDobM" required aria-label="Month of birth"><option value="">MM</option></select></label>
+            <label class="ct5-f"><span>Year</span><select class="ap5-select" id="apDobY" required aria-label="Year of birth"><option value="">YYYY</option></select></label>
           </div>
-          <div class="grid sm:grid-cols-2 gap-4 mt-6">
-            <label class="ct5-f"><span>Monthly income (BDT)</span><input id="apIncome" inputmode="numeric" placeholder="e.g. 60,000" required /></label>
+          <p class="ap5-hint" id="apAge"><i class="fa-solid fa-circle-info"></i> Most lenders accept applicants aged 22–60.</p>
+
+          <div class="ap5-sec mt-7"><span>2</span>Income source</div>
+          <div class="ap5-types ap5-types-4 mt-3">
+            <label class="ap5-type"><input type="radio" name="job" value="salaried" checked /><span><i class="fa-solid fa-briefcase"></i><b>Salaried</b><small>Job holder</small></span></label>
+            <label class="ap5-type"><input type="radio" name="job" value="business" /><span><i class="fa-solid fa-store"></i><b>Business</b><small>Trade licence</small></span></label>
+            <label class="ap5-type"><input type="radio" name="job" value="professional" /><span><i class="fa-solid fa-user-doctor"></i><b>Professional</b><small>Doctor, lawyer…</small></span></label>
+            <label class="ap5-type"><input type="radio" name="job" value="landlord" /><span><i class="fa-solid fa-building"></i><b>Landlord</b><small>Rental income</small></span></label>
+          </div>
+
+          <!-- Business details (shown for Business) -->
+          <div class="ap5-reveal" id="apBiz" hidden>
+            <div class="ap5-reveal-h"><i class="fa-solid fa-store"></i> Business details</div>
+            <p class="ap5-label !text-sm mt-4">Business owner type</p>
+            <div class="ap5-seg mt-2" role="radiogroup" aria-label="Business owner type">
+              <label><input type="radio" name="ownerType" value="Proprietorship" checked /><span>Proprietorship</span></label>
+              <label><input type="radio" name="ownerType" value="Partnership" /><span>Partnership</span></label>
+              <label><input type="radio" name="ownerType" value="Private Ltd" /><span>Private Ltd</span></label>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4 mt-5">
+              <label class="ct5-f sm:col-span-2"><span>Business type</span><select class="ap5-select" id="apBizType" required data-biztypes><option value="">Select business type</option></select></label>
+              <label class="ct5-f"><span>Ownership (%)</span><div class="ap5-suf"><input id="apOwn" inputmode="numeric" maxlength="3" value="100" required /><i>%</i></div></label>
+              <div class="ct5-f"><span>Age of business</span>
+                <div class="grid grid-cols-2 gap-2">
+                  <select class="ap5-select" id="apBizY" required aria-label="Business age in years"><option value="">Years</option></select>
+                  <select class="ap5-select" id="apBizM" aria-label="Business age in months"><option value="0">0 mo</option></select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ap5-sec mt-7"><span>3</span>Income &amp; location</div>
+          <div class="grid sm:grid-cols-2 gap-4 mt-3">
+            <label class="ct5-f"><span>Monthly income</span><div class="ap5-pre"><i>৳</i><input id="apIncome" inputmode="numeric" placeholder="e.g. 60,000" required /></div></label>
             <label class="ct5-f"><span>City</span>
-              <select id="apCity" class="ap5-select"><option>Dhaka</option><option>Chattogram</option><option>Sylhet</option><option>Khulna</option><option>Rajshahi</option><option>Barishal</option><option>Rangpur</option><option>Mymensingh</option></select>
+              <select id="apCity" class="ap5-select"><option>Dhaka</option><option>Chattogram</option><option>Sylhet</option><option>Khulna</option><option>Rajshahi</option><option>Barishal</option><option>Rangpur</option><option>Mymensingh</option><option>Cumilla</option><option>Gazipur</option><option>Narayanganj</option></select>
             </label>
           </div>
         </div>
 
-        <!-- Step 3 -->
+        <!-- ============ Step 3 — Finances ============ -->
         <div class="ap-step" data-step="3">
-          <p class="ap5-q mt-7">Where should we send your offers?</p>
-          <p class="text-muted mt-1">We'll only use these details for your application.</p>
-          <div class="grid sm:grid-cols-2 gap-4 mt-6">
-            <label class="ct5-f sm:col-span-2"><span>Full name (as per NID)</span><input id="apName" autocomplete="name" placeholder="e.g. Rafiq Ahmed" required /></label>
-            <label class="ct5-f"><span>Mobile number</span><input id="apPhone" type="tel" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX" autocomplete="tel-national" required /></label>
-            <label class="ct5-f"><span>Email</span><input id="apEmail" type="email" autocomplete="email" placeholder="you@email.com" required /></label>
+          <p class="ap5-q mt-7">Your current commitments</p>
+          <p class="ap5-sub">Lenders look at what you already pay each month. Be accurate — it improves your match.</p>
+
+          <!-- Existing loans -->
+          <div class="ap5-card mt-6">
+            <div class="ap5-yn-row">
+              <div class="flex items-center gap-3 min-w-0"><span class="ap5-yn-ic"><i class="fa-solid fa-landmark"></i></span><div><b>Do you have any existing loan?</b><small>Including car, home or personal loans</small></div></div>
+              <div class="ap5-seg ap5-seg-sm" role="radiogroup" aria-label="Existing loan">
+                <label><input type="radio" name="hasLoan" value="yes" /><span>Yes</span></label>
+                <label><input type="radio" name="hasLoan" value="no" checked /><span>No</span></label>
+              </div>
+            </div>
+            <div class="ap5-rep" id="apLoans" hidden>
+              <div class="ap5-rep-list" data-list></div>
+              <button type="button" class="ap5-add" data-add><i class="fa-solid fa-plus"></i> Add another loan</button>
+            </div>
           </div>
-          <label class="flex items-start gap-3 mt-5 text-muted cursor-pointer text-[15px]"><input type="checkbox" id="apConsent" required class="mt-1 w-4 h-4 accent-[#e8205a]" /><span>I agree to the <a href="terms.html" class="font-semibold text-ink underline">Terms</a> and <a href="privacy.html" class="font-semibold text-ink underline">Privacy Policy</a>, and to be contacted about my offers.</span></label>
+
+          <!-- Existing cards -->
+          <div class="ap5-card mt-4">
+            <div class="ap5-yn-row">
+              <div class="flex items-center gap-3 min-w-0"><span class="ap5-yn-ic"><i class="fa-regular fa-credit-card"></i></span><div><b>Do you have any existing credit card?</b><small>From any bank in Bangladesh</small></div></div>
+              <div class="ap5-seg ap5-seg-sm" role="radiogroup" aria-label="Existing credit card">
+                <label><input type="radio" name="hasCard" value="yes" /><span>Yes</span></label>
+                <label><input type="radio" name="hasCard" value="no" checked /><span>No</span></label>
+              </div>
+            </div>
+            <div class="ap5-rep" id="apCards" hidden>
+              <div class="ap5-rep-list" data-list></div>
+              <button type="button" class="ap5-add" data-add><i class="fa-solid fa-plus"></i> Add another card</button>
+            </div>
+          </div>
+
+          <!-- Secondary applicant -->
+          <div class="ap5-card ap5-co mt-4">
+            <label class="ap5-yn-row cursor-pointer">
+              <div class="flex items-center gap-3 min-w-0"><span class="ap5-yn-ic"><i class="fa-solid fa-user-group"></i></span><div><b>Add a secondary applicant</b><small>A co-applicant's income can raise your eligible amount</small></div></div>
+              <span class="ap5-switch"><input type="checkbox" id="apCoOn" /><i></i></span>
+            </label>
+            <div id="apCo" hidden>
+              <div class="ap5-co-body">
+                <p class="ap5-label !text-sm">Co-applicant's income source</p>
+                <div class="ap5-seg ap5-seg-wrap mt-2" role="radiogroup" aria-label="Co-applicant income source">
+                  <label><input type="radio" name="coJob" value="salaried" checked /><span>Salaried</span></label>
+                  <label><input type="radio" name="coJob" value="business" /><span>Business</span></label>
+                  <label><input type="radio" name="coJob" value="professional" /><span>Professional</span></label>
+                  <label><input type="radio" name="coJob" value="landlord" /><span>Landlord</span></label>
+                </div>
+                <p class="ap5-label !text-sm mt-5">Co-applicant's date of birth</p>
+                <div class="ap5-dob mt-2" data-dob="co">
+                  <select class="ap5-select" id="coDobD" required aria-label="Co-applicant day of birth"><option value="">DD</option></select>
+                  <select class="ap5-select" id="coDobM" required aria-label="Co-applicant month of birth"><option value="">MM</option></select>
+                  <select class="ap5-select" id="coDobY" required aria-label="Co-applicant year of birth"><option value="">YYYY</option></select>
+                </div>
+
+                <div id="coBiz" class="ap5-sub-box mt-5" hidden>
+                  <p class="ap5-label !text-sm">Business owner type</p>
+                  <div class="ap5-seg ap5-seg-wrap mt-2" role="radiogroup" aria-label="Co-applicant business owner type">
+                    <label><input type="radio" name="coOwnerType" value="Proprietorship" checked /><span>Proprietorship</span></label>
+                    <label><input type="radio" name="coOwnerType" value="Partnership" /><span>Partnership</span></label>
+                    <label><input type="radio" name="coOwnerType" value="Private Ltd" /><span>Private Ltd</span></label>
+                  </div>
+                  <div class="grid sm:grid-cols-2 gap-4 mt-4">
+                    <label class="ct5-f sm:col-span-2"><span>Business type</span><select class="ap5-select" id="coBizType" required data-biztypes><option value="">Select business type</option></select></label>
+                    <label class="ct5-f"><span>Ownership (%)</span><div class="ap5-suf"><input id="coOwn" inputmode="numeric" maxlength="3" value="100" required /><i>%</i></div></label>
+                    <div class="ct5-f"><span>Age of business</span>
+                      <div class="grid grid-cols-2 gap-2">
+                        <select class="ap5-select" id="coBizY" required aria-label="Co-applicant business age in years"><option value="">Years</option></select>
+                        <select class="ap5-select" id="coBizM" aria-label="Co-applicant business age in months"><option value="0">0 mo</option></select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4 mt-5">
+                  <label class="ct5-f"><span>Their monthly income</span><div class="ap5-pre"><i>৳</i><input id="coIncome" inputmode="numeric" placeholder="e.g. 40,000" required /></div></label>
+                  <label class="ct5-f"><span>Their existing EMIs (monthly)</span><div class="ap5-pre"><i>৳</i><input id="coEmi" inputmode="numeric" placeholder="0 if none" /></div></label>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <p class="ap-err hidden mt-5 text-sm font-semibold text-red-500"><i class="fa-solid fa-circle-exclamation"></i> <span>Please complete the highlighted fields.</span></p>
+        <!-- ============ Step 4 — Contact ============ -->
+        <div class="ap-step" data-step="4">
+          <p class="ap5-q mt-7">Where should we send your offers?</p>
+          <p class="ap5-sub">We'll only use these details for your application.</p>
+          <div class="grid sm:grid-cols-2 gap-4 mt-6">
+            <label class="ct5-f sm:col-span-2"><span>Full name (as per NID)</span><div class="ap5-pre"><i class="fa-regular fa-user"></i><input id="apName" autocomplete="name" placeholder="e.g. Rafiq Ahmed" required /></div></label>
+            <label class="ct5-f"><span>Mobile number</span><div class="ap5-pre"><i class="ap5-cc">+88</i><input id="apPhone" type="tel" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX" autocomplete="tel-national" required /></div></label>
+            <label class="ct5-f"><span>Email</span><div class="ap5-pre"><i class="fa-regular fa-envelope"></i><input id="apEmail" type="email" autocomplete="email" placeholder="you@email.com" required /></div></label>
+          </div>
+          <div class="ap5-review mt-6" id="apReview"></div>
+          <label class="ap5-consent mt-5"><input type="checkbox" id="apConsent" required /><span>I agree to the <a href="terms.html" class="font-semibold text-ink underline">Terms</a> and <a href="privacy.html" class="font-semibold text-ink underline">Privacy Policy</a>, and to be contacted about my offers.</span></label>
+        </div>
+
+        <p class="ap-err hidden mt-5" role="alert"><i class="fa-solid fa-circle-exclamation"></i> <span>Please complete the highlighted fields.</span></p>
         <div class="ap5-actions">
-          <button type="button" class="btn btn-ghost hidden" id="apBack"><i class="fa-solid fa-arrow-left"></i> Back</button>
+          <button type="button" class="btn btn-ghost hidden" id="apBack"><i class="fa-solid fa-arrow-left"></i> <span class="hidden sm:inline">Back</span></button>
           <button type="submit" class="btn btn-primary flex-1 !py-4 text-lg" id="apNext">Continue <i class="fa-solid fa-arrow-right"></i></button>
         </div>
         <p class="mt-4 text-center text-xs text-muted"><i class="fa-solid fa-shield-halved text-brand"></i> Checking your options won't affect your credit score.</p>
+
+        <!-- Repeater templates -->
+        <template id="tplLoan">
+          <div class="ap5-row">
+            <div class="ap5-row-h"><b>Loan <span data-n>1</span></b><button type="button" class="ap5-del" data-del aria-label="Remove loan"><i class="fa-regular fa-trash-can"></i></button></div>
+            <div class="ap5-g3">
+              <label class="ct5-f"><span>Loan outstanding</span><div class="ap5-pre"><i>৳</i><input data-k="out" inputmode="numeric" placeholder="e.g. 3,00,000" required /></div></label>
+              <label class="ct5-f"><span>EMI amount</span><div class="ap5-pre"><i>৳</i><input data-k="emi" inputmode="numeric" placeholder="e.g. 12,000" required /></div></label>
+              <label class="ct5-f"><span>Adjustment plan</span><select class="ap5-select" data-k="plan" required><option value="">Select</option><option>Own Source</option><option>Take Over</option><option>To Be Continued</option></select></label>
+            </div>
+          </div>
+        </template>
+        <template id="tplCard">
+          <div class="ap5-row">
+            <div class="ap5-row-h"><b>Card <span data-n>1</span></b><button type="button" class="ap5-del" data-del aria-label="Remove card"><i class="fa-regular fa-trash-can"></i></button></div>
+            <div class="ap5-g2">
+              <label class="ct5-f"><span>Card limit</span><div class="ap5-pre"><i>৳</i><input data-k="limit" inputmode="numeric" placeholder="e.g. 1,00,000" required /></div></label>
+              <label class="ap5-chk"><input type="checkbox" data-k="close" /><span><i class="fa-solid fa-check"></i></span>Card to be closed before loan disbursement</label>
+            </div>
+          </div>
+        </template>
       </form>
 
       <!-- Live summary -->
@@ -300,11 +453,18 @@
             <div><dt>Amount</dt><dd>৳ <span id="sumAmt">5,00,000</span></dd></div>
             <div><dt>Tenure</dt><dd id="sumTen">36 months</dd></div>
             <div><dt>Total payable</dt><dd>৳ <span id="sumTot">0</span></dd></div>
+            <div><dt>Existing EMIs</dt><dd>৳ <span id="sumExist">0</span></dd></div>
           </dl>
+          <div class="ap5-dti" id="sumDti" data-lvl="none">
+            <div class="flex items-center justify-between gap-2"><small>Debt-to-income</small><b id="sumDtiTxt">Add income</b></div>
+            <span class="ap5-dti-bar"><i id="sumDtiBar"></i><em></em></span>
+            <p id="sumDtiNote">Lenders usually prefer under 50%.</p>
+          </div>
           <ul class="ap5-check">
             <li data-chk="1"><i class="fa-solid fa-check"></i> Loan details</li>
             <li data-chk="2"><i class="fa-solid fa-check"></i> About you</li>
-            <li data-chk="3"><i class="fa-solid fa-check"></i> Contact details</li>
+            <li data-chk="3"><i class="fa-solid fa-check"></i> Finances</li>
+            <li data-chk="4"><i class="fa-solid fa-check"></i> Contact details</li>
           </ul>
           <a href="https://www.youtube.com/watch?v=2QMfR_PKNSI" target="_blank" rel="noopener" class="ap5-video">
             <span><i class="fa-solid fa-play"></i></span><div><b>Watch tutorial</b><small>How to apply in 2 minutes</small></div>
