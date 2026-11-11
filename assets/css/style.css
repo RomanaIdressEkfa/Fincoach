@@ -3751,3 +3751,8 @@ input[type=range].emi2-rng::-moz-range-thumb { width: 12px; height: 12px; border
 #megaLoans > div { justify-content: center; gap: 2.5rem; }
 #megaLoans > div > div:first-child { flex: 0 0 auto; gap: 3rem; padding-right: 2.5rem; }
 #megaLoans > div > div:last-child { flex: 0 0 420px; }
+/* Mega menu: a little more breathing room between columns and the card */
+#megaLoans > div { gap: 3.5rem; }
+#megaLoans > div > div:first-child { gap: 5rem; padding-right: 3.5rem; }
+#megaLoans > div > div:last-child { flex-basis: 460px; }
+@media (min-width: 1280px) { #megaLoans > div { gap: 4.5rem; } #megaLoans > div > div:first-child { gap: 6.5rem; padding-right: 4.5rem; } #megaLoans > div > div:last-child { flex-basis: 500px; } }
