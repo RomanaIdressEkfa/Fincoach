@@ -3489,3 +3489,44 @@ input[type=range].emi2-rng::-moz-range-thumb { width: 12px; height: 12px; border
 [data-aos="zoom-in-up"] { transform: translate3d(0, 70px, 0) scale(.94); }
 [data-aos][data-aos].aos-animate { transform: translateZ(0); }
 [data-aos="zoom-in-up"].aos-animate, [data-aos="zoom-in"].aos-animate { transform: translateZ(0) scale(1); }
+
+/* ==========================================================
+   Contact v6 — premium split hero + office/map
+   ========================================================== */
+.ct6-meta { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; font-size: .92rem; font-weight: 600; color: var(--ink-2); }
+.ct6-meta i { color: var(--brand); margin-right: .4rem; }
+.ct6-photo { position: relative; aspect-ratio: 4 / 4.4; border-radius: 28px; overflow: hidden; background: #f3f4f7;
+  box-shadow: 0 40px 80px -46px rgba(11,21,48,.55); }
+.ct6-photo::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); pointer-events: none; }
+.ct6-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 30%; }
+@media (max-width: 1023px) { .ct6-photo { aspect-ratio: 16 / 10; } }
+.ct6-hero .btn-white i.text-brand { margin-right: .1rem; }
+
+@media (min-width: 1024px) { .ct6-photo { aspect-ratio: 1 / 1; max-height: 460px; margin-left: auto; } }
+
+/* Contact — office: full map with floating card */
+.ct7 { position: relative; border-radius: 28px; overflow: hidden; background: #eef0f4; border: 1px solid var(--line);
+  box-shadow: 0 40px 80px -56px rgba(11,21,48,.55); }
+.ct7-map { height: 300px; }
+.ct7-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: saturate(.8) contrast(1.02); }
+.ct7-card { position: relative; background: #fff; padding: 1.6rem 1.4rem 1.5rem; }
+.ct7-title { margin-top: .7rem; font-family: "Urbanist", sans-serif; font-weight: 800; font-size: 1.9rem; letter-spacing: -.02em; color: var(--ink); }
+.ct7-addr { margin-top: .6rem; color: var(--ink-2); font-weight: 600; line-height: 1.55; }
+.ct7-rows { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--line); display: grid; gap: .8rem; font-size: .95rem; color: var(--muted); }
+.ct7-rows > div { display: flex; align-items: center; gap: .75rem; }
+.ct7-rows i { width: 34px; height: 34px; flex: none; border-radius: 99px; display: grid; place-items: center; font-size: .8rem; color: var(--brand); background: var(--tint); }
+.ct7-rows a { color: var(--ink-2); font-weight: 600; }
+.ct7-rows a:hover { color: var(--brand); }
+@media (min-width: 1024px) {
+  .ct7-map { height: 480px; }
+  .ct7-card { position: absolute; left: 2rem; top: 50%; transform: translateY(-50%); width: 360px; border-radius: 22px; padding: 1.9rem;
+    box-shadow: 0 30px 60px -30px rgba(11,21,48,.45), 0 0 0 1px rgba(11,21,48,.04); }
+}
+.ct7-map { position: relative; overflow: hidden; }
+.ct7-map iframe { position: absolute; left: 0; top: -120px; width: 100%; height: calc(100% + 120px); }
+@media (min-width: 1024px) {
+  .ct7-card { left: auto; right: 2rem; }
+  .ct7-map iframe { width: calc(100% + 360px); left: -360px; }
+}
+@media (min-width: 640px) and (max-width: 1023px) { .ct7-map { height: 380px; } }
+.ct7-map iframe { max-width: none; }
