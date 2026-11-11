@@ -3756,3 +3756,39 @@ input[type=range].emi2-rng::-moz-range-thumb { width: 12px; height: 12px; border
 #megaLoans > div > div:first-child { gap: 5rem; padding-right: 3.5rem; }
 #megaLoans > div > div:last-child { flex-basis: 460px; }
 @media (min-width: 1280px) { #megaLoans > div { gap: 4.5rem; } #megaLoans > div > div:first-child { gap: 6.5rem; padding-right: 4.5rem; } #megaLoans > div > div:last-child { flex-basis: 500px; } }
+
+/* ==========================================================
+   About story visual: FinCoach card (built in CSS, no stock photo)
+   ========================================================== */
+.fcx { position: relative; height: 420px; display: grid; place-items: center; isolation: isolate; }
+@media (min-width: 1024px) { .fcx { height: 520px; } }
+.fcx-orb { position: absolute; z-index: -2; width: min(380px, 80vw); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.45), transparent 45%), linear-gradient(135deg, #ffd1df, #f7a3c0 55%, #e9a6d8); filter: saturate(.9); opacity: .75; }
+.fcx-ring { position: absolute; z-index: -1; width: min(470px, 92vw); aspect-ratio: 1; border-radius: 50%; border: 1.5px dashed rgba(232,32,90,.28); animation: twSpin 50s linear infinite; }
+.fcx-card { position: absolute; width: min(360px, 80vw); aspect-ratio: 1.586; border-radius: 22px; }
+.fcx-card-back { transform: translate(34px, -40px) rotate(8deg); background: var(--grad); opacity: .9; box-shadow: 0 30px 60px -30px rgba(232,32,90,.7); }
+.fcx-card-front { display: flex; flex-direction: column; justify-content: space-between; padding: 1.4rem 1.5rem; color: #fff; transform: rotate(-7deg);
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 2px, transparent 2px 14px),
+    radial-gradient(90% 120% at 100% 0%, rgba(232,32,90,.55), transparent 55%),
+    linear-gradient(150deg, #1a2550 0%, #0b1530 60%, #2a1240 100%);
+  box-shadow: 0 50px 80px -40px rgba(11,21,48,.75), inset 0 1px 0 rgba(255,255,255,.12);
+  animation: fcxFloat 6s ease-in-out infinite; }
+@keyframes fcxFloat { 0%, 100% { transform: rotate(-7deg) translateY(0); } 50% { transform: rotate(-7deg) translateY(-12px); } }
+.fcx-top { display: flex; align-items: flex-start; justify-content: space-between; }
+.fcx small { display: block; font-size: .7rem; letter-spacing: .04em; color: rgba(255,255,255,.6); }
+.fcx b { display: block; font-family: "Urbanist", sans-serif; font-weight: 700; font-size: 1.05rem; }
+.fcx-logo { height: 22px; width: auto; }
+.fcx-chip { width: 44px; height: 32px; border-radius: 7px; background: linear-gradient(135deg, #f7e2a1, #d9b25a); box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+.fcx-num { font-family: "Urbanist", sans-serif; font-weight: 700; font-size: clamp(1.1rem, 2.4vw, 1.35rem); letter-spacing: .14em; white-space: nowrap; }
+.fcx-bottom { display: flex; align-items: flex-end; justify-content: space-between; }
+.fcx-bottom b { font-size: 1.45rem; }
+.fcx-bottom i { font-size: 1.1rem; color: rgba(255,255,255,.75); }
+.fcx-chip-pill { position: absolute; left: 4%; bottom: 14%; display: flex; align-items: center; gap: .7rem; padding: .7rem 1rem .7rem .7rem; border-radius: 18px;
+  background: rgba(255,255,255,.95); box-shadow: 0 24px 40px -24px rgba(11,21,48,.45); animation: fcxFloat2 7s ease-in-out infinite; }
+.fcx-chip-pill > span { width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center; color: #16a34a; background: #dcfce7; }
+.fcx-chip-pill small { color: var(--muted); font-size: .72rem; }
+.fcx-chip-pill b { color: var(--ink); font-size: .95rem; }
+@keyframes fcxFloat2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+@media (max-width: 479px) { .fcx { height: 340px; } .fcx-card-front { padding: 1.1rem 1.2rem; } .fcx-bottom b { font-size: 1.15rem; } .fcx-chip-pill { bottom: 4%; } }
+@media (prefers-reduced-motion: reduce) { .fcx-card-front, .fcx-chip-pill, .fcx-ring { animation: none; } }
