@@ -3734,3 +3734,20 @@ input[type=range].emi2-rng::-moz-range-thumb { width: 12px; height: 12px; border
 .ab11-story .ab9-story-img { aspect-ratio: 4 / 4.6; border-radius: 32px; border: 6px solid #fff; }
 @media (max-width: 1023px) { .ab11-story .ab9-story-img { aspect-ratio: 16 / 10; } }
 .ab10-move { bottom: 1.9rem; }
+
+/* Mega menu: columns sized to content, tighter gaps */
+.mega .mm-link { min-width: 190px; }
+.mega-app { display: flex; flex-direction: column; justify-content: center; }
+.mega-app > img { align-self: flex-start; width: auto; }
+
+/* Mega menu card: compact, official store badges */
+.mega .mm-link { min-width: 170px; }
+.mega-app { justify-content: center; }
+.mega-app > img { height: 1.8rem; }
+.mega-badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
+.mega-badges img { height: 40px; width: auto; display: block; transition: transform .2s, filter .2s; }
+.mega-badges a:hover img { transform: translateY(-2px); filter: drop-shadow(0 8px 14px rgba(11,21,48,.25)); }
+/* Mega menu: compact group, centred, no stretched gaps */
+#megaLoans > div { justify-content: center; gap: 2.5rem; }
+#megaLoans > div > div:first-child { flex: 0 0 auto; gap: 3rem; padding-right: 2.5rem; }
+#megaLoans > div > div:last-child { flex: 0 0 420px; }
