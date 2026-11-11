@@ -101,9 +101,9 @@
       // Stagger siblings that animate together (cards in a grid, list items…)
       const sibs = [...el.parentElement.children].filter(c => c.classList.contains('reveal') || c.hasAttribute('data-aos'));
       const idx = sibs.indexOf(el);
-      if (idx > 0) el.setAttribute('data-aos-delay', String(Math.min(idx, 5) * 80));
+      if (idx > 0) el.setAttribute('data-aos-delay', String(Math.min(idx, 5) * 120));
     });
-    AOS.init({ duration: 850, easing: 'ease-out-cubic', once: true, offset: 40, disable: reduceMotion });
+    AOS.init({ duration: 900, easing: 'ease-out-back', once: true, offset: 60, disable: reduceMotion });
     window.addEventListener('load', () => AOS.refresh());
   } else {
     const io = new IntersectionObserver((entries) => {
