@@ -113,7 +113,7 @@
           <div class="rounded-[26px] bg-brand-tint p-7 relative overflow-hidden h-full">
             <div class="absolute -right-10 -top-10 w-44 h-44 rounded-full bg-grad opacity-10"></div>
             <img src="assets/img/fincoach-logo.png" alt="FinCoach" class="h-8 relative" />
-            <p class="mt-5 text-lg font-semibold leading-relaxed text-ink max-w-sm relative">Get the all-in-one app to apply for your loan — and track every step, right from your phone.</p>
+            <p class="mt-5 text-lg font-semibold leading-relaxed text-ink max-w-sm relative">Apply for your loan and track every step from your phone.</p>
             <div class="flex flex-wrap gap-2 mt-6 relative">
               <a href="#" class="store-badge"><i class="fa-brands fa-google-play text-xl"></i><div><small>GET IT ON</small><span>Google Play</span></div></a>
               <a href="#" class="store-badge"><i class="fa-brands fa-apple text-2xl"></i><div><small>Download on the</small><span>App Store</span></div></a>
@@ -185,17 +185,17 @@
             <div class="hs-text is-active" data-slide="0">
               <span class="hs-eyebrow"><i class="fa-solid fa-user"></i> Personal loans</span>
               <h1>Loans for real life.<br />See what's <span class="text-grad">possible.</span></h1>
-              <p>See your options from 6+ banks in minutes — free, with no impact on your credit.</p>
+              <p>Compare offers from 6+ banks in minutes. Free, with no impact on your credit.</p>
             </div>
             <div class="hs-text" data-slide="1" aria-hidden="true">
               <span class="hs-eyebrow"><i class="fa-solid fa-house"></i> Home loans</span>
               <h1>Your dream home,<br /><span class="text-grad">one step closer.</span></h1>
-              <p>Compare home loan rates from 8.5% p.a. and apply online — no queues, no paperwork.</p>
+              <p>Compare home loan rates from 8.5% p.a. and apply online.</p>
             </div>
             <div class="hs-text" data-slide="2" aria-hidden="true">
               <span class="hs-eyebrow"><i class="fa-regular fa-credit-card"></i> Credit cards</span>
               <h1>The right card,<br /><span class="text-grad">rewards included.</span></h1>
-              <p>Find cards with cashback, lounge access and first-year fee waivers in one place.</p>
+              <p>Cashback, lounge access and fee waivers, all in one place.</p>
             </div>
           </div>
 
@@ -242,7 +242,7 @@
 
     <!-- Bank logos strip (Wallex style: grayscale, real colour on hover) -->
     <div class="hs-logos">
-      <p class="text-center text-sm text-muted">More than <b class="text-ink">25,000+</b> borrowers compared offers from our partners</p>
+      <p class="text-center text-sm text-muted">Trusted by <b class="text-ink">25,000+</b> borrowers</p>
       <div class="marquee mt-4 overflow-hidden" id="partners">
         <div class="marquee-track logo-track" id="marqueeTrack">
           <img src="assets/img/partners/p1.png" alt="IPDC Finance" />
@@ -261,16 +261,22 @@
      FIND THE RIGHT LOAN — slider (right to left), OneMain-style cards
      ========================================================= -->
 <section id="products" class="pt-16 md:pt-24 pb-4 overflow-hidden">
-  <div class="max-w-[1600px] mx-auto px-4 md:px-6">
-    <div class="text-center max-w-3xl mx-auto">
-      <span class="reveal ab5-kicker justify-center"><span></span>Our products<span></span></span>
-      <h2 class="reveal ab5-h2 mt-4">Find the right loan for your needs</h2>
-      <p class="reveal mt-4 text-lg text-muted">Explore loans built to help you cover costs, simplify payments or plan for what's next.</p>
+  <div class="max-w-site mx-auto px-4 md:px-6">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+      <div class="max-w-2xl">
+        <span class="reveal ab5-kicker"><span></span>Our products</span>
+        <h2 class="reveal ab5-h2 mt-4">Find the <span class="text-grad">right loan</span> for your needs</h2>
+        <p class="reveal mt-3 text-lg text-muted">Explore loans built to help you cover costs, simplify payments or plan for what's next.</p>
+      </div>
+      <div class="reveal flex items-center gap-3">
+        <div class="sc-prog hidden sm:block mr-2" aria-hidden="true"><span id="scBar"></span></div>
+        <button type="button" class="sc-arrow" id="scPrev" aria-label="Previous"><i class="fa-solid fa-arrow-left"></i></button>
+        <button type="button" class="sc-arrow sc-arrow-main" id="scNext" aria-label="Next"><i class="fa-solid fa-arrow-right"></i></button>
+      </div>
     </div>
 
     <div class="sc-track mt-10 md:mt-12" id="scTrack" tabindex="0" aria-label="Loan types">
-      <article class="lc2" style="--c1:#8b5cf6;--c2:#6d28d9">
-        <span class="lc2-rate">from 9.0%</span>
+      <article class="lc2">
         <div class="lc2-top">
           <span class="lc2-ic"><i class="fa-solid fa-user"></i></span>
           <h3>Personal Loan</h3>
@@ -280,8 +286,7 @@
         <img class="lc2-img" src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Money%20bag/3D/money_bag_3d.png" alt="" />
         <a href="loan.html?type=personal" class="lc2-link" aria-label="Personal Loan"></a>
       </article>
-      <article class="lc2" style="--c1:#fb923c;--c2:#ea580c">
-        <span class="lc2-rate">from 9.5%</span>
+      <article class="lc2">
         <div class="lc2-top">
           <span class="lc2-ic"><i class="fa-solid fa-layer-group"></i></span>
           <h3>Debt Consolidation</h3>
@@ -291,8 +296,7 @@
         <img class="lc2-img" src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Money%20with%20wings/3D/money_with_wings_3d.png" alt="" />
         <a href="loan.html?type=consolidation" class="lc2-link" aria-label="Debt Consolidation"></a>
       </article>
-      <article class="lc2" style="--c1:#3b82f6;--c2:#1d4ed8">
-        <span class="lc2-rate">from 10%</span>
+      <article class="lc2">
         <div class="lc2-top">
           <span class="lc2-ic"><i class="fa-solid fa-umbrella"></i></span>
           <h3>Emergency Loan</h3>
@@ -302,8 +306,7 @@
         <img class="lc2-img" src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Umbrella%20with%20rain%20drops/3D/umbrella_with_rain_drops_3d.png" alt="" />
         <a href="loan.html?type=emergency" class="lc2-link" aria-label="Emergency Loan"></a>
       </article>
-      <article class="lc2" style="--c1:#f43f6e;--c2:#d61f69">
-        <span class="lc2-rate">from 9.5%</span>
+      <article class="lc2">
         <div class="lc2-top">
           <span class="lc2-ic"><i class="fa-solid fa-car"></i></span>
           <h3>Car Loan</h3>
@@ -313,8 +316,7 @@
         <img class="lc2-img" src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Automobile/3D/automobile_3d.png" alt="" />
         <a href="loan.html?type=auto" class="lc2-link" aria-label="Car Loan"></a>
       </article>
-      <article class="lc2" style="--c1:#8b5cf6;--c2:#6d28d9">
-        <span class="lc2-rate">from 8.5%</span>
+      <article class="lc2">
         <div class="lc2-top">
           <span class="lc2-ic"><i class="fa-solid fa-house"></i></span>
           <h3>Home Loan</h3>
@@ -324,8 +326,7 @@
         <img class="lc2-img" src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/House%20with%20garden/3D/house_with_garden_3d.png" alt="" />
         <a href="loan.html?type=home" class="lc2-link" aria-label="Home Loan"></a>
       </article>
-      <article class="lc2" style="--c1:#fb923c;--c2:#ea580c">
-        <span class="lc2-rate">0% fee yr 1</span>
+      <article class="lc2">
         <div class="lc2-top">
           <span class="lc2-ic"><i class="fa-solid fa-credit-card"></i></span>
           <h3>Credit Card</h3>
@@ -335,8 +336,7 @@
         <img class="lc2-img" src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Credit%20card/3D/credit_card_3d.png" alt="" />
         <a href="loan.html?type=card" class="lc2-link" aria-label="Credit Card"></a>
       </article>
-      <article class="lc2" style="--c1:#3b82f6;--c2:#1d4ed8">
-        <span class="lc2-rate">from 10.5%</span>
+      <article class="lc2">
         <div class="lc2-top">
           <span class="lc2-ic"><i class="fa-solid fa-store"></i></span>
           <h3>Business Loan</h3>
@@ -346,8 +346,7 @@
         <img class="lc2-img" src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Convenience%20store/3D/convenience_store_3d.png" alt="" />
         <a href="loan.html?type=sme" class="lc2-link" aria-label="Business Loan"></a>
       </article>
-      <article class="lc2" style="--c1:#f43f6e;--c2:#d61f69">
-        <span class="lc2-rate">from 9.0%</span>
+      <article class="lc2">
         <div class="lc2-top">
           <span class="lc2-ic"><i class="fa-solid fa-graduation-cap"></i></span>
           <h3>Education Loan</h3>
@@ -357,8 +356,7 @@
         <img class="lc2-img" src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Books/3D/books_3d.png" alt="" />
         <a href="loan.html?type=education" class="lc2-link" aria-label="Education Loan"></a>
       </article>
-      <article class="lc2" style="--c1:#10b981;--c2:#047857">
-        <span class="lc2-rate">from 9.5%</span>
+      <article class="lc2">
         <div class="lc2-top">
           <span class="lc2-ic"><i class="fa-solid fa-plane"></i></span>
           <h3>Travel Loan</h3>
@@ -368,8 +366,7 @@
         <img class="lc2-img" src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Airplane/3D/airplane_3d.png" alt="" />
         <a href="loan.html?type=travel" class="lc2-link" aria-label="Travel Loan"></a>
       </article>
-      <article class="lc2" style="--c1:#f59e0b;--c2:#d97706">
-        <span class="lc2-rate">up to 11%</span>
+      <article class="lc2">
         <div class="lc2-top">
           <span class="lc2-ic"><i class="fa-solid fa-piggy-bank"></i></span>
           <h3>Deposit Schemes</h3>
@@ -533,14 +530,6 @@
       ===== end previous design ===== -->
     </div>
 
-    <div class="flex flex-wrap items-center justify-between gap-4 mt-6">
-      <p class="sc-note"><span><i class="fa-solid fa-shield-halved"></i></span> Checking your offers won't affect your credit score.</p>
-      <div class="flex items-center gap-4">
-      <div class="sc-prog hidden sm:block" aria-hidden="true"><span id="scBar"></span></div>
-      <button type="button" class="sc-arrow" id="scPrev" aria-label="Previous"><i class="fa-solid fa-arrow-left"></i></button>
-      <button type="button" class="sc-arrow sc-arrow-main" id="scNext" aria-label="Next"><i class="fa-solid fa-arrow-right"></i></button>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -555,11 +544,9 @@
         <div class="lg:col-span-7">
           <span class="reveal ab5-kicker !text-[#ff9ec0]"><span></span>How it works</span>
           <h2 class="reveal ab5-h2 !text-white mt-4">Compare loans in <span class="hw-grad">3 simple steps</span></h2>
-          <p class="reveal text-white/70 mt-4 text-lg leading-relaxed max-w-xl">From your first question to your final approval — one simple flow, with no paperwork and no queues.</p>
+          <p class="reveal text-white/70 mt-4 text-lg leading-relaxed max-w-xl">No paperwork, no queues.</p>
         </div>
-        <div class="reveal lg:col-span-5 flex flex-col sm:flex-row lg:justify-end items-start sm:items-center gap-3">
-          <span class="hw-time"><i class="fa-regular fa-clock"></i> Takes about <b>5 minutes</b></span>
-          <a href="apply.html" class="btn btn-primary hw-cta">Get started <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="reveal lg:col-span-5 flex flex-col sm:flex-row lg:justify-end items-start sm:items-center gap-3">          <a href="apply.html" class="btn btn-primary hw-cta">Get started <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -576,7 +563,7 @@
         <li class="reveal hw-step">
           <div class="hw-head"><span class="hw-num">02</span><span class="hw-ic"><i class="fa-solid fa-scale-balanced"></i></span></div>
           <h3>See offers</h3>
-          <p>We match you with offers you may qualify for from multiple banks and FIs.</p>
+          <p>See the offers you qualify for, side by side.</p>
           <div class="hw-ui" aria-hidden="true">
             <div class="hw-row is-best"><i class="fa-solid fa-building-columns"></i><span>IPDC Finance</span><b>9.0%</b><em>Best</em></div>
             <div class="hw-row"><i class="fa-solid fa-building-columns"></i><span>City Bank</span><b>9.5%</b></div>
@@ -586,20 +573,13 @@
         <li class="reveal hw-step">
           <div class="hw-head"><span class="hw-num">03</span><span class="hw-ic"><i class="fa-solid fa-circle-check"></i></span></div>
           <h3>Select &amp; apply</h3>
-          <p>Pick the offer that fits your plans and apply online — we'll guide you to the finish.</p>
+          <p>Pick the best offer and apply online.</p>
           <div class="hw-ui" aria-hidden="true">
             <div class="hw-done"><span><i class="fa-solid fa-check"></i></span><div><b>Application submitted</b><small>FC-2026-08814 · Bank review</small></div></div>
             <div class="hw-bar"><i></i></div>
           </div>
         </li>
       </ol>
-
-      <div class="reveal hw-trust mt-10 md:mt-12">
-        <span><i class="fa-solid fa-shield-halved"></i> No impact on credit score</span>
-        <span><i class="fa-solid fa-gift"></i> 100% free for you</span>
-        <span><i class="fa-solid fa-building-columns"></i> 6+ partner Banks &amp; FIs</span>
-        <span><i class="fa-solid fa-bolt"></i> Decisions in 3–7 days</span>
-      </div>
     </div>
   </div>
 </section>
@@ -655,21 +635,13 @@
           </div>
 
           <div class="ap3-chip ap3-chip-a"><span class="bg-green-100 text-green-600"><i class="fa-solid fa-circle-check"></i></span><div><small>Loan approved</small><b>৳ 5,00,000</b></div></div>
-          <div class="ap3-chip ap3-chip-b"><span class="bg-amber-100 text-amber-500"><i class="fa-solid fa-star"></i></span><div><small>App rating</small><b>4.8 / 5</b></div></div>
-          <div class="ap3-chip ap3-chip-c"><span class="bg-grad text-white"><i class="fa-solid fa-bell"></i></span><div><small>New offer</small><b>Rate cut to 8.5%</b></div></div>
         </div>
 
         <!-- Content -->
         <div class="pb-2 lg:py-6">
           <span class="reveal eyebrow">Mobile app</span>
           <h2 class="reveal mt-4 font-head font-extrabold text-[2rem] sm:text-[2.25rem] md:text-[2.9rem] leading-[1.06]">Your loans,<br /><span class="text-grad">right in your pocket</span></h2>
-          <p class="reveal mt-4 text-lg text-muted max-w-lg">Compare offers, apply in minutes and follow every step of your loan — all from one beautiful app.</p>
-
-          <div class="reveal grid sm:grid-cols-3 gap-3 mt-7">
-            <div class="ap3-feat"><i class="fa-solid fa-bolt"></i><b>Apply fast</b><span>In under 5 minutes</span></div>
-            <div class="ap3-feat"><i class="fa-solid fa-file-arrow-up"></i><b>Paperless</b><span>Upload from phone</span></div>
-            <div class="ap3-feat"><i class="fa-solid fa-bell"></i><b>Live updates</b><span>Every step, instantly</span></div>
-          </div>
+          <p class="reveal mt-4 text-lg text-muted max-w-lg">Compare, apply and track your loan from your phone.</p>
 
           <div class="reveal ap3-dl mt-7">
             <div class="ap2-qr">
@@ -684,14 +656,6 @@
                 <a href="#" aria-label="Download on the App Store"><img src="assets/img/badge-app-store.svg" alt="Download on the App Store" /></a>
               </div>
             </div>
-          </div>
-
-          <div class="reveal flex flex-wrap items-center gap-x-6 gap-y-4 mt-6">
-            <div class="flex items-center gap-3">
-              <span class="flex -space-x-2"><span class="ava-lg bg-grad">RE</span><span class="ava-lg bg-ink">KH</span><span class="ava-lg" style="background:#f2545b">FR</span></span>
-              <p class="text-sm text-muted leading-tight"><b class="text-ink">50K+</b> downloads<br /><span class="text-amber-400">★★★★★</span> <b class="text-ink">4.8</b></p>
-            </div>
-            <a href="https://www.youtube.com/watch?v=2QMfR_PKNSI" target="_blank" rel="noopener" class="ap2-watch"><span><i class="fa-solid fa-play"></i></span>Watch tutorial</a>
           </div>
         </div>
       </div>
@@ -708,8 +672,7 @@
       <div>
         <span class="reveal ab5-kicker"><span></span>EMI Calculator</span>
         <h2 class="reveal ab5-h2 mt-4">Plan your loan <span class="text-grad">in seconds</span></h2>
-        <p class="reveal mt-3 text-lg text-muted">Move the sliders or type your numbers — your EMI updates instantly.</p>
-      </div>
+              </div>
       <div class="reveal emi2-types" role="group" aria-label="Loan type">
         <button type="button" class="active" data-emi-rate="9"><i class="fa-solid fa-user"></i> Personal</button>
         <button type="button" data-emi-rate="8.5"><i class="fa-solid fa-house"></i> Home</button>
@@ -791,25 +754,21 @@
         <span class="st4-ic"><i class="fa-solid fa-star"></i></span>
         <p class="st4-num"><span data-count="98">0</span><sup>%</sup></p>
         <p class="st4-lbl">Positive Reviews</p>
-        <p class="st4-sub"><span class="st4-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></p>
       </div>
       <div class="reveal st4-item">
         <span class="st4-ic"><i class="fa-solid fa-file-circle-check"></i></span>
         <p class="st4-num"><span data-count="25">0</span><sup>K+</sup></p>
         <p class="st4-lbl">Applications Processed</p>
-        <p class="st4-sub">And counting every day</p>
       </div>
       <div class="reveal st4-item">
         <span class="st4-ic"><i class="fa-solid fa-building-columns"></i></span>
         <p class="st4-num"><span data-count="6">0</span><sup>+</sup></p>
         <p class="st4-lbl">Partner Banks &amp; FIs</p>
-        <p class="st4-sub">Licensed lenders only</p>
       </div>
       <div class="reveal st4-item">
         <span class="st4-ic"><i class="fa-solid fa-clock"></i></span>
         <p class="st4-num"><span data-count="24">0</span><sup>/7</sup></p>
         <p class="st4-lbl">Online Application</p>
-        <p class="st4-sub"><span class="st4-live"></span> Apply any time, anywhere</p>
       </div>
     </div>
   </div>
@@ -825,10 +784,6 @@
         <span class="reveal ab5-kicker"><span></span>Customer stories</span>
         <h2 class="reveal ab5-h2 mt-4">Loved by borrowers <span class="text-grad">across Bangladesh</span></h2>
       </div>
-      <div class="reveal tw4-rating">
-        <span class="tw4-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span>
-        <span><b>98%</b> positive reviews</span>
-      </div>
     </div>
 
     <div class="reveal tw4 mt-8 md:mt-10">
@@ -838,7 +793,7 @@
         <div class="tw4-text">
           <span class="tw4-q"><i class="fa-solid fa-quote-left"></i></span>
           <div class="tw-stack mt-6" id="twTexts">
-            <p class="tw-item is-active tw4-quote">I compared five personal loan offers in ten minutes and got approved within a week — no hidden charges, no running between banks.</p>
+            <p class="tw-item is-active tw4-quote">I compared five personal loan offers in ten minutes and got approved within a week. No hidden charges, no running between banks.</p>
             <p class="tw-item tw4-quote" aria-hidden="true">As a small business owner I never had time to visit banks. I applied for SME finance at midnight and tracked every step from my phone.</p>
             <p class="tw-item tw4-quote" aria-hidden="true">The EMI calculator helped me pick the right tenure for my home loan. Transparent rates and a genuinely helpful team.</p>
           </div>
@@ -866,7 +821,6 @@
             <img src="https://images.unsplash.com/photo-1789500381106-ba13068a6520?w=800&h=900&q=75&auto=format&fit=crop" alt="Farhana, a FinCoach home loan customer, smiling" loading="lazy" />
           </div>
           <div class="tw4-chip tw4-chip-a"><span><i class="fa-solid fa-circle-check"></i></span><div><small>Verified</small><b>FinCoach customer</b></div></div>
-          <div class="tw4-chip tw4-chip-b"><span class="tw4-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></div>
         </div>
       </div>
     </div>
@@ -878,84 +832,33 @@
      ========================================================= -->
 <section id="blog" class="pt-16 md:pt-24 pb-16 md:pb-24">
   <div class="max-w-site mx-auto px-4 md:px-6">
-    <div class="grid lg:grid-cols-12 gap-6 items-end">
-      <div class="lg:col-span-7">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-5">
+      <div>
         <span class="reveal ab5-kicker"><span></span>Insights &amp; news</span>
         <h2 class="reveal ab5-h2 mt-4">Our latest <span class="text-grad">blog</span></h2>
-        <p class="reveal ab5-lead mt-3 max-w-xl">Smart money guides, loan tips and the latest from FinCoach and our partner banks.</p>
       </div>
-      <div class="reveal lg:col-span-5 flex flex-wrap lg:justify-end items-center gap-2">
-        <a href="blog.html" class="bl5-chip">Guides</a>
-        <a href="blog.html" class="bl5-chip">Savings</a>
-        <a href="blog.html" class="bl5-chip">News</a>
-        <a href="blog.html" class="bl4-all ml-1">View all posts <span><i class="fa-solid fa-arrow-right"></i></span></a>
-      </div>
+      <a href="blog.html" class="reveal bl4-all self-start sm:self-auto shrink-0">View all posts <span><i class="fa-solid fa-arrow-right"></i></span></a>
     </div>
 
-    <div class="bl5 mt-10 md:mt-12">
-      <!-- Featured -->
-      <a href="blog-post.html" class="reveal bl5-feat">
-        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&q=80&auto=format&fit=crop" alt="FinCoach and partner bank team celebrating a new agreement" />
-        <span class="bl5-shade"></span>
-        <div class="bl5-feat-top">
-          <span class="bl5-badge"><i class="fa-solid fa-star"></i> Editor's pick</span>
-          <span class="bl5-badge bl5-badge-glass"><i class="fa-regular fa-clock"></i> 3 min read</span>
-        </div>
-        <div class="bl5-glass">
-          <span class="bl5-cat bl5-cat-light">Partnership</span>
-          <h3>FinCoach signs an agreement with IPDC Finance PLC.</h3>
-          <p>More personal and home loan options — with faster approvals — are now available to FinCoach customers.</p>
-          <div class="bl5-author">
-            <span class="bl5-ava">FC</span>
-            <div class="leading-tight"><b>FinCoach Editorial</b><small>Oct 2026</small></div>
-            <span class="bl5-go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-          </div>
-        </div>
+    <div class="bl6 mt-10 md:mt-12">
+      <a href="blog-post.html" class="reveal bl6-card">
+        <div class="bl6-img"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=75&auto=format&fit=crop" alt="FinCoach and partner bank team celebrating a new agreement" loading="lazy" /></div>
+        <span class="bl6-cat">Partnership</span>
+        <h3>FinCoach signs an agreement with IPDC Finance PLC.</h3>
+        <p class="bl6-meta">Oct 2026 · 3 min read</p>
       </a>
-
-      <!-- Side list -->
-      <div class="bl5-side">
-        <a href="blog-post.html" class="reveal bl5-row">
-          <span class="bl5-num">01</span>
-          <div class="bl5-thumb"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=75&auto=format&fit=crop" alt="House keys on a home model" loading="lazy" /></div>
-          <div class="bl5-row-body">
-            <span class="bl5-cat">Home loans</span>
-            <h3>Buying your first flat in Dhaka: a home loan checklist</h3>
-            <p class="bl5-meta"><i class="fa-regular fa-clock"></i> 6 min read <span>•</span> Sep 2026</p>
-          </div>
-          <span class="bl5-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-        <a href="blog-post.html" class="reveal bl5-row">
-          <span class="bl5-num">02</span>
-          <div class="bl5-thumb"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=75&auto=format&fit=crop" alt="Applying online on a laptop and phone" loading="lazy" /></div>
-          <div class="bl5-row-body">
-            <span class="bl5-cat">Guides</span>
-            <h3>What do you need to apply for a loan in Bangladesh?</h3>
-            <p class="bl5-meta"><i class="fa-regular fa-clock"></i> 5 min read <span>•</span> Aug 2026</p>
-          </div>
-          <span class="bl5-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-        <a href="blog-post.html" class="reveal bl5-row">
-          <span class="bl5-num">03</span>
-          <div class="bl5-thumb"><img src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?w=600&q=75&auto=format&fit=crop" alt="Stacking coins to save" loading="lazy" /></div>
-          <div class="bl5-row-body">
-            <span class="bl5-cat">Savings</span>
-            <h3>FDR vs DPS: which deposit suits your goals?</h3>
-            <p class="bl5-meta"><i class="fa-regular fa-clock"></i> 4 min read <span>•</span> Aug 2026</p>
-          </div>
-          <span class="bl5-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-        <a href="blog-post.html" class="reveal bl5-row">
-          <span class="bl5-num">04</span>
-          <div class="bl5-thumb"><img src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=600&q=75&auto=format&fit=crop" alt="Planning a monthly budget" loading="lazy" /></div>
-          <div class="bl5-row-body">
-            <span class="bl5-cat">Money tips</span>
-            <h3>5 ways to improve your loan eligibility</h3>
-            <p class="bl5-meta"><i class="fa-regular fa-clock"></i> 4 min read <span>•</span> Jul 2026</p>
-          </div>
-          <span class="bl5-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-      </div>
+      <a href="blog-post.html" class="reveal bl6-card">
+        <div class="bl6-img"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=75&auto=format&fit=crop" alt="House keys on a home model" loading="lazy" /></div>
+        <span class="bl6-cat">Home loans</span>
+        <h3>Buying your first flat in Dhaka: a home loan checklist</h3>
+        <p class="bl6-meta">Sep 2026 · 6 min read</p>
+      </a>
+      <a href="blog-post.html" class="reveal bl6-card">
+        <div class="bl6-img"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=900&q=75&auto=format&fit=crop" alt="Applying online on a laptop and phone" loading="lazy" /></div>
+        <span class="bl6-cat">Guides</span>
+        <h3>What do you need to apply for a loan in Bangladesh?</h3>
+        <p class="bl6-meta">Aug 2026 · 5 min read</p>
+      </a>
     </div>
   </div>
 </section>
@@ -1276,7 +1179,7 @@
             <form class="newsletter ft2-nl mt-5" data-demo>
               <input type="email" required placeholder="Your email" aria-label="Email address" />
               <button type="submit" class="btn btn-primary !py-2.5 !px-5" data-label="Subscribe">Subscribe</button>
-              <p data-ok class="hidden basis-full mt-2 text-sm font-semibold text-green-400"><i class="fa-solid fa-circle-check"></i> Subscribed — thank you!</p>
+              <p data-ok class="hidden basis-full mt-2 text-sm font-semibold text-green-400"><i class="fa-solid fa-circle-check"></i> Subscribed. Thank you!</p>
             </form>
             <p class="mt-6 font-semibold text-white">Get the FinCoach app</p>
             <div class="flex flex-wrap gap-2 mt-3">

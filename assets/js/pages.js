@@ -18,8 +18,8 @@
     personal: {
       name: 'Personal Loan', icon: 'fa-user', img: '1556157382-97eda2d62296', apply: 'personal',
       title: 'Money for the things that matter', rate: '9.0%', max: '৳20 Lakh', tenure: '12–60 mo', speed: '3–7 days',
-      lead: 'Weddings, education, travel or a big purchase — compare unsecured personal loans from leading banks and FIs and apply online.',
-      features: [['fa-shield-halved', 'No collateral', 'Unsecured loans — no property or security needed.'], ['fa-percent', 'Competitive rates', 'Rates from 9.0% p.a., compared side by side.'], ['fa-calendar-check', 'Flexible tenure', 'Repay over 12 to 60 months.'], ['fa-bolt', 'Fast decisions', 'Most lenders decide within 3–7 working days.']],
+      lead: 'Weddings, education, travel or a big purchase. Compare personal loans and apply online.',
+      features: [['fa-shield-halved', 'No collateral', 'No property or security needed.'], ['fa-percent', 'Competitive rates', 'Rates from 9.0% p.a., compared side by side.'], ['fa-calendar-check', 'Flexible tenure', 'Repay over 12 to 60 months.'], ['fa-bolt', 'Fast decisions', 'Most lenders decide within 3–7 working days.']],
       elig: ['Bangladeshi citizen aged 22–60', 'Salaried for at least 1 year, or self-employed for 2+ years', 'Minimum monthly income of ৳25,000', 'Active bank account with salary/income credits'],
       docs: ['NID (front & back) and 2 passport-size photos', 'Salary certificate or trade licence', 'Last 6 months of bank statements', 'TIN certificate (for larger amounts)'],
       faq: [['How much can I borrow?', 'Most partner banks offer personal loans from ৳50,000 up to ৳20 Lakh, depending on your income and credit history.'], ['Do I need a guarantor?', 'Some lenders ask for a personal guarantor for larger amounts. Your offer will show the exact requirement.'], ['Can I repay early?', 'Yes. Early settlement is usually allowed; some lenders charge a small fee, which we show before you apply.']]
@@ -36,7 +36,7 @@
     home: {
       name: 'Home Loan', icon: 'fa-house', img: '1494790108377-be9c29b29330', apply: 'home',
       title: 'Your dream home, one step closer', rate: '8.5%', max: '৳2 Crore', tenure: 'Up to 25 yrs', speed: '7–15 days',
-      lead: 'Buy a flat, build on your land or renovate — compare long-tenure home loans with low rates.',
+      lead: 'Buy a flat, build on your land or renovate with a low-rate home loan.',
       features: [['fa-building', 'Buy, build or renovate', 'Home loans for every stage of your home journey.'], ['fa-percent', 'Rates from 8.5%', 'Some of the lowest rates in the market.'], ['fa-calendar-days', 'Up to 25 years', 'Smaller EMIs with long tenures.'], ['fa-user-tie', 'Dedicated advisor', 'Help from application to handover.']],
       elig: ['Bangladeshi citizen or NRB aged 25–65', 'Stable income for at least 2 years', 'Clear title and approved plan for the property', 'Ability to pay the equity (usually 30%)'],
       docs: ['NID, photos and TIN certificate', 'Income documents and 12 months of bank statements', 'Property papers (deed, mutation, approved plan)', 'Valuation and legal vetting reports'],
@@ -134,7 +134,7 @@
       const ok = on === tot;
       res.classList.toggle('is-ok', ok);
       res.firstElementChild.innerHTML = `<i class="fa-solid ${ok ? 'fa-check' : on ? 'fa-hourglass-half' : 'fa-regular fa-hand-pointer'}"></i>`.replace('fa-solid fa-regular', 'fa-regular');
-      msg.innerHTML = ok ? `You're likely eligible! <a href="apply.html?type=${L.apply}">Check your offers →</a>` : on ? `${tot - on} more to go — keep ticking.` : 'Tick each point that applies to you.';
+      msg.innerHTML = ok ? `You're likely eligible! <a href="apply.html?type=${L.apply}">Check your offers →</a>` : on ? `${tot - on} more to go.` : 'Tick each point that applies to you.';
     };
     $$('.el2-item', eligEl).forEach((b) => b.addEventListener('click', () => { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); updElig(); }));
     updElig();

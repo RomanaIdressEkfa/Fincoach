@@ -3218,6 +3218,19 @@ input[type=range].emi2-rng::-moz-range-thumb { width: 12px; height: 12px; border
 .lc2-btn { color: #fff; background: linear-gradient(140deg, var(--c1), var(--c2)); box-shadow: 0 12px 22px -12px var(--c2); }
 .lc2-img { filter: drop-shadow(0 16px 18px rgba(11,21,48,.18)); }
 
+/* Loan cards v4.2 — calmer: no corner ring / glow, flatter tint, lighter shadows */
+.lc2::before, .lc2::after { content: none; }
+.lc2 { background: #fff;
+  border: 1px solid #e9ecf3;
+  box-shadow: 0 10px 26px -22px rgba(11,21,48,.3); }
+.lc2:hover { transform: translateY(-4px); box-shadow: 0 18px 34px -24px rgba(11,21,48,.35); border-color: color-mix(in srgb, var(--c1) 25%, #e9ecf3); }
+.lc2-ic { color: var(--c2); background: color-mix(in srgb, var(--c1) 12%, #fff); box-shadow: none; }
+.lc2-rate { color: #475569; background: #f5f7fb; border-color: #e9ecf3; }
+.lc2-btn { color: var(--c2); background: color-mix(in srgb, var(--c1) 10%, #fff); box-shadow: none; }
+.lc2:hover .lc2-btn { color: #fff; background: var(--c2); }
+.lc2-img { filter: drop-shadow(0 10px 12px rgba(11,21,48,.12)); }
+.lc2:hover .lc2-img { transform: translateY(-4px) scale(1.03); }
+
 /* ==========================================================
    Home blog v5 — premium magazine
    ========================================================== */
@@ -3367,3 +3380,80 @@ input[type=range].emi2-rng::-moz-range-thumb { width: 12px; height: 12px; border
   .ap5-steps .ap5-sn { width: 36px; height: 36px; border-radius: 11px; }
   .ap5-steps li b { font-size: .92rem; }
 }
+
+/* ==========================================================
+   Loan cards v5 — on-brand: site width, whole cards, pink/magenta accents
+   ========================================================== */
+#products .sc-track { margin: 1.75rem 0 0; padding: 12px 2px 30px; gap: 20px; }
+#products .lc2 { --c1: var(--brand); --c2: var(--brand-2);
+  flex: 0 0 calc((100% - 60px) / 4); min-height: 280px; border-radius: 24px;
+  background: #fff; border: 1px solid var(--line);
+  box-shadow: 0 1px 2px rgba(11,21,48,.04), 0 24px 44px -36px rgba(11,21,48,.35); }
+@media (max-width: 1279px) { #products .lc2 { flex-basis: calc((100% - 40px) / 3); } }
+@media (max-width: 1023px) { #products .lc2 { flex-basis: calc((100% - 20px) / 2); } }
+@media (max-width: 639px)  { #products .lc2 { flex-basis: 84%; } }
+/* soft brand glow behind the 3D illustration */
+#products .lc2::before { content: ""; position: absolute; z-index: -1; width: 190px; height: 190px; right: -50px; bottom: -60px; border-radius: 50%;
+  background: radial-gradient(closest-side, var(--tint) 0%, var(--tint) 55%, transparent 100%); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+#products .lc2:hover { transform: translateY(-6px); border-color: #f8d2de; box-shadow: 0 1px 2px rgba(11,21,48,.04), 0 30px 50px -30px rgba(232,32,90,.35); }
+#products .lc2:hover::before { transform: scale(1.15); }
+#products .lc2-ic { color: var(--brand); background: var(--tint); box-shadow: inset 0 0 0 1px #fbdde6; transition: all .3s; }
+#products .lc2:hover .lc2-ic { color: #fff; background: var(--grad); box-shadow: 0 10px 18px -10px rgba(232,32,90,.7); }
+#products .lc2 h3 { color: var(--ink); }
+#products .lc2 > p { color: var(--muted); }
+#products .lc2-rate { color: var(--brand); background: var(--tint); border: 1px solid #fbdde6; }
+#products .lc2-btn { color: var(--ink); background: #fff; border: 1.5px solid var(--line); box-shadow: none; transition: all .3s; }
+#products .lc2:hover .lc2-btn { color: #fff; background: var(--grad); border-color: transparent; box-shadow: 0 12px 22px -12px rgba(232,32,90,.7); }
+#products .lc2-img { width: 120px; height: 120px; filter: drop-shadow(0 12px 14px rgba(11,21,48,.15)); }
+#products .lc2:hover .lc2-img { transform: translateY(-6px) rotate(-4deg) scale(1.05); }
+.lc-all { display: inline-flex; align-items: center; gap: .5rem; font-weight: 700; font-size: .95rem; color: var(--ink); transition: color .2s, gap .2s; }
+.lc-all i { color: var(--brand); font-size: .8rem; }
+.lc-all:hover { color: var(--brand); gap: .75rem; }
+#products .lc2-top { padding-right: 0; }
+.ct5-banner { display: flex; flex-direction: column; justify-content: flex-end; }
+
+/* ==========================================================
+   Home blog v6 — calm editorial: image + text, divided list
+   ========================================================== */
+@media (min-width: 1024px) { .bl5 { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 3rem; align-items: start; } }
+.bl5-feat { min-height: 0; border-radius: 0; overflow: visible; isolation: auto; background: none; box-shadow: none; }
+@media (min-width: 1024px) { .bl5-feat { min-height: 0; } }
+.bl5-feat-img { aspect-ratio: 16 / 10; border-radius: 24px; overflow: hidden; background: #f3f4f7; }
+.bl5-feat-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s cubic-bezier(.2,.8,.2,1); }
+.bl5-feat:hover .bl5-feat-img img { transform: scale(1.04); }
+.bl5-feat-body { padding-top: 1.4rem; }
+.bl5-feat-body h3 { margin-top: .6rem; font-family: "Urbanist", sans-serif; font-weight: 800; font-size: clamp(1.45rem, 2.2vw, 1.9rem); line-height: 1.2; letter-spacing: -.02em; color: var(--ink); transition: color .25s; }
+.bl5-feat:hover h3 { color: var(--brand); }
+.bl5-feat-body > p:not(.bl5-meta) { margin-top: .5rem; color: var(--muted); line-height: 1.6; }
+.bl5-cat { padding: 0; background: none; border-radius: 0; font-size: .72rem; letter-spacing: .1em; }
+.bl5-side { gap: 0; }
+.bl5-row { grid-template-columns: 112px minmax(0, 1fr); gap: 1.2rem; padding: 1.25rem 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: none; box-shadow: none; overflow: visible; }
+.bl5-row:first-child { padding-top: 0; }
+.bl5-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.bl5-row::before { content: none; }
+.bl5-row:hover { transform: none; box-shadow: none; border-color: var(--line); }
+.bl5-thumb { border-radius: 14px; }
+.bl5-row:hover .bl5-thumb img { transform: scale(1.05); }
+.bl5-row h3 { margin-top: .3rem; font-size: 1.08rem; }
+@media (max-width: 639px) {
+  .bl5-row { grid-template-columns: 92px minmax(0, 1fr); gap: .9rem; padding: 1rem 0; }
+  .bl5-feat-body > p:not(.bl5-meta) { display: block; }
+}
+@media (min-width: 1024px) {
+  .bl5-row { grid-template-columns: 140px minmax(0, 1fr); gap: 1.4rem; padding: 1.55rem 0; }
+  .bl5-row h3 { font-size: 1.15rem; }
+}
+
+/* ==========================================================
+   Home blog v7 — three equal cards
+   ========================================================== */
+.bl6 { display: grid; gap: 2rem; }
+@media (min-width: 768px) { .bl6 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.75rem; } }
+.bl6-card { display: block; }
+.bl6-img { aspect-ratio: 3 / 2; border-radius: 20px; overflow: hidden; background: #f3f4f7; }
+.bl6-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.8,.2,1); }
+.bl6-card:hover .bl6-img img { transform: scale(1.04); }
+.bl6-cat { display: block; margin-top: 1.25rem; font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--brand); }
+.bl6-card h3 { margin-top: .45rem; font-family: "Urbanist", sans-serif; font-weight: 800; font-size: 1.25rem; line-height: 1.3; letter-spacing: -.01em; color: var(--ink); transition: color .25s; }
+.bl6-card:hover h3 { color: var(--brand); }
+.bl6-meta { margin-top: .6rem; font-size: .85rem; font-weight: 600; color: var(--muted); }
