@@ -3792,3 +3792,4 @@ input[type=range].emi2-rng::-moz-range-thumb { width: 12px; height: 12px; border
 @keyframes fcxFloat2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
 @media (max-width: 479px) { .fcx { height: 340px; } .fcx-card-front { padding: 1.1rem 1.2rem; } .fcx-bottom b { font-size: 1.15rem; } .fcx-chip-pill { bottom: 4%; } }
 @media (prefers-reduced-motion: reduce) { .fcx-card-front, .fcx-chip-pill, .fcx-ring { animation: none; } }
+@media (max-width: 639px) { .ft2 .footer-logo img { height: 28px; } }
