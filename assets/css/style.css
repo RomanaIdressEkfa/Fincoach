@@ -3667,3 +3667,70 @@ input[type=range].emi2-rng::-moz-range-thumb { width: 12px; height: 12px; border
 .ab9-story-img img { width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 1023px) { .ab9-story-img { aspect-ratio: 16 / 10; } }
 .ab9-story .ab8-statement { font-size: clamp(1.7rem, 2.6vw, 2.2rem); }
+
+/* ==========================================================
+   About v10 — Wallex-style hero + clients strip + story stats
+   ========================================================== */
+.ab10-hero { position: relative; overflow: hidden; isolation: isolate; border-radius: 32px 32px 80px 80px; background: #fdf3f7; }
+@media (max-width: 767px) { .ab10-hero { border-radius: 28px 28px 44px 44px; } }
+.ab10-dots { position: absolute; inset: auto 0 0 0; height: 70%; z-index: -1; pointer-events: none;
+  background-image: radial-gradient(rgba(232,32,90,.16) 1px, transparent 1.2px); background-size: 16px 16px;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 40%); mask-image: linear-gradient(180deg, transparent, #000 40%); }
+.ab10-h1 { font-family: "Urbanist", sans-serif; font-weight: 700; font-size: clamp(2.2rem, 3.6vw, 3.3rem); line-height: 1.12; letter-spacing: -.03em; color: var(--ink); }
+.ab10-lead { font-size: 1.1rem; line-height: 1.75; color: var(--ink-2); opacity: .85; }
+
+.ab10-photo { min-height: 300px; border-radius: 28px; overflow: hidden; background: #f0e7ec; }
+@media (min-width: 1024px) { .ab10-photo { min-height: 460px; } }
+.ab10-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* white frame around each card, as on Wallex */
+.ab10-card { padding: 6px; border-radius: 26px; background: #fff; box-shadow: 0 24px 50px -36px rgba(11,21,48,.35); }
+.ab10-card-in { height: 100%; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; padding: 1.6rem 1.6rem 1.5rem; border-radius: 21px; }
+.ab10-card h2 { font-family: "Urbanist", sans-serif; font-weight: 700; font-size: 1.6rem; letter-spacing: -.02em; }
+.ab10-card p { margin-top: .5rem; font-size: .95rem; line-height: 1.6; }
+.ab10-card-ic { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; font-size: 1.05rem; }
+.ab10-card-vision .ab10-card-in { color: #fff; background: var(--grad); }
+.ab10-card-vision .ab10-card-ic { background: rgba(255,255,255,.2); color: #fff; }
+.ab10-card-vision p { color: rgba(255,255,255,.88); }
+.ab10-card-mission .ab10-card-in { color: #fff; background: radial-gradient(80% 90% at 100% 0%, #3a1640, transparent 60%), linear-gradient(160deg, #111d3d, #0b1530); }
+.ab10-card-mission .ab10-card-ic { color: #ff7aa3; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); }
+.ab10-card-mission p { color: rgba(255,255,255,.7); }
+
+/* clients */
+.ab10-clients { padding-bottom: 3rem; border-bottom: 1px solid var(--line); }
+.ab10-clients > p { font-size: 1.02rem; color: var(--muted); }
+.ab10-clients > p b { color: var(--ink); }
+.ab10-clients .marquee { -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+
+/* story stats */
+.ab10-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem 1.2rem; }
+@media (min-width: 640px) { .ab10-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.ab10-stats b { display: flex; align-items: flex-start; font-family: "Urbanist", sans-serif; font-weight: 700; font-size: clamp(2rem, 3vw, 2.6rem); line-height: 1; letter-spacing: -.03em; color: var(--ink); }
+.ab10-stats sup { top: 0; margin-left: .1rem; font-size: .45em; line-height: 1.3; color: var(--brand); }
+.ab10-stats span:not([data-count]) { display: block; margin-top: .55rem; font-size: .9rem; font-weight: 600; color: var(--muted); }
+
+/* About hero cards: Wallex slide-up (icon leaves, description rises in) */
+.ab10-card-in { position: relative; overflow: hidden; display: block; height: 100%; min-height: 210px; padding: 0; }
+.ab10-move { position: absolute; left: 1.6rem; right: 1.6rem; bottom: 1.5rem; transform: translateY(var(--drop, 4.5rem)); transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.ab10-move .ab10-card-ic { margin-bottom: 3rem; transition: opacity .35s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
+.ab10-move p { opacity: 0; transition: opacity .45s ease .05s; }
+.ab10-card:hover .ab10-move, .ab10-card.is-open .ab10-move { transform: translateY(0); }
+.ab10-card:hover .ab10-card-ic, .ab10-card.is-open .ab10-card-ic { opacity: 0; transform: translateY(-12px); }
+.ab10-card:hover .ab10-move p, .ab10-card.is-open .ab10-move p { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .ab10-move { transform: none; } .ab10-move p { opacity: 1; } }
+
+/* About story v11 — boxed, bigger type, stats strip */
+.ab11-story { padding: 2.5rem 1.5rem; border-radius: 36px; background: linear-gradient(135deg, #fbf4f8 0%, #f6f1f8 100%); border: 1px solid #f1e3ea; }
+@media (min-width: 768px) { .ab11-story { padding: 3.5rem 3rem; border-radius: 48px; } }
+@media (min-width: 1024px) { .ab11-story { padding: 4rem 4rem 4rem 4.5rem; border-radius: 60px; } }
+.ab11-story .ab8-statement { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; line-height: 1.1; }
+.ab11-story .text-muted { font-size: 1.12rem; line-height: 1.75; color: #4b5670; }
+.ab11-stats { gap: 0; padding: 1.4rem .4rem; border-radius: 22px; background: #fff; box-shadow: 0 0 0 1px #f1e4ea, 0 24px 44px -34px rgba(11,21,48,.35); }
+.ab11-stats > div { padding: .4rem 1.1rem; }
+@media (min-width: 640px) { .ab11-stats > div + div { border-left: 1px solid var(--line); } }
+@media (max-width: 639px) { .ab11-stats { row-gap: 1.2rem; } }
+.ab11-stats b { font-size: clamp(2.2rem, 3.2vw, 2.9rem); font-weight: 800; }
+.ab11-stats span:not([data-count]) { font-size: .95rem; }
+.ab11-story .ab9-story-img { aspect-ratio: 4 / 4.6; border-radius: 32px; border: 6px solid #fff; }
+@media (max-width: 1023px) { .ab11-story .ab9-story-img { aspect-ratio: 16 / 10; } }
+.ab10-move { bottom: 1.9rem; }

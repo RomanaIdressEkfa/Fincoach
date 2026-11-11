@@ -112,6 +112,21 @@
     $$('.reveal').forEach((el, i) => { el.style.transitionDelay = `${(i % 4) * 70}ms`; io.observe(el); });
   }
 
+  /* ---------- About hero cards: slide-up reveal (hover, or scroll on touch) ---------- */
+  const abCards = $$('.ab10-card');
+  if (abCards.length) {
+    const setDrop = () => abCards.forEach((c) => {
+      const p = $('.ab10-move p', c);
+      if (p) c.style.setProperty('--drop', (p.offsetHeight + parseFloat(getComputedStyle(p).marginTop)) + 'px');
+    });
+    setDrop();
+    window.addEventListener('resize', setDrop);
+    if (window.matchMedia('(hover: none)').matches && 'IntersectionObserver' in window) {
+      const cardIO = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle('is-open', e.isIntersecting)), { rootMargin: '-35% 0px -35% 0px' });
+      abCards.forEach((c) => cardIO.observe(c));
+    }
+  }
+
   /* ---------- Counters ---------- */
   // Counts up every time the number scrolls into view (resets when it leaves)
   const cio = new IntersectionObserver((entries) => {

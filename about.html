@@ -170,50 +170,75 @@
 <main>
 
 <!-- =========================================================
-     ABOUT — Editorial hero: centred title, panoramic photo, stats bar
+     ABOUT — Hero (Wallex style): title + intro, photo, vision & mission cards
      ========================================================= -->
 <section class="px-2.5 pt-2.5">
-  <div class="ab9-hero">
-    <span class="ab9-glow ab9-glow-1"></span><span class="ab9-glow ab9-glow-2"></span><span class="ab9-grid"></span>
-    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-10 md:pt-14">
-      <nav class="reveal crumb ab9-crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>About</span></nav>
-      <div class="grid lg:grid-cols-12 gap-12 lg:gap-14 items-center mt-8 md:mt-10">
-        <div class="lg:col-span-6">
-          <span class="reveal ab9-pill"><span class="ab9-pill-dot"></span> About FinCoach</span>
-          <h1 class="reveal ab9-h1 mt-6">We make borrowing <span class="ab9-grad">simple and fair.</span></h1>
-          <p class="reveal ab9-lead mt-6">FinCoach is a digital marketplace where you compare loans, cards and deposits from leading banks, then apply online.</p>
-          <div class="reveal flex flex-col sm:flex-row gap-3 mt-9">
-            <a href="apply.html" class="btn btn-primary !px-8 !py-4">Check your offers <i class="fa-solid fa-arrow-right"></i></a>
-            <a href="contact.html" class="btn ab9-ghost !px-7 !py-4">Talk to us</a>
-          </div>
+  <div class="ab10-hero">
+    <span class="ab10-dots"></span>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-14 md:pt-24 pb-16 md:pb-28">
+      <div class="grid lg:grid-cols-12 gap-6 lg:gap-12 items-center">
+        <h1 class="reveal ab10-h1 lg:col-span-7">Smarter, fairer finance for every borrower</h1>
+        <p class="reveal ab10-lead lg:col-span-5">FinCoach is a digital marketplace that makes loans, cards and deposits from leading banks simple to compare and paperless to apply for.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-5 lg:gap-6 mt-10 md:mt-14">
+        <div class="lg:col-span-8 ab10-photo" data-aos="fade-up">
+          <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1600&q=78&auto=format&fit=crop" alt="Friends comparing loan offers on a laptop in a cafe" />
         </div>
-        <div class="lg:col-span-6">
-          <div class="ab9-mosaic" data-aos="fade-left" data-aos-delay="150">
-            <div class="ab9-m ab9-m-1"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1000&q=78&auto=format&fit=crop" alt="The FinCoach team at work" /></div>
-            <div class="ab9-m ab9-m-2"><img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=700&q=75&auto=format&fit=crop" alt="FinCoach and a partner bank agreeing a deal" /></div>
-            <div class="ab9-m ab9-m-3"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=700&q=75&auto=format&fit=crop" alt="A FinCoach advisor helping a customer" /></div>
+        <div class="lg:col-span-4 grid gap-5 lg:gap-6">
+          <div class="ab10-card ab10-card-vision" data-aos="fade-left" data-aos-delay="100">
+            <div class="ab10-card-in">
+              <div class="ab10-move">
+                <span class="ab10-card-ic"><i class="fa-regular fa-eye"></i></span>
+                <h2>Our Vision</h2>
+                <p>Bangladesh's leading digital marketplace for financial services.</p>
+              </div>
+            </div>
+          </div>
+          <div class="ab10-card ab10-card-mission" data-aos="fade-left" data-aos-delay="220">
+            <div class="ab10-card-in">
+              <div class="ab10-move">
+                <span class="ab10-card-ic"><i class="fa-regular fa-paper-plane"></i></span>
+                <h2>Our Mission</h2>
+                <p>Make the right financial product easy for everyone to find.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</section>
+
+<!-- =========================================================
+     ABOUT — Clients / partners strip
+     ========================================================= -->
+<section class="pt-14 md:pt-20">
   <div class="max-w-site mx-auto px-4 md:px-6">
-    <div class="ab8-stats ab9-stats" data-aos="fade-up" data-aos-delay="200">
-      <div><b><span data-count="6">0</span>+</b><span>Partner banks &amp; FIs</span></div>
-      <div><b><span data-count="25">0</span>K+</b><span>Applications processed</span></div>
-      <div><b><span data-count="98">0</span>%</b><span>Positive reviews</span></div>
-      <div><b>24/7</b><span>Online application</span></div>
+    <div class="ab10-clients">
+      <p class="text-center" data-aos="fade-up">More than <b>25,000+</b> borrowers compared offers with our partners</p>
+      <div class="marquee mt-7 overflow-hidden" id="partners" data-aos="fade-up" data-aos-delay="150">
+        <div class="marquee-track logo-track" id="marqueeTrack">
+          <img src="assets/img/partners/p1.png" alt="IPDC Finance" />
+          <img src="assets/img/partners/p2.jpg" alt="City Bank" />
+          <img src="assets/img/partners/p3.jpg" alt="IDLC Finance" />
+          <img src="assets/img/partners/p4.jpg" alt="National Finance" />
+          <img src="assets/img/partners/p5.jpg" alt="NCC Bank" />
+          <img src="assets/img/partners/p6.jpg" alt="Mutual Trust Bank" />
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================
-     ABOUT — Story: big statement + text
+     ABOUT — Story in a curved card, with stats
      ========================================================= -->
-<section class="px-2.5 pt-16 md:pt-24">
-  <div class="ab9-story" data-aos="fade-up" data-aos-duration="1000">
+<section class="pt-14 md:pt-20">
+  <div class="max-w-site mx-auto px-4 md:px-6">
+  <div class="ab9-story ab11-story" data-aos="fade-up" data-aos-duration="1000">
     <span class="ab9-story-glow"></span>
-    <div class="relative max-w-site mx-auto px-4 md:px-6 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+    <div class="relative grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
       <div class="lg:col-span-7">
         <span class="reveal ab5-kicker"><span></span>Our story</span>
         <h2 class="reveal ab8-statement mt-5">The FinCoach Story</h2>
@@ -221,9 +246,11 @@
           <p>FinCoach began with one idea: finding a loan shouldn't mean visiting branch after branch, filling in endless forms and guessing which offer is fair.</p>
           <p>So we built one marketplace where you compare real rates side by side, apply online in minutes and track every step until your money arrives.</p>
         </div>
-        <div class="grid sm:grid-cols-2 gap-5 mt-9">
-          <div class="ab8-vm" data-aos="fade-up"><p class="ab8-vm-k"><i class="fa-regular fa-eye"></i> Our vision</p><p class="ab8-vm-t">Bangladesh's leading digital marketplace for financial services.</p></div>
-          <div class="ab8-vm" data-aos="fade-up" data-aos-delay="150"><p class="ab8-vm-k"><i class="fa-regular fa-paper-plane"></i> Our mission</p><p class="ab8-vm-t">Make the right financial product easy for everyone to find.</p></div>
+        <div class="ab10-stats ab11-stats mt-10">
+          <div data-aos="fade-up"><b><span data-count="6">0</span><sup>+</sup></b><span>Partner banks &amp; FIs</span></div>
+          <div data-aos="fade-up" data-aos-delay="100"><b><span data-count="25">0</span><sup>K+</sup></b><span>Applications processed</span></div>
+          <div data-aos="fade-up" data-aos-delay="200"><b><span data-count="98">0</span><sup>%</sup></b><span>Positive reviews</span></div>
+          <div data-aos="fade-up" data-aos-delay="300"><b>24<sup>/7</sup></b><span>Online application</span></div>
         </div>
       </div>
       <div class="lg:col-span-5">
@@ -232,6 +259,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </section>
 
@@ -250,29 +278,6 @@
       <div class="ab8-val" data-aos="fade-up"><span class="ab8-val-n">01</span><span class="ab8-val-ic"><i class="fa-solid fa-building-shield"></i></span><h3>Licensed lenders only</h3><p>We only work with fair, licensed and reputable banks and FIs.</p></div>
       <div class="ab8-val" data-aos="fade-up" data-aos-delay="120"><span class="ab8-val-n">02</span><span class="ab8-val-ic"><i class="fa-solid fa-scale-balanced"></i></span><h3>Real rates, no surprises</h3><p>See real rates and charges, so you know exactly what you'll pay back.</p></div>
       <div class="ab8-val" data-aos="fade-up" data-aos-delay="240"><span class="ab8-val-n">03</span><span class="ab8-val-ic"><i class="fa-solid fa-user-shield"></i></span><h3>Protection first</h3><p>We help keep borrowers away from loan sharks and unfair deals.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================
-     ABOUT — Partners grid
-     ========================================================= -->
-<section class="pt-16 md:pt-24">
-  <div class="max-w-site mx-auto px-4 md:px-6">
-    <div class="ab8-partners">
-      <div class="ab8-partners-head">
-        <span class="reveal ab5-kicker"><span></span>Our partners</span>
-        <h2 class="reveal ab5-h2 mt-4">Trusted by leading banks &amp; FIs</h2>
-        <p class="reveal ab5-lead mt-3">Licensed banks and financial institutions only.</p>
-      </div>
-      <div class="ab5-logos ab8-logos" data-aos="fade-left" data-aos-delay="150">
-        <div><img src="assets/img/partners/p1.png" alt="IPDC Finance" /></div>
-        <div><img src="assets/img/partners/p2.jpg" alt="City Bank" /></div>
-        <div><img src="assets/img/partners/p3.jpg" alt="IDLC Finance" /></div>
-        <div><img src="assets/img/partners/p4.jpg" alt="National Finance" /></div>
-        <div><img src="assets/img/partners/p5.jpg" alt="NCC Bank" /></div>
-        <div><img src="assets/img/partners/p6.jpg" alt="Mutual Trust Bank" /></div>
-      </div>
     </div>
   </div>
 </section>
