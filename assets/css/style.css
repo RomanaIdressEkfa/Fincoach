@@ -3457,3 +3457,13 @@ input[type=range].emi2-rng::-moz-range-thumb { width: 12px; height: 12px; border
 .bl6-card h3 { margin-top: .45rem; font-family: "Urbanist", sans-serif; font-weight: 800; font-size: 1.25rem; line-height: 1.3; letter-spacing: -.01em; color: var(--ink); transition: color .25s; }
 .bl6-card:hover h3 { color: var(--brand); }
 .bl6-meta { margin-top: .6rem; font-size: .85rem; font-weight: 600; color: var(--muted); }
+
+/* ==========================================================
+   Full-width panels (app, testimonials) — match How it works / footer
+   ========================================================== */
+.ap3 { border-radius: 32px; padding: 3rem 0; box-shadow: none; }
+@media (min-width: 768px) { .ap3 { padding: 4.5rem 0; } }
+.tw4 { border-radius: 32px; box-shadow: none; }
+.tw4-text { padding: 2rem 0 1.6rem; }
+@media (min-width: 768px) { .tw4-text { padding: 2.6rem 3rem 3.6rem 0; } }
+@media (min-width: 1024px) { .tw4-media { padding: 1.5rem 0 3.6rem; min-height: 500px; } }
