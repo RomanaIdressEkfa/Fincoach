@@ -3467,3 +3467,10 @@ input[type=range].emi2-rng::-moz-range-thumb { width: 12px; height: 12px; border
 .tw4-text { padding: 2rem 0 1.6rem; }
 @media (min-width: 768px) { .tw4-text { padding: 2.6rem 3rem 3.6rem 0; } }
 @media (min-width: 1024px) { .tw4-media { padding: 1.5rem 0 3.6rem; min-height: 500px; } }
+
+/* Boxed panels: How it works, app, stories share the site container + radius */
+.hw.ab5-pledge, .ap3, .tw4 { border-radius: 28px; }
+.ap3 { padding: 2.5rem 0; }
+@media (min-width: 768px) { .ap3 { padding: 3.25rem 0; } }
+@media (min-width: 768px) { .tw4-text { padding: 2rem 3rem 3rem 0; } }
+@media (min-width: 1024px) { .tw4-media { padding: 1rem 0 3rem; min-height: 460px; } }
