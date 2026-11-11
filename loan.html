@@ -173,38 +173,39 @@
      LOAN ① — Hero (content filled from ?type= by pages.js)
      ========================================================= -->
 <section class="px-2.5 pt-2.5">
-  <div class="ab5-hero lp2-hero">
-    <span class="ab5-dots"></span><span class="ab5-glow"></span>
-    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-10 md:pt-14 pb-14 md:pb-20">
-      <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><a href="index.html#products">Loans</a><i class="fa-solid fa-chevron-right"></i><span class="text-brand" data-l="name">Personal Loan</span></nav>
-      <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center mt-6">
+  <div class="ab9-hero lp3-hero">
+    <span class="ab9-glow ab9-glow-1"></span><span class="ab9-glow ab9-glow-2"></span><span class="ab9-grid"></span>
+    <div class="relative max-w-site mx-auto px-4 md:px-6 pt-10 md:pt-14">
+      <nav class="crumb ab9-crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><a href="index.html#products">Loans</a><i class="fa-solid fa-chevron-right"></i><span data-l="name">Personal Loan</span></nav>
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-12 items-center mt-8 md:mt-10">
         <div class="lg:col-span-7">
-          <span class="lp2-badge"><span class="lp2-badge-ic"><i class="fa-solid fa-user" data-l-icon></i></span><span data-l="name">Personal Loan</span><span class="lp2-badge-dot">•</span><span>From <b data-l="rate">9.0%</b></span></span>
-          <h1 class="ab5-h1 mt-5" data-l="title">Money for the things that matter</h1>
-          <p class="ab5-lead mt-4 max-w-xl" data-l="lead"></p>
-          <div class="grid grid-cols-3 gap-3 mt-8 max-w-xl">
-            <div class="lp2-stat"><i class="fa-solid fa-percent"></i><small>Rate from</small><b data-l="rate">9.0%</b></div>
-            <div class="lp2-stat"><i class="fa-solid fa-sack-dollar"></i><small>Up to</small><b data-l="max">৳20 Lakh</b></div>
-            <div class="lp2-stat"><i class="fa-regular fa-calendar"></i><small>Tenure</small><b data-l="tenure">12–60 mo</b></div>
+          <span class="ab9-pill lp3-pill"><span class="lp3-pill-ic"><i class="fa-solid fa-user" data-l-icon></i></span><span data-l="name">Personal Loan</span></span>
+          <h1 class="ab9-h1 lp3-h1 mt-6" data-l="title">Money for the things that matter</h1>
+          <p class="ab9-lead mt-5" data-l="lead"></p>
+          <div class="lp3-stats mt-8">
+            <div><small>Rate from</small><b data-l="rate">9.0%</b></div>
+            <div><small>Up to</small><b data-l="max">৳20 Lakh</b></div>
+            <div><small>Tenure</small><b data-l="tenure">12–60 mo</b></div>
           </div>
-          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <div class="mt-9 flex flex-col sm:flex-row gap-3">
             <a href="apply.html" class="btn btn-primary !px-8 !py-4" data-l-apply>Check for offers <i class="fa-solid fa-arrow-right"></i></a>
-            <a href="#rates" class="btn btn-white !px-7 !py-4 shadow-sm"><i class="fa-solid fa-table-list text-brand"></i> Compare rates</a>
+            <a href="#rates" class="btn ab9-ghost !px-7 !py-4"><i class="fa-solid fa-table-list"></i> Compare rates</a>
           </div>
         </div>
-
-        <div class="lg:col-span-5 relative lp2-visual">
-          <div class="lp2-arch"><img data-l-img src="" alt="" /></div>
-          <div class="lp2-calc" id="lpCalc">
-            <div class="flex items-center justify-between">
-              <p class="font-head font-extrabold">Quick EMI</p>
-              <span class="lp2-calc-rate"><span id="lpcRate">9.0</span>% p.a.</span>
+        <div class="lg:col-span-5">
+          <div class="lp3-visual" data-aos="fade-left" data-aos-delay="150">
+            <div class="lp3-photo"><img data-l-img src="" alt="" /></div>
+            <div class="lp2-calc lp3-calc" id="lpCalc">
+              <div class="flex items-center justify-between">
+                <p class="font-head font-extrabold">Quick EMI</p>
+                <span class="lp2-calc-rate"><span id="lpcRate">9.0</span>% p.a.</span>
+              </div>
+              <div class="flex items-center justify-between mt-3 text-sm"><span class="text-muted font-semibold">Amount</span><b>৳ <span id="lpcAmtV">5,00,000</span></b></div>
+              <input id="lpcAmt" type="range" class="rng mt-2" min="50000" max="2000000" step="10000" value="500000" aria-label="Loan amount" />
+              <div class="flex items-center justify-between mt-3 text-sm"><span class="text-muted font-semibold">Tenure</span><b><span id="lpcTenV">36</span> months</b></div>
+              <input id="lpcTen" type="range" class="rng mt-2" min="6" max="60" step="6" value="36" aria-label="Tenure in months" />
+              <div class="lp2-calc-out"><span>Monthly EMI</span><b>৳ <span id="lpcEmi">0</span></b></div>
             </div>
-            <div class="flex items-center justify-between mt-3 text-sm"><span class="text-muted font-semibold">Amount</span><b>৳ <span id="lpcAmtV">5,00,000</span></b></div>
-            <input id="lpcAmt" type="range" class="rng mt-2" min="50000" max="2000000" step="10000" value="500000" aria-label="Loan amount" />
-            <div class="flex items-center justify-between mt-3 text-sm"><span class="text-muted font-semibold">Tenure</span><b><span id="lpcTenV">36</span> months</b></div>
-            <input id="lpcTen" type="range" class="rng mt-2" min="6" max="60" step="6" value="36" aria-label="Tenure in months" />
-            <div class="lp2-calc-out"><span>Monthly EMI</span><b>৳ <span id="lpcEmi">0</span></b></div>
           </div>
         </div>
       </div>
@@ -265,10 +266,11 @@
 <!-- =========================================================
      LOAN ④ — Eligibility checker + documents
      ========================================================= -->
-<section class="px-2.5 pt-16 md:pt-24">
-  <div class="el2">
+<section class="pt-16 md:pt-24">
+  <div class="max-w-site mx-auto px-4 md:px-6">
+  <div class="el2 lp3-box">
     <span class="ab5-dots"></span><span class="ab5-glow"></span>
-    <div class="relative max-w-site mx-auto px-4 md:px-6 py-14 md:py-20">
+    <div class="relative px-5 md:px-10 lg:px-12 py-12 md:py-16">
       <div class="grid lg:grid-cols-12 gap-6 items-end">
         <div class="lg:col-span-7">
           <span class="reveal ab5-kicker"><span></span>Before you apply</span>
@@ -309,6 +311,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </section>
 
@@ -351,7 +354,7 @@
 <!-- =========================================================
      LOAN ⑦ — Other loans
      ========================================================= -->
-<section class="pt-16 md:pt-24 pb-16 md:pb-24">
+<section class="pt-16 md:pt-24">
   <div class="max-w-site mx-auto px-4 md:px-6">
     <div class="flex items-end justify-between gap-4">
       <h2 class="reveal ab5-h2">Explore other loans</h2>
@@ -362,16 +365,15 @@
 </section>
 
 <!-- CTA -->
-<section class="px-2.5 pb-2.5">
-  <div class="panel bg-grad relative overflow-hidden">
-    <div class="absolute -left-24 -bottom-24 w-96 h-96 rounded-full border-[40px] border-white/10"></div>
-    <div class="absolute right-10 -top-20 w-72 h-72 rounded-full bg-white/10"></div>
-    <div class="relative max-w-site mx-auto px-4 md:px-6 py-14 md:py-16 flex flex-col lg:flex-row lg:items-center justify-between gap-8 text-white">
-      <div>
-        <h2 class="font-head font-extrabold text-[2rem] md:text-[2.8rem] leading-[1.08]">See your offers in 5 minutes</h2>
-        <p class="mt-3 text-lg text-white/85">Free to compare. No impact on your credit score.</p>
+<section class="pt-16 md:pt-24 pb-16 md:pb-24">
+  <div class="max-w-site mx-auto px-4 md:px-6">
+    <div class="ab8-cta" data-aos="zoom-in-up">
+      <span class="ab8-cta-ring"></span><span class="ab8-cta-ring ab8-cta-ring-2"></span>
+      <div class="relative">
+        <h2>See your offers in 5 minutes</h2>
+        <p>Free to compare. No impact on your credit score.</p>
       </div>
-      <a href="apply.html" class="btn btn-white !px-8 !py-4 self-start lg:self-auto" data-l-apply>Check for offers <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="apply.html" class="relative btn btn-white !px-8 !py-4 self-start lg:self-auto shrink-0" data-l-apply>Check for offers <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
